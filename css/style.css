@@ -1,0 +1,330 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Handjet:wght@100..900&family=Mina&family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Zen+Maru+Gothic&display=swap");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif; /* 英文字擺在前，中文字擺第二，中文字要有引號 */
+  font-optical-sizing: auto; /* 光學自動改變粗細 */
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* 重置標題字重 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* 重置清單 */
+ul, ol {
+  list-style-type: none; /* 移除項目符號 */
+  padding: 0; /* 移除內邊距 */
+  margin: 0; /* 移除外邊距 */
+}
+
+/* 重置超聯結 */
+a {
+  display: block; /* 將a預設的inline改為block,才能設定間距及寬高 */
+  color: #666;
+  text-decoration: none;
+}
+
+textarea {
+  width: 100%;
+}
+
+/* 卷軸樣式 */
+::-webkit-scrollbar {
+  height: 12px;
+  background: transparent;
+  border: 1px solid #B595FF;
+  border-radius: 99px;
+  z-index: 1; /* 設置較低的 z-index */
+  cursor: default;
+}
+
+::-webkit-scrollbar-button {
+  background: #B3B3B3;
+  width: 12px;
+  height: 12px;
+  cursor: default;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: 1px solid #B595FF;
+  z-index: 1; /* 設置較低的 z-index */
+  cursor: default;
+}
+
+::-webkit-scrollbar-corner {
+  background: #B3B3B3;
+  cursor: default;
+}
+
+::-webkit-resizer {
+  background: #acff6c;
+  cursor: default;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+@keyframes storm {
+  0% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+  25% {
+    transform: translate3d(4px, 0, 0) translateZ(0);
+  }
+  50% {
+    transform: translate3d(-3px, 0, 0) translateZ(0);
+  }
+  75% {
+    transform: translate3d(2px, 0, 0) translateZ(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+}
+/* 重置字體 */
+body {
+  position: relative;
+  font-family: "Noto Sans TC";
+  /* 系統預設的無襯線字 */
+  font-size: 100%;
+  line-height: 1.5;
+  background-color: #333;
+}
+
+/* 重置標題字重 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  /* 一般粗細 */
+}
+
+/* 重置清單符號 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 重置圖片 */
+img {
+  display: block;
+  width: 100%;
+  /* 滿版 */
+  max-width: 100%;
+  /*不一定要寫*/
+  height: auto;
+  /*不一定要寫*/
+}
+
+/* 重置連接 */
+/* 基本超連結樣式 */
+a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+/* Menu */
+.Topbar {
+  margin: 0;
+  margin-top: 0;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  padding: 10px 0px;
+  align-items: flex-end;
+  justify-content: space-between;
+  /* border: 1px solid rgb(207, 202, 202); */
+}
+
+/* 心理測驗 */
+.softtest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.softtest #test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  min-width: 350px;
+}
+.softtest #test .heading-wrapper {
+  display: flex;
+  width: 100%;
+}
+.softtest #test .heading-wrapper .heading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 130px;
+  margin-top: 60px;
+  overflow: visible;
+}
+.softtest #test .heading-wrapper .title-img {
+  position: absolute;
+  width: 40%;
+  min-width: 150px;
+  height: auto;
+  bottom: 0px;
+}
+.softtest #test .heading-wrapper .progress-bar {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+}
+.softtest #test #start-screen {
+  display: flex;
+  width: 100%;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+}
+.softtest #test .question-container {
+  width: 300px;
+  background-size: cover;
+  padding: 20px;
+}
+.softtest #test .option-button {
+  display: block;
+  width: 100%;
+  margin: 30px 0;
+  padding: 20px 30px;
+  border-radius: 22px;
+  cursor: pointer;
+}
+.softtest #test .option-button.selected {
+  background-color: #ddd;
+}
+.softtest #test .result-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.softtest #test #confirm-button {
+  margin: 20px;
+  padding: 10px;
+}
+.softtest #test #confirm-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}/*# sourceMappingURL=style.css.map */

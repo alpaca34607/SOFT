@@ -1,0 +1,35 @@
+%glassmorphism {
+    background-image: linear-gradient(to bottom right,  rgba(255, 255, 255, 0.65), rgba(204, 192, 190, 0.3));
+    border-radius: 20px 20px;/* 圓角，前數為左上右下，後數為右上左下 */
+    box-shadow: 2px 2px 2px 1px rgba(172, 172, 172, 0.3);/* 容器的陰影,第4數為spread延伸模糊陰影 */
+    /* filter: drop-shadow(2px 2px 2px blue); */ /* 整個物件包含內部燈有陰影 */
+    backdrop-filter: brightness(120%) blur(3px);/* 背景變亮120%背景模糊3px*/
+}
+
+%box-center {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+%img-cover{ object-fit: cover;}
+
+// 多行省略
+%line-multiple{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+
+    // 行數於區塊中設定 -webkit-line-clamp:6;
+            
+}
+// 單行省略
+%line-single{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+
+}

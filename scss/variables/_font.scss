@@ -1,0 +1,100 @@
+// 字級
+// 字體變數定義
+$Chinese: 'Noto Sans TC';
+$EN : 'Playfair Display';
+
+
+//字重
+$font-w-bold: 600;
+
+// 字體樣式變數
+$font-regular-13: (
+  font-family: $Chinese,
+  font-weight: 400,
+  font-size: 0.8125rem // 13px
+);
+
+$font-medium-14: (
+  font-family: $Chinese,
+  font-weight: 500,
+  font-size: 0.875rem, // 14px
+  letter-spacing: 0.1rem // 10%
+);
+
+$font-medium-16: (
+  font-family: $Chinese,
+  font-weight: 500,
+  font-size: 1rem // 16px
+);
+
+$font-regular-16: (
+  font-family: $Chinese,
+  font-weight: 300,
+  font-size: 1rem, // 16px
+  letter-spacing: 0.05rem, // 5%
+  line-height: 2 // 200%
+);
+
+$font-regular-18: (
+  font-family: $Chinese,
+  font-weight: 300,
+  font-size: 1.125rem, // 18px
+  letter-spacing: 0.18rem, // 15%
+  line-height: 1.8 // 180%
+);
+
+$font-medium-18: (
+  font-family: $Chinese,
+  font-weight: 500,
+  font-size: 1.125rem, // 18px
+  letter-spacing: 0.18rem, // 15%
+  line-height: 1.5 // 150%
+);
+$font-regular-18-n: (
+  font-family: $Chinese,
+  font-weight: 400,
+  font-size: 1.125rem, // 18px
+  letter-spacing: 0.05rem, // 5%
+  line-height: 1.5 // 150%
+);
+
+$font-medium-26: (
+  font-family: $Chinese,
+  font-weight: 500,
+  font-size: 1.6rem // 26px
+);
+
+$font-medium-24: (
+  font-family: $Chinese,
+  font-weight: 500,
+  font-size: 1.5rem, // 24px
+  letter-spacing: 0.18rem, // 15%
+  line-height: 1.5 // 150%
+);
+
+$font-medium-36: (
+  font-family: $Chinese,
+  font-weight: 500,
+  font-size: 2.25rem // 36px
+);
+
+$font-medium-48: (
+  font-family: $Chinese,
+  font-weight: 500,
+  font-size: 3rem, // 48px
+  letter-spacing: 0.2rem // 16%
+);
+
+$font-EN-medium-40: (
+  font-family: "Playfair Display",
+  font-optical-sizing: auto,
+  font-size: 40px,
+  font-weight: 500,
+  font-style: italic
+);
+
+
+
+
+
+

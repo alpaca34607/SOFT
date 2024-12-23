@@ -1,0 +1,166 @@
+@use './variables/' as *;
+
+html,
+
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family:
+    /*西文*/ -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
+    /*中文*/ "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;/* 英文字擺在前，中文字擺第二，中文字要有引號 */
+    font-optical-sizing: auto;/* 光學自動改變粗細 */
+    line-height: 1.5;
+    overflow-x: hidden;
+    
+
+}
+
+
+
+/* 重置標題字重 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+img {
+    display: block;
+    width: 100%;
+
+}
+/* 重置清單 */
+ul, ol{
+    list-style-type: none; /* 移除項目符號 */
+    padding: 0;            /* 移除內邊距 */
+    margin: 0;             /* 移除外邊距 */
+    
+}
+
+/* 重置超聯結 */
+a {
+    display: block; /* 將a預設的inline改為block,才能設定間距及寬高 */
+    color: #666;
+    text-decoration: none;
+}
+
+textarea {
+    width: 100%;
+}
+/* 卷軸樣式 */
+::-webkit-scrollbar { //卷動長條
+    height: 12px; //有水平卷軸時設定
+    background: transparent;
+    border: 1px solid $primary-purple ;
+    border-radius: 99px;//加圓角時不加上下按鈕才能有圓角
+    z-index: 1; /* 設置較低的 z-index */
+    cursor: default;
+  }
+  ::-webkit-scrollbar-button { //上下按鈕
+    background: $grey;
+    width: 12px;//卷軸按鈕寬
+    height: 12px;//卷軸按鈕高
+    cursor: default;
+    
+  }
+  ::-webkit-scrollbar-thumb { //卷軸手柄
+    background: transparent;
+    border: 1px solid $primary-purple ;
+    z-index: 1; /* 設置較低的 z-index */
+    cursor: default;
+    
+  }
+
+  ::-webkit-scrollbar-corner { //直橫軸交集的小缺角顏色
+    background: $grey;
+    cursor: default;
+  }
+  ::-webkit-resizer{  //多行填字欄位右下縮放框框按鈕
+    background: $primary-green;
+    cursor: default;
+
+  }

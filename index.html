@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="heading-wrapper">
+        <div class="heading">
+            <div class=title-img>
+                <img src="./images/softtest/title_img.svg" alt="軟軟測驗">
+            </div>
+            <div class="progress-bar">
+                <img src=${question.bar} alt="進度條">
+            </div>
+        </div>
+    </div>
+    <div class="question-container" style="background-image: url(${question.background})">
+        <h2>${question.question}</h2>
+        <div id="options">
+            ${optionsHtml}
+        </div>
+        <button id="confirm-button" onclick="quiz.confirmAnswer()" disabled>
+            確認
+        </button>
+    </div>
+
+</body>
+
+</html>
