@@ -122,7 +122,7 @@ class Quiz {
         this.currentQuestion = 0;
         this.score = 0;
         this.selectedAnswer = null;
-        this.currentSnailPosition = 0;
+        this.currentPosition = 0;
         this.renderQuestion();
         this.updateSnail();
     }
@@ -161,19 +161,24 @@ class Quiz {
         const snail = document.querySelector('.snail');
         if (snail) {
             // 設置 transition
-            snail.style.transition = 'left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            snail.style.transition = 'left 0.8s ease-out';
             
-            // 計算新位置
+            // 計算新位置 現在題號/題目總數
             const progress = this.currentQuestion / (questionData.length - 1);
+            alert(`${progress}`)
+            
+            // 最遠位置92%
             const maxPercentage = 92;
+           
+            // 移動距離= (現在題號/題目總數)*92
             const movePercentage = progress * maxPercentage;
             
-            // 更新位置記錄
-            this.currentSnailPosition = movePercentage;
+            // 更新位置記錄  現在位置= (現在題號/題目總數)*92
+            this.currentPosition = movePercentage;
             
-            // 更新蝸牛位置
+            // 更新蝸牛位置 snail.style.left = 現在位置= (現在題號/題目總數)*92
             setTimeout(() => {
-                snail.style.left = `${this.currentSnailPosition}%`;
+                snail.style.left = `${this.currentPosition}%`;
             }, 0);
         }
     }
@@ -204,29 +209,28 @@ class Quiz {
 
 
         this.test.innerHTML = `
+
     <div class="heading-wrapper">
         <div class="heading">
-            <div class=title-img>
+            <div class="title-img">
                 <img src="./images/softtest/title_img.svg" alt="軟軟測驗">
             </div>
-            
             <div class="progress-bar">
-            <div class="bar-content">
-            <div class="snail"><img src='./images/softtest/snail.svg' alt="小蝸牛"></div>
-                <img src='./images/softtest/bar0.svg' alt="進度條">
+                <div class="bar-content">
+                    <div class="snail" style="left: ${this.currentPosition}%;">
+                        <img src='./images/softtest/snail.svg' alt="小蝸牛">
+                    </div>
+                    <img src='./images/softtest/bar0.svg' alt="進度條">
+                </div>
             </div>
-         </div>
         </div>
     </div>
     <div class="question-container" style="background-image: url(${question.background})">
-    <div class="Q"> <h2>${question.question}</h2></div>
-        <div id="options">
-            ${optionsHtml}
-        </div>
-        <button id="confirm-button" onclick="quiz.confirmAnswer()" disabled>
-            確認
-        </button>
+        <div class="Q"><h2>${question.question}</h2></div>
+        <div id="options">${optionsHtml}</div>
+        <button id="confirm-button" onclick="quiz.confirmAnswer()" disabled>確認</button>
     </div>
+
                 `;
     }
 

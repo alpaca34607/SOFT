@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snail Move</title>
+    <style>
+        #snail {
+            position: absolute;
+            left: 0%;
+            bottom: 50px;
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            border-radius: 50%;
+            transition: left 0.2s ease; /* 平滑動畫效果 */
+        }
+        #moveButton, #resetButton {
+            position: absolute;
+            bottom: 10px;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #moveButton {
+            left: 10px;
+        }
+        #resetButton {
+            left: 120px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="snail"></div>
+    <button id="moveButton">Move Snail</button>
+    <button id="resetButton">Reset Snail</button>
+
+    <script>
+        const snail = document.getElementById('snail');
+        const moveButton = document.getElementById('moveButton');
+        const resetButton = document.getElementById('resetButton');
+
+        // 蝸牛的 X 位置初始值
+        let xPosition = 0;
+
+        // 按鈕點擊事件：每次點擊會讓蝸牛向右移動 0.16%
+        moveButton.addEventListener('click', () => {
+            // 增加 xPosition
+            xPosition += 16;
+            if (xPosition > 100) xPosition = 100; // 限制最大位置為 100%
+
+            // 更新蝸牛的位置
+            setTimeout(() => {
+                snail.style.left = `${xPosition}%`;
+            }, 0); // 確保在下一個事件循環執行
+        });
+
+        // 回到原點的按鈕
+        resetButton.addEventListener('click', () => {
+            // 重置蝸牛的 X 位置為 0
+            xPosition = 0;
+
+            // 更新蝸牛的位置
+            setTimeout(() => {
+                snail.style.left = `0%`;
+            }, 0); // 確保在下一個事件循環執行
+        });
+    </script>
+
+</body>
+</html>
