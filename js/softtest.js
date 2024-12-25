@@ -9,7 +9,7 @@ const questionData = [
             C: { text: '雖然醒了，但滑個手機再下床吧', score: 4 }
         },
         background: './images/softtest/bg1.jpg',
-        bar: './images/softtest/bar1.svg'
+
     },
     {
         id: 2,
@@ -19,7 +19,8 @@ const questionData = [
             B: { text: '等等，我沒有組樂高啊？', score: 2 },
             C: { text: '等等，這不是我房間啊？', score: 3 }
         },
-        background: 'bg2.jpg'
+        background: './images/softtest/bg2.jpg',
+
     },
     {
         id: 3,
@@ -29,7 +30,8 @@ const questionData = [
             B: { text: '先撸貓撸爆，樂高就擱著吧有空再收', score: 1 },
             C: { text: '離開這片混亂，先吃早餐填飽肚子', score: 4 }
         },
-        background: 'bg3.jpg'
+        background: './images/softtest/bg3.jpg',
+
     },
     {
         id: 4,
@@ -39,7 +41,8 @@ const questionData = [
             B: { text: '到有景色的地方散步走走', score: 2 },
             C: { text: '和朋友會面，開心的談論八卦', score: 1 }
         },
-        background: 'bg4.jpg'
+        background: './images/softtest/bg4.jpg',
+
     },
     {
         id: 5,
@@ -49,7 +52,8 @@ const questionData = [
             B: { text: '都出門了，再繼續走到目的地吧', score: 1 },
             C: { text: '還是換個比較涼快的地點吧', score: 4 }
         },
-        background: 'bg5.jpg'
+        background: './images/softtest/bg5.jpg',
+
     },
     {
         id: 6,
@@ -59,7 +63,8 @@ const questionData = [
             B: { text: '好像有點可疑，還是拒絕吧', score: 5 },
             C: { text: '先拒絕，吃完晚餐再繞回來看活動', score: 3 }
         },
-        background: 'bg6.jpg'
+        background: './images/softtest/bg6.jpg',
+
     },
     {
         id: 7,
@@ -69,9 +74,11 @@ const questionData = [
             B: { text: '都到商圈了，<br>自己找間氣氛不錯的簡餐店用餐吧!', score: 4 },
             C: { text: '約約看朋友要不要一起吃晚餐吧?', score: 1 }
         },
-        background: 'bg7.jpg'
+        background: './images/softtest/bg7.jpg',
+
     }
 ];
+
 
 class Quiz {
     constructor() {
@@ -81,6 +88,7 @@ class Quiz {
         this.isQuizStarted = false;
         this.isQuizEnded = false;
         this.test = document.getElementById('test');
+        this.currentSnailPosition = 0;
         this.init();
     }
 
@@ -114,7 +122,9 @@ class Quiz {
         this.currentQuestion = 0;
         this.score = 0;
         this.selectedAnswer = null;
+        this.currentSnailPosition = 0;
         this.renderQuestion();
+        this.updateSnail();
     }
 
     selectAnswer(answer) {
@@ -137,13 +147,44 @@ class Quiz {
             if (this.currentQuestion < questionData.length - 1) {
                 this.currentQuestion++;
                 this.selectedAnswer = null;
+                
                 this.renderQuestion();
+                this.updateSnail();
             } else {
                 this.isQuizEnded = true;
                 this.renderResult();
             }
         }
     }
+    
+    updateSnail() {
+        const snail = document.querySelector('.snail');
+        if (snail) {
+            // 設置 transition
+            snail.style.transition = 'left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            
+            // 計算新位置
+            const progress = this.currentQuestion / (questionData.length - 1);
+            const maxPercentage = 92;
+            const movePercentage = progress * maxPercentage;
+            
+            // 更新位置記錄
+            this.currentSnailPosition = movePercentage;
+            
+            // 更新蝸牛位置
+            setTimeout(() => {
+                snail.style.left = `${this.currentSnailPosition}%`;
+            }, 0);
+        }
+    }
+
+
+
+
+
+
+
+
 
     renderQuestion() {
         const question = questionData[this.currentQuestion];
@@ -161,19 +202,24 @@ class Quiz {
                     `;
         });
 
+
         this.test.innerHTML = `
-                   <div class="heading-wrapper">
+    <div class="heading-wrapper">
         <div class="heading">
             <div class=title-img>
                 <img src="./images/softtest/title_img.svg" alt="軟軟測驗">
             </div>
+            
             <div class="progress-bar">
-                <img src=${question.bar} alt="進度條">
+            <div class="bar-content">
+            <div class="snail"><img src='./images/softtest/snail.svg' alt="小蝸牛"></div>
+                <img src='./images/softtest/bar0.svg' alt="進度條">
             </div>
+         </div>
         </div>
     </div>
     <div class="question-container" style="background-image: url(${question.background})">
-        <h2>${question.question}</h2>
+    <div class="Q"> <h2>${question.question}</h2></div>
         <div id="options">
             ${optionsHtml}
         </div>

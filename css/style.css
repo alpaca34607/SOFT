@@ -256,27 +256,30 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
 }
 .softtest #test {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  width: 30%;
   min-width: 350px;
+  margin-top: 110px;
 }
 .softtest #test .heading-wrapper {
   display: flex;
   width: 100%;
+  overflow: hidden;
 }
 .softtest #test .heading-wrapper .heading {
   position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 130px;
-  margin-top: 60px;
+  height: 180px;
   overflow: visible;
 }
 .softtest #test .heading-wrapper .title-img {
@@ -284,13 +287,26 @@ a {
   width: 40%;
   min-width: 150px;
   height: auto;
-  bottom: 0px;
+  bottom: 0;
 }
 .softtest #test .heading-wrapper .progress-bar {
   position: absolute;
   width: 100%;
+  min-width: 350px;
   height: auto;
   bottom: 0;
+}
+.softtest #test .heading-wrapper .progress-bar .bar-content {
+  position: relative;
+  width: 100%;
+}
+.softtest #test .heading-wrapper .progress-bar .bar-content .snail {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+}
+.softtest #test .heading-wrapper .progress-bar .bar-content .snail img {
+  width: 57px;
 }
 .softtest #test #start-screen {
   display: flex;
@@ -300,31 +316,51 @@ a {
   align-items: center;
 }
 .softtest #test .question-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 300px;
   background-size: cover;
   padding: 20px;
 }
-.softtest #test .option-button {
-  display: block;
+.softtest #test .question-container .Q {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  margin: 30px 0;
+  height: 5rem;
+}
+.softtest #test .question-container #options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.softtest #test .question-container #options .option-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0;
   padding: 20px 30px;
   border-radius: 22px;
   cursor: pointer;
 }
-.softtest #test .option-button.selected {
+.softtest #test .question-container #options .option-button.selected {
   background-color: #ddd;
 }
-.softtest #test .result-buttons {
+.softtest #test .question-container #options .result-buttons {
   display: flex;
   gap: 10px;
   justify-content: center;
 }
-.softtest #test #confirm-button {
+.softtest #test .question-container #options #confirm-button {
   margin: 20px;
   padding: 10px;
 }
-.softtest #test #confirm-button:disabled {
+.softtest #test .question-container #options #confirm-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }/*# sourceMappingURL=style.css.map */
