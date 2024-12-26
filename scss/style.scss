@@ -81,6 +81,146 @@ a {
     /* border: 1px solid rgb(207, 202, 202); */
 }
 
+/* 首頁 */
+.home{
+    
+html, body{
+	background: #eee;
+	width: 100%;
+}
+
+.wrapper{
+  width:90%;
+  position:relative;
+  margin:5% auto 0;
+}
+
+.carousel{
+	width: 100%;
+	position: relative;
+	padding-top: 60%;
+	overflow: hidden;
+}
+
+.inner{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+
+.slide{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	right:0;
+	left:0;
+	z-index: 1;
+	opacity: 0;
+}
+
+.slide.active,
+.slide.left,
+.slide.right{
+	z-index: 2;
+	opacity: 1;
+}
+
+.js-reset-left{left:auto}
+
+.slide.left{
+	left:-100%;
+	right:0;
+}
+
+.slide.right{
+	right:-100%;
+	left: auto;
+}
+
+.transition .slide.left{left:0%}
+.transition .slide.right{right:0%}
+.transition .slide.shift-right{right: 100%;left:auto}
+.transition .slide.shift-left{left: 100%;right:auto}
+.transition .slide{
+	transition-property: right, left, margin;
+}
+
+.indicators{
+  width:100%;
+  position: absolute;
+  bottom:0;
+  z-index: 4;
+  padding:0;
+  text-align: center;
+}
+
+.indicators li{
+	width: 13px;
+	height: 13px;
+	display: inline-block;
+	margin: 5px;
+	background: #fff;
+	list-style-type: none;
+	border-radius: 50%;
+  cursor:pointer;
+  transition:background 0.3s ease-out;
+}
+
+.indicators li.active{background:#93278f}
+
+.indicators li:hover{background-color:#2b2b2b}
+
+/**
+ * ==========================
+ * Arrows 
+ *
+ */
+.arrow{
+  width: 20px;
+  height: 20px;
+  position:absolute;
+  top:50%;
+  z-index:5;
+  border-top:3px solid #fff;
+  border-right:3px solid #fff;
+  cursor:pointer;
+  transition:border-color 0.3s ease-out;
+}
+
+.arrow:hover{border-color:#93278f}
+
+.arrow-left{
+  left:20px;
+  transform:rotate(225deg);
+}
+
+.arrow-right{
+  right:20px;
+  transform:rotate(45deg);
+}
+
+.slide{
+	text-align:center;
+  padding-top:25%;
+  background-size:cover;
+}
+
+.slide:nth-child(1){
+	background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/163697/slide-1.jpg);
+ }
+
+.slide:nth-child(2){
+	background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/163697/slide-2.jpg);
+}
+
+.slide:nth-child(3){
+	background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/163697/slide-3.jpg);
+ }
+}
+
 
 
 /* 心理測驗 */
@@ -181,6 +321,7 @@ a {
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
+                overflow: hidden;
                 width: 100%;
 
                 .option-button {

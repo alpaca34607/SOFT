@@ -218,7 +218,7 @@ class Quiz {
             <div class="progress-bar">
                 <div class="bar-content">
                     <div class="snail" style="left: ${this.currentPosition}%;">
-                        <img src='./images/softtest/snail.svg' alt="小蝸牛">
+                        <img src='./images/softtest/snail.svg' alt="小蝸牛" >
                     </div>
                     <img src='./images/softtest/bar0.svg' alt="進度條">
                 </div>

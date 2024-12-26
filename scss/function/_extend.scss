@@ -1,3 +1,8 @@
+%yellow-gradient {
+    background-image: linear-gradient(to bottom, #FFEDBA 100%, #FFFEF8 100%);
+}
+
+
 %glassmorphism {
     background-image: linear-gradient(to bottom right,  rgba(255, 255, 255, 0.65), rgba(204, 192, 190, 0.3));
     border-radius: 20px 20px;/* 圓角，前數為左上右下，後數為右上左下 */
