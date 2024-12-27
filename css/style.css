@@ -380,7 +380,7 @@ a {
 }
 .home .slide:nth-child(1) {
   background-image: url(../images/home/Group_krita.apng);
-  background-size: 50%;
+  background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
 }
