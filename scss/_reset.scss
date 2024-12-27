@@ -135,7 +135,7 @@ textarea {
 ::-webkit-scrollbar { //卷動長條
     height: 12px; //有水平卷軸時設定
     background: transparent;
-    border: 1px solid $primary-purple ;
+    border: 1px solid $bg-3 ;
     border-radius: 99px;//加圓角時不加上下按鈕才能有圓角
     z-index: 1; /* 設置較低的 z-index */
     cursor: default;
@@ -149,7 +149,7 @@ textarea {
   }
   ::-webkit-scrollbar-thumb { //卷軸手柄
     background: transparent;
-    border: 1px solid $primary-purple ;
+    border: 1px solid $bg-3 ;
     z-index: 1; /* 設置較低的 z-index */
     cursor: default;
     
@@ -160,7 +160,7 @@ textarea {
     cursor: default;
   }
   ::-webkit-resizer{  //多行填字欄位右下縮放框框按鈕
-    background: $primary-green;
+    background: $bg-3;
     cursor: default;
 
   }

@@ -128,7 +128,7 @@ textarea {
 ::-webkit-scrollbar {
   height: 12px;
   background: transparent;
-  border: 1px solid #B595FF;
+  border: 1px solid #2A5070;
   border-radius: 99px;
   z-index: 1; /* 設置較低的 z-index */
   cursor: default;
@@ -143,7 +143,7 @@ textarea {
 
 ::-webkit-scrollbar-thumb {
   background: transparent;
-  border: 1px solid #B595FF;
+  border: 1px solid #2A5070;
   z-index: 1; /* 設置較低的 z-index */
   cursor: default;
 }
@@ -154,7 +154,7 @@ textarea {
 }
 
 ::-webkit-resizer {
-  background: #acff6c;
+  background: #2A5070;
   cursor: default;
 }
 
@@ -199,7 +199,7 @@ body {
   /* 系統預設的無襯線字 */
   font-size: 100%;
   line-height: 1.5;
-  background-color: #333;
+  background-color: #84D0FF;
 }
 
 /* 重置標題字重 */
@@ -260,18 +260,18 @@ a {
    */
 }
 .home html, .home body {
-  background: #eee;
+  background: #84D0FF;
   width: 100%;
 }
 .home .wrapper {
-  width: 90%;
+  width: 40%;
   position: relative;
   margin: 5% auto 0;
 }
 .home .carousel {
   width: 100%;
+  height: 500px;
   position: relative;
-  padding-top: 60%;
   overflow: hidden;
 }
 .home .inner {
@@ -284,6 +284,7 @@ a {
 .home .slide {
   width: 100%;
   height: 100%;
+  padding: 0;
   position: absolute;
   top: 0;
   right: 0;
@@ -326,6 +327,7 @@ a {
   transition-property: right, left, margin;
 }
 .home .indicators {
+  display: none;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -374,11 +376,13 @@ a {
 }
 .home .slide {
   text-align: center;
-  padding-top: 25%;
   background-size: cover;
 }
 .home .slide:nth-child(1) {
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/163697/slide-1.jpg);
+  background-image: url(../images/home/Group_krita.apng);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .home .slide:nth-child(2) {
   background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/163697/slide-2.jpg);
