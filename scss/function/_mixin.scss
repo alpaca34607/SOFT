@@ -29,5 +29,11 @@
       font-style: map-get($style, font-style);
     }
   }
-  
+  @mixin glassmorphism {
+    background-image: linear-gradient(to bottom right,  rgba(255, 255, 255, 0.45), rgba(153, 153, 153, 0.3));
+    box-shadow: 4px 4px 2px 0px rgba(32, 87, 114, 0.389),inset 1px 1px 3px rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: brightness(100%) blur(3px);
+}
+
   

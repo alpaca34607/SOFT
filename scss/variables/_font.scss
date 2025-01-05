@@ -1,7 +1,8 @@
 // 字級
 // 字體變數定義
-$Chinese: 'Noto Sans TC';
-$EN : 'Playfair Display';
+$Chinese: "Zen Maru Gothic", serif;
+$EN : "Mina", serif;
+$EN-title:"Mansalva", serif;
 
 
 //字重
@@ -24,7 +25,8 @@ $font-medium-14: (
 $font-medium-16: (
   font-family: $Chinese,
   font-weight: 500,
-  font-size: 1rem // 16px
+  font-size: 1rem, // 16px
+  letter-spacing: 0.18rem, // 15%
 );
 
 $font-regular-16: (
@@ -85,12 +87,21 @@ $font-medium-48: (
   letter-spacing: 0.2rem // 16%
 );
 
-$font-EN-medium-40: (
-  font-family: "Playfair Display",
+
+$font-EN-title-medium-24: (
+  font-family:$EN-title,
   font-optical-sizing: auto,
-  font-size: 40px,
-  font-weight: 500,
-  font-style: italic
+  font-size: 24px,
+  font-weight: 400,
+  font-style: normal,
+ 
+);
+$font-EN-title-medium-14: (
+  font-family:$EN-title,
+  font-optical-sizing: auto,
+  font-size: 14px,
+  font-weight: 400,
+  font-style: normal,
 );
 
 
