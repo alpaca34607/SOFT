@@ -609,21 +609,25 @@ a {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  min-height: 100vh;
   overflow: auto;
+  background: linear-gradient(#FFEDBA, #FFFEF8);
 }
 .softtest #test {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 100%;
   min-width: 350px;
   margin-top: 30px;
 }
 .softtest #test .heading-wrapper {
   display: flex;
-  width: 100%;
+  width: 30%;
   overflow: visible;
+  justify-content: center;
+  align-items: center;
 }
 .softtest #test .heading-wrapper .heading {
   position: relative;
@@ -665,31 +669,91 @@ a {
   justify-content: center;
   align-items: center;
 }
-.softtest #test .question-container {
+.softtest #test #start-screen .start-btn {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 20px;
+  width: 280px;
+  height: 93px;
+  font-family: "Mansalva", serif;
+  font-weight: 400;
+  font-size: 24px;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background: url(../images/softtest/comfirm-btn.svg);
+  background-size: cover;
+  border: none;
+  color: #2A2A2A;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  filter: drop-shadow(4px 4px 0 #5B83A3);
+  cursor: pointer;
+}
+.softtest #test #start-screen .start-btn:hover {
+  background: url(../images/softtest/comfirm-btn-hover.svg);
+  transform: scale(1.1);
+  background-size: cover;
+  transition: ease-in-out 0.1s;
+  filter: drop-shadow(3px 3px 0 #619ABD);
+  padding: 10px 20px;
+  color: #736262;
+}
+.softtest #test #start-screen .start-btn:active {
+  background: url(../images/softtest/comfirm-btn-hover.svg);
+  background-size: cover;
+  transform: scale(0.95) translateY(2px);
+  filter: drop-shadow(1px 1px 0 #5B83A3) hue-rotate(-10deg);
+  padding: 10px 20px;
+  color: #736262;
+}
+.softtest #test .test-bg {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.softtest #test .test-bg .question-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 300px;
-  background-size: cover;
-  padding: 20px;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 210px);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* 混合模式 */
+  overflow: visible;
 }
-.softtest #test .question-container .Q {
+.softtest #test .test-bg .question-container .Q {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 5rem;
+  height: 8rem;
 }
-.softtest #test .question-container #options {
+.softtest #test .test-bg .question-container .Q h2 {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  color: #2A5070;
+}
+.softtest #test .test-bg .question-container #options {
   display: flex;
   flex-direction: column;
+  width: 380px;
+  min-width: 300px;
   align-items: center;
   justify-content: flex-start;
-  overflow: hidden;
-  width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
 }
-.softtest #test .question-container #options .option-button {
+.softtest #test .test-bg .question-container #options .option-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -697,21 +761,148 @@ a {
   margin: 15px 0;
   padding: 20px 30px;
   border-radius: 22px;
+  border: #FFFFFF 3px solid;
+  cursor: pointer;
+  color: #2A5070;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.18rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 4px 4px 0 #5B83A3;
+  backdrop-filter: brightness(120%) blur(6px);
+}
+.softtest #test .test-bg .question-container #options .option-button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+  transition: 0.1s;
+  box-shadow: 3px 3px 0 #619ABD;
+}
+.softtest #test .test-bg .question-container #options .option-button.selected, .softtest #test .test-bg .question-container #options .option-button.active {
+  background: url(../images/softtest/select-bg.jpg);
+  transform: scale(1);
+  background-size: cover;
+  border: #2A5070 3px solid;
+  background-position: center;
+  color: #FFFFFF;
+  box-shadow: 1px 1px 0 #5B83A3;
+  filter: hue-rotate(-10deg);
+}
+.softtest #test .test-bg .question-container #confirm-button {
+  display: flex;
+  box-sizing: border-box;
+  margin-top: 40px;
+  padding: 0 20px;
+  width: 280px;
+  height: 93px;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  background: url(../images/softtest/comfirm-btn.svg);
+  background-size: cover;
+  border: none;
+  color: #2A2A2A;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  filter: drop-shadow(3px 3px 0 #619ABD);
   cursor: pointer;
 }
-.softtest #test .question-container #options .option-button.selected {
-  background-color: #ddd;
+.softtest #test .test-bg .question-container #confirm-button:hover {
+  background: url(../images/softtest/comfirm-btn-hover.svg);
+  transform: scale(1.1);
+  background-size: cover;
+  transition: ease-in-out 0.1s;
+  filter: drop-shadow(3px 6px 0 #5B83A3);
+  padding: 10px 20px;
+  color: #736262;
 }
-.softtest #test .question-container #options .result-buttons {
+.softtest #test .test-bg .question-container #confirm-button:active {
+  background: url(../images/softtest/comfirm-btn-hover.svg);
+  background-size: cover;
+  transform: scale(0.95) translateY(2px);
+  filter: drop-shadow(2px 2px 0 #5B83A3) hue-rotate(-10deg);
+  padding: 10px 20px;
+  color: #736262;
+}
+.softtest #test .test-bg .question-container #confirm-button:disabled {
+  opacity: 0;
+  cursor: not-allowed;
+}
+.softtest #test #result {
+  margin-top: 60px;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
-.softtest #test .question-container #options #confirm-button {
-  margin: 20px;
-  padding: 10px;
+.softtest #test #result p {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  color: #2A5070;
+  margin-bottom: 16px;
 }
-.softtest #test .question-container #options #confirm-button:disabled {
-  opacity: 0.5;
+.softtest #test #result img {
+  width: auto;
+  height: 100vh;
+}
+.softtest #test #result .result-buttons {
+  display: flex;
+  width: 100%;
+  gap: 40px;
+  justify-content: center;
+  padding: 20px;
+}
+.softtest #test #result .result-buttons .result-button {
+  display: inline-flex;
+  box-sizing: border-box;
+  margin-top: 40px;
+  padding: 0px 20px;
+  width: 253px;
+  height: 83px;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  background: url(../images/softtest/comfirm-btn.svg);
+  background-size: 95%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  color: #2A2A2A;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  filter: drop-shadow(3px 3px 0 #619ABD);
+  cursor: pointer;
+}
+.softtest #test #result .result-buttons .result-button:hover {
+  background: url(../images/softtest/comfirm-btn-hover.svg);
+  transform: scale(1.1);
+  background-size: cover;
+  transition: ease-in-out 0.1s;
+  filter: drop-shadow(3px 6px 0 #5B83A3);
+  padding: 10px 20px;
+  color: #736262;
+}
+.softtest #test #result .result-buttons .result-button:active {
+  background: url(../images/softtest/comfirm-btn-hover.svg);
+  background-size: cover;
+  transform: scale(0.95) translateY(2px);
+  filter: drop-shadow(2px 2px 0 #5B83A3) hue-rotate(-10deg);
+  padding: 10px 20px;
+  color: #736262;
+}
+.softtest #test #result .result-buttons .result-button:disabled {
+  opacity: 0;
   cursor: not-allowed;
 }/*# sourceMappingURL=style.css.map */

@@ -8,7 +8,7 @@ const questionData = [
             B: { text: '該起床了！<br>難得今天有空閑要好好利用！', score: 1 },
             C: { text: '雖然醒了，但滑個手機再下床吧', score: 4 }
         },
-        background: './images/softtest/bg1.jpg',
+        background: '../images/softtest/bg1.png',
 
     },
     {
@@ -19,7 +19,7 @@ const questionData = [
             B: { text: '等等，我沒有組樂高啊？', score: 2 },
             C: { text: '等等，這不是我房間啊？', score: 3 }
         },
-        background: './images/softtest/bg2.jpg',
+        background: '../images/softtest/bg2.jpg',
 
     },
     {
@@ -30,7 +30,7 @@ const questionData = [
             B: { text: '先撸貓撸爆，樂高就擱著吧有空再收', score: 1 },
             C: { text: '離開這片混亂，先吃早餐填飽肚子', score: 4 }
         },
-        background: './images/softtest/bg3.jpg',
+        background: '../images/softtest/bg3.jpg',
 
     },
     {
@@ -41,7 +41,7 @@ const questionData = [
             B: { text: '到有景色的地方散步走走', score: 2 },
             C: { text: '和朋友會面，開心的談論八卦', score: 1 }
         },
-        background: './images/softtest/bg4.jpg',
+        background: '../images/softtest/bg4.jpg',
 
     },
     {
@@ -52,7 +52,7 @@ const questionData = [
             B: { text: '都出門了，再繼續走到目的地吧', score: 1 },
             C: { text: '還是換個比較涼快的地點吧', score: 4 }
         },
-        background: './images/softtest/bg5.jpg',
+        background: '../images/softtest/bg5.jpg',
 
     },
     {
@@ -63,18 +63,18 @@ const questionData = [
             B: { text: '好像有點可疑，還是拒絕吧', score: 5 },
             C: { text: '先拒絕，吃完晚餐再繞回來看活動', score: 3 }
         },
-        background: './images/softtest/bg6.jpg',
+        background: '../images/softtest/bg6.jpg',
 
     },
     {
         id: 7,
         question: '充實的一天結束了，晚餐你打算怎麼安排呢？',
         options: {
-            A: { text: '我今天有出門好棒!回家吃炸雞配啤酒!', score: 5 },
+            A: { text: '我今天有出門好棒!<br>回家吃炸雞配啤酒!', score: 5 },
             B: { text: '都到商圈了，<br>自己找間氣氛不錯的簡餐店用餐吧!', score: 4 },
             C: { text: '約約看朋友要不要一起吃晚餐吧?', score: 1 }
         },
-        background: './images/softtest/bg7.jpg',
+        background: '../images/softtest/bg7.jpg',
 
     }
 ];
@@ -110,8 +110,8 @@ class Quiz {
         </div>
     </div>
     <div id="start-screen">
-        <button onclick="quiz.startQuiz()">
-            <img src="start-button-image.png" alt="開始" class="startbutton">
+        <button class="start-btn" onclick="quiz.startQuiz()">
+           START!
         </button>
     </div>
                 `;
@@ -147,7 +147,7 @@ class Quiz {
             if (this.currentQuestion < questionData.length - 1) {
                 this.currentQuestion++;
                 this.selectedAnswer = null;
-                
+
                 this.renderQuestion();
                 this.updateSnail();
             } else {
@@ -156,26 +156,25 @@ class Quiz {
             }
         }
     }
-    
+
     updateSnail() {
         const snail = document.querySelector('.snail');
         if (snail) {
             // 設置 transition
             snail.style.transition = 'left 0.8s ease-out';
-            
+
             // 計算新位置 現在題號/題目總數
             const progress = this.currentQuestion / (questionData.length - 1);
-            alert(`${progress}`)
-            
+
             // 最遠位置92%
             const maxPercentage = 92;
-           
+
             // 移動距離= (現在題號/題目總數)*92
             const movePercentage = progress * maxPercentage;
-            
+
             // 更新位置記錄  現在位置= (現在題號/題目總數)*92
             this.currentPosition = movePercentage;
-            
+
             // 更新蝸牛位置 snail.style.left = 現在位置= (現在題號/題目總數)*92
             setTimeout(() => {
                 snail.style.left = `${this.currentPosition}%`;
@@ -209,7 +208,12 @@ class Quiz {
 
 
         this.test.innerHTML = `
-
+<div class="test-bg" style="   background: 
+     
+      url(${question.background}); 
+  
+    background-size: cover; 
+    background-position:40% 50%;">
     <div class="heading-wrapper">
         <div class="heading">
             <div class="title-img">
@@ -225,11 +229,12 @@ class Quiz {
             </div>
         </div>
     </div>
-    <div class="question-container" style="background-image: url(${question.background})">
+    <div class="question-container">
         <div class="Q"><h2>${question.question}</h2></div>
         <div id="options">${optionsHtml}</div>
         <button id="confirm-button" onclick="quiz.confirmAnswer()" disabled>確認</button>
     </div>
+</div>
 
                 `;
     }
@@ -244,12 +249,22 @@ class Quiz {
         return '無法判定角色，請重新測驗！';
     }
 
+    getResultImage(score) {
+        if (score >= 7 && score <= 12) return '../images/softtest/result-Softchicks.jpg';
+        if (score >= 13 && score <= 16) return '../images/softtest/result-Softheart.jpg';
+        if (score >= 17 && score <= 19) return '../images/softtest/result-Soft.jpg';
+        if (score >= 20 && score <= 22) return '../images/softtest/result-Softzilla.jpg';
+        if (score >= 23 && score <= 25) return '../images/softtest/result-Softpaca.jpg';
+        if (score >= 26 && score <= 30) return '../images/softtest/result-Softfrog.jpg';
+        return 'images/unknown.jpg';
+    }
     renderResult() {
         const resultText = this.getResultText(this.score);
+        const resultImage = this.getResultImage(this.score);
         this.test.innerHTML = `
                     <div id="result">
                         <p>${resultText}</p>
-                        <img src="result-image.jpg" alt="結果圖" class="result-image">
+                        <img src="${resultImage}" alt="結果圖" class="result-image">
                         <div class="result-buttons">
                             <button class="result-button" onclick="quiz.restartQuiz()">再測一次</button>
                             <button class="result-button" onclick="alert('分享測驗結果功能尚未實現！')">分享結果</button>

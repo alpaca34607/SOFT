@@ -86,16 +86,17 @@ a {
     .navbar {
         display: flex;
 
-       .ig-icon {
-            margin-right:16px;
+        .ig-icon {
+            margin-right: 16px;
 
             img {
                 width: 40px;
                 height: 40px;
             }
         }
-        .shop-icon{
-            margin-right:16px;
+
+        .shop-icon {
+            margin-right: 16px;
 
             img {
                 width: 36px;
@@ -516,24 +517,30 @@ a {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-
+    min-height: 100vh;
     overflow: auto;
+    background: linear-gradient(#FFEDBA, #FFFEF8);
+  
 
-
+   
 
     #test {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 30%;
+        width: 100%;
         min-width: 350px;
         margin-top: 30px;
+        
 
         .heading-wrapper {
             display: flex;
-            width: 100%;
+            width: 30%;
             overflow: visible;
+            justify-content: center;
+            align-items: center;
+            
 
             .heading {
                 position: relative;
@@ -583,15 +590,65 @@ a {
             justify-content: center;
             align-items: center;
 
+            .start-btn {
+                display: flex;
+                box-sizing: border-box;
+                padding: 0 20px;
+                width: 280px;
+                height: 93px;
+                @include font-style($font-EN-title-medium-24);
+                background: url(../images/softtest/comfirm-btn.svg);
+                background-size: cover;
+                border: none;
+                color: $deep;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                filter: drop-shadow(4px 4px 0 $shadow-1);
+                cursor: pointer;
+
+                &:hover {
+                    background: url(../images/softtest/comfirm-btn-hover.svg);
+                    transform: scale(1.1);
+                    background-size: cover;
+                    transition: ease-in-out 0.1s;
+                    filter: drop-shadow(3px 3px 0 $shadow-2);
+                    padding: 10px 20px;
+                    color: $primary-brown;
+                }
+
+                &:active {
+
+                    background: url(../images/softtest/comfirm-btn-hover.svg);
+                    background-size: cover;
+                    transform: scale(0.95) translateY(2px);
+                    filter: drop-shadow(1px 1px 0 $shadow-1) hue-rotate(-10deg);
+                    padding: 10px 20px;
+                    color: $primary-brown;
+                }
+            }
+
         }
+        .test-bg{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
         .question-container {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            width: 300px;
-            background-size: cover;
-            padding: 20px;
+            align-items: center;
+            width: 100%;
+            height:calc(100vh - 210px);
+            background-size: 80%;
+            background-position: center;
+            background-repeat:no-repeat;
+            /* 混合模式 */
+            overflow: visible;
+            
 
             .Q {
                 display: flex;
@@ -599,17 +656,25 @@ a {
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                height: 5rem;
+                height: 8rem;
+
+                h2 {
+                    @include font-style($font-medium-20);
+                    color: $primary-darkblue;
+                }
             }
 
             #options {
 
                 display: flex;
                 flex-direction: column;
+                width: 380px;
+                min-width: 300px;
                 align-items: center;
                 justify-content: flex-start;
-                overflow: hidden;
-                width: 100%;
+                overflow: visible;
+                box-sizing: border-box;
+
 
                 .option-button {
                     display: flex;
@@ -619,27 +684,84 @@ a {
                     margin: 15px 0;
                     padding: 20px 30px;
                     border-radius: 22px;
+                    border: $light 3px solid;
                     cursor: pointer;
+                    color: $primary-darkblue;
+                    @include font-style($font-medium-16);
+                    background-color: rgba(255, 255, 255, 0.12);
+                    box-shadow: 4px 4px 0 $shadow-1;
+                    backdrop-filter: brightness(120%) blur(6px);
 
-                    &.selected {
-                        background-color: #ddd;
+
+
+                    &:hover {
+
+                        background-color: rgba(255, 255, 255, 0.5);
+                        transform: scale(1.1);
+                        transition: 0.1s;
+                        box-shadow: 3px 3px 0 $shadow-2;
+
+                    }
+
+
+                    &.selected,
+                    &.active {
+                        background: url(../images/softtest/select-bg.jpg);
+                        transform: scale(1);
+                        background-size: cover;
+                        border: $primary-darkblue 3px solid;
+                        background-position: center;
+                        color: $light;
+                        box-shadow: 1px 1px 0 $shadow-1;
+                        filter: hue-rotate(-10deg);
                     }
                 }
+            }
 
-                .result-buttons {
-                    display: flex;
-                    gap: 10px;
-                    justify-content: center;
+
+
+            #confirm-button {
+                display: flex;
+                box-sizing: border-box;
+                margin-top: 40px;
+                padding: 0 20px;
+                width: 280px;
+                height: 93px;
+                @include font-style($font-medium-24);
+                background: url(../images/softtest/comfirm-btn.svg);
+                background-size: cover;
+                border: none;
+                color: $deep;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                filter: drop-shadow(3px 3px 0 $shadow-2);
+                cursor: pointer;
+
+
+                &:hover {
+                    background: url(../images/softtest/comfirm-btn-hover.svg);
+                    transform: scale(1.1);
+                    background-size: cover;
+                    transition: ease-in-out 0.1s;
+                    filter: drop-shadow(3px 6px 0 $shadow-1);
+                    padding: 10px 20px;
+                    color: $primary-brown;
                 }
 
-                #confirm-button {
-                    margin: 20px;
-                    padding: 10px;
+                &:active {
 
-                    &:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                    }
+                    background: url(../images/softtest/comfirm-btn-hover.svg);
+                    background-size: cover;
+                    transform: scale(0.95) translateY(2px);
+                    filter: drop-shadow(2px 2px 0 $shadow-1) hue-rotate(-10deg);
+                    padding: 10px 20px;
+                    color: $primary-brown;
+                }
+
+                &:disabled {
+                    opacity: 0;
+                    cursor: not-allowed;
                 }
             }
 
@@ -648,7 +770,85 @@ a {
         }
 
 
-
-
     }
-}
+
+    #result {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        p {
+            @include font-style($font-medium-20);
+            color: $primary-darkblue;
+            margin-bottom: 16px;
+
+        }
+        img{
+            width: auto;
+            height: 100vh;
+        }
+
+        .result-buttons {
+            display: flex;
+            width: 100%;
+            gap: 40px;
+            justify-content: center;
+            padding: 20px;
+
+          
+
+            .result-button {
+                display: inline-flex;
+                box-sizing: border-box;
+                margin-top: 40px;
+                padding: 0px 20px;
+                width: 253px;
+                height: 83px;
+                @include font-style($font-medium-24);
+                background: url(../images/softtest/comfirm-btn.svg);
+                background-size: 95%;
+                background-position: center;
+                background-repeat: no-repeat;
+                border: none;
+                color: $deep;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                filter: drop-shadow(3px 3px 0 $shadow-2);
+                cursor: pointer;
+                
+
+
+                &:hover {
+                    background: url(../images/softtest/comfirm-btn-hover.svg);
+                    transform: scale(1.1);
+                    background-size: cover;
+                    transition: ease-in-out 0.1s;
+                    filter: drop-shadow(3px 6px 0 $shadow-1);
+                    padding: 10px 20px;
+                    color: $primary-brown;
+                }
+
+                &:active {
+
+                    background: url(../images/softtest/comfirm-btn-hover.svg);
+                    background-size: cover;
+                    transform: scale(0.95) translateY(2px);
+                    filter: drop-shadow(2px 2px 0 $shadow-1) hue-rotate(-10deg);
+                    padding: 10px 20px;
+                    color: $primary-brown;
+                }
+
+                &:disabled {
+                    opacity: 0;
+                    cursor: not-allowed;
+                }
+
+            }
+        }
+    }
+}}
