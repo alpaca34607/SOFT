@@ -72,17 +72,6 @@ if ($(window).width()<= 820 ){
     $('#video-bg').remove();
 }
 
-// 商店相簿
-$('#lightSlider').lightSlider({
-    gallery: true,
-    item: 1,
-    loop:true,
-    slideMargin: 0,
-    thumbItem: 4,
-    thumbWidth: 115, 
-    thumbHeight: 115, 
-    galleryMargin: 10, 
-});
 
 // 通常啟用jq獨立打包套件(獨立放在外面)
 // $('.smoove').smoove({
