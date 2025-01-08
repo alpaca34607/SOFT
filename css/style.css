@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Mansalva&family=Mina:wght@400;700&family=Noto+Sans+TC:wght@100..900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Playfair+Display:ital,wght@1,500&family=Trade+Winds&family=Zen+Maru+Gothic&display=swap");
 html,
 body,
 div,
@@ -88,7 +88,6 @@ video {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif; /* 英文字擺在前，中文字擺第二，中文字要有引號 */
   font-optical-sizing: auto; /* 光學自動改變粗細 */
   line-height: 1.5;
-  overflow-x: hidden;
 }
 
 /* 重置標題字重 */
@@ -127,34 +126,30 @@ textarea {
 /* 卷軸樣式 */
 ::-webkit-scrollbar {
   height: 12px;
-  background: transparent;
+  background: #FFFFFF;
   border: 1px solid #2A5070;
-  border-radius: 99px;
   z-index: 1; /* 設置較低的 z-index */
   cursor: default;
 }
 
 ::-webkit-scrollbar-button {
-  background: #B3B3B3;
+  display: none;
+  background: none;
   width: 12px;
   height: 12px;
   cursor: default;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: transparent;
-  border: 1px solid #2A5070;
+  border-radius: 99px;
+  background: #FDDA75;
+  border: 1.5px solid #2A5070;
   z-index: 1; /* 設置較低的 z-index */
   cursor: default;
 }
 
 ::-webkit-scrollbar-corner {
   background: #B3B3B3;
-  cursor: default;
-}
-
-::-webkit-resizer {
-  background: #2A5070;
   cursor: default;
 }
 
@@ -240,7 +235,7 @@ img {
 a {
   display: block;
   text-decoration: none;
-  color: white;
+  color: #FFFFFF;
 }
 
 /* Menu */
@@ -279,6 +274,7 @@ a {
 #topbar .navbar .hamburger {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 #topbar .navbar .hamburger .bar {
   display: block;
@@ -298,6 +294,18 @@ a {
   background-image: url(../images/home/bar3.svg) !important;
   height: 6px;
 }
+#topbar .navbar .hamburger .bar1-brown {
+  background-image: url(../images/home/bar1-brown.svg) !important;
+  height: 5px;
+}
+#topbar .navbar .hamburger .bar2-brown {
+  background-image: url(../images/home/bar2-brown.svg) !important;
+  height: 5px;
+}
+#topbar .navbar .hamburger .bar3-brown {
+  background-image: url(../images/home/bar3-brown.svg) !important;
+  height: 6px;
+}
 #topbar .navbar .hamburger.is-active .bar:nth-child(1) {
   transform: rotate(45deg) translateY(5px) translateX(10px);
 }
@@ -309,7 +317,7 @@ a {
 }
 #topbar .navbar .navigation {
   position: absolute;
-  right: 0;
+  right: -2px;
   top: 200%;
   display: flex;
   flex-direction: column;
@@ -327,7 +335,7 @@ a {
 #topbar .navbar .navigation .menu li {
   position: relative;
   flex-direction: row;
-  right: -220px;
+  right: -180px;
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.45), rgba(153, 153, 153, 0.3));
   box-shadow: 4px 4px 2px 0px rgba(32, 87, 114, 0.389), inset 1px 1px 3px rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -338,7 +346,11 @@ a {
   margin-top: 30px;
 }
 #topbar .navbar .navigation .menu li:hover {
-  right: 0px;
+  right: -2px;
+  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+}
+#topbar .navbar .navigation .menu li:active img {
+  transform: scale(1.2);
 }
 #topbar .navbar .navigation .menu li a {
   display: inline-flex;
@@ -378,9 +390,44 @@ a {
   margin-top: 0;
   padding: 0;
   overflow: hidden;
+  color: #FFFFFF;
+}
+#topbar .navbar .navigation .menu li a .menu-title2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+#topbar .navbar .navigation .menu li a .menu-title2 p {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.18rem;
+  color: #FDDA75;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+#topbar .navbar .navigation .menu li a .menu-title2 span {
+  font-family: "Mansalva", serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin-top: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #FFFFFF;
+}
+#topbar .navbar .navigation .menu li a:hover p {
+  color: #736262;
+}
+#topbar .navbar .navigation .menu li a:hover span {
+  color: #736262;
 }
 #topbar .navbar .navigation .show .menu li {
-  right: 0;
+  right: -2px;
 }
 
 /* 首頁 */
@@ -620,7 +667,7 @@ a {
   align-items: center;
   width: 100%;
   min-width: 350px;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 .softtest #test .heading-wrapper {
   display: flex;
@@ -732,7 +779,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 50%;
   height: 8rem;
 }
 .softtest #test .test-bg .question-container .Q h2 {
@@ -905,4 +952,479 @@ a {
 .softtest #test #result .result-buttons .result-button:disabled {
   opacity: 0;
   cursor: not-allowed;
+}
+
+/* 商店選單 */
+.shop-menu {
+  display: flex;
+  flex-direction: column;
+  width: 12%;
+}
+.shop-menu .shop-logo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.shop-menu .links-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0;
+  border-top: 1.5px solid #FFFFFF;
+  border-bottom: 1.5px solid #FFFFFF;
+}
+.shop-menu .links-group ul {
+  padding: 0;
+}
+.shop-menu .links-group ul li {
+  margin: 20px 0;
+}
+.shop-menu .links-group ul li a {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+}
+.shop-menu .links-group ul li a img {
+  width: 24px;
+  height: 24px;
+}
+.shop-menu .ad-side {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* 商店主頁 */
+#shop-list {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8% 10%;
+  background-color: #2A5070;
+}
+#shop-list .container {
+  width: 70%;
+  margin: 0 100px 0 50px;
+  overflow: visible;
+}
+#shop-list .container .controls {
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px 0;
+}
+#shop-list .container .controls .control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#shop-list .container .controls .control-group .sort-button {
+  margin-right: 20px;
+  padding: 8px 16px;
+  background: #FDDA75;
+  border: 2px solid #FDDA75;
+  border-radius: 4px;
+  color: #2A5070;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+#shop-list .container .controls .control-group .sort-button:hover {
+  border: 2px solid #FDDA75;
+  background: none;
+  color: #FFFFFF;
+}
+#shop-list .container .controls .control-group .sort-button .sort-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+#shop-list .container .controls .control-group .sort-button .sort-icon.descending {
+  transform: rotate(180deg);
+}
+#shop-list .container .controls .control-group .sort-button.active {
+  background-color: #FDDA75;
+  color: #2A5070;
+}
+#shop-list .container .controls .control-group label {
+  font-size: 1rem;
+  color: #FDDA75;
+}
+#shop-list .container .controls .control-group input[type=search] {
+  padding: 6px 12px;
+  border: 2px solid #FDDA75;
+  background: none;
+  border-radius: 4px;
+  color: #FDDA75;
+}
+#shop-list .container .controls .control-group input[type=search]:focus {
+  outline: none;
+  border-color: #FFFFFF;
+}
+#shop-list .container .product-table {
+  width: 100%;
+  display: flex;
+}
+#shop-list .container .product-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+#shop-list .container .product-table table tbody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 33px;
+}
+#shop-list .container .product-table table tbody tr {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 215px;
+  max-width: 215px;
+  height: 301px;
+  cursor: pointer;
+  margin-bottom: 40px;
+  filter: drop-shadow(8px 4px 0 #619ABD);
+}
+#shop-list .container .product-table table tbody tr:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(4px 8px 0 rgba(97, 154, 189, 0.8431372549));
+}
+#shop-list .container .product-table table tbody tr:hover .img-wrapper img {
+  transform: scale(1.1);
+  filter: brightness(1.05);
+}
+#shop-list .container .product-table table tbody tr .cell-bg {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  z-index: -1;
+}
+#shop-list .container .product-table table tbody tr .product-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+#shop-list .container .product-table table tbody tr .product-cell .status-avalible {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05rem;
+  background-color: #2A5070;
+  border-radius: 2px 10px;
+  width: max-content;
+  margin: 11px 18px;
+  padding: 3px 6px;
+  color: #FFFFFF;
+}
+#shop-list .container .product-table table tbody tr .product-cell .status-soldout {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05rem;
+  background-color: #B3B3B3;
+  border-radius: 2px 10px;
+  width: max-content;
+  margin: 11px 18px;
+  padding: 3px 6px;
+  color: #FFFFFF;
+}
+#shop-list .container .product-table table tbody tr .product-cell .product-figure {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+}
+#shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper .markerLight {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  z-index: 1;
+  background-color: #FDDA75;
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Noto Sans TC";
+  color: #2A2A2A;
+}
+#shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper .markerGrey {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  z-index: 1;
+  background-color: #B3B3B3;
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Noto Sans TC";
+  color: #FFFFFF;
+}
+#shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  vertical-align: top;
+}
+#shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption {
+  margin: 12px 0;
+}
+#shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .product-title {
+  color: #2A2A2A;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05rem;
+}
+#shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .price-cell {
+  width: 100%;
+  text-align: center;
+  color: #2A2A2A;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 0rem;
+}
+
+/* 商敏子頁 */
+#product-page {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 8% 10%;
+  background-color: #2A5070;
+}
+#product-page .shop-menu {
+  position: fixed;
+  width: 9.5%;
+  top: 17.5%;
+  left: 10%;
+  height: fit-content;
+}
+#product-page .shop-menu .ad-side {
+  display: none;
+}
+#product-page .product-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+#product-page .product-info p {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  line-height: 2;
+  color: #FFFFFF;
+}
+#product-page .product-info .book-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#product-page .product-info .book-area h1 {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+  color: #FDDA75;
+}
+#product-page .product-info .book-area .price-area {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 24px;
+}
+#product-page .product-info .book-area .price-area h2 {
+  font-family: "Trade Winds";
+  font-weight: 400;
+  font-size: 32px;
+  font-style: normal;
+  color: #84D0FF;
+}
+#product-page .product-info .book-area .price-area h2 span {
+  font-family: "Trade Winds";
+  font-weight: 400;
+  font-size: 32px;
+  font-style: normal;
+  color: #84D0FF;
+}
+#product-page .product-info .book-area .price-area h3 {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  color: #ECFF5F;
+}
+#product-page .product-info .book-area .price-area h3 span {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+}
+#product-page .product-info .book-area .type {
+  color: #FFFFFF;
+  gap: 8px;
+}
+#product-page .product-info .book-area .type h4 {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+}
+#product-page .product-info .book-area .type p {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  line-height: 2;
+}
+#product-page .product-info .book-area .color-option {
+  display: flex;
+  margin-top: 8px;
+  gap: 16px;
+}
+#product-page .product-info .book-area .color-option .form-group {
+  display: flex;
+  gap: 8px;
+}
+#product-page .product-info .book-area .color-option .form-group select {
+  width: 90px;
+  padding: 5px;
+}
+#product-page .product-info .book-area .num {
+  color: #FFFFFF;
+}
+#product-page .product-info .book-area .num .form-group {
+  display: flex;
+  gap: 8px;
+}
+#product-page .product-info .book-area .num .form-group select {
+  width: 50px;
+  padding: 5px;
+}
+#product-page .product-info .book-area .notice {
+  border: #FFFFFF 1.5px solid;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 12px;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+#product-page .product-info .book-area .notice p {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+}
+#product-page .product-info .book-area .checkout {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
+}
+#product-page .product-info .book-area .checkout .total p {
+  margin: 0;
+  line-height: 1;
+}
+#product-page .product-info .book-area .checkout button {
+  border: #FFFFFF 3px solid;
+  border-radius: 20px;
+  background-color: #ECFF5F;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  color: #2A5070;
+  padding: 0 25px;
+}
+#product-page .product-info .gallery {
+  width: 520px;
+}
+#product-page .product-info .gallery .lSAction > .lSPrev {
+  background-image: url("../images/shop/arrow-left.svg") !important;
+  background-size: 100%;
+}
+#product-page .product-info .gallery .lSAction > .lSPrev:hover {
+  filter: brightness(0.5);
+}
+#product-page .product-info .gallery .lSAction > .lSPrev:active {
+  filter: brightness(3) hue-rotate(200deg);
+}
+#product-page .product-info .gallery .lSAction > .lSNext {
+  background-image: url("../images/shop/arrow_right.svg") !important;
+  background-size: 100%;
+  filter: brightness(120%);
+}
+#product-page .product-info .gallery .lSAction > .lSNext:hover {
+  filter: brightness(0.5);
+}
+#product-page .product-info .gallery .lSAction > .lSNext:active {
+  filter: brightness(3) hue-rotate(200deg);
+}
+#product-page .product-info .gallery .lslide img {
+  width: 520px !important;
+  height: 520px !important;
+  object-fit: cover;
+}
+#product-page .product-info .gallery .lSSlideOuter .lSSlideWrapper {
+  width: 520px !important;
+  height: 520px !important;
+  object-fit: cover;
+  border-radius: 10px;
+}
+#product-page .product-info .gallery ul {
+  list-style: none outside none;
+  width: 100%;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+#product-page .product-info .gallery li {
+  display: block;
+  float: left;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#product-page .product-info .gallery img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+#product-page .product-info .gallery .lSSlideOuter .lSGallery li {
+  width: 115px !important;
+  height: 115px !important;
+  object-fit: cover;
+  margin-right: 10px !important;
 }/*# sourceMappingURL=style.css.map */

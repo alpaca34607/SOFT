@@ -12,14 +12,14 @@ $(function() {
             // 顯示選單項目，依序滑入
             $('.menu li').each(function(index) {
                 $(this).delay(index * 100).animate({
-                    right: '0',
+                    right: '-2px',
                 }, 200); // 毫秒的動畫時間
             });
         } else {
             // 隱藏選單項目，依序滑出
             $('.menu li').each(function(index) {
                 $(this).delay(index * 100).animate({
-                    right: '-220px',
+                    right: '-180px',
                 }, 200); //毫秒的動畫時間
             });
         }
@@ -28,13 +28,13 @@ $(function() {
     // 當 hover 單個選項時，該選項平滑滑入
     $('.menu li').hover(function() {
         $(this).stop(true, true).animate({
-            right: '0', // 單獨顯示該選項
+            right: '-2px', // 單獨顯示該選項
         }, 400); // 動畫時間
     }, function() {
         // 當 hover 離開時，恢復為預設位置
         if (!$('.navigation').hasClass('show')) {
             $(this).stop(true, true).animate({
-                right: '-220px', // 恢復隱藏
+                right: '-180px', // 恢復隱藏
             }, 400);
         }
     });
@@ -71,6 +71,18 @@ $(window).scroll(function(){
 if ($(window).width()<= 820 ){
     $('#video-bg').remove();
 }
+
+// 商店相簿
+$('#lightSlider').lightSlider({
+    gallery: true,
+    item: 1,
+    loop:true,
+    slideMargin: 0,
+    thumbItem: 4,
+    thumbWidth: 115, 
+    thumbHeight: 115, 
+    galleryMargin: 10, 
+});
 
 // 通常啟用jq獨立打包套件(獨立放在外面)
 // $('.smoove').smoove({

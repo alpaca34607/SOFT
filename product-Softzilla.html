@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表</title>
+    <link rel='stylesheet' href='//sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body data-product-id="product-B">
+    <header id="topbar">
+        <!-- logo區 -->
+        <h1 class="logo">
+            <a href="./index.html">
+                <img src="./images/home/Logo.svg" alt="軟筋生物LOGO" title="軟筋生物LOGO">
+            </a>
+        </h1>
+
+        <div class="navbar">
+            <a class="shop-icon" href="./Get-Soft.html"><img src="images/home/shop-icon.svg" alt="shop-icon"></a>
+            <a class="ig-icon" href="https://www.instagram.com/soft.ig/"><img src="images/home/ig-icon.svg"
+                    alt="ig-icon"></a>
+            <button class="hamburger">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+            </button>
+            <!-- 導覽列 -->
+            <nav class="navigation">
+                <!-- 主選單 -->
+                <ul class="menu">
+                    <li><a href="#About-Soft">
+                            <img src="./images/home/menu1.svg" alt="關於軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>關於軟筋</p>
+                                <span>About Soft</span>
+                            </div>
+                        </a></li>
+                    <li><a href="#learning-Soft ">
+                            <img src="./images/home/menu4.svg" alt="理解軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>理解軟筋</p>
+                                <span>learning Soft</span>
+                            </div>
+                        </a></li>
+                    <li><a href="./Becoming-Soft.html ">
+                            <img src="./images/home/menu2.svg" alt="成為軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>成為軟筋</p>
+                                <span>Becoming Soft</span>
+                            </div>
+                        </a></li>
+                    <li><a href="./Get-Soft.html">
+                            <img src="./images/home/menu8.svg" alt="擁有軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>擁有軟筋</p>
+                                <span>Get Soft</span>
+                            </div>
+                        </a></li>
+                    <li><a href="#Contact-Soft">
+                            <img src="./images/home/menu6.svg" alt="聯絡軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>聯絡軟筋</p>
+                                <span>Contact Soft</span>
+                            </div>
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="product-page">
+        <div class="shop-menu">
+            <div class="shop-logo">
+                <a href="./Get-Soft.html"><img class="logo-img" src="images/shop/shop_logo.svg" alt="軟筋商店logo"></a>
+            </div>
+            <div class="links-group">
+                <ul>
+                    <li><a href="#"><img src="./images/shop/mdi_cart.svg" />我的購物車</a></li>
+                    <li><a href="#"><img src="./images/shop/list.svg" />訂單查詢</a></li>
+                    <li><a href="#"><img src="./images/shop/notice.svg" />預購注意事項</a></li>
+                </ul>
+            </div>
+            <div class="ad-side"><img src="./images/shop/AD-side.jpg" alt="餘量釋出連結圖片" /></div>
+        </div>
+        <section class=product-info>
+            <div class="gallery">
+                <ul id="lightSlider">
+                    <li data-thumb="./images/shop/product-Softzilla-goldblack.jpg">
+                        <img src="./images/shop/product-Softzilla-goldblack.jpg" />
+                    </li>
+                    <li data-thumb="./images/shop/product-Softzilla-blueblack-front.jpg">
+                        <img src="./images/shop/product-Softzilla-blueblack-front.jpg" />
+                    </li>
+                    <li data-thumb="./images/shop/product-Softzilla-blueblack-back.jpg">
+                        <img src="./images/shop/product-Softzilla-blueblack-back.jpg" />
+                    </li>
+                    <li data-thumb="./images/shop/product-Softzilla-redblack.jpg">
+                        <img src="./images/shop/product-Softzilla-redblack.jpg" />
+                    </li>
+                    <li data-thumb="./images/shop/product-Softzilla-greenblack.jpg">
+                        <img src="./images/shop/product-Softzilla-greenblack.jpg" />
+                    </li>
+                </ul>
+            </div>
+            <div class="book-area">
+                <h1 id="productName">2023出品|軟吉拉公仔</h1>
+                <div class="price-area">
+                    <h2>NT.<span id=unitPrice>1500</span></h2>
+                    <h3>訂金:<span id="unitDeposit">300</span>/隻</h3>
+                </div>
+
+
+                <div class="type">
+                    <h4>規格</h4>
+                    <p>寬5cm*高8cm / 模型光固化樹脂 </p>
+                </div>
+                <div class="type">
+                    <h4>款式</h4>
+                    <div class="color-option">
+                        <div class="form-group">
+                            <label for="mainColor">
+                                <p>主色:</p>
+                            </label>
+                            <select id="mainColor"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subColor">
+                                <p>副色:</p>
+                            </label>
+                            <select id="subColor"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="num">
+                    <div class="form-group">
+                        <label for="quantity">
+                            <p>數量:</p>
+                        </label>
+                        <select id="quantity"></select>
+                    </div>
+                </div>
+
+                <div class="notice">
+                    <p>2025線上預購開始：<br />
+                        2024/10/18（五）12:00 pm<br />
+                        <br />
+                        截止時間：<br />
+                        2025/6/18（五）12:00 pm <br />
+                        <br />
+                        預計出貨時間:<br />
+                        2025/10月中<br />
+                        <br />
+                        取貨地點:<br />
+                        Taipei Toy Festival台北國際玩具創作大展
+                    </p>
+                </div>
+
+                <div class="checkout">
+                    <div class="total">
+                        <p>商品總額: <span id="totalPrice">0</span> 元</p>
+                        <p>訂金總額: <span id="totalDeposit">0</span> 元</p>
+                    </div>
+                    <button onclick="goToCheckout()">前往預購</button>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+    <script src='//sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
+    <script src="./js/shopping.js"></script>
+    <script src="./js/script.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>

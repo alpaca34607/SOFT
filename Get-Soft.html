@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header id="topbar">
+        <!-- logo區 -->
+        <h1 class="logo">
+          <a href="./index.html">
+            <img src="./images/home/Logo.svg" alt="軟筋生物LOGO" title="軟筋生物LOGO">
+          </a>
+        </h1>
+    
+        <div class="navbar">
+          <a class="shop-icon"  href="./Get-Soft.html"><img src="images/home/shop-icon.svg" alt="shop-icon" ></a>
+          <a class="ig-icon" href="https://www.instagram.com/soft.ig/"><img src="images/home/ig-icon.svg" alt="ig-icon" ></a>
+          <button class="hamburger">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+          </button>
+          <!-- 導覽列 -->
+          <nav class="navigation">
+            <!-- 主選單 -->
+            <ul class="menu">
+              <li><a href="#About-Soft">
+                  <img src="./images/home/menu1.svg" alt="關於軟筋LOGO">
+                  <div class="menu-title2">
+                    <p>關於軟筋</p>
+                    <span>About Soft</span>
+                  </div>
+                </a></li>
+              <li><a href="#learning-Soft ">
+                  <img src="./images/home/menu4.svg" alt="理解軟筋LOGO">
+                  <div class="menu-title2">
+                    <p>理解軟筋</p>
+                    <span>learning Soft</span>
+                  </div>
+                </a></li>
+              <li><a href="./Becoming-Soft.html ">
+                  <img src="./images/home/menu2.svg" alt="成為軟筋LOGO">
+                  <div class="menu-title2">
+                    <p>成為軟筋</p>
+                    <span>Becoming Soft</span>
+                  </div>
+                </a></li>
+              <li><a href="./Get-Soft.html">
+                  <img src="./images/home/menu8.svg" alt="擁有軟筋LOGO">
+                  <div class="menu-title2">
+                    <p>擁有軟筋</p>
+                    <span>Get Soft</span>
+                  </div>
+                </a></li>
+              <li><a href="#Contact-Soft">
+                  <img src="./images/home/menu6.svg" alt="聯絡軟筋LOGO">
+                  <div class="menu-title2">
+                    <p>聯絡軟筋</p>
+                    <span>Contact Soft</span>
+                  </div>
+                </a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    <main id="shop-list">
+        <div class="shop-menu">
+            <div class="shop-logo">
+                <a href="./Get-Soft.html"><img class="logo-img" src="images/shop/shop_logo.svg" alt="軟筋商店logo"></a>
+            </div>
+            <div class="links-group">
+                
+                <ul>
+                    <li><a href="#"><img src="./images/shop/mdi_cart.svg" />我的購物車</a></li>
+                    <li><a href="#"><img src="./images/shop/list.svg" />訂單查詢</a></li>
+                    <li><a href="#"><img src="./images/shop/notice.svg" />預購注意事項</a></li>
+                </ul>
+            </div>
+            <div class="ad-side"><img src="./images/shop/AD-side.jpg" alt="餘量釋出連結圖片"/></div>
+
+        </div>
+        <div class="container">
+            <heading class="banner">
+                <img src="images/shop/AD-banner.jpg" alt="戶外風軟吉拉橫幅">
+
+            </heading>
+            <div class="controls">
+                <div class="control-group">
+                    <button id="sortBtn" class="sort-button">
+                        出品時間排序 <div class="sort-icon"><i class="fa-solid fa-arrow-up"></i></div>
+                    </button>
+                </div>
+                <div class="control-group">
+                    <label for="search">搜尋</label>
+                    <input type="search" id="search" placeholder="目前的商品一目了然...">
+                </div>
+            </div>
+
+            <div class="product-table">
+                <table>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./js/sort.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

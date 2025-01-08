@@ -91,7 +91,7 @@ video {
     /*中文*/ "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;/* 英文字擺在前，中文字擺第二，中文字要有引號 */
     font-optical-sizing: auto;/* 光學自動改變粗細 */
     line-height: 1.5;
-    overflow-x: hidden;
+
     
 
 }
@@ -134,22 +134,23 @@ textarea {
 /* 卷軸樣式 */
 ::-webkit-scrollbar { //卷動長條
     height: 12px; //有水平卷軸時設定
-    background: transparent;
-    border: 1px solid $bg-3 ;
-    border-radius: 99px;//加圓角時不加上下按鈕才能有圓角
+    background: $light;
+    border: 1px solid $primary-darkblue ;
     z-index: 1; /* 設置較低的 z-index */
     cursor: default;
   }
   ::-webkit-scrollbar-button { //上下按鈕
-    background: $grey;
+    display: none;
+    background: none;
     width: 12px;//卷軸按鈕寬
     height: 12px;//卷軸按鈕高
     cursor: default;
     
   }
   ::-webkit-scrollbar-thumb { //卷軸手柄
-    background: transparent;
-    border: 1px solid $bg-3 ;
+    border-radius: 99px;
+    background:$primary-yellow;
+    border: 1.5px solid $bg-3 ;
     z-index: 1; /* 設置較低的 z-index */
     cursor: default;
     
@@ -159,8 +160,4 @@ textarea {
     background: $grey;
     cursor: default;
   }
-  ::-webkit-resizer{  //多行填字欄位右下縮放框框按鈕
-    background: $bg-3;
-    cursor: default;
-
-  }
+  

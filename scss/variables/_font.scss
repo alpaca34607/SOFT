@@ -3,6 +3,7 @@
 $Chinese: "Zen Maru Gothic", serif;
 $EN : "Mina", serif;
 $EN-title:"Mansalva", serif;
+$TC:"Noto Sans TC",serif;
 
 
 //字重
@@ -19,8 +20,18 @@ $font-medium-14: (
   font-family: $Chinese,
   font-weight: 500,
   font-size: 0.875rem, // 14px
-  letter-spacing: 0.1rem // 10%
+  letter-spacing: 0.05rem // 10%
 );
+
+$font-medium-14-TC: (
+  font-family: $TC,
+  font-weight: 500,
+  font-size: 0.875rem, // 14px
+  letter-spacing: 0.05rem // 10%
+
+);
+
+
 
 $font-medium-16: (
   font-family: $Chinese,
@@ -28,13 +39,21 @@ $font-medium-16: (
   font-size: 1rem, // 16px
   letter-spacing: 0.18rem, // 15%
 );
+$font-black-16: (
+  font-family: $Chinese,
+  font-weight: 900,
+  font-size: 1rem, // 16px
+  letter-spacing: 0rem, // 15%
+
+);
+
 
 $font-regular-16: (
   font-family: $Chinese,
   font-weight: 300,
   font-size: 1rem, // 16px
   letter-spacing: 0.05rem, // 5%
-  line-height: 2 // 200%
+  line-height:2, // 200%
 );
 
 $font-regular-18: (
@@ -46,7 +65,7 @@ $font-regular-18: (
 );
 
 $font-medium-18: (
-  font-family: $Chinese,
+  font-family: $Chinese, 
   font-weight: 500,
   font-size: 1.125rem, // 18px
   letter-spacing: 0.18rem, // 15%
@@ -60,9 +79,16 @@ $font-regular-18-n: (
   line-height: 1.5 // 150%
 );
 
+$font-black-18: (
+  font-family: $Chinese,
+  font-weight: 700,
+  font-size: 1.125rem, // 18px
+  letter-spacing: 0.05rem, // 5%
+  line-height: 1.5 // 150%
+);
 
 $font-medium-20: (
-  font-family: $Chinese,
+  font-family: $Chinese, 
   font-weight: 700,
   font-size: 1.25rem, // 20px
   letter-spacing: 0.18rem, // 15%
@@ -77,6 +103,14 @@ $font-medium-24: (
   line-height: 1.5 // 150%
 );
 
+$font-black-24: (
+  font-family: $Chinese,
+  font-weight: 700,
+  font-size: 1.5rem, // 24px
+  letter-spacing: 0.05rem // 10%
+);
+
+
 $font-medium-26: (
   font-family: $Chinese,
   font-weight: 500,
@@ -86,7 +120,7 @@ $font-medium-26: (
 
 
 $font-medium-36: (
-  font-family: $Chinese,
+  font-family: $Chinese, 
   font-weight: 500,
   font-size: 2.25rem // 36px
 );
@@ -100,7 +134,7 @@ $font-medium-48: (
 
 
 $font-EN-title-medium-24: (
-  font-family:$EN-title,
+  font-family:$EN-title, 
   font-optical-sizing: auto,
   font-size: 24px,
   font-weight: 400,
@@ -109,10 +143,18 @@ $font-EN-title-medium-24: (
 );
 $font-EN-title-medium-14: (
   font-family:$EN-title,
-  font-optical-sizing: auto,
+  font-optical-sizing: auto, 
   font-size: 14px,
   font-weight: 400,
   font-style: normal,
+);
+
+
+$font-price-32: (
+  font-family: "Trade Winds",
+  font-weight: 400,
+  font-style: normal,
+  font-size:32px,
 );
 
 
