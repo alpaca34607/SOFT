@@ -2,7 +2,8 @@
 @use 'variables' as *;
 @use 'function' as *;
 @use 'keyframes';
-@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Playfair+Display:ital,wght@1,500&family=Trade+Winds&family=Zen+Maru+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Playfair+Display:ital,wght@1,500&family=Trade+Winds&family=Zen+Maru+Gothic&family=Mansalva&display=swap');
+
 
 /* 重置字體 */
 
@@ -1224,7 +1225,7 @@ a {
     }
 }
 
-/* 商敏子頁 */
+/* 商品子頁 */
 #product-page {
     position: relative;
     display: flex;
@@ -1232,6 +1233,7 @@ a {
     width: 100%;
     padding: 8% 10%;
     background-color: $primary-darkblue;
+
 
     .shop-menu {
         position: fixed;
@@ -1245,222 +1247,263 @@ a {
         }
     }
 
-    .product-info {
+    .product-container {
         display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 60px;
+        flex-direction: column;
 
-        p {
-            @include font-style($font-regular-16);
-            color: $light;
-        }
 
-        .book-area {
+
+        .product-info {
             display: flex;
-            flex-direction: column;
-            gap:12px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            height: 90vh;
 
-            h1 {
-                @include font-style($font-black-24);
-                color: $primary-yellow;
+
+            p {
+                @include font-style($font-regular-16);
+                color: $light;
             }
 
-            .price-area {
+            .book-area {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
 
-                display: inline-flex;
-                align-items: baseline;
-                gap: 24px;
+                h1 {
+                    @include font-style($font-black-24);
+                    color: $primary-yellow;
+                }
 
-                h2 {
-                    @include font-style($font-price-32);
-                    color: $primary-babyblue;
+                .price-area {
 
-                    span {
+                    display: inline-flex;
+                    align-items: baseline;
+                    gap: 24px;
+
+                    h2 {
                         @include font-style($font-price-32);
                         color: $primary-babyblue;
+
+                        span {
+                            @include font-style($font-price-32);
+                            color: $primary-babyblue;
+                        }
                     }
-                }
 
 
-                h3 {
-                    @include font-style($font-medium-20);
-                    color: $primary-lemon;
-
-                    span {
+                    h3 {
                         @include font-style($font-medium-20);
+                        color: $primary-lemon;
 
+                        span {
+                            @include font-style($font-medium-20);
+
+                        }
                     }
+
+
                 }
 
-
-            }
-
-            .type {
-                color: $light;
-                gap: 8px;
-
-                h4 {
-                    @include font-style($font-black-18);
-                }
-
-                p {
-                    @include font-style($font-regular-16);
-                }
-            }
-
-
-            .color-option {
-                display: flex;
-                margin-top: 8px;
-                gap: 16px;
-
-                .form-group {
-                    display: flex;
+                .type {
+                    color: $light;
                     gap: 8px;
 
-                    select {
-                        width: 90px;
-                        padding: 5px;
+                    h4 {
+                        @include font-style($font-black-18);
+                    }
+
+                    p {
+                        @include font-style($font-regular-16);
                     }
                 }
-            }
 
-            .num {
 
-                color: $light;
-
-                .form-group {
+                .color-option {
                     display: flex;
-                    gap: 8px;
+                    margin-top: 8px;
+                    gap: 16px;
 
-                    select {
-                        width: 50px;
-                        padding: 5px;
+                    .form-group {
+                        display: flex;
+                        gap: 8px;
+
+                        select {
+                            width: 90px;
+                            padding: 5px;
+                        }
                     }
                 }
 
-            }
+                .num {
 
-            .notice {
-                border: $light 1.5px solid;
-                border-radius: 10px;
-                padding: 16px;
-                margin-top: 12px;
-                background-color: rgba(255, 255, 255, 0.12);
+                    color: $light;
 
-                p {
-                    @include font-style($font-medium-14-TC);
-                    line-height: 1.5;
+                    .form-group {
+                        display: flex;
+                        gap: 8px;
+
+                        select {
+                            width: 50px;
+                            padding: 5px;
+                        }
+                    }
+
                 }
-            }
 
-            .checkout {
-               
-                display: inline-flex;
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-                margin-top: 12px;
+                .notice {
+                    border: $light 1.5px solid;
+                    border-radius: 10px;
+                    padding: 16px;
+                    margin-top: 12px;
+                    background-color: rgba(255, 255, 255, 0.12);
 
-                .total{ 
-                    p{
-                    margin: 0;
-                    line-height: 1;
+                    p {
+                        @include font-style($font-medium-14-TC);
+                        line-height: 1.5;
+                    }
                 }
+
+                .checkout {
+
+                    display: inline-flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 12px;
+
+                    .total {
+                        p {
+                            margin: 0;
+                            line-height: 1;
+                        }
+                    }
+
+                    button {
+                        border: $light 3px solid;
+                        border-radius: 20px;
+                        background-color: $primary-lemon;
+                        @include font-style($font-medium-20);
+                        color: $primary-darkblue;
+                        padding: 0 25px;
+
+                    }
+
+                }
+
             }
-               button{
-                border:$light 3px solid;
-                border-radius: 20px;
-                background-color: $primary-lemon;
-                @include font-style($font-medium-20);
-                color: $primary-darkblue;
-                padding: 0 25px;
-                
-               }
-                
+
+            .gallery {
+                width: 520px;
+
+                .lSAction>.lSPrev {
+                    background-image: url('../images/shop/arrow-left.svg') !important;
+                    background-size: 100%;
+
+                    &:hover {
+                        filter: brightness(0.5);
+
+                    }
+
+                    &:active {
+                        filter: brightness(3) hue-rotate(200deg);
+                    }
+
+                }
+
+                .lSAction>.lSNext {
+                    background-image: url('../images/shop/arrow_right.svg') !important;
+                    background-size: 100%;
+                    filter: brightness(120%);
+
+                    &:hover {
+                        filter: brightness(0.5);
+                    }
+
+                    &:active {
+                        filter: brightness(3) hue-rotate(200deg);
+                    }
+                }
+
+                .lslide img {
+                    width: 520px !important;
+                    height: 520px !important;
+                    object-fit: cover;
+                }
+
+                .lSSlideOuter .lSSlideWrapper {
+                    width: 520px !important;
+                    height: 520px !important;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+
+
+                ul {
+                    list-style: none outside none;
+                    width: 100%;
+                    padding-left: 0;
+                    margin-bottom: 0;
+                }
+
+                li {
+                    display: block;
+                    float: left;
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
+
+                img {
+                    display: block;
+                    height: auto;
+                    max-width: 100%;
+                }
+
+
+
+
+                .lSSlideOuter .lSGallery li {
+                    width: 115px !important;
+                    height: 115px !important;
+                    object-fit: cover;
+                    margin-right: 10px !important;
+                }
+
+
             }
 
         }
 
-        .gallery {
-            width: 520px;
+        .ad-area {
+            display: flex;
+            align-items: center;
 
-            .lSAction>.lSPrev {
-                background-image: url('../images/shop/arrow-left.svg') !important;
-                background-size: 100%;
+            .long-ad-wrap {
+                position: relative;
+                border-top: $light 1.5px solid;
+                padding-top: 60px;
+                z-index: 0;
 
-                &:hover {
-                    filter: brightness(0.5);
+                .sketchfab-embed-wrapper {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    top: 11.35%;
+                    left: 50%;
+                    width: 100%;
+
+                    transform: translate(-50%, -50%);
+                    z-index: 1;
+                    overflow: visible;
+
+                    iframe {
+                        width: 100%;
+                        height: 500px;
+
+                    }
 
                 }
-
-                &:active {
-                    filter: brightness(3) hue-rotate(200deg);
-                }
-
             }
-
-            .lSAction>.lSNext {
-                background-image: url('../images/shop/arrow_right.svg') !important;
-                background-size: 100%;
-                filter: brightness(120%);
-
-                &:hover {
-                    filter: brightness(0.5);
-                }
-
-                &:active {
-                    filter: brightness(3) hue-rotate(200deg);
-                }
-            }
-
-            .lslide img {
-                width: 520px !important;
-                height: 520px !important;
-                object-fit: cover;
-            }
-
-            .lSSlideOuter .lSSlideWrapper {
-                width: 520px !important;
-                height: 520px !important;
-                object-fit: cover;
-                border-radius: 10px;
-            }
-
-
-            ul {
-                list-style: none outside none;
-                width: 100%;
-                padding-left: 0;
-                margin-bottom: 0;
-            }
-
-            li {
-                display: block;
-                float: left;
-                cursor: pointer;
-                border-radius: 5px;
-            }
-
-            img {
-                display: block;
-                height: auto;
-                max-width: 100%;
-            }
-
-
-
-
-            .lSSlideOuter .lSGallery li {
-                width: 115px !important;
-                height: 115px !important;
-                object-fit: cover;
-                margin-right: 10px !important;
-            }
-
-
         }
-
     }
 }
