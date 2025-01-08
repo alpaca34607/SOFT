@@ -117,7 +117,7 @@
 				this.csstransitions = result;
 				break;
 			} 
-		} 
+		}
 	};
 	
 	/**
