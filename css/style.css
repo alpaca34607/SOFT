@@ -1451,7 +1451,7 @@ a {
   width: 100%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  overflow: visible;
+  overflow: hidden;
 }
 #product-page .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper iframe {
   width: 100%;

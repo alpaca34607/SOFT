@@ -1491,10 +1491,9 @@ a {
                     top: 11.35%;
                     left: 50%;
                     width: 100%;
-
                     transform: translate(-50%, -50%);
                     z-index: 1;
-                    overflow: visible;
+                    overflow:hidden;
 
                     iframe {
                         width: 100%;
