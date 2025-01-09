@@ -928,6 +928,7 @@ a {
     display: flex;
     flex-direction: column;
     width: 12%;
+    min-width: 180px;
 
     .shop-logo {
         display: flex;
@@ -958,12 +959,43 @@ a {
                     flex-direction: row;
                     align-items: center;
                     gap: 8px;
+                    color: $light;
+                    @include font-style($font-medium-18);
+
+                    &:hover {
+                        color: $primary-lemon;
+                    }
+
+                    img {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+
+                button {
+                    display: inline-flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 8px;
+                    background: none;
+                    color: $light;
+                    padding: 0;
+                    margin: 0;
+                    border: none;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: $primary-lemon;
+                    }
+
+
                     @include font-style($font-medium-18);
 
                     img {
                         width: 24px;
                         height: 24px;
                     }
+
                 }
             }
 
@@ -976,6 +1008,60 @@ a {
     }
 }
 
+
+/* 預購注意事項彈窗 */
+/* 彈窗的初始 */
+.popup {
+    display: none;
+    /* 預設隱藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 背景半透明 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 彈窗內容*/
+.popup-content {
+    background: $primary-darkblue;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    width: 60%;
+    max-width: 600px;
+
+    h2 {
+        @include font-style($font-black-24);
+        text-align: center;
+        color:$primary-lemon;
+        margin-bottom:20px;
+    }
+
+    p {
+        text-align: left;
+        @include font-style($font-medium-16);
+        color: $light;
+    }
+}
+
+/* 關閉按鈕 */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: $primary-lemon;
+}
+
+.close-btn:hover {
+    color: #000;
+}
 
 /* 商店主頁 */
 #shop-list {
@@ -1184,6 +1270,7 @@ a {
                                         color: $light;
 
                                     }
+
                                     img {
                                         width: 100%;
                                         height: auto;
@@ -1329,6 +1416,11 @@ a {
                         select {
                             width: 90px;
                             padding: 5px;
+
+                            &:focus {
+                                border: $primary-yellow 2px solid;
+                                outline: none;
+                            }
                         }
                     }
                 }
@@ -1344,6 +1436,11 @@ a {
                         select {
                             width: 50px;
                             padding: 5px;
+
+                            &:focus {
+                                border: $primary-yellow 2px solid;
+                                outline: none;
+                            }
                         }
                     }
 
@@ -1355,6 +1452,7 @@ a {
                     padding: 16px;
                     margin-top: 12px;
                     background-color: rgba(255, 255, 255, 0.12);
+                    box-shadow: 4px 5px 0 rgba(43, 43, 43, 0.25);
 
                     p {
                         @include font-style($font-medium-14-TC);
@@ -1503,16 +1601,18 @@ a {
                 border-top: $light 1.5px solid;
                 padding-top: 60px;
                 z-index: 0;
-               img{
-                display: block;
-                width: 100%;
-                border-radius: 5px;
-               }
+
+                img {
+                    display: block;
+                    width: 100%;
+                    border-radius: 5px;
+                }
+
                 .sketchfab-embed-wrapper {
                     position: absolute;
                     display: flex;
                     align-items: center;
-                    top:550px;
+                    top: 550px;
                     left: 50%;
                     width: 100%;
                     transform: translate(-50%, -50%);
@@ -1533,20 +1633,326 @@ a {
 
 /* 結帳頁 */
 
-#checkout-page{
+#checkout-page {
     position: relative;
     display: flex;
     width: 100%;
     padding: 8% 10%;
     background-color: $primary-darkblue;
-    .checkout-container{
+
+    .form-area {
         display: flex;
         flex-direction: column;
-        padding:  0 10%;
-      
-        
-        img{
-            width:100%;
+        gap: 40px;
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                @include font-style($font-regular-16-TC);
+                color: $deep;
+            }
+
+            h2 {
+                @include font-style($font-medium-16-TC);
+                color: $deep;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                input {
+                    height: 40px;
+                    @include font-style($font-regular-16-TC);
+                    border: none;
+                    border-radius: 5px;
+                    padding: 0 16px;
+                    width: 100%;
+
+                    &::placeholder {
+                        color: $primary-brown;
+                    }
+
+                    &:focus {
+                        border: $primary-brown 2px solid;
+                        outline: none;
+                    }
+                }
+
+            }
+
+            .radio {
+                display: inline-flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                background: $light;
+                border-radius: 5px;
+
+                input {
+                    width: auto;
+                    margin: 0 16px;
+
+                }
+            }
+
+            select {
+                height: 40px;
+                border: none;
+                border-radius: 5px 5px 0 0;
+                padding: 0 16px;
+                margin-right: 16px;
+                @include font-style($font-regular-16-TC);
+
+                &:focus {
+                    border: $primary-brown 2px solid;
+                    outline: none;
+                }
+            }
+
+            .card-expiry {
+                margin: 16px 0;
+            }
+
+            #paymentMethod {
+                margin-top: 16px;
+            }
+
+            #creditCardFields {
+                margin-top: 24px;
+            }
+
+            #qrcodeSection {
+                p {
+                    margin-top: 8px;
+                    @include font-style($font-regular-16-TC);
+                }
+
+                img {
+                    width: 300px;
+                    border-radius: 5px;
+                    margin-top: 32px;
+                }
+            }
+
+            textarea {
+                margin-top: 16px;
+                border: none;
+                border-radius: 5px;
+
+                &:focus {
+                    border: $primary-brown 2px solid;
+                    outline: none;
+                }
+            }
+        }
+
+        .read-rules {
+            display: flex;
+            flex-direction: row;
+            @include font-style($font-medium-16-TC);
+
+            .custom-checkbox {
+                transform: scale(1.4);
+                margin-right: 8px;
+
+                &:checked {
+                    background-color: #000000;
+                    border-color: #000000;
+                    content: '✔';
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                }
+            }
+        }
+
+        button {
+            background-color: $deep;
+            color: $primary-orange;
+            padding: 18px 40px;
+            border-radius: 7px;
+            width: max-content;
+            @include font-style($font-bold-20-TC);
+            cursor: pointer;
+            align-self: flex-end;
+            transition: 0.2s ease-in-out;
+            box-shadow: none;
+            border: none;
+
+            &:hover {
+                background-color: $primary-darkblue;
+                transform: scale(1.2);
+
+
+
+            }
+        }
+    }
+
+    .checkout-container {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        max-width: 1000px;
+        margin: 0 8%;
+
+        img {
+            width: cover;
+        }
+
+        #checkoutForm {
+            display: inline-flex;
+            background-color: $primary-orange;
+
+            .form-area {
+                flex: 5;
+                display: flex;
+                flex-direction: column;
+                padding: 76px 45px;
+            }
+
+            .order-summary {
+                flex: 4;
+                display: flex;
+                flex-direction: column;
+                padding: 76px 45px;
+                gap: 30px;
+
+                .detail-area {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 28px;
+                    margin-bottom: 20px;
+
+
+
+                    .num-img-wrapper {
+                        position: relative;
+                        width: 78px;
+                        height: 78px;
+                        border: $light 2px solid;
+
+                        img {
+                            width: 100%;
+                        }
+
+                        p {
+                            position: absolute;
+                            top: -15%;
+                            right: -15%;
+                            @include font-style($font-medium-14);
+                            background-color: $primary-mint ;
+                            width: 24px;
+                            height: 24px;
+                            border-radius: 99px;
+                            text-align: center;
+                            color: $light;
+                            z-index: 1;
+                        }
+                    }
+
+                    .details {
+                        display: flex;
+                        flex-direction: column;
+
+                        gap: 2px;
+
+                        h3 {
+                            @include font-style($font-bold-18-TC);
+                            color: $light;
+                        }
+
+                        .color-detail {
+                            display: flex;
+                            gap: 8px;
+
+                            p {
+                                @include font-style($font-regular-14-TC);
+                                color: $light;
+                            }
+
+
+                        }
+
+                        .per-price {
+                            @include font-style($font-medium-16-TC);
+                            color: $primary-mint;
+
+                        }
+                    }
+                }
+
+                #productSummary {
+                    padding: 30px;
+                    border-radius: 5px;
+                    background: $grey;
+
+
+                    .num-img-wrapper {
+                        p {
+                            background-color: $deep;
+                        }
+                    }
+
+                    .total-area p {
+                        color: #2b2b2b;
+                    }
+
+                    .per-price {
+                        color: #619ABD;
+                    }
+                }
+
+                #depositSummary {
+                    padding: 30px;
+                    border-radius: 5px;
+                    background: $primary-darkblue;
+                }
+            }
+        }
+    }
+
+    .total-area {
+        display: flex;
+        justify-content: space-between;
+        border-top: $light 1.5px solid;
+        padding-top: 30px;
+        align-items: end;
+
+        h4 {
+            @include font-style($font-regular-14-TC);
+            color: $light;
+        }
+
+        p {
+            @include font-style($font-bold-36-TC);
+            color: $light;
+        }
+
+    }
+
+    .checkout-notice {
+        padding: 30px;
+        border: $light 2px solid;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 4px 5px 0 rgba(43, 43, 43, 0.25);
+
+        h5 {
+            @include font-style($font-bold-18-TC);
+            color: $primary-darkblue;
+        }
+
+        p {
+
+            margin-top: 20px;
+            @include font-style($font-regular-14-TC);
+            color: $deep;
         }
     }
 

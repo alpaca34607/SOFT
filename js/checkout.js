@@ -37,33 +37,50 @@ function handlePaymentMethodChange() {
 function updateOrderSummary() {
     if (!productSelection) return;
 
-    // 更新商品資訊區塊 - 使用已存在的顏色名稱
-    document.getElementById('productSummary').innerHTML = `
-        <div class="product-info">
-            <img src="images/${productSelection.productId}.jpg" alt="${productSelection.productName}" />
-            <div class="details">
-                <h3>${productSelection.productName}</h3>
-                <p>數量: ${productSelection.quantity}</p>
+// 更新商品資訊區塊 - 使用已存在的顏色名稱
+document.getElementById('productSummary').innerHTML = `
+<div class="product-info">
+    <div class="detail-area">
+        <div class="num-img-wrapper">
+            <p>${productSelection.quantity}</p>
+            <img src="images/shop/${productSelection.productId}-thumb.jpg" alt="${productSelection.productName}" />
+        </div>
+        <div class="details">
+            <h3>${productSelection.productName}</h3>
+            <div class="color-detail">
                 <p>主色: ${productSelection.mainColorName || COLOR_NAMES[productSelection.mainColor]}</p>
                 <p>副色: ${productSelection.subColorName || COLOR_NAMES[productSelection.subColor]}</p>
-                <p>單價: NT$ ${productSelection.unitPrice}</p>
-                <p class="total">合計總金額: NT$ ${productSelection.totalPrice}</p>
             </div>
+            <p class="per-price">單價: NT$ ${productSelection.unitPrice}</p>
         </div>
-    `;
+    </div>
+    <div class="total-area">
+        <h4 class="total">合計<br/>總金額</h4>
+        <p> NT$ ${productSelection.totalPrice}</p>
+    </div>
+</div>
+`;
 
-    // 更新訂金資訊區塊
-    document.getElementById('depositSummary').innerHTML = `
-        <div class="deposit-info">
-            <img src="images/${productSelection.productId}.jpg" alt="${productSelection.productName}" />
-            <div class="details">
-                <h3>${productSelection.productName} - 訂金資訊</h3>
-                <p>數量: ${productSelection.quantity}</p>
-                <p>單件訂金: NT$ ${productSelection.unitDeposit}</p>
-                <p class="total">訂金總額: NT$ ${productSelection.totalDeposit}</p>
-            </div>
+// 更新訂金資訊區塊
+document.getElementById('depositSummary').innerHTML = `
+<div class="deposit-info">
+    <div class="detail-area">
+        <div class="num-img-wrapper">
+            <p>${productSelection.quantity}</p>
+            <img src="images/shop/${productSelection.productId}-thumb.jpg" alt="${productSelection.productName}" />
         </div>
-    `;
+        <div class="details">
+            <h3>${productSelection.productName}</h3>
+
+            <p class="per-price">單件訂金: NT$ ${productSelection.unitDeposit}</p>
+        </div>
+    </div>
+    <div class="total-area">
+        <h4 class="total">訂金<br/>總額</h4>
+        <p> NT$ ${productSelection.totalDeposit}</p>
+    </div>
+</div>
+`;
 }
 
 // 表單驗證提交

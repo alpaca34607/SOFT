@@ -22,30 +22,21 @@ $font-medium-14: (
   font-size: 0.875rem, // 14px
   letter-spacing: 0.05rem // 10%
 );
-
 $font-medium-14-TC: (
   font-family: $TC,
-  font-weight: 500,
+  font-weight: 600,
   font-size: 0.875rem, // 14px
   letter-spacing: 0.05rem // 10%
 
 );
-
-
-
-$font-medium-16: (
-  font-family: $Chinese,
-  font-weight: 500,
-  font-size: 1rem, // 16px
-  letter-spacing: 0.18rem, // 15%
-);
-$font-black-16: (
-  font-family: $Chinese,
-  font-weight: 900,
-  font-size: 1rem, // 16px
-  letter-spacing: 0rem, // 15%
+$font-regular-14-TC: (
+  font-family: $TC,
+  font-weight: 400,
+  font-size: 0.875rem, // 14px
+  letter-spacing: 0rem
 
 );
+
 
 
 $font-regular-16: (
@@ -55,6 +46,36 @@ $font-regular-16: (
   letter-spacing: 0.05rem, // 5%
   line-height:2, // 200%
 );
+
+$font-regular-16-TC: (
+  font-family: $TC,
+  font-weight: 300,
+  font-size: 1rem, // 16px
+  letter-spacing: 0.05rem, // 5%
+);
+
+$font-medium-16: (
+  font-family: $Chinese,
+  font-weight: 500,
+  font-size: 1rem, // 16px
+  letter-spacing: 0.18rem, // 15%
+);
+
+$font-medium-16-TC: (
+  font-family: $TC,
+  font-weight: 500,
+  font-size: 1rem, // 16px
+  letter-spacing: 0.05rem,
+);
+
+$font-black-16: (
+  font-family: $Chinese,
+  font-weight: 900,
+  font-size: 1rem, // 16px
+  letter-spacing: 0rem, // 15%
+
+);
+
 
 $font-regular-18: (
   font-family: $Chinese,
@@ -87,6 +108,14 @@ $font-black-18: (
   line-height: 1.5 // 150%
 );
 
+$font-bold-18-TC: (
+  font-family: $TC, 
+  font-weight: 700,
+  font-size: 1.125rem, // 20px
+  letter-spacing: 0.05rem, 
+  line-height: 1.5 // 150%
+);
+
 $font-medium-20: (
   font-family: $Chinese, 
   font-weight: 700,
@@ -94,6 +123,14 @@ $font-medium-20: (
   letter-spacing: 0.18rem, // 15%
   line-height: 1.5 // 150%
 );
+$font-bold-20-TC: (
+  font-family: $TC, 
+  font-weight: 700,
+  font-size: 1.25rem,
+  letter-spacing: 0.18rem, 
+  line-height: 1.5,
+);
+
 
 $font-medium-24: (
   font-family: $Chinese,
@@ -122,6 +159,12 @@ $font-medium-26: (
 $font-medium-36: (
   font-family: $Chinese, 
   font-weight: 500,
+  font-size: 2.25rem // 36px
+);
+
+$font-bold-36-TC: (
+  font-family: $TC, 
+  font-weight: 700,
   font-size: 2.25rem // 36px
 );
 

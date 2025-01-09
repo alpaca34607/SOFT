@@ -959,6 +959,7 @@ a {
   display: flex;
   flex-direction: column;
   width: 12%;
+  min-width: 180px;
 }
 .shop-menu .shop-logo {
   display: flex;
@@ -987,19 +988,105 @@ a {
   flex-direction: row;
   align-items: center;
   gap: 8px;
+  color: #FFFFFF;
   font-family: "Zen Maru Gothic", serif;
   font-weight: 500;
   font-size: 1.125rem;
   letter-spacing: 0.18rem;
   line-height: 1.5;
 }
+.shop-menu .links-group ul li a:hover {
+  color: #ECFF5F;
+}
 .shop-menu .links-group ul li a img {
+  width: 24px;
+  height: 24px;
+}
+.shop-menu .links-group ul li button {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  color: #FFFFFF;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+}
+.shop-menu .links-group ul li button:hover {
+  color: #ECFF5F;
+}
+.shop-menu .links-group ul li button img {
   width: 24px;
   height: 24px;
 }
 .shop-menu .ad-side {
   width: 100%;
   margin-top: 20px;
+}
+
+/* 預購注意事項彈窗 */
+/* 彈窗的初始 */
+.popup {
+  display: none;
+  /* 預設隱藏 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* 背景半透明 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 彈窗內容*/
+.popup-content {
+  background: #2A5070;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  width: 60%;
+  max-width: 600px;
+}
+.popup-content h2 {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+  text-align: center;
+  color: #ECFF5F;
+  margin-bottom: 20px;
+}
+.popup-content p {
+  text-align: left;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.18rem;
+  color: #FFFFFF;
+}
+
+/* 關閉按鈕 */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ECFF5F;
+}
+
+.close-btn:hover {
+  color: #000;
 }
 
 /* 商店主頁 */
@@ -1329,6 +1416,10 @@ a {
   width: 90px;
   padding: 5px;
 }
+#product-page .product-container .product-info .book-area .color-option .form-group select:focus {
+  border: #FDDA75 2px solid;
+  outline: none;
+}
 #product-page .product-container .product-info .book-area .num {
   color: #FFFFFF;
 }
@@ -1340,16 +1431,21 @@ a {
   width: 50px;
   padding: 5px;
 }
+#product-page .product-container .product-info .book-area .num .form-group select:focus {
+  border: #FDDA75 2px solid;
+  outline: none;
+}
 #product-page .product-container .product-info .book-area .notice {
   border: #FFFFFF 1.5px solid;
   border-radius: 10px;
   padding: 16px;
   margin-top: 12px;
   background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 4px 5px 0 rgba(43, 43, 43, 0.25);
 }
 #product-page .product-container .product-info .book-area .notice p {
   font-family: "Noto Sans TC", serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.05rem;
   line-height: 1.5;
@@ -1492,11 +1588,299 @@ a {
   padding: 8% 10%;
   background-color: #2A5070;
 }
+#checkout-page .form-area {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+#checkout-page .form-area .form-section {
+  display: flex;
+  flex-direction: column;
+}
+#checkout-page .form-area .form-section label {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  color: #2A2A2A;
+}
+#checkout-page .form-area .form-section h2 {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  color: #2A2A2A;
+}
+#checkout-page .form-area .form-section .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#checkout-page .form-area .form-section .form-group input {
+  height: 40px;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0 16px;
+  width: 100%;
+}
+#checkout-page .form-area .form-section .form-group input::placeholder {
+  color: #736262;
+}
+#checkout-page .form-area .form-section .form-group input:focus {
+  border: #736262 2px solid;
+  outline: none;
+}
+#checkout-page .form-area .form-section .radio {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+#checkout-page .form-area .form-section .radio input {
+  width: auto;
+  margin: 0 16px;
+}
+#checkout-page .form-area .form-section select {
+  height: 40px;
+  border: none;
+  border-radius: 5px 5px 0 0;
+  padding: 0 16px;
+  margin-right: 16px;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+#checkout-page .form-area .form-section select:focus {
+  border: #736262 2px solid;
+  outline: none;
+}
+#checkout-page .form-area .form-section .card-expiry {
+  margin: 16px 0;
+}
+#checkout-page .form-area .form-section #paymentMethod {
+  margin-top: 16px;
+}
+#checkout-page .form-area .form-section #creditCardFields {
+  margin-top: 24px;
+}
+#checkout-page .form-area .form-section #qrcodeSection p {
+  margin-top: 8px;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+#checkout-page .form-area .form-section #qrcodeSection img {
+  width: 300px;
+  border-radius: 5px;
+  margin-top: 32px;
+}
+#checkout-page .form-area .form-section textarea {
+  margin-top: 16px;
+  border: none;
+  border-radius: 5px;
+}
+#checkout-page .form-area .form-section textarea:focus {
+  border: #736262 2px solid;
+  outline: none;
+}
+#checkout-page .form-area .read-rules {
+  display: flex;
+  flex-direction: row;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+#checkout-page .form-area .read-rules .custom-checkbox {
+  transform: scale(1.4);
+  margin-right: 8px;
+}
+#checkout-page .form-area .read-rules .custom-checkbox:checked {
+  background-color: #000000;
+  border-color: #000000;
+  content: "✔";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+#checkout-page .form-area button {
+  background-color: #2A2A2A;
+  color: #FEBD59;
+  padding: 18px 40px;
+  border-radius: 7px;
+  width: max-content;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: 0.2s ease-in-out;
+  box-shadow: none;
+  border: none;
+}
+#checkout-page .form-area button:hover {
+  background-color: #2A5070;
+  transform: scale(1.2);
+}
 #checkout-page .checkout-container {
   display: flex;
   flex-direction: column;
-  padding: 0 10%;
+  width: auto;
+  max-width: 1000px;
+  margin: 0 8%;
 }
 #checkout-page .checkout-container img {
+  width: cover;
+}
+#checkout-page .checkout-container #checkoutForm {
+  display: inline-flex;
+  background-color: #FEBD59;
+}
+#checkout-page .checkout-container #checkoutForm .form-area {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  padding: 76px 45px;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  padding: 76px 45px;
+  gap: 30px;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  margin-bottom: 20px;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area .num-img-wrapper {
+  position: relative;
+  width: 78px;
+  height: 78px;
+  border: #FFFFFF 2px solid;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area .num-img-wrapper img {
   width: 100%;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area .num-img-wrapper p {
+  position: absolute;
+  top: -15%;
+  right: -15%;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05rem;
+  background-color: #00C7BE;
+  width: 24px;
+  height: 24px;
+  border-radius: 99px;
+  text-align: center;
+  color: #FFFFFF;
+  z-index: 1;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area .details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area .details h3 {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+  color: #FFFFFF;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area .details .color-detail {
+  display: flex;
+  gap: 8px;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area .details .color-detail p {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0rem;
+  color: #FFFFFF;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary .detail-area .details .per-price {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  color: #00C7BE;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary #productSummary {
+  padding: 30px;
+  border-radius: 5px;
+  background: #B3B3B3;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary #productSummary .num-img-wrapper p {
+  background-color: #2A2A2A;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary #productSummary .total-area p {
+  color: #2b2b2b;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary #productSummary .per-price {
+  color: #619ABD;
+}
+#checkout-page .checkout-container #checkoutForm .order-summary #depositSummary {
+  padding: 30px;
+  border-radius: 5px;
+  background: #2A5070;
+}
+#checkout-page .total-area {
+  display: flex;
+  justify-content: space-between;
+  border-top: #FFFFFF 1.5px solid;
+  padding-top: 30px;
+  align-items: end;
+}
+#checkout-page .total-area h4 {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0rem;
+  color: #FFFFFF;
+}
+#checkout-page .total-area p {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  color: #FFFFFF;
+}
+#checkout-page .checkout-notice {
+  padding: 30px;
+  border: #FFFFFF 2px solid;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 4px 5px 0 rgba(43, 43, 43, 0.25);
+}
+#checkout-page .checkout-notice h5 {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+  color: #2A5070;
+}
+#checkout-page .checkout-notice p {
+  margin-top: 20px;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0rem;
+  color: #2A2A2A;
 }/*# sourceMappingURL=style.css.map */
