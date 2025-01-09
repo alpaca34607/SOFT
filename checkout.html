@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預購表單</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header id="topbar">
+        <!-- logo區 -->
+        <h1 class="logo">
+            <a href="./index.html">
+                <img src="./images/home/Logo.svg" alt="軟筋生物LOGO" title="軟筋生物LOGO">
+            </a>
+        </h1>
+
+        <div class="navbar">
+            <a class="shop-icon" href="./Get-Soft.html"><img src="images/home/shop-icon.svg" alt="shop-icon"></a>
+            <a class="ig-icon" href="https://www.instagram.com/soft.ig/"><img src="images/home/ig-icon.svg"
+                    alt="ig-icon"></a>
+            <button class="hamburger">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+            </button>
+            <!-- 導覽列 -->
+            <nav class="navigation">
+                <!-- 主選單 -->
+                <ul class="menu">
+                    <li><a href="#About-Soft">
+                            <img src="./images/home/menu1.svg" alt="關於軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>關於軟筋</p>
+                                <span>About Soft</span>
+                            </div>
+                        </a></li>
+                    <li><a href="#learning-Soft ">
+                            <img src="./images/home/menu4.svg" alt="理解軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>理解軟筋</p>
+                                <span>learning Soft</span>
+                            </div>
+                        </a></li>
+                    <li><a href="./Becoming-Soft.html ">
+                            <img src="./images/home/menu2.svg" alt="成為軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>成為軟筋</p>
+                                <span>Becoming Soft</span>
+                            </div>
+                        </a></li>
+                    <li><a href="./Get-Soft.html">
+                            <img src="./images/home/menu8.svg" alt="擁有軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>擁有軟筋</p>
+                                <span>Get Soft</span>
+                            </div>
+                        </a></li>
+                    <li><a href="#Contact-Soft">
+                            <img src="./images/home/menu6.svg" alt="聯絡軟筋LOGO">
+                            <div class="menu-title2">
+                                <p>聯絡軟筋</p>
+                                <span>Contact Soft</span>
+                            </div>
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="checkout-page">
+        <div class="shop-menu">
+            <div class="shop-logo">
+                <a href="./Get-Soft.html"><img class="logo-img" src="images/shop/shop_logo.svg" alt="軟筋商店logo"></a>
+            </div>
+            <div class="links-group">
+                <ul>
+                    <li><a href="#"><img src="./images/shop/mdi_cart.svg" />我的購物車</a></li>
+                    <li><a href="#"><img src="./images/shop/list.svg" />訂單查詢</a></li>
+                    <li><a href="#"><img src="./images/shop/notice.svg" />預購注意事項</a></li>
+                </ul>
+            </div>
+            <div class="ad-side"><img src="./images/shop/AD-side.jpg" alt="餘量釋出連結圖片" /></div>
+        </div>
+        <section class="checkout-container">
+            <form id="checkoutForm">
+                <!-- 表單banner -->
+                <div class="form-banner"><img src="./images/shop/booking-baner.jpg" alt=""></div>
+                <!-- 基本資料區域 -->
+                <div class="form-section">
+                    <h2>訂購人資訊</h2>
+                    <div class="form-group">
+                        <label for="name">姓名 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">手機號碼 *</label>
+                        <input type="text" id="phone" name="phone" required pattern="[0-9]{10}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">電子郵件 *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <!-- 取貨方式 -->
+                <div class="form-section">
+                    <h2>取貨方式</h2>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="pickupMethod" value="exhibition" checked>
+                            2025 Taipei Toy Festival 台北國際玩具創作大展 取貨
+                        </label>
+                        <label>
+                            <input type="radio" name="pickupMethod" value="other">
+                            其他 (請於備註填寫取貨方式，公仔商品不建議運送)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 付款方式 -->
+                <div class="form-section">
+                    <h2>付款方式</h2>
+                    <div class="form-group">
+                        <select id="paymentMethod" name="paymentMethod">
+                            <option value="creditCard">信用卡</option>
+                            <option value="atm">ATM /網銀轉帳</option>
+                            <option value="jkopay">全支付</option>
+                        </select>
+                    </div>
+
+                    <!-- 信用卡欄位 -->
+                    <div id="creditCardFields" class="form-group">
+                        <input type="text" name="cardNumber" placeholder="信用卡卡號" pattern="[0-9]{16}">
+                        <div class="card-expiry">
+                            <select name="expiryMonth">
+                                <option value="">月份</option>
+
+                            </select>
+                            <select name="expiryYear">
+                                <option value="">年份</option>
+
+                            </select>
+                        </div>
+                        <input type="text" name="cvv" placeholder="安全碼" pattern="[0-9]{3}">
+                    </div>
+
+                    <!-- QR Code -->
+                    <div id="qrcodeSection" style="display: none;">
+                        <img src="./images/shop/product-SoftzillaOD-thumb.jpg" alt="付款 QR Code">
+                    </div>
+                </div>
+
+                <!-- 備註 -->
+                <div class="form-section">
+                    <h2>備註</h2>
+                    <textarea name="note" rows="9"></textarea>
+                </div>
+
+                <!-- 訂單摘要 -->
+                <section class="order-summary">
+                    <div id="productSummary" class="summary-section">
+                        <!-- 商品資訊checkout.js填入 -->
+                    </div>
+                    <div id="depositSummary" class="summary-section">
+                        <!-- 訂金資訊checkout.jst填入 -->
+                    </div>
+                </section>
+
+                <button type="submit" class="submit-button">確認送出訂單</button>
+            </form>
+        </section>
+    </main>
+    <script src="./js/checkout.js"></script>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
