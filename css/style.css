@@ -1143,12 +1143,12 @@ a {
   text-align: center;
   filter: drop-shadow(3px 3px 0 #619ABD);
   cursor: pointer;
-  transition: ease-in-out 0.1s;
 }
 .softtest #test .test-bg .question-container #confirm-button:hover {
   background: url(../images/softtest/comfirm-btn-hover.svg);
   transform: scale(1.1);
   background-size: cover;
+  transition: ease-in-out 0.1s;
   filter: drop-shadow(3px 6px 0 #5B83A3);
   padding: 10px 20px;
   color: #736262;

@@ -1152,13 +1152,13 @@ a {
                     text-align: center;
                     filter: drop-shadow(3px 3px 0 $shadow-2);
                     cursor: pointer;
-                    transition: ease-in-out 0.1s;
 
 
                     &:hover {
                         background: url(../images/softtest/comfirm-btn-hover.svg);
                         transform: scale(1.1);
                         background-size: cover;
+                        transition: ease-in-out 0.1s;
                         filter: drop-shadow(3px 6px 0 $shadow-1);
                         padding: 10px 20px;
                         color: $primary-brown;
