@@ -1020,12 +1020,12 @@ a {
                 text-align: center;
                 filter: drop-shadow(4px 4px 0 $shadow-1);
                 cursor: pointer;
+                transition: ease-in-out 0.1s;
 
                 &:hover {
                     background: url(../images/softtest/comfirm-btn-hover.svg);
                     transform: scale(1.1);
                     background-size: cover;
-                    transition: ease-in-out 0.1s;
                     filter: drop-shadow(3px 3px 0 $shadow-2);
                     padding: 10px 20px;
                     color: $primary-brown;
@@ -1106,6 +1106,7 @@ a {
                         background-color: rgba(255, 255, 255, 0.12);
                         box-shadow: 4px 4px 0 $shadow-1;
                         backdrop-filter: brightness(120%) blur(6px);
+                        transition: 0.1s;
 
 
 
@@ -1113,7 +1114,6 @@ a {
 
                             background-color: rgba(255, 255, 255, 0.5);
                             transform: scale(1.1);
-                            transition: 0.1s;
                             box-shadow: 3px 3px 0 $shadow-2;
 
                         }
@@ -1152,13 +1152,13 @@ a {
                     text-align: center;
                     filter: drop-shadow(3px 3px 0 $shadow-2);
                     cursor: pointer;
+                    transition: ease-in-out 0.1s;
 
 
                     &:hover {
                         background: url(../images/softtest/comfirm-btn-hover.svg);
                         transform: scale(1.1);
                         background-size: cover;
-                        transition: ease-in-out 0.1s;
                         filter: drop-shadow(3px 6px 0 $shadow-1);
                         padding: 10px 20px;
                         color: $primary-brown;

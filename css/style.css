@@ -1023,12 +1023,12 @@ a {
   text-align: center;
   filter: drop-shadow(4px 4px 0 #5B83A3);
   cursor: pointer;
+  transition: ease-in-out 0.1s;
 }
 .softtest #test #start-screen .start-btn:hover {
   background: url(../images/softtest/comfirm-btn-hover.svg);
   transform: scale(1.1);
   background-size: cover;
-  transition: ease-in-out 0.1s;
   filter: drop-shadow(3px 3px 0 #619ABD);
   padding: 10px 20px;
   color: #736262;
@@ -1105,11 +1105,11 @@ a {
   background-color: rgba(255, 255, 255, 0.12);
   box-shadow: 4px 4px 0 #5B83A3;
   backdrop-filter: brightness(120%) blur(6px);
+  transition: 0.1s;
 }
 .softtest #test .test-bg .question-container #options .option-button:hover {
   background-color: rgba(255, 255, 255, 0.5);
   transform: scale(1.1);
-  transition: 0.1s;
   box-shadow: 3px 3px 0 #619ABD;
 }
 .softtest #test .test-bg .question-container #options .option-button.selected, .softtest #test .test-bg .question-container #options .option-button.active {
@@ -1143,12 +1143,12 @@ a {
   text-align: center;
   filter: drop-shadow(3px 3px 0 #619ABD);
   cursor: pointer;
+  transition: ease-in-out 0.1s;
 }
 .softtest #test .test-bg .question-container #confirm-button:hover {
   background: url(../images/softtest/comfirm-btn-hover.svg);
   transform: scale(1.1);
   background-size: cover;
-  transition: ease-in-out 0.1s;
   filter: drop-shadow(3px 6px 0 #5B83A3);
   padding: 10px 20px;
   color: #736262;
