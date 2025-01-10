@@ -337,7 +337,7 @@ a {
 
 /* 首頁 */
 
-.home {
+#home {
     position: relative;
     width: 100%;
     z-index: 0;
@@ -456,7 +456,7 @@ a {
             }
         }
     }
-    .home_banner {
+    #home-banner {
         position: relative;
         display: flex;
         width: 100%;

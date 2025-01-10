@@ -450,13 +450,13 @@ a {
 }
 
 /* 首頁 */
-.home {
+#home {
   position: relative;
   width: 100%;
   z-index: 0;
   cursor: none;
 }
-.home .shapes {
+#home .shapes {
   /* 這裡設置background的話會影響到背景 */
   position: absolute;
   top: 0;
@@ -473,12 +473,12 @@ a {
   /* 限制混合模式的範圍 */
   z-index: 998;
 }
-.home .shape {
+#home .shape {
   will-change: transform;
   position: absolute;
   border-radius: 50%;
 }
-.home .shape.shape-1 {
+#home .shape.shape-1 {
   background: #005ffe;
   width: 325px;
   height: 325px;
@@ -490,19 +490,19 @@ a {
   isolation: isolate;
   /* 限制混合模式的範圍 */
 }
-.home .shape.shape-2 {
+#home .shape.shape-2 {
   background: #ffe5e3;
   width: 220px;
   height: 220px;
   margin: -110px 0 0 -110px;
 }
-.home .shape.shape-3 {
+#home .shape.shape-3 {
   background: #ffcc57;
   width: 135px;
   height: 135px;
   margin: -67.5px 0 0 -67.5px;
 }
-.home .cursor {
+#home .cursor {
   position: fixed;
   background: #2128bd;
   width: 20px;
@@ -518,36 +518,36 @@ a {
   z-index: 10000;
 }
 @media (min-width: 419px) {
-  .home h1 {
+  #home h1 {
     font-size: 100px;
     font-size: calc(9.89119683vw + 58.5558852621px);
   }
 }
 @media (min-width: 1430px) {
-  .home h1 {
+  #home h1 {
     font-size: 200px;
   }
 }
-.home ::-moz-selection {
+#home ::-moz-selection {
   color: #fff;
   background: #2128bd;
 }
-.home ::selection {
+#home ::selection {
   color: #fff;
   background: #2128bd;
 }
-.home .ig-icon:hover, .home .shop-icon:hover {
+#home .ig-icon:hover, #home .shop-icon:hover {
   filter: brightness(0) saturate(100%) invert(67%) sepia(90%) saturate(3316%) hue-rotate(136deg) brightness(97%) contrast(101%);
 }
-.home .hamburger {
+#home .hamburger {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
-.home .hamburger:hover .bar {
+#home .hamburger:hover .bar {
   filter: brightness(0.5) hue-rotate(50deg);
 }
-.home .home_banner {
+#home #home-banner {
   position: relative;
   display: flex;
   width: 100%;
@@ -555,7 +555,7 @@ a {
   background: #84D0FF;
   z-index: 1;
 }
-.home .home_banner .home-middle {
+#home #home-banner .home-middle {
   margin: 0;
   padding: 0;
   display: flex;
@@ -566,7 +566,7 @@ a {
   height: 100vh;
   z-index: 1;
 }
-.home .home_banner .home-middle .carousel-wrapper {
+#home #home-banner .home-middle .carousel-wrapper {
   position: relative;
   display: flex;
   justify-content: center;
@@ -576,7 +576,7 @@ a {
   overflow: hidden;
   margin: 0;
 }
-.home .home_banner .home-middle .carousel-wrapper .circle-bg {
+#home #home-banner .home-middle .carousel-wrapper .circle-bg {
   position: absolute;
   top: 20%;
   background-color: #FDDA75;
@@ -584,20 +584,20 @@ a {
   width: 350px;
   height: 350px;
 }
-.home .home_banner .home-middle .carousel-wrapper .carousel {
+#home #home-banner .home-middle .carousel-wrapper .carousel {
   position: absolute;
   width: 100%;
   height: 500px;
   overflow: hidden;
 }
-.home .home_banner .home-middle .carousel-wrapper .inner {
+#home #home-banner .home-middle .carousel-wrapper .inner {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
 }
-.home .home_banner .home-middle .carousel-wrapper .slide {
+#home #home-banner .home-middle .carousel-wrapper .slide {
   width: 100%;
   height: 100%;
   padding: 0;
@@ -608,41 +608,41 @@ a {
   z-index: 1;
   opacity: 0;
 }
-.home .home_banner .home-middle .carousel-wrapper .slide.active,
-.home .home_banner .home-middle .carousel-wrapper .slide.left,
-.home .home_banner .home-middle .carousel-wrapper .slide.right {
+#home #home-banner .home-middle .carousel-wrapper .slide.active,
+#home #home-banner .home-middle .carousel-wrapper .slide.left,
+#home #home-banner .home-middle .carousel-wrapper .slide.right {
   z-index: 2;
   opacity: 1;
 }
-.home .home_banner .home-middle .carousel-wrapper .js-reset-left {
+#home #home-banner .home-middle .carousel-wrapper .js-reset-left {
   left: auto;
 }
-.home .home_banner .home-middle .carousel-wrapper .slide.left {
+#home #home-banner .home-middle .carousel-wrapper .slide.left {
   left: -100%;
   right: 0;
 }
-.home .home_banner .home-middle .carousel-wrapper .slide.right {
+#home #home-banner .home-middle .carousel-wrapper .slide.right {
   right: -100%;
   left: auto;
 }
-.home .home_banner .home-middle .carousel-wrapper .transition .slide.left {
+#home #home-banner .home-middle .carousel-wrapper .transition .slide.left {
   left: 0%;
 }
-.home .home_banner .home-middle .carousel-wrapper .transition .slide.right {
+#home #home-banner .home-middle .carousel-wrapper .transition .slide.right {
   right: 0%;
 }
-.home .home_banner .home-middle .carousel-wrapper .transition .slide.shift-right {
+#home #home-banner .home-middle .carousel-wrapper .transition .slide.shift-right {
   right: 100%;
   left: auto;
 }
-.home .home_banner .home-middle .carousel-wrapper .transition .slide.shift-left {
+#home #home-banner .home-middle .carousel-wrapper .transition .slide.shift-left {
   left: 100%;
   right: auto;
 }
-.home .home_banner .home-middle .carousel-wrapper .transition .slide {
+#home #home-banner .home-middle .carousel-wrapper .transition .slide {
   transition-property: right, left, margin;
 }
-.home .home_banner .home-middle .carousel-wrapper .indicators {
+#home #home-banner .home-middle .carousel-wrapper .indicators {
   display: none;
   width: 100%;
   position: absolute;
@@ -651,7 +651,7 @@ a {
   padding: 0;
   text-align: center;
 }
-.home .home_banner .home-middle .carousel-wrapper .indicators li {
+#home #home-banner .home-middle .carousel-wrapper .indicators li {
   width: 13px;
   height: 13px;
   display: inline-block;
@@ -662,13 +662,13 @@ a {
   cursor: pointer;
   transition: background 0.3s ease-out;
 }
-.home .home_banner .home-middle .carousel-wrapper .indicators li.active {
+#home #home-banner .home-middle .carousel-wrapper .indicators li.active {
   background: #93278f;
 }
-.home .home_banner .home-middle .carousel-wrapper .indicators li:hover {
+#home #home-banner .home-middle .carousel-wrapper .indicators li:hover {
   background-color: #2b2b2b;
 }
-.home .home_banner .home-middle .carousel-wrapper .arrow {
+#home #home-banner .home-middle .carousel-wrapper .arrow {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -679,53 +679,53 @@ a {
   cursor: pointer;
   transition: border-color 0.3s ease-out;
 }
-.home .home_banner .home-middle .carousel-wrapper .arrow:hover {
+#home #home-banner .home-middle .carousel-wrapper .arrow:hover {
   border-color: #2A5070;
 }
-.home .home_banner .home-middle .carousel-wrapper .arrow-left {
+#home #home-banner .home-middle .carousel-wrapper .arrow-left {
   left: 20px;
   transform: rotate(225deg);
 }
-.home .home_banner .home-middle .carousel-wrapper .arrow-left:active {
+#home #home-banner .home-middle .carousel-wrapper .arrow-left:active {
   transform: rotate(225deg) translateX(3px) scale(1.2);
 }
-.home .home_banner .home-middle .carousel-wrapper .arrow-right {
+#home #home-banner .home-middle .carousel-wrapper .arrow-right {
   right: 20px;
   transform: rotate(45deg);
 }
-.home .home_banner .home-middle .carousel-wrapper .arrow-right:active {
+#home #home-banner .home-middle .carousel-wrapper .arrow-right:active {
   transform: rotate(45deg) translateX(3px) scale(1.2);
 }
-.home .home_banner .home-middle .carousel-wrapper .slide {
+#home #home-banner .home-middle .carousel-wrapper .slide {
   text-align: center;
   background-size: cover;
 }
-.home .home_banner .home-middle .carousel-wrapper .slide:nth-child(1) {
+#home #home-banner .home-middle .carousel-wrapper .slide:nth-child(1) {
   background-image: url(../images/home/Group_krita.apng);
   background-size: 65%;
   background-repeat: no-repeat;
   background-position: center;
 }
-.home .home_banner .home-middle .carousel-wrapper .slide:nth-child(2) {
+#home #home-banner .home-middle .carousel-wrapper .slide:nth-child(2) {
   background-image: url(../images/home/vampire.svg);
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
 }
-.home .home_banner .home-middle .carousel-wrapper .slide:nth-child(3) {
+#home #home-banner .home-middle .carousel-wrapper .slide:nth-child(3) {
   background-image: url(../images/home/alpaca.apng);
   background-size: 65%;
   background-repeat: no-repeat;
   background-position: center;
 }
-.home .home_banner .home-middle .soft-text {
+#home #home-banner .home-middle .soft-text {
   margin-top: 30px;
   display: flex;
   text-align: center;
   width: 12%;
   min-width: 60px;
 }
-.home .home_banner .whats-new {
+#home #home-banner .whats-new {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -734,13 +734,13 @@ a {
   margin: 0 0 0 10%;
   padding-top: 300px;
 }
-.home .home_banner .whats-new .slideText-heading {
+#home #home-banner .whats-new .slideText-heading {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   width: 80%;
 }
-.home .home_banner .whats-new .slideText-heading h1 {
+#home #home-banner .whats-new .slideText-heading h1 {
   font-family: "Mansalva", serif;
   font-weight: 400;
   font-size: 24px;
@@ -749,14 +749,14 @@ a {
   color: #ECFF5F;
   overflow: hidden;
 }
-.home .home_banner .whats-new .slideText-heading hr {
+#home #home-banner .whats-new .slideText-heading hr {
   width: 80%;
   height: 2px;
   background-color: #ECFF5F;
   margin: 0 0 10px 0;
   border: none;
 }
-.home .blobs-box {
+#home .blobs-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -768,11 +768,11 @@ a {
   z-index: -1;
   overflow: hidden;
 }
-.home .blobs-box .blob {
+#home .blobs-box .blob {
   position: absolute;
   z-index: 100;
 }
-.home .blobs-box .blob-1 {
+#home .blobs-box .blob-1 {
   height: 10rem;
   width: 10rem;
   background: #774898;
@@ -780,7 +780,7 @@ a {
   right: calc(50% - 5rem);
   animation: blob 10s ease-in-out infinite, float 175s ease-in-out infinite;
 }
-.home .blobs-box .blob-2 {
+#home .blobs-box .blob-2 {
   height: 8rem;
   width: 8rem;
   background: #de4383;
@@ -789,7 +789,7 @@ a {
   border-radius: 65% 60% 35% 50%/65% 38% 75% 36%;
   animation: blob 8s ease-in-out infinite, float 125s ease-in-out infinite;
 }
-.home .blobs-box .blob-3 {
+#home .blobs-box .blob-3 {
   height: 6rem;
   width: 6rem;
   background: #f3ae4b;
@@ -797,7 +797,7 @@ a {
   right: 70%;
   animation: blob 5s ease-in-out infinite, float 95s ease-in-out infinite;
 }
-.home .blobs-box .blob-4 {
+#home .blobs-box .blob-4 {
   height: 10rem;
   width: 10rem;
   background: #de4383;
@@ -805,7 +805,7 @@ a {
   right: 5%;
   animation: blob 10s ease-in-out infinite, float 250s ease-in-out infinite;
 }
-.home .blobs-box .blob-5 {
+#home .blobs-box .blob-5 {
   height: 600px;
   width: 650px;
   transform: rotateX("60deg");
@@ -815,7 +815,7 @@ a {
   right: 75%;
   animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite, colorCycle 10s infinite linear;
 }
-.home .blobs-box .blob-6 {
+#home .blobs-box .blob-6 {
   height: 550px;
   width: 550px;
   background: url(../images/home/pink-noisy-gradients.jpg);
@@ -823,7 +823,7 @@ a {
   right: -10%;
   animation: blob 5s ease-in-out infinite, float 240s ease-in-out infinite, colorCycle 10s infinite linear;
 }
-.home .blobs-box .blob-7 {
+#home .blobs-box .blob-7 {
   height: 4rem;
   width: 4rem;
   background: #774898;
@@ -831,7 +831,7 @@ a {
   right: 80%;
   animation: blob 10s ease-in-out infinite, float 100s ease-in-out infinite;
 }
-.home .blobs-box .blob-8 {
+#home .blobs-box .blob-8 {
   height: 6rem;
   width: 6rem;
   background: #774898;
@@ -839,7 +839,7 @@ a {
   right: 40%;
   animation: blob 8s ease-in-out infinite, float 70s ease-in-out infinite;
 }
-.home .blobs-box .blob-9 {
+#home .blobs-box .blob-9 {
   height: 6rem;
   width: 6rem;
   background: #de4383;
@@ -847,7 +847,7 @@ a {
   right: 68%;
   animation: blob 5s ease-in-out infinite, float 120s ease-in-out infinite;
 }
-.home .blobs-box .blob-10 {
+#home .blobs-box .blob-10 {
   height: 2rem;
   width: 2rem;
   background: #de4383;
@@ -855,7 +855,7 @@ a {
   right: 65%;
   animation: blob 10s ease-in-out infinite, float 250s ease-in-out infinite;
 }
-.home .blobs-box .blob-11 {
+#home .blobs-box .blob-11 {
   height: 2rem;
   width: 2rem;
   background: #f3ae4b;
@@ -863,7 +863,7 @@ a {
   right: 5%;
   animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite;
 }
-.home .blobs-box .blob-12 {
+#home .blobs-box .blob-12 {
   height: 3rem;
   width: 3rem;
   background: #f3ae4b;
@@ -871,7 +871,7 @@ a {
   right: 45%;
   animation: blob 5s ease-in-out infinite, float 240s ease-in-out infinite;
 }
-.home .blobs-box .blob-13 {
+#home .blobs-box .blob-13 {
   height: 4rem;
   width: 4rem;
   background: #774898;
@@ -879,7 +879,7 @@ a {
   right: 0%;
   animation: blob 10s ease-in-out infinite, float 100s ease-in-out infinite;
 }
-.home .blobs-box .blob-14 {
+#home .blobs-box .blob-14 {
   height: 6rem;
   width: 6rem;
   background: #de4383;
