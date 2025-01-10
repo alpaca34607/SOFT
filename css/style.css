@@ -1026,7 +1026,7 @@ a {
   transition: ease-in-out 0.1s;
 }
 .softtest #test #start-screen .start-btn:hover {
-  background: url(../images/softtest/comfirm-btn-hover.svg);
+  background: url(../images/softtest/comfirm-btn-hover.png);
   transform: scale(1.1);
   background-size: cover;
   filter: drop-shadow(3px 3px 0 #619ABD);
@@ -1034,7 +1034,6 @@ a {
   color: #736262;
 }
 .softtest #test #start-screen .start-btn:active {
-  background: url(../images/softtest/comfirm-btn-hover.svg);
   background-size: cover;
   transform: scale(0.95) translateY(2px);
   filter: drop-shadow(1px 1px 0 #5B83A3) hue-rotate(-10deg);
@@ -1145,7 +1144,7 @@ a {
   cursor: pointer;
 }
 .softtest #test .test-bg .question-container #confirm-button:hover {
-  background: url(../images/softtest/comfirm-btn-hover.svg);
+  background: url(../images/softtest/comfirm-btn-hover.png);
   transform: scale(1.1);
   background-size: cover;
   transition: ease-in-out 0.1s;
@@ -1154,7 +1153,6 @@ a {
   color: #736262;
 }
 .softtest #test .test-bg .question-container #confirm-button:active {
-  background: url(../images/softtest/comfirm-btn-hover.svg);
   background-size: cover;
   transform: scale(0.95) translateY(2px);
   filter: drop-shadow(2px 2px 0 #5B83A3) hue-rotate(-10deg);
@@ -1220,7 +1218,7 @@ a {
   cursor: pointer;
 }
 .softtest #test #result .result-buttons .result-button:hover {
-  background: url(../images/softtest/comfirm-btn-hover.svg);
+  background: url(../images/softtest/comfirm-btn-hover.png);
   transform: scale(1.1);
   background-size: cover;
   transition: ease-in-out 0.1s;
@@ -1229,7 +1227,6 @@ a {
   color: #736262;
 }
 .softtest #test #result .result-buttons .result-button:active {
-  background: url(../images/softtest/comfirm-btn-hover.svg);
   background-size: cover;
   transform: scale(0.95) translateY(2px);
   filter: drop-shadow(2px 2px 0 #5B83A3) hue-rotate(-10deg);

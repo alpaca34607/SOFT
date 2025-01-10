@@ -1023,7 +1023,7 @@ a {
                 transition: ease-in-out 0.1s;
 
                 &:hover {
-                    background: url(../images/softtest/comfirm-btn-hover.svg);
+                    background: url(../images/softtest/comfirm-btn-hover.png);
                     transform: scale(1.1);
                     background-size: cover;
                     filter: drop-shadow(3px 3px 0 $shadow-2);
@@ -1032,8 +1032,6 @@ a {
                 }
 
                 &:active {
-
-                    background: url(../images/softtest/comfirm-btn-hover.svg);
                     background-size: cover;
                     transform: scale(0.95) translateY(2px);
                     filter: drop-shadow(1px 1px 0 $shadow-1) hue-rotate(-10deg);
@@ -1155,7 +1153,7 @@ a {
 
 
                     &:hover {
-                        background: url(../images/softtest/comfirm-btn-hover.svg);
+                        background: url(../images/softtest/comfirm-btn-hover.png);
                         transform: scale(1.1);
                         background-size: cover;
                         transition: ease-in-out 0.1s;
@@ -1166,7 +1164,6 @@ a {
 
                     &:active {
 
-                        background: url(../images/softtest/comfirm-btn-hover.svg);
                         background-size: cover;
                         transform: scale(0.95) translateY(2px);
                         filter: drop-shadow(2px 2px 0 $shadow-1) hue-rotate(-10deg);
@@ -1241,7 +1238,7 @@ a {
 
 
                     &:hover {
-                        background: url(../images/softtest/comfirm-btn-hover.svg);
+                        background: url(../images/softtest/comfirm-btn-hover.png);
                         transform: scale(1.1);
                         background-size: cover;
                         transition: ease-in-out 0.1s;
@@ -1252,7 +1249,6 @@ a {
 
                     &:active {
 
-                        background: url(../images/softtest/comfirm-btn-hover.svg);
                         background-size: cover;
                         transform: scale(0.95) translateY(2px);
                         filter: drop-shadow(2px 2px 0 $shadow-1) hue-rotate(-10deg);
