@@ -448,6 +448,95 @@ a {
   position: relative;
   width: 100%;
   z-index: 0;
+  cursor: none;
+}
+.home .shapes {
+  /* 這裡設置background的話會影響到背景 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+  overflow: hidden;
+  pointer-events: none;
+  /* 確保形狀不會影響滑鼠事件 */
+  mix-blend-mode: hard-light;
+  /* 設置混合模式  */
+  isolation: isolate;
+  /* 限制混合模式的範圍 */
+  z-index: 998;
+}
+.home .shape {
+  will-change: transform;
+  position: absolute;
+  border-radius: 50%;
+}
+.home .shape.shape-1 {
+  background: #005ffe;
+  width: 325px;
+  height: 325px;
+  margin: -162.5px 0 0 -162.5px;
+  pointer-events: none;
+  /* 確保形狀不會影響滑鼠事件 */
+  mix-blend-mode: screen;
+  /* 設置混合模式  */
+  isolation: isolate;
+  /* 限制混合模式的範圍 */
+}
+.home .shape.shape-2 {
+  background: #ffe5e3;
+  width: 220px;
+  height: 220px;
+  margin: -110px 0 0 -110px;
+}
+.home .shape.shape-3 {
+  background: #ffcc57;
+  width: 135px;
+  height: 135px;
+  margin: -67.5px 0 0 -67.5px;
+}
+.home .cursor {
+  position: fixed;
+  background: #2128bd;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  will-change: transform;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+}
+@media (min-width: 419px) {
+  .home h1 {
+    font-size: 100px;
+    font-size: calc(9.89119683vw + 58.5558852621px);
+  }
+}
+@media (min-width: 1430px) {
+  .home h1 {
+    font-size: 200px;
+  }
+}
+.home ::-moz-selection {
+  color: #fff;
+  background: #2128bd;
+}
+.home ::selection {
+  color: #fff;
+  background: #2128bd;
+}
+.home .hamburger {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.home .hamburger:hover .bar {
+  filter: brightness(0.5) hue-rotate(50deg);
 }
 .home .home_banner {
   position: relative;

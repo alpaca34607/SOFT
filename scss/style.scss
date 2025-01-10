@@ -117,6 +117,8 @@ a {
                 width: 30px;
                 margin: 5px auto;
                 transition: .4s;
+
+
             }
 
             .bar1 {
@@ -313,7 +315,7 @@ a {
     display: none;
     position: fixed;
     right: 15%;
-    bottom:5%;
+    bottom: 5%;
     z-index: $z-index-l;
     width: 60px;
     height: 60px;
@@ -328,6 +330,116 @@ a {
     position: relative;
     width: 100%;
     z-index: 0;
+    cursor: none;
+
+
+    .shapes {
+        /* 這裡設置background的話會影響到背景 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: none;
+        overflow: hidden;
+        pointer-events: none;
+        /* 確保形狀不會影響滑鼠事件 */
+        mix-blend-mode: hard-light;
+        /* 設置混合模式  */
+        isolation: isolate;
+        /* 限制混合模式的範圍 */
+        z-index: 998;
+    }
+
+    .shape {
+        will-change: transform;
+        position: absolute;
+        border-radius: 50%;
+
+
+    }
+
+    .shape.shape-1 {
+        background: #005ffe;
+        width: 325px;
+        height: 325px;
+        margin: -162.5px 0 0 -162.5px;
+        pointer-events: none;
+        /* 確保形狀不會影響滑鼠事件 */
+        mix-blend-mode: screen;
+        /* 設置混合模式  */
+        isolation: isolate;
+        /* 限制混合模式的範圍 */
+    }
+
+    .shape.shape-2 {
+        background: #ffe5e3;
+        width: 220px;
+        height: 220px;
+        margin: -110px 0 0 -110px;
+    }
+
+    .shape.shape-3 {
+        background: #ffcc57;
+        width: 135px;
+        height: 135px;
+        margin: -67.5px 0 0 -67.5px;
+    }
+
+    .cursor {
+        position: fixed;
+        background: #2128bd;
+        width: 20px;
+        height: 20px;
+        margin: -10px 0 0 -10px;
+        border-radius: 50%;
+        will-change: transform;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+        z-index: 10000;
+    }
+
+    @media (min-width: 419px) {
+        h1 {
+            font-size: 100px;
+            font-size: calc((0.0989119683 * 100vw + (58.5558852621px)));
+        }
+    }
+
+    @media (min-width: 1430px) {
+        h1 {
+            font-size: 200px;
+        }
+    }
+
+
+
+    ::-moz-selection {
+        color: #fff;
+        background: #2128bd;
+    }
+
+    ::selection {
+        color: #fff;
+        background: #2128bd;
+    }
+
+
+    .hamburger {
+
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            .bar {
+                filter: brightness(0.5) hue-rotate(50deg);
+            }
+        }
+    }
 
     .home_banner {
         position: relative;
@@ -357,6 +469,7 @@ a {
                 height: 500px;
                 overflow: hidden;
                 margin: 0;
+                
 
                 .circle-bg {
                     position: absolute;
@@ -473,6 +586,7 @@ a {
                 .indicators li:hover {
                     background-color: #2b2b2b
                 }
+
                 .arrow {
                     width: 20px;
                     height: 20px;
@@ -580,22 +694,23 @@ a {
         }
 
     }
+
     .blobs-box {
-        position:absolute;
+        position: absolute;
         top: 0;
         left: 0;
         margin: auto;
         display: block;
         width: 100%;
         height: 100vh;
-        background:transparent;
-        z-index:-1;
+        background: transparent;
+        z-index: -1;
         overflow: hidden;
 
         .blob {
             position: absolute;
             z-index: 100;
-           
+
         }
 
         .blob-1 {
@@ -637,19 +752,19 @@ a {
 
         .blob-5 {
             height: 600px;
-            width:650px;
+            width: 650px;
             transform: rotateX('60deg');
-            background:url(../images/home/purple-noisy-gradients.jpg);
+            background: url(../images/home/purple-noisy-gradients.jpg);
             background-size: cover;
             top: -10%;
             right: 75%;
-            animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite , colorCycle 10s infinite linear;
+            animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite, colorCycle 10s infinite linear;
         }
 
         .blob-6 {
-            height:550px;
+            height: 550px;
             width: 550px;
-            background:url(../images/home/pink-noisy-gradients.jpg);
+            background: url(../images/home/pink-noisy-gradients.jpg);
             top: 50%;
             right: -10%;
             animation: blob 5s ease-in-out infinite, float 240s ease-in-out infinite, colorCycle 10s infinite linear;
@@ -732,19 +847,24 @@ a {
             0% {
                 filter: hue-rotate(0deg) brightness(100%);
             }
+
             25% {
                 filter: hue-rotate(30deg) brightness(110%);
             }
+
             50% {
                 filter: hue-rotate(60deg) brightness(120%);
             }
+
             75% {
                 filter: hue-rotate(30deg) brightness(110%);
             }
+
             100% {
                 filter: hue-rotate(0deg) brightness(100%);
             }
         }
+
         @keyframes blob {
             0% {
                 border-radius: 65% 60% 35% 50% / 65% 38% 75% 36%;
@@ -1199,19 +1319,20 @@ a {
                         width: 24px;
                         height: 24px;
                     }
-                        span{
-                            display: flex;
-                            text-align: center;
-                            justify-content: center;
-                            @include font-style($font-medium-14);
-                            color:$primary-babyblue;
-                            // background-color: $primary-orange;
-                            // border-radius: 50%;
-                            // height: 20px;
-                            // width: 20px;
-                            // line-height: 18px;
-                        }
-                    
+
+                    span {
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+                        @include font-style($font-medium-14);
+                        color: $primary-babyblue;
+                        // background-color: $primary-orange;
+                        // border-radius: 50%;
+                        // height: 20px;
+                        // width: 20px;
+                        // line-height: 18px;
+                    }
+
 
                 }
             }
