@@ -1,6 +1,6 @@
 @use 'reset';
-@use 'variables' as *;
-@use 'function' as *;
+@use 'variables'as *;
+@use 'function'as *;
 @use 'keyframes';
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Playfair+Display:ital,wght@1,500&family=Trade+Winds&family=Zen+Maru+Gothic&family=Mansalva&display=swap');
 
@@ -96,6 +96,7 @@ a {
             }
         }
 
+     
         .shop-icon {
             margin-right: 16px;
 
@@ -427,6 +428,11 @@ a {
         background: #2128bd;
     }
 
+.ig-icon, .shop-icon{
+    &:hover{
+       filter: brightness(0) saturate(100%) invert(50%) sepia(8%) saturate(2015%) hue-rotate(165deg) brightness(95%) contrast(86%);
+    }
+}
 
     .hamburger {
 
@@ -440,7 +446,6 @@ a {
             }
         }
     }
-
     .home_banner {
         position: relative;
         display: flex;
@@ -469,7 +474,7 @@ a {
                 height: 500px;
                 overflow: hidden;
                 margin: 0;
-                
+
 
                 .circle-bg {
                     position: absolute;
@@ -2199,7 +2204,7 @@ a {
                             top: -15%;
                             right: -15%;
                             @include font-style($font-medium-14);
-                            background-color: $primary-mint ;
+                            background-color: $primary-mint;
                             width: 24px;
                             height: 24px;
                             border-radius: 99px;
