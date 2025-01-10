@@ -8,7 +8,7 @@ const questionData = [
             B: { text: '該起床了！<br>難得今天有空閑要好好利用！', score: 1 },
             C: { text: '雖然醒了，但滑個手機再下床吧', score: 4 }
         },
-        background: '../images/softtest/bg1.png',
+        background: './images/softtest/bg1.png',
 
     },
     {
@@ -19,7 +19,7 @@ const questionData = [
             B: { text: '等等，我沒有組樂高啊？', score: 2 },
             C: { text: '等等，這不是我房間啊？', score: 3 }
         },
-        background: '../images/softtest/bg2.jpg',
+        background: './images/softtest/bg2.jpg',
 
     },
     {
@@ -30,7 +30,7 @@ const questionData = [
             B: { text: '先撸貓撸爆，樂高就擱著吧有空再收', score: 1 },
             C: { text: '離開這片混亂，先吃早餐填飽肚子', score: 4 }
         },
-        background: '../images/softtest/bg3.jpg',
+        background: './images/softtest/bg3.jpg',
 
     },
     {
@@ -41,7 +41,7 @@ const questionData = [
             B: { text: '到有景色的地方散步走走', score: 2 },
             C: { text: '和朋友會面，開心的談論八卦', score: 1 }
         },
-        background: '../images/softtest/bg4.jpg',
+        background: './images/softtest/bg4.jpg',
 
     },
     {
@@ -52,7 +52,7 @@ const questionData = [
             B: { text: '都出門了，再繼續走到目的地吧', score: 1 },
             C: { text: '還是換個比較涼快的地點吧', score: 4 }
         },
-        background: '../images/softtest/bg5.jpg',
+        background: './images/softtest/bg5.jpg',
 
     },
     {
@@ -63,7 +63,7 @@ const questionData = [
             B: { text: '好像有點可疑，還是拒絕吧', score: 5 },
             C: { text: '先拒絕，吃完晚餐再繞回來看活動', score: 3 }
         },
-        background: '../images/softtest/bg6.jpg',
+        background: './images/softtest/bg6.jpg',
 
     },
     {
@@ -74,7 +74,7 @@ const questionData = [
             B: { text: '都到商圈了，<br>自己找間氣氛不錯的簡餐店用餐吧!', score: 4 },
             C: { text: '約約看朋友要不要一起吃晚餐吧?', score: 1 }
         },
-        background: '../images/softtest/bg7.jpg',
+        background: './images/softtest/bg7.jpg',
 
     }
 ];
@@ -250,12 +250,12 @@ class Quiz {
     }
 
     getResultImage(score) {
-        if (score >= 7 && score <= 12) return '../images/softtest/result-Softchicks.jpg';
-        if (score >= 13 && score <= 16) return '../images/softtest/result-Softheart.jpg';
-        if (score >= 17 && score <= 19) return '../images/softtest/result-Soft.jpg';
-        if (score >= 20 && score <= 22) return '../images/softtest/result-Softzilla.jpg';
-        if (score >= 23 && score <= 25) return '../images/softtest/result-Softpaca.jpg';
-        if (score >= 26 && score <= 30) return '../images/softtest/result-Softfrog.jpg';
+        if (score >= 7 && score <= 12) return './images/softtest/result-Softchicks.jpg';
+        if (score >= 13 && score <= 16) return './images/softtest/result-Softheart.jpg';
+        if (score >= 17 && score <= 19) return './images/softtest/result-Soft.jpg';
+        if (score >= 20 && score <= 22) return './images/softtest/result-Softzilla.jpg';
+        if (score >= 23 && score <= 25) return './images/softtest/result-Softpaca.jpg';
+        if (score >= 26 && score <= 30) return './images/softtest/result-Softfrog.jpg';
         return 'images/unknown.jpg';
     }
     renderResult() {
