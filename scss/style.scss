@@ -2328,12 +2328,12 @@ a {
 .cart-popup {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    opacity: 1;
+    opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out;
 
@@ -2521,19 +2521,26 @@ a {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 1000;
+    opacity: 0; // 改為 opacity: 0
+    visibility: visible; // 改為 visible
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none; // 添加這行
 
     .history-content {
-        position: relative;
-        background-color: $primary-yellow;
-        height: 10vh;
-        max-width: 400px;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: -100%;
+        height: 100%;
         padding: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        height: 100vh;
+        width: 40%;
+        max-width: 400px;
+        background-color: $primary-yellow;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: left 0.3s ease-in-out;
+        overflow-y: auto;
     }
 
     .history-header {
@@ -2608,4 +2615,12 @@ a {
         border: none;
     }
 
+}
+.history-popup.show {
+    opacity: 1;
+    pointer-events: auto;
+
+    .history-content {
+        left: 0;
+    }
 }

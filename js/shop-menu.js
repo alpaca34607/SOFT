@@ -34,20 +34,20 @@ function toggleCart() {
     if (!cartPopup.classList.contains('show')) {
         updateCartDisplay();
         cartPopup.style.display = 'block';
-        // 使用 setTimeout 确保 display:block 生效后再添加 show 类
+        // 使用 setTimeout確保display:block生效後再show
         setTimeout(() => {
             cartPopup.classList.add('show');
         }, 10);
     } else {
         cartPopup.classList.remove('show');
-        // 等待过渡动画完成后再隐藏元素
+        // 等待過渡動畫完成後再隐藏元素
         setTimeout(() => {
             cartPopup.style.display = 'none';
-        }, 300); // 这个时间应该和 CSS 过渡时间一致
+        }, 300);
     }
 }
 
-// 点击遮罩层关闭购物车
+//點擊外部關閉購物車
 function initializeCartEvents() {
     const cartPopup = document.getElementById('cartPopup');
     cartPopup.addEventListener('click', (e) => {
@@ -57,17 +57,14 @@ function initializeCartEvents() {
     });
 }
 
-// 在页面加载完成后初始化事件
+// 頁面加載完後進入事件
 document.addEventListener('DOMContentLoaded', () => {
     initializeCart();
     initializeCartEvents();
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    initializeCart();
-    initializeCartEvents();
-});
+
 
 function addToCart() {
     const mainColor = document.getElementById('mainColor').value;
@@ -188,14 +185,48 @@ function cartCheckout() {
     window.location.href = 'checkout.html';
 }
 
-// 頁面載入時初始化購物車
-document.addEventListener('DOMContentLoaded', initializeCart);
+
 
 // 購物紀錄
+
+// 點擊外部關閉歷史清單
+function initializeHistoryEvents() {
+    const historyPopup = document.getElementById('historyPopup');
+    if (!historyPopup) {
+        console.warn('找不到歷史紀錄彈窗元素');
+        return;
+    }
+
+    // 點擊外部關閉功能
+    historyPopup.addEventListener('click', (e) => {
+        if (e.target === historyPopup) {
+            toggleHistoryPopup();
+        }
+    });
+}
+
 function toggleHistoryPopup() {
     const historyPopup = document.getElementById('historyPopup');
-    historyPopup.style.display = historyPopup.style.display === 'none' ? 'block' : 'none';
+    if (!historyPopup) return;
+    
+    if (!historyPopup.classList.contains('show')) {
+        // 先設置 display: block
+        historyPopup.style.display = 'block';
+        // 使用 requestAnimationFrame 確保 DOM 更新完成
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                historyPopup.classList.add('show');
+            });
+        });
+    } else {
+        historyPopup.classList.remove('show');
+        // 等待過渡動畫完成後再隱藏元素
+        setTimeout(() => {
+            historyPopup.style.display = 'none';
+        }, 300); // 與 CSS transition 時間一致
+    }
 }
+
 
 //搜尋購買紀錄
 function searchOrderHistory() {
@@ -226,3 +257,4 @@ function searchOrderHistory() {
         </div>
     `).join('');
 }
+document.addEventListener('DOMContentLoaded', initializeHistoryEvents);
