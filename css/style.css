@@ -430,6 +430,19 @@ a {
   right: -2px;
 }
 
+/* 回到頂部按鈕 */
+#gotop {
+  display: none;
+  position: fixed;
+  right: 15%;
+  bottom: 5%;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 /* 首頁 */
 .home {
   position: relative;
@@ -437,10 +450,12 @@ a {
   z-index: 0;
 }
 .home .home_banner {
+  position: relative;
   display: flex;
   width: 100%;
   height: 100vh;
   background: #84D0FF;
+  z-index: 1;
 }
 .home .home_banner .home-middle {
   margin: 0;
@@ -462,11 +477,6 @@ a {
   height: 500px;
   overflow: hidden;
   margin: 0;
-  /**
-  * ==========================
-  * Arrows 
-  *
-  */
 }
 .home .home_banner .home-middle .carousel-wrapper .circle-bg {
   position: absolute;
@@ -647,6 +657,191 @@ a {
   background-color: #ECFF5F;
   margin: 0 0 10px 0;
   border: none;
+}
+.home .blobs-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+  z-index: -1;
+  overflow: hidden;
+}
+.home .blobs-box .blob {
+  position: absolute;
+  z-index: 100;
+}
+.home .blobs-box .blob-1 {
+  height: 10rem;
+  width: 10rem;
+  background: #774898;
+  top: calc(50% - 5rem);
+  right: calc(50% - 5rem);
+  animation: blob 10s ease-in-out infinite, float 175s ease-in-out infinite;
+}
+.home .blobs-box .blob-2 {
+  height: 8rem;
+  width: 8rem;
+  background: #de4383;
+  top: 10%;
+  right: 10%;
+  border-radius: 65% 60% 35% 50%/65% 38% 75% 36%;
+  animation: blob 8s ease-in-out infinite, float 125s ease-in-out infinite;
+}
+.home .blobs-box .blob-3 {
+  height: 6rem;
+  width: 6rem;
+  background: #f3ae4b;
+  top: 80%;
+  right: 70%;
+  animation: blob 5s ease-in-out infinite, float 95s ease-in-out infinite;
+}
+.home .blobs-box .blob-4 {
+  height: 10rem;
+  width: 10rem;
+  background: #de4383;
+  top: 80%;
+  right: 5%;
+  animation: blob 10s ease-in-out infinite, float 250s ease-in-out infinite;
+}
+.home .blobs-box .blob-5 {
+  height: 600px;
+  width: 650px;
+  transform: rotateX("60deg");
+  background: url(../images/home/purple-noisy-gradients.jpg);
+  background-size: cover;
+  top: -10%;
+  right: 75%;
+  animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite, colorCycle 10s infinite linear;
+}
+.home .blobs-box .blob-6 {
+  height: 550px;
+  width: 550px;
+  background: url(../images/home/pink-noisy-gradients.jpg);
+  top: 50%;
+  right: -10%;
+  animation: blob 5s ease-in-out infinite, float 240s ease-in-out infinite, colorCycle 10s infinite linear;
+}
+.home .blobs-box .blob-7 {
+  height: 4rem;
+  width: 4rem;
+  background: #774898;
+  top: 60%;
+  right: 80%;
+  animation: blob 10s ease-in-out infinite, float 100s ease-in-out infinite;
+}
+.home .blobs-box .blob-8 {
+  height: 6rem;
+  width: 6rem;
+  background: #774898;
+  top: -2%;
+  right: 40%;
+  animation: blob 8s ease-in-out infinite, float 70s ease-in-out infinite;
+}
+.home .blobs-box .blob-9 {
+  height: 6rem;
+  width: 6rem;
+  background: #de4383;
+  top: 35%;
+  right: 68%;
+  animation: blob 5s ease-in-out infinite, float 120s ease-in-out infinite;
+}
+.home .blobs-box .blob-10 {
+  height: 2rem;
+  width: 2rem;
+  background: #de4383;
+  top: 10%;
+  right: 65%;
+  animation: blob 10s ease-in-out infinite, float 250s ease-in-out infinite;
+}
+.home .blobs-box .blob-11 {
+  height: 2rem;
+  width: 2rem;
+  background: #f3ae4b;
+  top: 40%;
+  right: 5%;
+  animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite;
+}
+.home .blobs-box .blob-12 {
+  height: 3rem;
+  width: 3rem;
+  background: #f3ae4b;
+  top: 20%;
+  right: 45%;
+  animation: blob 5s ease-in-out infinite, float 240s ease-in-out infinite;
+}
+.home .blobs-box .blob-13 {
+  height: 4rem;
+  width: 4rem;
+  background: #774898;
+  top: 0%;
+  right: 0%;
+  animation: blob 10s ease-in-out infinite, float 100s ease-in-out infinite;
+}
+.home .blobs-box .blob-14 {
+  height: 6rem;
+  width: 6rem;
+  background: #de4383;
+  top: 80%;
+  right: 45%;
+  animation: blob 5s ease-in-out infinite, float 120s ease-in-out infinite;
+}
+@keyframes colorCycle {
+  0% {
+    filter: hue-rotate(0deg) brightness(100%);
+  }
+  25% {
+    filter: hue-rotate(30deg) brightness(110%);
+  }
+  50% {
+    filter: hue-rotate(60deg) brightness(120%);
+  }
+  75% {
+    filter: hue-rotate(30deg) brightness(110%);
+  }
+  100% {
+    filter: hue-rotate(0deg) brightness(100%);
+  }
+}
+@keyframes blob {
+  0% {
+    border-radius: 65% 60% 35% 50%/65% 38% 75% 36%;
+  }
+  25% {
+    border-radius: 89% 54% 62% 42%/83% 45% 75% 63%;
+  }
+  50% {
+    border-radius: 65% 60% 35% 50%/65% 38% 75% 36%;
+  }
+  25% {
+    border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+  }
+  50% {
+    border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+  }
+  75% {
+    border-radius: 89% 54% 62% 42%/83% 45% 75% 63%;
+  }
+  100% {
+    border-radius: 65% 60% 35% 50%/65% 38% 75% 36%;
+  }
+}
+@keyframes float {
+  0% {
+    transform: rotate(0deg) translateX(0%) translateY(0%);
+  }
+  25% {
+    transform: rotate(10deg) translateX(15%) translateY(-10%);
+  }
+  50% {
+    transform: rotate(0deg) translateX(-15%) translateY(10%);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0%) translateY(0%);
+  }
 }
 
 /* 心理測驗 */
@@ -983,25 +1178,6 @@ a {
 .shop-menu .links-group ul li {
   margin: 20px 0;
 }
-.shop-menu .links-group ul li a {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  color: #FFFFFF;
-  font-family: "Zen Maru Gothic", serif;
-  font-weight: 500;
-  font-size: 1.125rem;
-  letter-spacing: 0.18rem;
-  line-height: 1.5;
-}
-.shop-menu .links-group ul li a:hover {
-  color: #ECFF5F;
-}
-.shop-menu .links-group ul li a img {
-  width: 24px;
-  height: 24px;
-}
 .shop-menu .links-group ul li button {
   display: inline-flex;
   flex-direction: row;
@@ -1013,6 +1189,7 @@ a {
   margin: 0;
   border: none;
   cursor: pointer;
+  text-align: center;
   font-family: "Zen Maru Gothic", serif;
   font-weight: 500;
   font-size: 1.125rem;
@@ -1025,6 +1202,16 @@ a {
 .shop-menu .links-group ul li button img {
   width: 24px;
   height: 24px;
+}
+.shop-menu .links-group ul li button span {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05rem;
+  color: #84D0FF;
 }
 .shop-menu .ad-side {
   width: 100%;
@@ -1050,12 +1237,14 @@ a {
 
 /* 彈窗內容*/
 .popup-content {
+  position: relative;
   background: #2A5070;
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   width: 60%;
   max-width: 600px;
+  border: 2px #FFFFFF solid;
 }
 .popup-content h2 {
   font-family: "Zen Maru Gothic", serif;
@@ -1078,15 +1267,23 @@ a {
 /* 關閉按鈕 */
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
+  top: -10px;
+  right: -10px;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  padding: 10px;
   cursor: pointer;
-  color: #ECFF5F;
+  color: #FFFFFF;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #FDDA75;
+  border: #FFFFFF 2px solid;
 }
 
 .close-btn:hover {
-  color: #000;
+  color: #2A2A2A;
 }
 
 /* 商店主頁 */
@@ -1351,6 +1548,10 @@ a {
   letter-spacing: 0.05rem;
   color: #FDDA75;
 }
+#product-page .product-container .product-info .book-area .poduct-title {
+  display: inline-flex;
+  align-items: center;
+}
 #product-page .product-container .product-info .book-area .price-area {
   display: inline-flex;
   align-items: baseline;
@@ -1460,12 +1661,13 @@ a {
 }
 #product-page .product-container .product-info .book-area .checkout .total p {
   margin: 0;
+  padding: 0;
   line-height: 1;
 }
 #product-page .product-container .product-info .book-area .checkout button {
   border: #FFFFFF 3px solid;
-  border-radius: 20px;
-  background-color: #ECFF5F;
+  border-radius: 10px;
+  background-color: #FDDA75;
   font-family: "Zen Maru Gothic", serif;
   font-weight: 700;
   font-size: 1.25rem;
@@ -1651,7 +1853,6 @@ a {
   border: none;
   border-radius: 5px 5px 0 0;
   padding: 0 16px;
-  margin-right: 16px;
   font-family: "Noto Sans TC", serif;
   font-weight: 300;
   font-size: 1rem;
@@ -1883,4 +2084,294 @@ a {
   font-size: 0.875rem;
   letter-spacing: 0rem;
   color: #2A2A2A;
+}
+
+/* 購物車 */
+/* 購物車彈窗樣式 */
+.cart-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 1;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+.cart-popup .cart-content {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  padding: 20px;
+  width: 40%;
+  max-width: 400px;
+  background-color: #FDDA75;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+}
+.cart-popup .cart-content .cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.cart-popup .cart-content .cart-header h2 {
+  margin: 0;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  color: #FFFFFF;
+  background: #2A5070;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.cart-popup .cart-content .close-btn {
+  background: none;
+  border: none;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  padding: 20px;
+  margin: 20px;
+}
+.cart-popup .cart-content .cart-items {
+  overflow-y: auto;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+.cart-popup .cart-content .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 15px;
+  border-bottom: 2px solid #eee;
+}
+.cart-popup .cart-content .item-info {
+  flex-grow: 1;
+}
+.cart-popup .cart-content .item-info h3 {
+  margin: 0 0 10px 0;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+  color: #2A5070;
+}
+.cart-popup .cart-content .item-info p {
+  margin: 5px 0;
+  color: #736262;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+.cart-popup .cart-content .remove-btn {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+  cursor: pointer;
+  padding: 5px;
+  color: #2A5070;
+  line-height: 1;
+}
+.cart-popup .cart-content .cart-footer {
+  border-top: 2px solid #eee;
+  padding-top: 20px;
+}
+.cart-popup .cart-content .cart-total {
+  margin-bottom: 15px;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+.cart-popup .cart-content .cart-total p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+.cart-popup .cart-content .checkout-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #2A5070;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.5;
+}
+.cart-popup .cart-content .checkout-btn:hover {
+  background-color: #00C7BE;
+  color: #2A5070;
+}
+.cart-popup .cart-content .empty-cart {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+
+/* 顯示購物車 */
+.cart-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+.cart-popup.show .cart-content {
+  left: 0;
+}
+
+/* 商品頁購物車按鈕*/
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+.add-to-cart-btn img {
+  width: 32px;
+  height: 32px;
+  transition: 0.2s ease-out;
+}
+.add-to-cart-btn:hover {
+  filter: brightness(3);
+  transform: scale(1.1);
+}
+.add-to-cart-btn:active {
+  transform: translateY(2);
+}
+
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+}
+/* 歷史紀錄 */
+.history-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.history-popup .history-content {
+  position: relative;
+  background-color: #FDDA75;
+  height: 10vh;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 100vh;
+}
+.history-popup .history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.history-popup .history-header h2 {
+  margin: 0;
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  color: #FFFFFF;
+  background: #2A5070;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.history-popup .history-records {
+  overflow-y: auto;
+  border-top: 2px solid #FFFFFF;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+.history-popup .search-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.history-popup .search-section button {
+  border: none;
+  height: 24px;
+  background-color: #2A5070;
+  width: 50px;
+  padding-inline: 0;
+  color: #FFFFFF;
+  line-height: 1rem;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0rem;
+  border-radius: 5px;
+}
+.history-popup #searchPhoneNumber {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  padding: 0 16px;
+  color: #736262;
+  border: none;
+  border-radius: 5px;
+}
+.history-popup #searchPhoneNumber::placeholder {
+  color: #B3B3B3;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+.history-popup #searchPhoneNumber:focus {
+  border: #FEBD59 1.5px solid;
+  outline: none;
+}
+.history-popup .close-btn {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  padding: 20px;
+  margin: 20px;
+  background: none;
+  border: none;
 }/*# sourceMappingURL=style.css.map */

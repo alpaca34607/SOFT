@@ -308,6 +308,18 @@ a {
 }
 
 
+/* 回到頂部按鈕 */
+#gotop {
+    display: none;
+    position: fixed;
+    right: 15%;
+    bottom:5%;
+    z-index: $z-index-l;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
 
 /* 首頁 */
@@ -318,11 +330,12 @@ a {
     z-index: 0;
 
     .home_banner {
+        position: relative;
         display: flex;
-
         width: 100%;
         height: 100vh;
         background: $bg-1;
+        z-index: 1;
 
         .home-middle {
             margin: 0;
@@ -460,12 +473,6 @@ a {
                 .indicators li:hover {
                     background-color: #2b2b2b
                 }
-
-                /**
-* ==========================
-* Arrows 
-*
-*/
                 .arrow {
                     width: 20px;
                     height: 20px;
@@ -573,6 +580,222 @@ a {
         }
 
     }
+    .blobs-box {
+        position:absolute;
+        top: 0;
+        left: 0;
+        margin: auto;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background:transparent;
+        z-index:-1;
+        overflow: hidden;
+
+        .blob {
+            position: absolute;
+            z-index: 100;
+           
+        }
+
+        .blob-1 {
+            height: 10rem;
+            width: 10rem;
+            background: #774898;
+            top: calc(50% - 5rem);
+            right: calc(50% - 5rem);
+            animation: blob 10s ease-in-out infinite, float 175s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            height: 8rem;
+            width: 8rem;
+            background: #de4383;
+            top: 10%;
+            right: 10%;
+            border-radius: 65% 60% 35% 50% / 65% 38% 75% 36%;
+            animation: blob 8s ease-in-out infinite, float 125s ease-in-out infinite;
+        }
+
+        .blob-3 {
+            height: 6rem;
+            width: 6rem;
+            background: #f3ae4b;
+            top: 80%;
+            right: 70%;
+            animation: blob 5s ease-in-out infinite, float 95s ease-in-out infinite;
+        }
+
+        .blob-4 {
+            height: 10rem;
+            width: 10rem;
+            background: #de4383;
+            top: 80%;
+            right: 5%;
+            animation: blob 10s ease-in-out infinite, float 250s ease-in-out infinite;
+        }
+
+        .blob-5 {
+            height: 600px;
+            width:650px;
+            transform: rotateX('60deg');
+            background:url(../images/home/purple-noisy-gradients.jpg);
+            background-size: cover;
+            top: -10%;
+            right: 75%;
+            animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite , colorCycle 10s infinite linear;
+        }
+
+        .blob-6 {
+            height:550px;
+            width: 550px;
+            background:url(../images/home/pink-noisy-gradients.jpg);
+            top: 50%;
+            right: -10%;
+            animation: blob 5s ease-in-out infinite, float 240s ease-in-out infinite, colorCycle 10s infinite linear;
+        }
+
+        .blob-7 {
+            height: 4rem;
+            width: 4rem;
+            background: #774898;
+            top: 60%;
+            right: 80%;
+            animation: blob 10s ease-in-out infinite, float 100s ease-in-out infinite;
+        }
+
+        .blob-8 {
+            height: 6rem;
+            width: 6rem;
+            background: #774898;
+            top: -2%;
+            right: 40%;
+            animation: blob 8s ease-in-out infinite, float 70s ease-in-out infinite;
+        }
+
+        .blob-9 {
+            height: 6rem;
+            width: 6rem;
+            background: #de4383;
+            top: 35%;
+            right: 68%;
+            animation: blob 5s ease-in-out infinite, float 120s ease-in-out infinite;
+        }
+
+        .blob-10 {
+            height: 2rem;
+            width: 2rem;
+            background: #de4383;
+            top: 10%;
+            right: 65%;
+            animation: blob 10s ease-in-out infinite, float 250s ease-in-out infinite;
+        }
+
+        .blob-11 {
+            height: 2rem;
+            width: 2rem;
+            background: #f3ae4b;
+            top: 40%;
+            right: 5%;
+            animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite;
+        }
+
+        .blob-12 {
+            height: 3rem;
+            width: 3rem;
+            background: #f3ae4b;
+            top: 20%;
+            right: 45%;
+            animation: blob 5s ease-in-out infinite, float 240s ease-in-out infinite;
+        }
+
+        .blob-13 {
+            height: 4rem;
+            width: 4rem;
+            background: #774898;
+            top: 0%;
+            right: 0%;
+            animation: blob 10s ease-in-out infinite, float 100s ease-in-out infinite;
+        }
+
+        .blob-14 {
+            height: 6rem;
+            width: 6rem;
+            background: #de4383;
+            top: 80%;
+            right: 45%;
+            animation: blob 5s ease-in-out infinite, float 120s ease-in-out infinite;
+        }
+
+
+        @keyframes colorCycle {
+            0% {
+                filter: hue-rotate(0deg) brightness(100%);
+            }
+            25% {
+                filter: hue-rotate(30deg) brightness(110%);
+            }
+            50% {
+                filter: hue-rotate(60deg) brightness(120%);
+            }
+            75% {
+                filter: hue-rotate(30deg) brightness(110%);
+            }
+            100% {
+                filter: hue-rotate(0deg) brightness(100%);
+            }
+        }
+        @keyframes blob {
+            0% {
+                border-radius: 65% 60% 35% 50% / 65% 38% 75% 36%;
+            }
+
+            25% {
+                border-radius: 89% 54% 62% 42% / 83% 45% 75% 63%;
+            }
+
+            50% {
+                border-radius: 65% 60% 35% 50% / 65% 38% 75% 36%;
+            }
+
+            25% {
+                border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
+            }
+
+            50% {
+                border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
+            }
+
+            75% {
+                border-radius: 89% 54% 62% 42% / 83% 45% 75% 63%;
+            }
+
+            100% {
+                border-radius: 65% 60% 35% 50% / 65% 38% 75% 36%;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: rotate(0deg) translateX(0%) translateY(0%);
+            }
+
+            25% {
+                transform: rotate(10deg) translateX(15%) translateY(-10%);
+            }
+
+            50% {
+                transform: rotate(0deg) translateX(-15%) translateY(10%);
+            }
+
+            100% {
+                transform: rotate(0deg) translateX(0%) translateY(0%);
+            }
+        }
+    }
+
+
+
 }
 
 
@@ -954,24 +1177,6 @@ a {
             li {
                 margin: 20px 0;
 
-                a {
-                    display: inline-flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 8px;
-                    color: $light;
-                    @include font-style($font-medium-18);
-
-                    &:hover {
-                        color: $primary-lemon;
-                    }
-
-                    img {
-                        width: 24px;
-                        height: 24px;
-                    }
-                }
-
                 button {
                     display: inline-flex;
                     flex-direction: row;
@@ -983,18 +1188,30 @@ a {
                     margin: 0;
                     border: none;
                     cursor: pointer;
+                    text-align: center;
+                    @include font-style($font-medium-18);
 
                     &:hover {
                         color: $primary-lemon;
                     }
 
-
-                    @include font-style($font-medium-18);
-
                     img {
                         width: 24px;
                         height: 24px;
                     }
+                        span{
+                            display: flex;
+                            text-align: center;
+                            justify-content: center;
+                            @include font-style($font-medium-14);
+                            color:$primary-babyblue;
+                            // background-color: $primary-orange;
+                            // border-radius: 50%;
+                            // height: 20px;
+                            // width: 20px;
+                            // line-height: 18px;
+                        }
+                    
 
                 }
             }
@@ -1028,18 +1245,20 @@ a {
 
 /* 彈窗內容*/
 .popup-content {
+    position: relative;
     background: $primary-darkblue;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     width: 60%;
     max-width: 600px;
+    border: 2px $light solid;
 
     h2 {
         @include font-style($font-black-24);
         text-align: center;
-        color:$primary-lemon;
-        margin-bottom:20px;
+        color: $primary-lemon;
+        margin-bottom: 20px;
     }
 
     p {
@@ -1052,15 +1271,24 @@ a {
 /* 關閉按鈕 */
 .close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    height: 30px;
+    width: 30px;
+    padding: 10px;
     cursor: pointer;
-    color: $primary-lemon;
+    color: $light;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: $primary-yellow;
+    border: $light 2px solid;
+
 }
 
 .close-btn:hover {
-    color: #000;
+    color: $deep;
 }
 
 /* 商店主頁 */
@@ -1360,6 +1588,11 @@ a {
                     color: $primary-yellow;
                 }
 
+                .poduct-title {
+                    display: inline-flex;
+                    align-items: center;
+                }
+
                 .price-area {
 
                     display: inline-flex;
@@ -1473,14 +1706,15 @@ a {
                     .total {
                         p {
                             margin: 0;
+                            padding: 0;
                             line-height: 1;
                         }
                     }
 
                     button {
                         border: $light 3px solid;
-                        border-radius: 20px;
-                        background-color: $primary-lemon;
+                        border-radius: 10px;
+                        background-color: $primary-yellow;
                         @include font-style($font-medium-20);
                         color: $primary-darkblue;
                         padding: 0 25px;
@@ -1491,8 +1725,6 @@ a {
                             color: $primary-brown;
                             background: url(../images/shop/yellow-noisy-gradients.jpg);
                             transform: scale(1.1);
-
-
                         }
                     }
                 }
@@ -1704,7 +1936,7 @@ a {
                 border: none;
                 border-radius: 5px 5px 0 0;
                 padding: 0 16px;
-                margin-right: 16px;
+
                 @include font-style($font-regular-16-TC);
 
                 &:focus {
@@ -1954,6 +2186,294 @@ a {
             @include font-style($font-regular-14-TC);
             color: $deep;
         }
+    }
+
+}
+
+
+/* 購物車 */
+/* 購物車彈窗樣式 */
+.cart-popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 1;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+
+    .cart-content {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        top: 0;
+        left: -100%;
+        height: 100%;
+        padding: 20px;
+        width: 40%;
+        max-width: 400px;
+        background-color: $primary-yellow;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: left 0.3s ease-in-out;
+        overflow-y: auto;
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-header h2 {
+            margin: 0;
+            @include font-style($font-medium-18);
+            color: $light;
+            background: $primary-darkblue;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            @include font-style($font-black-24);
+            cursor: pointer;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .cart-items {
+            overflow-y: auto;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            padding: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .item-info {
+            flex-grow: 1;
+        }
+
+        .item-info h3 {
+            margin: 0 0 10px 0;
+            @include font-style($font-bold-18-TC);
+            color: $primary-darkblue;
+        }
+
+        .item-info p {
+            margin: 5px 0;
+            color: $primary-brown;
+            @include font-style($font-medium-16-TC);
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: $light;
+            @include font-style($font-bold-18-TC);
+            cursor: pointer;
+            padding: 5px;
+            color: $primary-darkblue;
+            line-height: 1;
+        }
+
+        .cart-footer {
+            border-top: 2px solid #eee;
+            padding-top: 20px;
+        }
+
+        .cart-total {
+            margin-bottom: 15px;
+            @include font-style($font-medium-16-TC);
+        }
+
+        .cart-total p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: $primary-darkblue;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            @include font-style($font-bold-18-TC);
+
+        }
+
+        .checkout-btn:hover {
+            background-color: $primary-mint;
+            color: $primary-darkblue;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+            @include font-style($font-medium-16-TC);
+        }
+
+    }
+
+}
+
+
+
+/* 顯示購物車 */
+.cart-popup.show {
+    opacity: 1;
+    visibility: visible;
+
+    .cart-content {
+        left: 0;
+    }
+}
+
+
+/* 商品頁購物車按鈕*/
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    background: none;
+
+    img {
+        width: 32px;
+        height: 32px;
+        transition: 0.2s ease-out;
+
+    }
+
+    &:hover {
+        filter: brightness(3);
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: translateY(2);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+/* 歷史紀錄 */
+.history-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .history-content {
+        position: relative;
+        background-color: $primary-yellow;
+        height: 10vh;
+        max-width: 400px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        height: 100vh;
+    }
+
+    .history-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h2 {
+            margin: 0;
+            @include font-style($font-medium-18);
+            color: $light;
+            background: $primary-darkblue;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    }
+
+    .history-records {
+        overflow-y: auto;
+        border-top: 2px solid $light;
+        margin-top: 20px;
+        padding-top: 10px;
+    }
+
+    .search-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        button {
+            border: none;
+            height: 24px;
+            background-color: $primary-darkblue;
+            width: 50px;
+            padding-inline: 0;
+            color: $light;
+            line-height: 1rem;
+            @include font-style($font-regular-14-TC);
+            border-radius: 5px;
+        }
+    }
+
+    #searchPhoneNumber {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        @include font-style($font-medium-16-TC);
+        padding: 0 16px;
+        color: $primary-brown;
+        border: none;
+        border-radius: 5px;
+
+        &::placeholder {
+            color: $grey;
+            @include font-style($font-regular-16-TC);
+
+        }
+
+        &:focus {
+            border: $primary-orange 1.5px solid;
+            outline: none;
+        }
+    }
+
+    .close-btn {
+        @include font-style($font-black-24);
+        cursor: pointer;
+        padding: 20px;
+        margin: 20px;
+        background: none;
+        border: none;
     }
 
 }
