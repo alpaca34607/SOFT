@@ -94,9 +94,10 @@ a {
                 width: 40px;
                 height: 40px;
             }
-        }
 
-     
+            
+        }
+    
         .shop-icon {
             margin-right: 16px;
 
@@ -105,6 +106,15 @@ a {
                 height: 36px;
             }
 
+        }
+        .ig-icon, .shop-icon{
+            &:hover{
+                filter: brightness(0) saturate(100%) invert(88%) sepia(79%) saturate(5081%) hue-rotate(312deg) brightness(100%) contrast(100%);
+            }
+
+            &:active{
+                transform: translateY(2px);
+            }
         }
 
         .hamburger {
@@ -430,7 +440,7 @@ a {
 
 .ig-icon, .shop-icon{
     &:hover{
-       filter: brightness(0) saturate(100%) invert(50%) sepia(8%) saturate(2015%) hue-rotate(165deg) brightness(95%) contrast(86%);
+        filter: brightness(0) saturate(100%) invert(67%) sepia(90%) saturate(3316%) hue-rotate(136deg) brightness(97%) contrast(101%);
     }
 }
 

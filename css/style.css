@@ -271,6 +271,12 @@ a {
   width: 36px;
   height: 36px;
 }
+#topbar .navbar .ig-icon:hover, #topbar .navbar .shop-icon:hover {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(79%) saturate(5081%) hue-rotate(312deg) brightness(100%) contrast(100%);
+}
+#topbar .navbar .ig-icon:active, #topbar .navbar .shop-icon:active {
+  transform: translateY(2px);
+}
 #topbar .navbar .hamburger {
   background-color: transparent;
   border: none;
@@ -531,7 +537,7 @@ a {
   background: #2128bd;
 }
 .home .ig-icon:hover, .home .shop-icon:hover {
-  filter: brightness(0) saturate(100%) invert(50%) sepia(8%) saturate(2015%) hue-rotate(165deg) brightness(95%) contrast(86%);
+  filter: brightness(0) saturate(100%) invert(67%) sepia(90%) saturate(3316%) hue-rotate(136deg) brightness(97%) contrast(101%);
 }
 .home .hamburger {
   background-color: transparent;
