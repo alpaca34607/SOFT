@@ -506,11 +506,12 @@ a {
 }
 #home .cursor {
   position: fixed;
-  background: rgba(33, 41, 189, 0.368627451);
-  width: 20px;
-  height: 20px;
+  background: url(../images/home/Doritosoft.png);
+  background-position: center;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
   margin: -10px 0 0 -10px;
-  border-radius: 50%;
   will-change: transform;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -518,17 +519,6 @@ a {
   user-select: none;
   pointer-events: none;
   z-index: 10000;
-}
-@media (min-width: 419px) {
-  #home h1 {
-    font-size: 100px;
-    font-size: calc(9.89119683vw + 58.5558852621px);
-  }
-}
-@media (min-width: 1430px) {
-  #home h1 {
-    font-size: 200px;
-  }
 }
 #home ::-moz-selection {
   color: #fff;
