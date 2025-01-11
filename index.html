@@ -16,8 +16,10 @@
 <body>
 
 
-
   <main id="home">
+    
+
+    <div class="cursor"></div>
     <header id="topbar">
       <!-- logo區 -->
       <h1 class="logo">
@@ -77,12 +79,6 @@
         </nav>
       </div>
     </header>
-    <div class="cursor"></div>
-    <div class="shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-    </div>
     <section id="home-banner">
       <div class="whats-new">
         <div class="slideText-heading">
@@ -139,20 +135,30 @@
 
 
     </section>
+    
     <section id="about-soft-intro">
+   
+      <div class="shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+      <div class="keyart-container"> 
       <div class="keyart" id="parallax">
-        <div class="keyart_layer parallax" id="keyart-0" data-speed="2"></div>		<!-- 00.0 -->
-        <div class="keyart_layer parallax" id="keyart-1" data-speed="5"></div>	<!-- 12.5 -->
-        <div class="keyart_layer parallax" id="keyart-2" data-speed="11"></div>		<!-- 25.0 -->
-        <div class="keyart_layer parallax" id="keyart-3" data-speed="16"></div>	<!-- 37.5 -->
-        <div class="keyart_layer parallax" id="keyart-4" data-speed="26"></div>		<!-- 50.0 -->
-        <div class="keyart_layer parallax" id="keyart-5" data-speed="36"></div>	<!-- 62.5 -->
-        <div class="keyart_layer parallax" id="keyart-6" data-speed="49"></div>		<!-- 75.0 -->
+        <div class="keyart_layer parallax" id="keyart-0" data-speed="10"></div>
+        <div class="keyart_layer parallax" id="keyart-1" data-speed="60"></div>
+        <div class="keyart_layer parallax" id="keyart-2" data-speed="20"></div>
+        <div class="keyart_layer parallax" id="keyart-3" data-speed="25"></div>
+        <div class="keyart_layer parallax" id="keyart-4" data-speed="20"></div>
+        <div class="keyart_layer parallax" id="keyart-5" data-speed="15"></div>
+        <div class="keyart_layer parallax" id="keyart-6" data-speed="11"></div>
         <div class="keyart_layer" id="keyart-scrim"></div>
-        <div class="keyart_layer parallax" id="keyart-7" data-speed="69"></div>		<!-- 87.5 -->
-        <div class="keyart_layer" id="keyart-8" data-speed="100"></div>		<!-- 100. -->
+        <div class="keyart_layer parallax" id="keyart-7" data-speed="10"></div>		<!-- 87.5 -->
+        <!-- <div class="keyart_layer parallax" id="keyart-8" data-speed="69"></div>		 -->
+      </div>
       </div>
     </section>
+    <section id="learning-soft-intro"></section>
 
 
   </main>
@@ -161,6 +167,7 @@
   <script src="./js/jquery.textslider.min.js"></script>
   <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js'></script>
   <script src="./js/spotlight-cursor.js"></script>
+  <script src="./js/castParallex.js"></script>
   <script src="./js/script.js"></script>
 
   <script>

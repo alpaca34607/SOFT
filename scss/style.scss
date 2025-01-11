@@ -95,9 +95,9 @@ a {
                 height: 40px;
             }
 
-            
+
         }
-    
+
         .shop-icon {
             margin-right: 16px;
 
@@ -107,12 +107,14 @@ a {
             }
 
         }
-        .ig-icon, .shop-icon{
-            &:hover{
+
+        .ig-icon,
+        .shop-icon {
+            &:hover {
                 filter: brightness(0) saturate(100%) invert(88%) sepia(79%) saturate(5081%) hue-rotate(312deg) brightness(100%) contrast(100%);
             }
 
-            &:active{
+            &:active {
                 transform: translateY(2px);
             }
         }
@@ -342,8 +344,6 @@ a {
     width: 100%;
     z-index: 0;
     cursor: none;
-
-
     .shapes {
         /* 這裡設置background的話會影響到背景 */
         position: absolute;
@@ -399,7 +399,7 @@ a {
 
     .cursor {
         position: fixed;
-        background: #2128bd;
+        background: #2129bd5e;
         width: 20px;
         height: 20px;
         margin: -10px 0 0 -10px;
@@ -438,11 +438,12 @@ a {
         background: #2128bd;
     }
 
-.ig-icon, .shop-icon{
-    &:hover{
-        filter: brightness(0) saturate(100%) invert(67%) sepia(90%) saturate(3316%) hue-rotate(136deg) brightness(97%) contrast(101%);
+    .ig-icon,
+    .shop-icon {
+        &:hover {
+            filter: brightness(0) saturate(100%) invert(67%) sepia(90%) saturate(3316%) hue-rotate(136deg) brightness(97%) contrast(101%);
+        }
     }
-}
 
     .hamburger {
 
@@ -456,6 +457,7 @@ a {
             }
         }
     }
+
     #home-banner {
         position: relative;
         display: flex;
@@ -929,6 +931,150 @@ a {
         }
     }
 
+    #about-soft-intro {
+        position: relative;
+        .keyart-container {
+            height: 1300px; /* 這個高度決定了視差效果的總範圍 */
+            position: relative;
+            overflow: hidden;
+        }
+        /* PARALLAX */
+        .keyart,
+        .keyart_layer {
+            height: 1300px;
+        }
+
+        #parallax {
+            display: block;
+        }
+        .keyart {
+            position: relative;
+            z-index: 10;
+            height: 100%;  /* 使用百分比高度 */
+        }
+
+        .keyart_layer {
+            background-position: bottom center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            position:absolute;
+            height: 100%;
+        }
+
+        .keyart_layer.parallax {
+            position: absolute;
+        }
+
+        #keyart-0 {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #FFEABF, #F5ECAE);
+            transform: translateY(0);
+            bottom: 0;
+        
+        }
+
+        #keyart-1 {
+            background-image: url(../images/home/kite.png);
+            transform: translateY(100px);
+    bottom: 0;
+        }
+
+        #keyart-2 {
+            background-image: url(../images/home/mountain.png);
+            transform: translateY(200px);
+            bottom: 0;
+        }
+
+        #keyart-3 {
+            background-image: url(../images/home/japanese-text.png);
+            transform: translateY(300px);
+            bottom: 0;
+        }
+
+        #keyart-4 {
+            background-image: url(../images/home/softzilla-building.png);
+            transform: translateY(50px);
+    bottom: 0;
+
+        }
+
+        #keyart-5 {
+            background-image: url(../images/home/aboutsoft-intro-blob.png);
+            transform: translateY(500px);
+            bottom: 0;
+        }
+
+        #keyart-6 {
+            background-image: url(../images/home/buildings.png);
+            transform: translateY(600px);
+            bottom: 0;
+        }
+
+        #keyart-7 {
+            background-image: url(../images/home/grasses.png);
+            position: absolute; 
+            bottom: 0;         
+            transform: translateY(50px);
+    z-index: 100;
+        
+        }
+
+        #keyart-scrim {
+            background: linear-gradient(to bottom right, #FFEABF, #F5ECAE);
+            opacity: 0;
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 1.5),
+        (min-resolution: 144dpi) {
+            #keyart-0 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax0@2x.png");
+                background-color: #ffaf1b;
+            }
+
+            #keyart-1 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax1@2x.png");
+            }
+
+            #keyart-2 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax2@2x.png");
+            }
+
+            #keyart-3 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax3@2x.png");
+            }
+
+            #keyart-4 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax4@2x.png");
+            }
+
+            #keyart-5 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax5@2x.png");
+            }
+
+            #keyart-6 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax6@2x.png");
+            }
+
+            #keyart-7 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax7@2x.png");
+            }
+
+            #keyart-8 {
+                background-image: url("http://www.firewatchgame.com/images/parallax/parallax8@2x.png");
+            }
+        }
+    }
+
+    #learning-soft-intro {
+        position: relative;
+        z-index: 101; /* 確保在視差層上方 */
+        margin-top: 0px; /* 防止可能的縫隙 */
+        background:$bg-1; /* 確保背景色與 keyart-0 銜接 */
+        width: 100%;
+        height: 100vh;
+    }
 
 
 }
@@ -2616,6 +2762,7 @@ a {
     }
 
 }
+
 .history-popup.show {
     opacity: 1;
     pointer-events: auto;

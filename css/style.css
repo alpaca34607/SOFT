@@ -271,10 +271,12 @@ a {
   width: 36px;
   height: 36px;
 }
-#topbar .navbar .ig-icon:hover, #topbar .navbar .shop-icon:hover {
+#topbar .navbar .ig-icon:hover,
+#topbar .navbar .shop-icon:hover {
   filter: brightness(0) saturate(100%) invert(88%) sepia(79%) saturate(5081%) hue-rotate(312deg) brightness(100%) contrast(100%);
 }
-#topbar .navbar .ig-icon:active, #topbar .navbar .shop-icon:active {
+#topbar .navbar .ig-icon:active,
+#topbar .navbar .shop-icon:active {
   transform: translateY(2px);
 }
 #topbar .navbar .hamburger {
@@ -504,7 +506,7 @@ a {
 }
 #home .cursor {
   position: fixed;
-  background: #2128bd;
+  background: rgba(33, 41, 189, 0.368627451);
   width: 20px;
   height: 20px;
   margin: -10px 0 0 -10px;
@@ -536,7 +538,8 @@ a {
   color: #fff;
   background: #2128bd;
 }
-#home .ig-icon:hover, #home .shop-icon:hover {
+#home .ig-icon:hover,
+#home .shop-icon:hover {
   filter: brightness(0) saturate(100%) invert(67%) sepia(90%) saturate(3316%) hue-rotate(136deg) brightness(97%) contrast(101%);
 }
 #home .hamburger {
@@ -940,6 +943,124 @@ a {
   100% {
     transform: rotate(0deg) translateX(0%) translateY(0%);
   }
+}
+#home #about-soft-intro {
+  position: relative;
+  /* PARALLAX */
+}
+#home #about-soft-intro .keyart-container {
+  height: 1300px; /* 這個高度決定了視差效果的總範圍 */
+  position: relative;
+  overflow: hidden;
+}
+#home #about-soft-intro .keyart,
+#home #about-soft-intro .keyart_layer {
+  height: 1300px;
+}
+#home #about-soft-intro #parallax {
+  display: block;
+}
+#home #about-soft-intro .keyart {
+  position: relative;
+  z-index: 10;
+  height: 100%; /* 使用百分比高度 */
+}
+#home #about-soft-intro .keyart_layer {
+  background-position: bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+}
+#home #about-soft-intro .keyart_layer.parallax {
+  position: absolute;
+}
+#home #about-soft-intro #keyart-0 {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #FFEABF, #F5ECAE);
+  transform: translateY(0);
+  bottom: 0;
+}
+#home #about-soft-intro #keyart-1 {
+  background-image: url(../images/home/kite.png);
+  transform: translateY(100px);
+  bottom: 0;
+}
+#home #about-soft-intro #keyart-2 {
+  background-image: url(../images/home/mountain.png);
+  transform: translateY(200px);
+  bottom: 0;
+}
+#home #about-soft-intro #keyart-3 {
+  background-image: url(../images/home/japanese-text.png);
+  transform: translateY(300px);
+  bottom: 0;
+}
+#home #about-soft-intro #keyart-4 {
+  background-image: url(../images/home/softzilla-building.png);
+  transform: translateY(50px);
+  bottom: 0;
+}
+#home #about-soft-intro #keyart-5 {
+  background-image: url(../images/home/aboutsoft-intro-blob.png);
+  transform: translateY(500px);
+  bottom: 0;
+}
+#home #about-soft-intro #keyart-6 {
+  background-image: url(../images/home/buildings.png);
+  transform: translateY(600px);
+  bottom: 0;
+}
+#home #about-soft-intro #keyart-7 {
+  background-image: url(../images/home/grasses.png);
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50px);
+  z-index: 100;
+}
+#home #about-soft-intro #keyart-scrim {
+  background: linear-gradient(to bottom right, #FFEABF, #F5ECAE);
+  opacity: 0;
+}
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+  #home #about-soft-intro #keyart-0 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax0@2x.png");
+    background-color: #ffaf1b;
+  }
+  #home #about-soft-intro #keyart-1 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax1@2x.png");
+  }
+  #home #about-soft-intro #keyart-2 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax2@2x.png");
+  }
+  #home #about-soft-intro #keyart-3 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax3@2x.png");
+  }
+  #home #about-soft-intro #keyart-4 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax4@2x.png");
+  }
+  #home #about-soft-intro #keyart-5 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax5@2x.png");
+  }
+  #home #about-soft-intro #keyart-6 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax6@2x.png");
+  }
+  #home #about-soft-intro #keyart-7 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax7@2x.png");
+  }
+  #home #about-soft-intro #keyart-8 {
+    background-image: url("http://www.firewatchgame.com/images/parallax/parallax8@2x.png");
+  }
+}
+#home #learning-soft-intro {
+  position: relative;
+  z-index: 101; /* 確保在視差層上方 */
+  margin-top: 0px; /* 防止可能的縫隙 */
+  background: #84D0FF; /* 確保背景色與 keyart-0 銜接 */
+  width: 100%;
+  height: 100vh;
 }
 
 /* 心理測驗 */
