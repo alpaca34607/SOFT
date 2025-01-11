@@ -949,9 +949,14 @@ a {
   /* PARALLAX */
 }
 #home #about-soft-intro .keyart-container {
-  height: 1300px; /* 這個高度決定了視差效果的總範圍 */
+  height: 1300px;
+  /* 這個高度決定了視差效果的總範圍 */
   position: relative;
   overflow: hidden;
+}
+#home #about-soft-intro .parallax {
+  will-change: transform;
+  backface-visibility: hidden;
 }
 #home #about-soft-intro .keyart,
 #home #about-soft-intro .keyart_layer {
@@ -963,7 +968,8 @@ a {
 #home #about-soft-intro .keyart {
   position: relative;
   z-index: 10;
-  height: 100%; /* 使用百分比高度 */
+  height: 100%;
+  /* 使用百分比高度 */
 }
 #home #about-soft-intro .keyart_layer {
   background-position: bottom center;
@@ -1056,9 +1062,12 @@ a {
 }
 #home #learning-soft-intro {
   position: relative;
-  z-index: 101; /* 確保在視差層上方 */
-  margin-top: 0px; /* 防止可能的縫隙 */
-  background: #84D0FF; /* 確保背景色與 keyart-0 銜接 */
+  z-index: 101;
+  /* 確保在視差層上方 */
+  margin-top: 0px;
+  /* 防止可能的縫隙 */
+  background: #84D0FF;
+  /* 確保背景色與 keyart-0 銜接 */
   width: 100%;
   height: 100vh;
 }
