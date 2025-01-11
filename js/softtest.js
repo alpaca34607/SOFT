@@ -19,7 +19,7 @@ const questionData = [
             B: { text: '等等，我沒有組樂高啊？', score: 2 },
             C: { text: '等等，這不是我房間啊？', score: 3 }
         },
-        background: './images/softtest/bg2.jpg',
+        background: './images/softtest/bg2.png',
 
     },
     {
@@ -30,7 +30,7 @@ const questionData = [
             B: { text: '先撸貓撸爆，樂高就擱著吧有空再收', score: 1 },
             C: { text: '離開這片混亂，先吃早餐填飽肚子', score: 4 }
         },
-        background: './images/softtest/bg3.jpg',
+        background: './images/softtest/bg3.png',
 
     },
     {
@@ -41,7 +41,7 @@ const questionData = [
             B: { text: '到有景色的地方散步走走', score: 2 },
             C: { text: '和朋友會面，開心的談論八卦', score: 1 }
         },
-        background: './images/softtest/bg4.jpg',
+        background: './images/softtest/bg4.png',
 
     },
     {
@@ -52,7 +52,7 @@ const questionData = [
             B: { text: '都出門了，再繼續走到目的地吧', score: 1 },
             C: { text: '還是換個比較涼快的地點吧', score: 4 }
         },
-        background: './images/softtest/bg5.jpg',
+        background: './images/softtest/bg5.png',
 
     },
     {
@@ -63,7 +63,7 @@ const questionData = [
             B: { text: '好像有點可疑，還是拒絕吧', score: 5 },
             C: { text: '先拒絕，吃完晚餐再繞回來看活動', score: 3 }
         },
-        background: './images/softtest/bg6.jpg',
+        background: './images/softtest/bg6.png',
 
     },
     {
@@ -74,7 +74,7 @@ const questionData = [
             B: { text: '都到商圈了，<br>自己找間氣氛不錯的簡餐店用餐吧!', score: 4 },
             C: { text: '約約看朋友要不要一起吃晚餐吧?', score: 1 }
         },
-        background: './images/softtest/bg7.jpg',
+        background: './images/softtest/bg7.png',
 
     }
 ];
