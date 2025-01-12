@@ -1331,12 +1331,26 @@ a {
   display: flex;
   width: 100%;
   background: linear-gradient(#FFEDBA, #FFFEF8);
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
 }
+#home #becoming-Soft-intro .becoming-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 200px 0;
+}
+#home #becoming-Soft-intro .becoming-left img {
+  width: auto;
+}
+#home #becoming-Soft-intro .becoming-right {
+  flex: 1;
+}
 #home #becoming-Soft-intro .test-intro-middle {
   display: inline-flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   padding: 200px 100px 50px 100px;

@@ -1412,18 +1412,35 @@ a {
     #becoming-Soft-intro {
         display: flex;
         width: 100%;
-     
         background: $bg-5;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         overflow: hidden;
 
+        .becoming-left {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 200px 0;
+
+            img {
+                width: auto;
+            }
+        }
+
+        .becoming-right {
+            flex: 1;
+        }
+
+
         .test-intro-middle {
             display: inline-flex;
+            flex: 1;
+
             flex-direction: column;
             align-items: center;
-            padding: 200px 100px 50px 
-            100px;
+            padding: 200px 100px 50px 100px;
 
             .masked-content {
                 display: inline-flex;
@@ -1432,7 +1449,7 @@ a {
                 justify-content: flex-start;
                 width: 600px;
                 height: 72vh;
-                overflow:hidden;
+                overflow: hidden;
                 background: url(../images/home/purple-noisy-gradients.jpg);
                 mask: url(#svg-mask);
                 -webkit-mask: url(#svg-mask);
@@ -1484,22 +1501,25 @@ a {
                     justify-content: center;
                     align-items: center;
                     width: 232px;
-                    height:140px;
+                    height: 140px;
                     margin-top: 16px;
                     -webkit-mask-image: url('../images/home/test-intro-start.png');
                     mask-image: url('../images/home/test-intro-start.png');
                     mask-position: center;
-                    -webkit-mask-size:contain;
+                    -webkit-mask-size: contain;
                     mask-size: 100% 80%;
                     -webkit-mask-repeat: no-repeat;
                     mask-repeat: no-repeat;
                     margin-bottom: 0px;
-                    &:hover{
 
-                        .button_text_container{ 
-                            transform: scale(1.1);}
-                       
+                    &:hover {
+
+                        .button_text_container {
+                            transform: scale(1.1);
+                        }
+
                     }
+
                     .button_su {
                         overflow: hidden;
                         position: relative;
@@ -1522,7 +1542,7 @@ a {
 
                     .test-button {
                         display: inline-flex;
-                        background:url(../images/home/test-intro-start.png);
+                        background: url(../images/home/test-intro-start.png);
                         background-size: 100% 100%;
                         background-repeat: no-repeat;
                         background-position: center;
@@ -1535,15 +1555,15 @@ a {
                         transition: 400ms;
                         text-decoration: none;
                         z-index: 100;
-                   
+
                     }
 
                     .button_text_container {
                         position: relative;
-                        z-index: 101; 
-                        transition: 0.2s ease-out;    
-                     
-                      
+                        z-index: 101;
+                        transition: 0.2s ease-out;
+
+
 
                         i {
 
@@ -1603,7 +1623,7 @@ a {
                             height: 400px;
                             margin-left: -200px;
                             margin-top: -200px;
-                            background-color:  rgba(255, 87, 87, 0.8);
+                            background-color: rgba(255, 87, 87, 0.8);
                         }
 
                         100% {
@@ -1611,7 +1631,7 @@ a {
                             height: 0px;
                             margin-left: 0px;
                             margin-top: 0px;
-                            background-color:rgba(255, 153, 0, 0.2);
+                            background-color: rgba(255, 153, 0, 0.2);
                         }
                     }
                 }
