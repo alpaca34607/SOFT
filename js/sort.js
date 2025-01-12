@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 1, title: '監修中 | 戶外風軟吉拉', link:'./product-SoftzillaOD.html', price: 2500, imgUrl: './images/shop/product-SoftzillaOD-thumb.jpg', status:'status-avalible',statusText:'開放預購中', marker:'尚有餘量' ,markerColor:'markerLight'},
         { id: 2, title: '2023出品 | 軟吉拉公仔',link:'./product-Softzilla.html', price: 1500, imgUrl: './images/shop/product-Softzilla-thumb.jpg', status:'status-avalible',statusText:'開放預購中',marker:'尚有餘量',markerColor:'markerLight' },
         { id: 3, title: '2019出品 | 軟筋臥佛公仔', link:'./product-Soft.html', price: 1200, imgUrl: './images/shop/product-Soft-thumb.jpg',status:'status-soldout',statusText:'已停止販售',marker:'已售完',markerColor:'markerGrey' },
-        { id: 4, title: '2018出品 | 小貓仔黏土偶', link:'./product-Softzilla.html', price: 500, imgUrl: './images/shop/product-Softtwice-thumb.jpg', status:'status-soldout',statusText:'已停止販售', marker:'已售完',markerColor:'markerGrey'},
+        { id: 4, title: '2018出品 | 小貓仔黏土偶', link:'./product-Softtwice.html', price: 500, imgUrl: './images/shop/product-Softtwice-thumb.jpg', status:'status-soldout',statusText:'已停止販售', marker:'已售完',markerColor:'markerGrey'},
     ];
 
     const tbody = document.querySelector('tbody');

@@ -246,15 +246,62 @@ function searchOrderHistory() {
         return;
     }
 
-    historyRecords.innerHTML = orders.map(order => `
-        <div class="history-item">
-            <h3>${order.productInfo.productName}</h3>
-            <p>主色: ${order.productInfo.mainColorName || COLOR_NAMES[order.productInfo.mainColor]}</p>
-            <p>副色: ${order.productInfo.subColorName || COLOR_NAMES[order.productInfo.subColor]}</p>
-            <p>數量: ${order.productInfo.quantity}</p>
-            <p>總金額: NT$ ${order.totalAmount}</p>
-            <p>訂單時間: ${new Date(order.orderDate).toLocaleString()}</p>
-        </div>
-    `).join('');
+    historyRecords.innerHTML = orders.map(order => {
+        try {
+            // 訂單總覽資訊
+            const orderOverview = `
+                <div class="order-header">
+                    <p class="order-date">訂單時間: ${new Date(order.orderDate).toLocaleString()}</p>
+                    <p class="order-total">訂單總額: NT$ ${order.totalAmount}</p>
+                    <p class="order-deposit">訂金總額: NT$ ${order.depositAmount}</p>
+                </div>
+            `;
+
+            // 訂單商品詳情
+            const orderItems = order.items.map(item => `
+                <div class="history-item">
+                    <h3>${item.productName}</h3>
+                    <p>主色: ${item.mainColorName || COLOR_NAMES[item.mainColor]}</p>
+                    <p>副色: ${item.subColorName || COLOR_NAMES[item.subColor]}</p>
+                    <p>數量: ${item.quantity}</p>
+                    <p>單價: NT$ ${item.unitPrice}</p>
+                    <p>單件訂金: NT$ ${item.unitDeposit}</p>
+                </div>
+            `).join('');
+
+            // 訂單客戶資訊
+            const customerInfo = `
+                <div class="customer-info">
+                    <p>訂購人: ${order.customerInfo.name}</p>
+                    <p>取貨方式: ${order.customerInfo.pickupMethod}</p>
+                    <p>付款方式: ${order.customerInfo.paymentMethod}</p>
+                </div>
+            `;
+
+            return `
+                <div class="order-container">
+                    ${orderOverview}
+                    ${orderItems}
+                    ${customerInfo}
+                    <hr>
+                </div>
+            `;
+        } catch (error) {
+            console.error('訂單資料處理錯誤:', error);
+            return '<div class="error-message">訂單資料顯示錯誤</div>';
+        }
+    }).join('');
+
+    // 如果沒有成功顯示任何訂單，顯示錯誤訊息
+    if (!historyRecords.innerHTML) {
+        historyRecords.innerHTML = '<p>無法顯示訂單資料</p>';
+    }
 }
+
+//按下 Enter 鍵也能搜尋的功能
+document.getElementById('searchPhoneNumber')?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        searchOrderHistory();
+    }
+});
 document.addEventListener('DOMContentLoaded', initializeHistoryEvents);

@@ -728,11 +728,11 @@ a {
         }
 
         .blob-2 {
-            height: 8rem;
-            width: 8rem;
-            background: #de4383;
-            top: 10%;
-            right: 10%;
+            height:150px;
+            width: 150px;
+            background: #3d8bff;
+            top: 50%;
+            right: 30%;
             border-radius: 65% 60% 35% 50% / 65% 38% 75% 36%;
             animation: blob 8s ease-in-out infinite, float 125s ease-in-out infinite;
         }
@@ -749,7 +749,7 @@ a {
         .blob-4 {
             height: 10rem;
             width: 10rem;
-            background: #de4383;
+            background: #ffee53;
             top: 80%;
             right: 5%;
             animation: blob 10s ease-in-out infinite, float 250s ease-in-out infinite;
@@ -787,7 +787,7 @@ a {
         .blob-8 {
             height: 6rem;
             width: 6rem;
-            background: #774898;
+            background: #ffffff;
             top: -2%;
             right: 40%;
             animation: blob 8s ease-in-out infinite, float 70s ease-in-out infinite;
@@ -805,7 +805,7 @@ a {
         .blob-10 {
             height: 2rem;
             width: 2rem;
-            background: #de4383;
+            background: #ffffff;
             top: 10%;
             right: 65%;
             animation: blob 10s ease-in-out infinite, float 250s ease-in-out infinite;
@@ -814,7 +814,7 @@ a {
         .blob-11 {
             height: 2rem;
             width: 2rem;
-            background: #f3ae4b;
+            background: #f3f04b;
             top: 40%;
             right: 5%;
             animation: blob 8s ease-in-out infinite, float 250s ease-in-out infinite;
@@ -823,7 +823,7 @@ a {
         .blob-12 {
             height: 3rem;
             width: 3rem;
-            background: #f3ae4b;
+            background: #f3da4b;
             top: 20%;
             right: 45%;
             animation: blob 5s ease-in-out infinite, float 240s ease-in-out infinite;
@@ -832,18 +832,18 @@ a {
         .blob-13 {
             height: 4rem;
             width: 4rem;
-            background: #774898;
+            background: #5ea4ff;
             top: 0%;
             right: 0%;
             animation: blob 10s ease-in-out infinite, float 100s ease-in-out infinite;
         }
 
         .blob-14 {
-            height: 6rem;
-            width: 6rem;
-            background: #de4383;
-            top: 80%;
-            right: 45%;
+            height: 700px;
+            width: 700px;
+            background: url(../images/home/purple2-noisy-gradients.jpg);
+            top: 70%;
+            right: 25%;
             animation: blob 5s ease-in-out infinite, float 120s ease-in-out infinite;
         }
 
@@ -923,7 +923,7 @@ a {
         position: relative;
 
         .keyart-container {
-            height: 1300px;
+            height: 130vh;
             /* 這個高度決定了視差效果的總範圍 */
             position: relative;
             overflow: hidden;
@@ -999,8 +999,10 @@ a {
         }
 
         #keyart-5 {
-            background-image: url(../images/home/aboutsoft-intro-blob.png);
+            background-image: url(../images/home/about-soft-blob.svg);
             transform: translateY(500px);
+            background-size: 1920px 1080px;
+            background-position: 55% 0%;
             bottom: 0;
         }
 
@@ -1027,40 +1029,58 @@ a {
         @media (-webkit-min-device-pixel-ratio: 1.5),
         (min-resolution: 144dpi) {
             #keyart-0 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax0@2x.png");
-                background-color: #ffaf1b;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom right, #FFEABF, #F5ECAE);
+                transform: translateY(0);
+                bottom: 0;
+
             }
 
             #keyart-1 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax1@2x.png");
+                background-image: url(../images/home/kite.png);
+                transform: translateY(100px);
+                bottom: 0;
             }
 
             #keyart-2 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax2@2x.png");
+                background-image: url(../images/home/mountain.png);
+                transform: translateY(200px);
+                bottom: 0;
             }
 
             #keyart-3 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax3@2x.png");
+                background-image: url(../images/home/japanese-text.png);
+                transform: translateY(300px);
+                bottom: 0;
             }
 
             #keyart-4 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax4@2x.png");
+                background-image: url(../images/home/softzilla-building.png);
+                transform: translateY(50px);
+                bottom: 0;
+
             }
 
             #keyart-5 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax5@2x.png");
+                background-image: url(../images/home/aboutsoft-intro-blob.png);
+                transform: translateY(500px);
+                bottom: 0;
             }
 
             #keyart-6 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax6@2x.png");
+                background-image: url(../images/home/buildings.png);
+                transform: translateY(600px);
+                bottom: 0;
             }
 
             #keyart-7 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax7@2x.png");
-            }
+                background-image: url(../images/home/grasses.png);
+                position: absolute;
+                bottom: 0;
+                transform: translateY(50px);
+                z-index: 100;
 
-            #keyart-8 {
-                background-image: url("http://www.firewatchgame.com/images/parallax/parallax8@2x.png");
             }
         }
     }
@@ -1068,13 +1088,285 @@ a {
     #learning-soft-intro {
         position: relative;
         z-index: 101;
-        /* 確保在視差層上方 */
-        margin-top: 0px;
-        /* 防止可能的縫隙 */
+        margin-top: -120px;
         background: $bg-1;
-        /* 確保背景色與 keyart-0 銜接 */
         width: 100%;
         height: 100vh;
+        overflow: hidden;
+
+        .book-wrapper {
+            position: relative;
+            height: 100vh;
+            animation: bookwrapper 3s infinite;
+
+            .left-page {
+                position: absolute;
+                width: auto;
+                z-index: 4;
+                animation: leftpage 3s infinite;
+                pointer-events: none;
+            }
+
+            .left-page2 {
+                position: absolute;
+                width: auto;
+                z-index: 2;
+                animation: leftpage2 3s infinite;
+            }
+
+            .left-page3 {
+                position: absolute;
+                width: auto;
+                z-index: 1;
+                animation: leftpage3 3s infinite;
+            }
+
+            .lying-soft {
+                position: absolute;
+                width: auto;
+                z-index: 3;
+                filter: drop-shadow(2px 4px 3px rgba(68, 64, 57, 0.315));
+                pointer-events: none;
+            }
+
+            .right-page {
+                position: absolute;
+                width: auto;
+                z-index: 2;
+                animation: rightpage 3s infinite;
+
+                .right-page-content {
+                    position: relative;
+                    z-index: 2;
+
+                    a {
+                        position: absolute;
+                        bottom: 160px;
+                        right: 210px;
+                        z-index: 2;
+
+                        img {
+                            width: 128px;
+                        }
+
+                        &:hover {
+                            img {
+                                transform: scale(1.1);
+                                filter: brightness(0) saturate(100%) invert(80%) sepia(56%) saturate(425%) hue-rotate(18deg) brightness(108%) contrast(106%);
+                            }
+                        }
+
+                    }
+
+                    .right-page-content-img {
+                        position: absolute;
+                        z-index: 1;
+                        width: 100%;
+                    }
+
+                }
+            }
+
+            .right-page2 {
+                position: absolute;
+                width: auto;
+                z-index: 1;
+                animation: rightpage2 3s infinite;
+            }
+
+            .book {
+                position: absolute;
+                width: auto;
+                z-index: 0;
+            }
+
+            @keyframes leftpage {
+                0% {
+                    transform: rotateY(0deg);
+                }
+
+                50% {
+                    transform: rotateY(50deg);
+                }
+
+                100% {
+                    transform: rotateY(0deg);
+                }
+            }
+
+            @keyframes leftpage2 {
+                0% {
+                    transform: rotateY(0deg);
+                }
+
+                50% {
+                    transform: rotateY(30deg);
+                }
+
+                100% {
+                    transform: rotateY(0deg);
+                }
+            }
+
+            @keyframes leftpage3 {
+                0% {
+                    transform: rotateY(0deg);
+                }
+
+                50% {
+                    transform: rotateY(20deg);
+                }
+
+                100% {
+                    transform: rotateY(0deg);
+                }
+            }
+
+            @keyframes rightpage {
+                0% {
+                    transform: rotateY(0deg);
+                }
+
+                50% {
+                    transform: rotateY(-25deg);
+                }
+
+                100% {
+                    transform: rotateY(0deg);
+                }
+            }
+
+            @keyframes rightpage2 {
+                0% {
+                    transform: rotateY(0deg);
+                }
+
+                50% {
+                    transform: rotateY(-30deg);
+                }
+
+                100% {
+                    transform: rotateY(0deg);
+                }
+            }
+
+            @keyframes bookwrapper {
+                0% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px);
+                }
+
+                50% {
+                    transform: rotateZ(-45deg) rotateX(15deg) translateY(-200px);
+                }
+
+                100% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px);
+                }
+            }
+
+        }
+
+        .lying-softzilla {
+            position: absolute;
+            bottom: 10px;
+            right: 100px;
+            width: 20%;
+            animation: lying-softzilla 3s infinite;
+
+            @keyframes lying-softzilla {
+                0% {
+                    transform: rotateZ(5deg) translateY(0px);
+                }
+
+                50% {
+                    transform: rotateZ(-5deg) translateY(-100px);
+                }
+
+                100% {
+                    transform: rotateZ(5deg) translateY(0px);
+                }
+            }
+        }
+
+        .bubbles-box {
+            .bubbles {
+                position: absolute;
+                bottom: 0;
+                z-index: 0;
+                margin-right: 50px;
+                background-color: white;
+                border-radius: 50%;
+                opacity: 100%;
+                width: 40px;
+                height: 40px;
+                animation: up 9s infinite;
+            }
+
+            .bubble-2 {
+                left: 20%;
+                animation: up 4.5s infinite;
+                background-color:$bg-4 ;
+            }
+
+            .bubble-3 {
+                left:65%;
+                animation: up 7s infinite;
+                width: 30px;
+                height: 30px;
+            }
+
+            .bubble-4 {
+                left: 85%;
+                animation: up 8s infinite;
+              
+            }
+
+            .bubble-5 {
+                left: 50%;
+                animation: up 7.5s infinite;
+                background-color:$bg-4 ;
+             
+            }
+
+            .bubble-6 {
+                left: 30%;
+                opacity: .80;
+                animation: up 5s infinite;
+                width: 30px;
+                height: 30px;
+                
+            }
+
+            .bubble-7 {
+                left: 75%;
+                animation: up 6s infinite;
+                background-color:$bg-4 ;
+                width: 30px;
+                height: 30px;
+            }
+
+            .bubble-8 {
+                left: 95%;
+                opacity: .80;
+                animation: up 6.5s infinite;
+                background-color:$bg-4;
+            }
+
+
+            /* Bubbles Animation */
+            @keyframes up {
+                100% {
+                    transform: translateY(-1027px);
+                }
+            }
+        }
+        .learn-blobs{
+            position: absolute;
+            width: 320px;
+            top:10%;
+            right: 10%;
+        }
+
     }
 
 
@@ -2504,6 +2796,10 @@ a {
         transition: left 0.3s ease-in-out;
         overflow-y: auto;
 
+        ::-webkit-scrollbar {
+            border-radius: 99px;
+        }
+
         .cart-header {
             display: flex;
             justify-content: space-between;
@@ -2678,45 +2974,6 @@ a {
     transition: opacity 0.3s ease-in-out;
     pointer-events: none; // 添加這行
 
-    .history-content {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        top: 0;
-        left: -100%;
-        height: 100%;
-        padding: 20px;
-        width: 40%;
-        max-width: 400px;
-        background-color: $primary-yellow;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-        transition: left 0.3s ease-in-out;
-        overflow-y: auto;
-    }
-
-    .history-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-
-        h2 {
-            margin: 0;
-            @include font-style($font-medium-18);
-            color: $light;
-            background: $primary-darkblue;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-    }
-
-    .history-records {
-        overflow-y: auto;
-        border-top: 2px solid $light;
-        margin-top: 20px;
-        padding-top: 10px;
-    }
-
     .search-section {
         display: flex;
         flex-wrap: wrap;
@@ -2756,6 +3013,107 @@ a {
             outline: none;
         }
     }
+
+    .history-content {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: -100%;
+        height: 100%;
+        padding: 20px;
+        width: 40%;
+        max-width: 400px;
+        background-color: $primary-yellow;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: left 0.3s ease-in-out;
+        overflow-y: auto;
+
+        ::-webkit-scrollbar {
+            border-radius: 99px;
+        }
+
+    }
+
+    .history-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h2 {
+            margin: 0;
+            @include font-style($font-medium-18);
+            color: $light;
+            background: $primary-darkblue;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    }
+
+    .history-records {
+        overflow-y: auto;
+        border-top: 2px solid $light;
+        margin-top: 20px;
+        padding-top: 16px;
+
+        p {
+            @include font-style($font-medium-14-TC);
+            color: $primary-brown;
+
+        }
+
+        .order-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            border-bottom: 2px solid $light;
+
+
+
+            .order-header {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 16px;
+
+                p {
+                    @include font-style($font-medium-16-TC);
+                    color: $deep;
+                }
+
+                .order-date {
+                    @include font-style($font-medium-12);
+                    color: $primary-mint;
+
+                }
+
+            }
+
+            .history-item {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 16px;
+
+                h3 {
+                    @include font-style($font-bold-18-TC);
+                    color: $primary-darkblue;
+                    margin: 0 0 8px 0;
+                }
+            }
+
+            .customer-info {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 16px;
+
+                p {
+                    @include font-style($font-medium-16-TC);
+                    color: $deep;
+                }
+            }
+
+        }
+    }
+
 
     .close-btn {
         @include font-style($font-black-24);

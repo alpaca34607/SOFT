@@ -19,15 +19,15 @@
         'product-Soft': {
             name: '2019出品 | 軟筋臥佛公仔',
             price: 1200,
-            deposit:300,
+            deposit:250,
             maxQuantity: 0,
             mainColors: ['white'],
             subColors: ['red', 'green', 'blue']
         },
         'product-Softtwice': {
             name: '2018出品 | 小貓仔黏土偶',
-            price: 500,
-            deposit:300,
+            price: 300,
+            deposit:0,
             maxQuantity: 0,
             mainColors: ['white'],
             subColors: ['none']
@@ -35,7 +35,7 @@
         'product-Remain': {
             name: '餘量釋出|軟吉拉公仔',
             price: 1000,
-            deposit:300,
+            deposit:150,
             maxQuantity: 3,
             mainColors: ['black', 'white'],
             subColors: [ 'red', 'blue', 'green']
@@ -105,8 +105,10 @@ window.addEventListener('load', () => {
     document.getElementById('unitPrice').textContent = productConfig.price;
     document.getElementById('unitDeposit').textContent = productConfig.deposit;
 
-
     updateColorOptions(productConfig);
+    
+    // 立即更新按鈕狀態
+    updateCheckoutButton();
 
     const savedSelection = localStorage.getItem('productSelection');
     if (savedSelection) {
@@ -117,6 +119,8 @@ window.addEventListener('load', () => {
             document.getElementById('quantity').value = selection.quantity;
             document.getElementById('totalPrice').textContent = selection.totalPrice;
             document.getElementById('totalDeposit').textContent = selection.totalDeposit;
+            // 再次更新按鈕狀態，以防 localStorage 中的選擇影響按鈕
+            updateCheckoutButton();
         }
     }
 });
@@ -125,8 +129,29 @@ window.addEventListener('load', () => {
 function updateCheckoutButton() {
     const checkoutButton = document.querySelector('.checkout button');
     const productConfig = PRODUCTS_CONFIG[CURRENT_PRODUCT_ID];
+    
+    // 先檢查是否已售完（maxQuantity 為 0）
+    if (productConfig.maxQuantity === 0) {
+        checkoutButton.disabled = true;
+        checkoutButton.textContent = '已售完';
+        checkoutButton.classList.add('disabled');
+        return;
+    }
+    
+    // 再檢查顏色選擇
     const mainColor = document.getElementById('mainColor').value;
     const subColor = document.getElementById('subColor').value;
+    
+    if (!mainColor || !subColor) {
+        checkoutButton.disabled = true;
+        checkoutButton.textContent = '請選擇款式';
+        checkoutButton.classList.add('disabled');
+    } else {
+        checkoutButton.disabled = false;
+        checkoutButton.textContent = '前往預購';
+        checkoutButton.classList.remove('disabled');
+    }
+
     
     // 檢查是否達到購買上限（maxQuantity 為 0）
     if (productConfig.maxQuantity === 0) {
@@ -480,15 +505,62 @@ function searchOrderHistory() {
         return;
     }
 
-    historyRecords.innerHTML = orders.map(order => `
-        <div class="history-item">
-            <h3>${order.productInfo.productName}</h3>
-            <p>主色: ${order.productInfo.mainColorName || COLOR_NAMES[order.productInfo.mainColor]}</p>
-            <p>副色: ${order.productInfo.subColorName || COLOR_NAMES[order.productInfo.subColor]}</p>
-            <p>數量: ${order.productInfo.quantity}</p>
-            <p>總金額: NT$ ${order.totalAmount}</p>
-            <p>訂單時間: ${new Date(order.orderDate).toLocaleString()}</p>
-        </div>
-    `).join('');
+    historyRecords.innerHTML = orders.map(order => {
+        try {
+            // 訂單總覽資訊
+            const orderOverview = `
+                <div class="order-header">
+                    <p class="order-date">訂單時間: ${new Date(order.orderDate).toLocaleString()}</p>
+                    <p class="order-total">訂單總額: NT$ ${order.totalAmount}</p>
+                    <p class="order-deposit">訂金總額: NT$ ${order.depositAmount}</p>
+                </div>
+            `;
+
+            // 訂單商品詳情
+            const orderItems = order.items.map(item => `
+                <div class="history-item">
+                    <h3>${item.productName}</h3>
+                    <p>主色: ${item.mainColorName || COLOR_NAMES[item.mainColor]}</p>
+                    <p>副色: ${item.subColorName || COLOR_NAMES[item.subColor]}</p>
+                    <p>數量: ${item.quantity}</p>
+                    <p>單價: NT$ ${item.unitPrice}</p>
+                    <p>單件訂金: NT$ ${item.unitDeposit}</p>
+                </div>
+            `).join('');
+
+            // 訂單客戶資訊
+            const customerInfo = `
+                <div class="customer-info">
+                    <p>訂購人: ${order.customerInfo.name}</p>
+                    <p>取貨方式: ${order.customerInfo.pickupMethod}</p>
+                    <p>付款方式: ${order.customerInfo.paymentMethod}</p>
+                </div>
+            `;
+
+            return `
+                <div class="order-container">
+                    ${orderOverview}
+                    ${orderItems}
+                    ${customerInfo}
+                    <hr>
+                </div>
+            `;
+        } catch (error) {
+            console.error('訂單資料處理錯誤:', error);
+            return '<div class="error-message">訂單資料顯示錯誤</div>';
+        }
+    }).join('');
+
+    // 如果沒有成功顯示任何訂單，顯示錯誤訊息
+    if (!historyRecords.innerHTML) {
+        historyRecords.innerHTML = '<p>無法顯示訂單資料</p>';
+    }
 }
+
+//按下 Enter 鍵也能搜尋的功能
+document.getElementById('searchPhoneNumber')?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        searchOrderHistory();
+    }
+});
 document.addEventListener('DOMContentLoaded', initializeHistoryEvents);

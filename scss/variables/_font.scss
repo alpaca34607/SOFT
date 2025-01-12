@@ -10,6 +10,15 @@ $TC:"Noto Sans TC",serif;
 $font-w-bold: 600;
 
 // 字體樣式變數
+
+$font-medium-12: (
+  font-family:$TC,
+  font-weight: 500,
+  font-size: 0.75rem, // 12px
+  letter-spacing: 0.05rem // 10%
+);
+
+
 $font-regular-13: (
   font-family: $Chinese,
   font-weight: 400,
