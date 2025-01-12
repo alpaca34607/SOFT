@@ -1361,7 +1361,7 @@ a {
   align-items: center;
   justify-content: flex-start;
   width: 600px;
-  height: 72vh;
+  height: 670px;
   overflow: hidden;
   background: url(../images/home/purple-noisy-gradients.jpg);
   mask: url(#svg-mask);
