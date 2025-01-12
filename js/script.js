@@ -72,36 +72,22 @@ if ($(window).width()<= 820 ){
     $('#video-bg').remove();
 }
 
-// 彈窗
-const openPopupBtn = document.getElementById('open-popup');
-const closePopupBtn = document.getElementById('close-popup');
-const popup = document.getElementById('popup');
 
-// 開啟彈窗
-openPopupBtn.addEventListener('click', () => {
-    popup.style.display = 'flex'; // 顯示彈窗
-    document.body.style.overflow = 'hidden'; // 禁止滾動
-});
-
-// 關閉彈窗
-closePopupBtn.addEventListener('click', () => {
-    popup.style.display = 'none'; // 隱藏彈窗
-    document.body.style.overflow = ''; // 恢復滾動
-});
-
-// 點擊彈窗外部區域關閉彈窗
-window.addEventListener('click', (event) => {
-    if (event.target === popup) {
-        popup.style.display = 'none'; // 隱藏彈窗
-        document.body.style.overflow = ''; // 恢復滾動
-    }
-});
 
 
 // 通常啟用jq獨立打包套件(獨立放在外面)
 // $('.smoove').smoove({
 //     offset:250
 // })
+$("#test-gallery > div:gt(0)").hide();
 
+setInterval(function() { 
+  $('#test-gallery > div:first')
+    .fadeOut(500)
+    .next()
+    .fadeIn(100)
+    .end()
+    .appendTo('#test-gallery');
+},  2000);
 
 });

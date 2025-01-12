@@ -450,6 +450,10 @@ a {
   height: 60px;
   border-radius: 50%;
   cursor: pointer;
+  transition: 0.2s ease-out;
+}
+#gotop:hover {
+  transform: scale(1.1);
 }
 
 /* 首頁 */
@@ -458,6 +462,18 @@ a {
   width: 100%;
   z-index: 0;
   cursor: none;
+  /* 回到頂部按鈕 */
+}
+#home #gotop {
+  display: none;
+  position: fixed;
+  right: 2%;
+  bottom: -5%;
+  z-index: 999;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 #home .shapes {
   /* 這裡設置background的話會影響到背景 */
@@ -1316,6 +1332,97 @@ a {
   width: 100%;
   height: 100vh;
   background: linear-gradient(#FFEDBA, #FFFEF8);
+  align-items: center;
+  justify-content: center;
+}
+#home #becoming-Soft-intro .test-intro-middle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+#home #becoming-Soft-intro .test-intro-middle .masked-content {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 600px;
+  height: 72vh;
+  background: url(../images/home/purple-noisy-gradients.jpg);
+  mask: url(#svg-mask);
+  -webkit-mask: url(#svg-mask);
+}
+#home #becoming-Soft-intro .test-intro-middle .masked-content p {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.18rem;
+  color: #FFFFFF;
+}
+#home #becoming-Soft-intro .test-intro-middle .masked-content #test-gallery {
+  margin: 30px auto;
+  position: relative;
+  width: 550px;
+  height: 320px;
+  padding: 10px;
+}
+#home #becoming-Soft-intro .test-intro-middle .masked-content #test-gallery > div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+}
+#home #becoming-Soft-intro .test-intro-middle .masked-content .block {
+  width: auto;
+  height: auto;
+}
+#home #becoming-Soft-intro .test-intro-middle .test-intro-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#home #becoming-Soft-intro .test-intro-middle .test-intro-bottom h3 {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.18rem;
+  line-height: 1.5;
+  color: #736262;
+  margin: 0;
+}
+#home #becoming-Soft-intro .test-intro-middle .test-intro-bottom a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Mansalva", serif;
+  font-weight: 400;
+  font-size: 24px;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #FFFFFF;
+  background: url(../images/home/test-intro-start.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 200px;
+  height: 80px;
+  gap: 8px;
+}
+#home #becoming-Soft-intro .test-intro-middle .test-intro-bottom a i {
+  padding-left: 8px;
+  font-size: 16px;
+  animation: identifier 1s infinite;
+}
+@keyframes identifier {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* 心理測驗 */

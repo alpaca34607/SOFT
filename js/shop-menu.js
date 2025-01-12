@@ -1,3 +1,27 @@
+// 彈窗
+const openPopupBtn = document.getElementById('open-popup');
+const closePopupBtn = document.getElementById('close-popup');
+const popup = document.getElementById('popup');
+
+// 開啟彈窗
+openPopupBtn.addEventListener('click', () => {
+    popup.style.display = 'flex'; // 顯示彈窗
+    document.body.style.overflow = 'hidden'; // 禁止滾動
+});
+
+// 關閉彈窗
+closePopupBtn.addEventListener('click', () => {
+    popup.style.display = 'none'; // 隱藏彈窗
+    document.body.style.overflow = ''; // 恢復滾動
+});
+
+// 點擊彈窗外部區域關閉彈窗
+window.addEventListener('click', (event) => {
+    if (event.target === popup) {
+        popup.style.display = 'none'; // 隱藏彈窗
+        document.body.style.overflow = ''; // 恢復滾動
+    }
+});
 // 購物車相關功能
 function initializeCart() {
     // 在 body 最後插入購物車 HTML

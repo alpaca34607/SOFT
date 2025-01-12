@@ -335,6 +335,11 @@ a {
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
+    transition: 0.2s ease-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 }
 
 
@@ -345,6 +350,21 @@ a {
     width: 100%;
     z-index: 0;
     cursor: none;
+
+    /* 回到頂部按鈕 */
+    #gotop {
+        display: none;
+        position: fixed;
+        right: 2%;
+        bottom: -5%;
+        z-index: $z-index-l;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        cursor: pointer;
+
+    }
+
 
     .shapes {
         /* 這裡設置background的話會影響到背景 */
@@ -1294,11 +1314,12 @@ a {
             height: 110vh;
             position: absolute;
             overflow: hidden;
+
             .bubbles-box {
                 position: relative;
                 width: 100%;
                 height: 110vh;
-               
+
 
                 .bubbles {
                     position: absolute;
@@ -1393,6 +1414,102 @@ a {
         width: 100%;
         height: 100vh;
         background: $bg-5;
+        align-items: center;
+        justify-content: center;
+
+        .test-intro-middle {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+
+            .masked-content {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                width: 600px;
+                height: 72vh;
+                background: url(../images/home/purple-noisy-gradients.jpg);
+                mask: url(#svg-mask);
+                -webkit-mask: url(#svg-mask);
+
+                p {
+                    @include font-style($font-medium-16);
+                    color: $light;
+                }
+
+            
+
+                #test-gallery {
+                    margin: 30px auto;
+                    position: relative;
+                    width: 550px;
+                    height: 320px;
+                    padding: 10px;
+                }
+
+                #test-gallery>div {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    right: 10px;
+                    bottom: 10px;
+                }
+
+                .block {
+                    width: auto;
+                    height: auto;
+                }
+
+            }
+
+            .test-intro-bottom {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                h3 {
+                    @include font-style($font-medium-24);
+                    color: $primary-brown;
+                    margin: 0;
+                }
+                a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    @include font-style($font-EN-title-medium-24);
+                    color: $light;
+                    background: url(../images/home/test-intro-start.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 200px;
+                    height: 80px;
+                    gap:8px;
+                    i{
+
+                        padding-left: 8px;
+                        font-size: 16px;
+                        animation: identifier 1s infinite;
+                        @keyframes identifier {
+                            0% {
+                                transform: translateX(0);
+                            }
+                            50% {
+                                transform: translateX(-5px);
+                            }
+                            100% {
+                                transform: translateX(0);
+                            }
+                            
+                        }
+                    }
+                    
+                }
+
+            }
+
+        }
 
     }
 

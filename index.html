@@ -7,6 +7,7 @@
   <title>軟筋生物</title>
   <link rel="icon" href="./favicon.ico">
   <link rel="stylesheet" href="./css/textslider.css">
+  <link  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/163697/normalize.css'>
@@ -176,16 +177,16 @@
         <div class="blob blob-14"></div>
       </div>
       <div class="bubble-box-wrapper">
-      <div class="bubbles-box">
-        <div class="bubbles bubble-1"></div>
-        <div class="bubbles bubble-5"></div>
-        <div class="bubbles bubble-2"></div>
-        <div class="bubbles bubble-6"></div>
-        <div class="bubbles bubble-3"></div>
-        <div class="bubbles bubble-7"></div>
-        <div class="bubbles bubble-4"></div>
-        <div class="bubbles bubble-8"></div>
-      </div>
+        <div class="bubbles-box">
+          <div class="bubbles bubble-1"></div>
+          <div class="bubbles bubble-5"></div>
+          <div class="bubbles bubble-2"></div>
+          <div class="bubbles bubble-6"></div>
+          <div class="bubbles bubble-3"></div>
+          <div class="bubbles bubble-7"></div>
+          <div class="bubbles bubble-4"></div>
+          <div class="bubbles bubble-8"></div>
+        </div>
       </div>
       <div><img src="./images/home/learn-about-soft-blobs.png" alt="learn about soft blobs" class="learn-blobs"></div>
       <div class="book-wrapper">
@@ -204,11 +205,52 @@
       </div>
       <img src="./images/home/lying-softzilla.svg" alt="lying-softzilla" class="lying-softzilla">
     </section>
-<section id="becoming-Soft-intro">
+    <section id="becoming-Soft-intro">
+      <svg width="0" height="0">
+        <defs>
+          <mask id="svg-mask">
+            <path
+              d="M338.684 54.6108C472.846 104.283 417.538 146.061 434.652 207.489C452.435 271.315 512.648 444.763 472.846 499.591C428.931 560.085 360.274 575.178 281.102 577.625C155.241 577.625 140.138 688.383 30.4107 577.625C-5.74499 518.315 15.1781 392.303 30.4107 325.799C46.2334 256.718 -34.6573 92.273 30.4107 54.6108C155.241 -49.2669 248.051 21.0543 338.684 54.6108Z"
+              fill="#ffffff">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                values="M338.684 54.6108C472.846 104.283 417.538 146.061 434.652 207.489C452.435 271.315 512.648 444.763 472.846 499.591C428.931 560.085 360.274 575.178 281.102 577.625C155.241 577.625 140.138 688.383 30.4107 577.625C-5.74499 518.315 15.1781 392.303 30.4107 325.799C46.2334 256.718 -34.6573 92.273 30.4107 54.6108C155.241 -49.2669 248.051 21.0543 338.684 54.6108Z;
+                M309.88 46.2953C407.88 54.7953 432.2 141.34 449.315 202.769C467.097 266.594 489.117 410.01 449.315 464.838C405.399 525.332 329.173 555.076 250.001 557.523C167.94 560.059 59.8971 530.589 19.8147 464.838C-16.341 405.528 22.6469 269.274 37.8795 202.769C53.7022 133.689 32.8116 52.4573 97.8795 14.7952C165.307 -24.2329 216.38 28.2955 309.88 46.2953Z;
+                M390.176 31.8443C488.176 40.3443 458.927 168.166 476.041 229.595C493.824 293.42 510.088 397.001 485.862 465.511C443.312 585.84 338.348 561.174 259.176 563.62C177.115 566.156 76.0262 539.305 20.1923 447.715C-15.9634 388.406 4.95955 254.635 20.1921 188.131C36.0148 119.05 81.1097 53.5586 146.178 15.8964C213.605 -23.1316 303.741 24.3474 390.176 31.8443Z;
+                M434.753 21.8023C518.581 51.8234 491.263 140.982 518.581 251.342C564.456 346.838 558.383 448.976 518.581 503.804C474.666 564.298 383.968 607.099 293.697 585.992C148.85 552.125 116.994 585.992 43.8437 465.997C7.68797 406.687 -8.54366 181.633 6.68893 115.128C34.2091 -5.02299 136.155 77.7459 214.873 41.3472C329.532 -11.6703 350.925 -8.21872 434.753 21.8023Z;
+                M409.03 52.8953C492.858 82.9164 459.967 132.451 560.558 251.572C636.765 341.816 569.99 474.153 530.188 528.982C486.272 589.475 416.521 560.659 321.486 609.108C268.363 636.19 155.726 711.704 59.6859 609.108C-15.3201 528.982 -3.10552 302.013 12.1271 235.508C39.6473 115.357 101.569 116.251 150.017 52.8954C226.752 -47.4501 325.201 22.8743 409.03 52.8953Z;
+                M337.983 54.6108C472.144 104.283 416.836 146.061 433.951 207.489C451.733 271.315 511.947 441.246 472.144 496.074C428.229 556.568 359.572 571.661 280.4 574.108C154.54 574.108 139.436 684.866 29.709 574.108C-6.44672 514.798 14.4765 392.303 29.7091 325.799C45.5317 256.718 -35.3589 92.273 29.709 54.6108C154.539 -49.2669 247.349 21.0543 337.983 54.6108Z;">
+              </animate>
+              <animateTransform attributeName="transform" dur="15s" repeatCount="indefinite">
+              </animateTransform>
+            </path>
+          </mask>
+        </defs>
+      </svg>
+      <div class="test-intro-middle">
+        <div class="masked-content">
+          <div id="test-gallery">
+            <div class="block"><img src="./images/home/soft-rabbit.png" alt=""></div>
+            <div class="block"><img src="./images/home/soft-chips.png" alt=""></div>
+            <div class="block"><img src="./images/home/soft-heart.png" alt=""></div>
+            <div class="block"><img src="./images/home/soft-paca.png" alt=""></div>
+            <div class="block"><img src="./images/home/soft-frog.png" alt=""></div>
+          </div>
+          <p>每個人心中都有一個軟魂，它可能柔軟、温暖，<br>也可能有點脆弱。<br>
+            參加軟軟測驗，探索那悄悄作祟的軟爛，<br>看看它會是什麼樣子...<br><br>
+            準備好一起發掘屬於你的軟筋生物了嗎？
+          </p>
+        </div>
+        <div class="test-intro-bottom">
+          <h3>軟軟測驗</h3>
+          <a href="./Becoming-Soft" class="test-button">Start<i class="fa-solid fa-play"></i></a>
+        </div>
+      </div>
 
-</section>
-
+    </section>
+    <!-- 置頂按鈕 -->
+    <div id="gotop"><img src="./images/home/tired-softs.png" /></div>
   </main>
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="./js/carousel.js"></script>
   <script src="./js/jquery.textslider.min.js"></script>
@@ -226,8 +268,6 @@
         scrollNum: 1, //一次捲動幾個
         scrollSpeed: 600, //捲動速度
         pause: 1500, //停頓時間
-
-
       })
     })
   </script>
