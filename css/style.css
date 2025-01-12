@@ -1828,6 +1828,164 @@ a {
   cursor: not-allowed;
 }
 
+/* 軟筋圖鑑 */
+#learning-soft {
+  /* styles.scss */
+}
+#learning-soft .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+#learning-soft .gallery {
+  flex: 1;
+  height: 550px;
+  max-width: 540px;
+  margin: 50px;
+}
+#learning-soft .card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+#learning-soft .character-card {
+  aspect-ratio: 3/4;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background: url(../images/gallery/card-bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.2s;
+  border: 3px solid #2A2A2A;
+  box-shadow: 4px 4px 0 #5B83A3;
+  filter: grayscale(100%);
+}
+#learning-soft .character-card:hover {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+  transform: rotateY(-30deg);
+  box-shadow: -4px 4px 0 #5B83A3;
+}
+#learning-soft .character-card.active {
+  background: url(../images/gallery/card-active-bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  box-shadow: 4px 4px 0 #619ABD;
+  border: 3px solid #FEBD59;
+  filter: grayscale(0%);
+}
+#learning-soft .character-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#learning-soft .main-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#learning-soft .main-photo .photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+}
+#learning-soft .album-section {
+  flex: 1;
+  margin: 50px;
+  max-width: 400px;
+  height: 550px;
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  background: url(../images/gallery/bigcard.svg);
+}
+#learning-soft .album-section .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+}
+#learning-soft .album-section .nav-btn.prev-btn {
+  left: -40px;
+}
+#learning-soft .album-section .nav-btn.next-btn {
+  right: -40px;
+}
+#learning-soft .album-content .character-name {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: end;
+  height: 40px;
+}
+#learning-soft .album-content .card-bg {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 550px;
+  background: url(../images/gallery/noise-gradient.jpg);
+}
+#learning-soft .album-content .main-photo {
+  width: 100%;
+  padding-top: 2px;
+}
+#learning-soft .album-content .main-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#learning-soft .album-content .character-description {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+#learning-soft .album-content .thumbnail-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: hidden;
+  padding-bottom: 10px;
+  width: 100%;
+}
+#learning-soft .album-content .thumbnail-list .thumbnail-item {
+  background-color: #B3B3B3;
+  border-radius: 4px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #2A2A2A;
+}
+#learning-soft .album-content .thumbnail-list .thumbnail-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+#learning-soft .album-content .thumbnail-list .thumbnail-item.active {
+  border: 3px solid #70005d;
+  width: 50px;
+  height: 50px;
+  background-color: #3d8bff;
+}
+
 /* 商店選單 */
 .shop-menu {
   display: flex;

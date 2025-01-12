@@ -48,7 +48,7 @@ function updateOrderSummary() {
                 <div class="detail-area">
                     <div class="num-img-wrapper">
                         <p>${item.quantity}</p>
-                        <img src="images/shop/${item.productId}-thumb.jpg" alt="${item.productName}" />
+                        <img src="./images/shop/${item.productId}-thumb.jpg" alt="${item.productName}" />
                     </div>
                     <div class="details">
                         <h3>${item.productName}</h3>
