@@ -756,7 +756,7 @@ a {
   margin: auto;
   display: block;
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   background: transparent;
   z-index: -1;
   overflow: hidden;
@@ -877,7 +877,7 @@ a {
   width: 700px;
   background: url(../images/home/purple2-noisy-gradients.jpg);
   top: 70%;
-  right: 25%;
+  right: 35%;
   animation: blob 5s ease-in-out infinite, float 120s ease-in-out infinite;
 }
 @keyframes colorCycle {
@@ -1074,8 +1074,8 @@ a {
   margin-top: -120px;
   background: #84D0FF;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 110vh;
+  overflow: visible;
 }
 #home #learning-soft-intro .book-wrapper {
   position: relative;
@@ -1204,13 +1204,13 @@ a {
 }
 @keyframes bookwrapper {
   0% {
-    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px);
+    transform: rotateZ(-40deg) rotateX(0deg) translateY(-200px);
   }
   50% {
-    transform: rotateZ(-45deg) rotateX(15deg) translateY(-200px);
+    transform: rotateZ(-45deg) rotateX(15deg) translateY(-150px);
   }
   100% {
-    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px);
+    transform: rotateZ(-40deg) rotateX(0deg) translateY(-200px);
   }
 }
 #home #learning-soft-intro .lying-softzilla {
@@ -1231,10 +1231,19 @@ a {
     transform: rotateZ(5deg) translateY(0px);
   }
 }
-#home #learning-soft-intro .bubbles-box {
+#home #learning-soft-intro .bubble-box-wrapper {
+  width: 100%;
+  height: 110vh;
+  position: absolute;
+  overflow: hidden;
+}
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box {
+  position: relative;
+  width: 100%;
+  height: 110vh;
   /* Bubbles Animation */
 }
-#home #learning-soft-intro .bubbles-box .bubbles {
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubbles {
   position: absolute;
   bottom: 0;
   z-index: 0;
@@ -1246,41 +1255,45 @@ a {
   height: 40px;
   animation: up 9s infinite;
 }
-#home #learning-soft-intro .bubbles-box .bubble-2 {
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubble-1 {
+  left: 5%;
+  animation: up 4.5s infinite;
+}
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubble-2 {
   left: 20%;
   animation: up 4.5s infinite;
   background-color: #1EA1FF;
 }
-#home #learning-soft-intro .bubbles-box .bubble-3 {
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubble-3 {
   left: 65%;
   animation: up 7s infinite;
   width: 30px;
   height: 30px;
 }
-#home #learning-soft-intro .bubbles-box .bubble-4 {
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubble-4 {
   left: 85%;
   animation: up 8s infinite;
 }
-#home #learning-soft-intro .bubbles-box .bubble-5 {
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubble-5 {
   left: 50%;
   animation: up 7.5s infinite;
   background-color: #1EA1FF;
 }
-#home #learning-soft-intro .bubbles-box .bubble-6 {
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubble-6 {
   left: 30%;
   opacity: 0.8;
   animation: up 5s infinite;
   width: 30px;
   height: 30px;
 }
-#home #learning-soft-intro .bubbles-box .bubble-7 {
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubble-7 {
   left: 75%;
   animation: up 6s infinite;
   background-color: #1EA1FF;
   width: 30px;
   height: 30px;
 }
-#home #learning-soft-intro .bubbles-box .bubble-8 {
+#home #learning-soft-intro .bubble-box-wrapper .bubbles-box .bubble-8 {
   left: 95%;
   opacity: 0.8;
   animation: up 6.5s infinite;
@@ -1296,6 +1309,12 @@ a {
   width: 320px;
   top: 10%;
   right: 10%;
+}
+#home #becoming-Soft-intro {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(#FFEDBA, #FFFEF8);
 }
 
 /* 心理測驗 */
