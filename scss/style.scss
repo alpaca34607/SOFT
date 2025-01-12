@@ -1113,7 +1113,7 @@ a {
         background: $bg-1;
         width: 100%;
         height: 110vh;
-        overflow: visible;
+        overflow: hidden;
 
         .book-wrapper {
             position: relative;
@@ -1273,7 +1273,7 @@ a {
 
             @keyframes bookwrapper {
                 0% {
-                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-200px);
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px);
                 }
 
                 50% {
@@ -1281,7 +1281,7 @@ a {
                 }
 
                 100% {
-                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-200px);
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px);
                 }
             }
 
@@ -1412,16 +1412,18 @@ a {
     #becoming-Soft-intro {
         display: flex;
         width: 100%;
-        height: 110vh;
+     
         background: $bg-5;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
 
         .test-intro-middle {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
-            padding: 100px;
+            padding: 200px 100px 50px 
+            100px;
 
             .masked-content {
                 display: inline-flex;
@@ -1430,7 +1432,7 @@ a {
                 justify-content: flex-start;
                 width: 600px;
                 height: 72vh;
-                overflow:visible;
+                overflow:hidden;
                 background: url(../images/home/purple-noisy-gradients.jpg);
                 mask: url(#svg-mask);
                 -webkit-mask: url(#svg-mask);
