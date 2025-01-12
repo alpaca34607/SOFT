@@ -196,6 +196,7 @@ body {
   line-height: 1.5;
   background-color: #84D0FF;
   width: 100%;
+  overflow-x: hidden;
 }
 
 *,
@@ -1446,7 +1447,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 30%;
   height: 8rem;
 }
 .softtest #test .test-bg .question-container .Q h2 {
@@ -1456,7 +1457,7 @@ a {
   letter-spacing: 0.18rem;
   line-height: 1.5;
   color: #2A5070;
-  text-shadow: -2px -2px 0 #FFEFC2, 2px -2px 0 #FFEFC2, -2px 2px 0 #FFEFC2, 2px 2px 0 #FFEFC2;
+  text-shadow: -2px -2px 0 #fff6dc, 2px -2px 0 #fff6dc, -2px 2px 0 #fff6dc, 2px 2px 0 #fff6dc;
 }
 .softtest #test .test-bg .question-container #options {
   display: flex;

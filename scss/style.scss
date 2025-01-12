@@ -15,6 +15,7 @@ body {
     line-height: 1.5;
     background-color: $bg-1;
     width: 100%;
+    overflow-x: hidden;
 }
 
 // 確保所有元素都使用邊框盒模型
@@ -1542,16 +1543,16 @@ a {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    width: 50%;
+                    width: 30%;
                     height: 8rem;
 
                     h2 {
                         @include font-style($font-medium-20);
                         color: $primary-darkblue;
-                        text-shadow: -2px -2px 0 #FFEFC2,
-                            2px -2px 0 #FFEFC2,
-                            -2px 2px 0 #FFEFC2,
-                            2px 2px 0 #FFEFC2;
+                        text-shadow: -2px -2px 0 $secondary-1,
+                            2px -2px 0 $secondary-1,
+                            -2px 2px 0 $secondary-1,
+                            2px 2px 0 $secondary-1;
                     }
                 }
 
