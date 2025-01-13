@@ -142,7 +142,7 @@ const characters = [
     {
         id: 8,
         name: "軟兔",
-        description: "不只有外表是柔軟的心型，心太軟胸口內其實也有一顆易碎的心。但只要牠還跳動著，心太軟就會努力站起來。",
+        description: "比起胡蘿蔔，軟兔其實比較喜歡蔬果軟性飲料，畢竟咀嚼久了臉頰也是會痠的。",
         thumbnailUrl: "./images/gallery/softrabbit-card.png",
         photos: [
             {
@@ -222,7 +222,7 @@ const characters = [
     {
         id: 13,
         name: "基多軟",
-        description: "胸口有個帥氣的V字，但很少人見過。只要軟熊不想起床，一年四季的賴床全部都算冬眠。",
+        description: "基多軟有3個頭，雖然共用一個身體，但彼此之間其實好像沒有很熟。不過休息時間還是會一起斷電",
         thumbnailUrl: "./images/gallery/Ghidorah-card.png",
         photos: [
             {
@@ -264,7 +264,7 @@ const characters = [
     {
         id: 16,
         name: "軟蝸",
-        description: "只要比別人都早起就會得意洋洋的軟陽陽，即使到了秋天也掛在空中跩跩的笑著。",
+        description: "看似不起眼的軟蝸，在被觀測的時候總是行動緩慢。然而沒有人知道他真正的實力，其實就是這麼慢",
         thumbnailUrl: "./images/gallery/softsnail-card.png",
         photos: [
             {

@@ -42,7 +42,7 @@
         <nav class="navigation">
           <!-- 主選單 -->
           <ul class="menu">
-            <li><a href="#About-Soft">
+            <li><a href="#about-soft-intro">
                 <img src="./images/home/menu1.svg" alt="關於軟筋LOGO">
                 <div class="menu-title">
                   <p>關於軟筋</p>
@@ -70,17 +70,55 @@
                   <span>Get Soft</span>
                 </div>
               </a></li>
-            <li><a href="#Contact-Soft">
+            <li><button id="open-popup">
                 <img src="./images/home/menu6.svg" alt="聯絡軟筋LOGO">
                 <div class="menu-title">
                   <p>聯絡軟筋</p>
                   <span>Contact Soft</span>
                 </div>
-              </a></li>
+              </button></li>
           </ul>
         </nav>
       </div>
     </header>
+    <!-- 彈窗區 -->
+    <div id="popup" class="popup-container">
+      <div class="popup-content">
+        <button id="close-popup" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <h2>聯絡軟筋</h2>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">姓名或暱稱 *</label>
+            <input type="text" id="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">信箱 (選填)</label>
+            <input type="email" id="email">
+          </div>
+
+          <div class="form-group">
+            <label for="subject">聯絡主旨 *</label>
+            <select id="subject" required>
+              <option value="">請選擇主旨</option>
+              <option value="shopping">購物相關</option>
+              <option value="cooperation">合作邀請</option>
+              <option value="ip">角色IP</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">內容 *</label>
+            <textarea id="message" maxlength="1000" required></textarea>
+            <div class="char-count"><span id="char-count">0</span>/1000</div>
+          </div>
+
+          <button type="submit" class="submit-btn">送出</button>
+          <p class="note">或是來信 soft-official@gmail.com</p>
+        </form>
+      </div>
+    </div>
     <section id="home-banner">
       <div class="whats-new">
         <div class="slideText-heading">
@@ -116,6 +154,13 @@
           <div class="circle-bg"></div>
         </div>
         <img src="./images/home/soft.svg" alt="soft" class="soft-text">
+        <div class="scroll-icon">
+          <div class="scroll-circle">
+            <img src="./images/home/scroll-arrow.svg" alt="scroll-arrow" class="scroll-arrow">
+          </div>
+
+          <img src="./images/home/scroll.svg" alt="scroll-text">
+        </div>
       </div>
       <div id="box" class="blobs-box">
         <!-- <div class="blob blob-1"></div>
@@ -272,6 +317,7 @@
   <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js'></script>
   <script src="./js/spotlight-cursor.js"></script>
   <script src="./js/castParallex.js"></script>
+  <script src="./js/contactsoft.js"></script>
   <script src="./js/script.js"></script>
 
   <script>

@@ -1,6 +1,6 @@
 @use 'reset';
-@use 'variables' as *;
-@use 'function' as *;
+@use 'variables'as *;
+@use 'function'as *;
 @use 'keyframes';
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Playfair+Display:ital,wght@1,500&family=Trade+Winds&family=Zen+Maru+Gothic&family=Mansalva&display=swap');
 
@@ -234,12 +234,14 @@ a {
 
                     }
 
-                    a {
+                    a, button {
                         display: inline-flex;
                         justify-content: flex-start;
                         align-items: center;
                         line-height: 0;
                         width: 100%;
+                        border: none;
+                        background: none;
 
                         img {
                             width: 40px;
@@ -328,7 +330,7 @@ a {
 #gotop {
     display: none;
     position: fixed;
-    right: 15%;
+    right: 10%;
     bottom: 5%;
     z-index: $z-index-l;
     width: 60px;
@@ -341,6 +343,149 @@ a {
         transform: scale(1.1);
     }
 }
+@media (max-width: 1439px) {
+    #gotop {
+        right: 5%;
+    }
+    
+}
+
+
+/* 聯絡軟筋 */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    @include font-style($font-medium-16);
+    color:$light;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    @include font-style($font-medium-16-TC);
+    color:$deep;
+
+    &:focus {
+        outline: none;
+        border: 1.5px solid $primary-yellow;
+    }
+}
+
+textarea {
+    height: 150px;
+   
+}
+
+.submit-btn {
+    background-color:$primary-yellow ;
+    color: $light;;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    @include font-style($font-medium-16);
+}
+
+.submit-btn:hover {
+    background-color: $primary-mint;
+}
+
+.note {
+    margin-top: 15px;
+    color: #b1b1b1;
+    font-size: 14px;
+}
+
+.char-count {
+    color: #b1b1b1;
+    font-size: 12px;
+    text-align: right;
+}
+
+
+/* 預購注意事項彈窗 */
+.popup {
+    display: none;
+    /* 預設隱藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    position: relative;
+    background: $primary-darkblue;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    width: 60%;
+    max-width: 600px;
+    border: 2px $light solid;
+
+    h2 {
+        @include font-style($font-black-24);
+        text-align: center;
+        color: $primary-lemon;
+        margin-bottom: 20px;
+    }
+
+    p {
+        text-align: left;
+        @include font-style($font-medium-16);
+        color: $light;
+    }
+}
+
+/* 關閉按鈕 */
+.close-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    height: 30px;
+    width: 30px;
+    padding: 10px;
+    cursor: pointer;
+    color: $light;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: $primary-yellow;
+    border: $light 2px solid;
+
+}
+
+.close-btn:hover {
+    color: $deep;
+}
+
 
 
 /* 首頁 */
@@ -376,11 +521,8 @@ a {
         background: none;
         overflow: hidden;
         pointer-events: none;
-        /* 確保形狀不會影響滑鼠事件 */
         mix-blend-mode: hard-light;
-        /* 設置混合模式  */
         isolation: isolate;
-        /* 限制混合模式的範圍 */
         z-index: 998;
     }
 
@@ -682,6 +824,40 @@ a {
                 text-align: center;
                 width: 12%;
                 min-width: 60px;
+            }
+            .scroll-icon{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 60px;
+                .scroll-circle{
+                    width: 50px;
+                    height: 50px;
+                    padding: 10px;
+                    border-radius: 50%;
+                    background-color: rgba(255, 255, 255, 0.12);
+                    border: 2px solid $primary-lemon;
+                    margin-bottom: 10px;
+
+
+                    .scroll-arrow{
+                        animation: scrollarrow 1s infinite;
+                    }
+
+                    @keyframes scrollarrow {
+                        0% {
+                            transform: translateY(-2px);
+                        }
+                        50% {
+                            transform: translateY(5px);
+                        }
+                        100% {
+                            transform: translateY(-2px);
+                        }
+                        
+                    }
+                }
             }
         }
 
@@ -1084,7 +1260,7 @@ a {
             }
 
             #keyart-5 {
-                background-image: url(../images/home/aboutsoft-intro-blob.png);
+                background-image: url(../images/home/about-soft-blob.svg);
                 transform: translateY(500px);
                 bottom: 0;
             }
@@ -1104,6 +1280,21 @@ a {
 
             }
         }
+@media (max-width:1919px) {
+    aspect-ratio: 16 / 11.5;
+    overflow: hidden;
+    .keyart_layer  {
+        background-size: 100%;
+        background-position: 50% 0%;
+        aspect-ratio: 16 / 9;
+      
+    }
+    #keyart-5{
+        background-position: 50% 0%;
+        background-size: 100%;
+    }
+}
+
     }
 
     #learning-soft-intro {
@@ -1928,7 +2119,7 @@ a {
 
             img {
                 width: auto;
-                height: 100vh;
+                height: 120vh;
             }
 
             .result-buttons {
@@ -2134,7 +2325,7 @@ a {
 
             #pageInfo {
                 @include font-style($font-medium-14);
-                color: $shadow-1;
+                color: $light;
             }
 
         }
@@ -2203,7 +2394,7 @@ a {
             background-repeat: no-repeat;
             z-index: 2;
 
-           
+
         }
 
         .album-content {
@@ -2249,10 +2440,10 @@ a {
             .ch-intro {
                 display: flex;
                 flex-direction: column;
+                height: 160px;
                 margin-top: 16px;
                 gap: 10px;
-                margin-bottom: 16px;
-                padding: 20px 27px;
+                padding: 16px 27px 0 27px;
 
                 p {
                     @include font-style($font-regular-16);
@@ -2266,8 +2457,8 @@ a {
                 align-items: center;
                 gap: 10px;
                 overflow-x: hidden;
-                padding-top: 2px;
-                padding-bottom: 8px;
+                padding-top: 4px;
+                padding-bottom: 6px;
                 width: 100%;
 
                 .thumbnail-item {
@@ -2294,41 +2485,46 @@ a {
                 }
             }
         }
+
         .btn-group {
             display: inline-flex;
             justify-content: space-around;
             align-self: center;
             flex-direction: row;
             width: 100%;
-            margin-top:10px;
-            cursor: pointer;
+            margin-top: 10px;
             text-align: center;
 
-            p{
+            p {
                 padding-top: 10px;
                 @include font-style($font-medium-18);
-                color:$light;
-              
+                color: $light;
+                cursor: default;
+
             }
+
             button {
                 background: none;
                 border: none;
                 @include font-style($font-medium-24);
                 color: $primary-lemon;
                 cursor: pointer;
-          
-                &:hover{
-                    color:$light;
+
+                &:hover {
+                    color: $light;
                     transform: scale(1.1);
                 }
-                &:active{
+
+                &:active {
                     transform: translateY(2px)
                 }
-                &:disabled{
+
+                &:disabled {
                     color: $shadow-1;
                     @include font-style($font-medium-18);
                     cursor: not-allowed;
-                    &:hover{
+
+                    &:hover {
                         color: $shadow-1;
                         transform: scale(1);
                     }
@@ -2431,70 +2627,7 @@ a {
 }
 
 
-/* 預購注意事項彈窗 */
-/* 彈窗的初始 */
-.popup {
-    display: none;
-    /* 預設隱藏 */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* 背景半透明 */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
 
-/* 彈窗內容*/
-.popup-content {
-    position: relative;
-    background: $primary-darkblue;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    width: 60%;
-    max-width: 600px;
-    border: 2px $light solid;
-
-    h2 {
-        @include font-style($font-black-24);
-        text-align: center;
-        color: $primary-lemon;
-        margin-bottom: 20px;
-    }
-
-    p {
-        text-align: left;
-        @include font-style($font-medium-16);
-        color: $light;
-    }
-}
-
-/* 關閉按鈕 */
-.close-btn {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    display: flex;
-    height: 30px;
-    width: 30px;
-    padding: 10px;
-    cursor: pointer;
-    color: $light;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: $primary-yellow;
-    border: $light 2px solid;
-
-}
-
-.close-btn:hover {
-    color: $deep;
-}
 
 /* 商店主頁 */
 #shop-list {
@@ -2740,7 +2873,36 @@ a {
             }
         }
     }
+
+    @media (max-width: 1919px) {
+        padding: 12% 3%;
+        overflow: auto;
+
+        .container .product-table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+
+
+            table tbody {
+                display: flex;
+                justify-content: flex-end;
+                width: auto;
+                gap: 25px;
+            }
+
+        }
+
+        .container .product-table table tbody tr .product-cell .product-figure figcaption .product-title {
+            font-family: $Chinese;
+            font-weight: 600;
+            font-size: 1rem; // 16px
+            letter-spacing: 0rem; // 15%
+        }
+    }
 }
+
 
 /* 商品子頁 */
 #product-page {
@@ -2774,8 +2936,9 @@ a {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            height: 90vh;
+            height: auto;
             gap: 80px;
+            margin-bottom: 10vh;
 
 
             p {
@@ -2891,6 +3054,7 @@ a {
                     margin-top: 12px;
                     background-color: rgba(255, 255, 255, 0.12);
                     box-shadow: 4px 5px 0 rgba(43, 43, 43, 0.25);
+                    width: 100%;
 
                     p {
                         @include font-style($font-medium-14-TC);
@@ -2952,7 +3116,7 @@ a {
                 width: 520px;
 
                 .lSAction>.lSPrev {
-                    background-image: url('../images/shop/arrow-left.svg') !important;
+                    background-image: url('../images/shop/arrow-left.svg');
                     background-size: 100%;
 
                     &:hover {
@@ -2967,7 +3131,7 @@ a {
                 }
 
                 .lSAction>.lSNext {
-                    background-image: url('../images/shop/arrow_right.svg') !important;
+                    background-image: url('../images/shop/arrow_right.svg');
                     background-size: 100%;
                     filter: brightness(120%);
 
@@ -2981,16 +3145,16 @@ a {
                 }
 
                 .lslide img {
-                    width: 520px !important;
-                    height: 520px !important;
+                    width: 100%;
+                    height: 100%;
                     object-fit: cover;
                 }
 
                 .lSSlideOuter .lSSlideWrapper {
-                    width: 520px !important;
-                    height: 520px !important;
+                    width: 100%;
+                    height: 100%;
                     object-fit: cover;
-                    border-radius: 10px;
+                    border-radius: 5px;
                 }
 
 
@@ -3015,13 +3179,17 @@ a {
                 }
 
 
-
+                .lSGallery{
+                    display: flex;
+                    flex-direction: row;
+                    height: 115px;
+                  
+                }
 
                 .lSSlideOuter .lSGallery li {
-                    width: 115px !important;
-                    height: 115px !important;
                     object-fit: cover;
                     margin-right: 10px !important;
+                  
                 }
 
 
@@ -3036,8 +3204,12 @@ a {
             .long-ad-wrap {
                 position: relative;
                 border-top: $light 1.5px solid;
-                padding-top: 60px;
+                width: 100%;
+                height: max-content;
+                padding-top: 7%;
                 z-index: 0;
+
+                overflow: hidden;
 
                 img {
                     display: block;
@@ -3055,16 +3227,112 @@ a {
                     transform: translate(-50%, -50%);
                     z-index: 1;
                     overflow: hidden;
+                    aspect-ratio: 17/9;
+                    /* 保持固定比例 */
 
                     iframe {
                         width: 100%;
-                        height: 500px;
+                        height: 100%;
+
+                    }
+
+                }
+                .sketchfab-embed-wrapper-softzilla {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    top: 550px;
+                    left: 50%;
+                    width: 100%;
+                    transform: translate(-50%, -50%);
+                    z-index: 1;
+                    overflow: hidden;
+                    aspect-ratio: 17/9;
+                    /* 保持固定比例 */
+
+                    iframe {
+                        width: 100%;
+                        height: 100%;
 
                     }
 
                 }
             }
         }
+    }
+
+    @media (max-width: 1919px) {
+        width: 100%;
+        padding: 10% 0;
+        justify-content: center;
+
+        .shop-menu {
+            width: 153px;
+            left: 5%;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            margin-left: 10%;
+
+            .product-info {
+                .book-area {
+                    width: 100%;
+                    .gallery {
+                        .lSSlideWrapper {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    @media (max-width: 1439px) {
+        .product-container .product-info .gallery {
+            width: 100%;
+        }
+
+        .product-container {
+            width: 50%;
+        }
+
+        .product-info {
+            flex-direction: column;
+
+            .notice {
+                width: 100%;
+            }
+
+            .checkout {
+                width: 520px;
+            }
+        }
+
+        .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper {
+            top: 32%;
+            width: 100%;
+            aspect-ratio: 17/9;
+            /* 保持固定比例 */
+        }
+        .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper-softzilla {
+            top: 11.8%;
+            width: 100%;
+            aspect-ratio: 17/9;
+            /* 保持固定比例 */
+        }
+
+        .product-container .ad-area .long-ad-wrap iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+
     }
 }
 
@@ -3683,8 +3951,7 @@ a {
     .history-records {
         overflow-y: auto;
         border-top: 2px solid $light;
-        margin-top: 20px;
-        padding-top: 16px;
+        padding-top: 24px;
 
         p {
             @include font-style($font-medium-14-TC);
@@ -3713,6 +3980,7 @@ a {
                 .order-date {
                     @include font-style($font-medium-12);
                     color: $primary-mint;
+                    margin-bottom: 16px;
 
                 }
 
