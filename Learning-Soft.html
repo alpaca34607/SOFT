@@ -2,38 +2,45 @@
 <html lang="zh-Hant-TW">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>理解軟筋</title>
-  <link rel="icon" href="./favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理解軟筋</title>
+    <link rel="icon" href="./favicon.ico">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <main id="learning-soft">
-    <div class="container">
-        <div class="gallery">
-            <div class="card-grid" id="cardGrid"></div>
-            <div class="pagination">
-                <button id="prevPage" disabled>上一頁</button>
-                <span id="pageInfo">1 / 2</span>
-                <button id="nextPage">下一頁</button>
+        <div class="container">
+            <div class="gallery">
+                <div class="card-grid" id="cardGrid"></div>
+                <div class="pagination">
+                    <button id="prevPage" disabled>&lt;上一頁</button>
+                    <span id="pageInfo">1 / 2</span>
+                    <button id="nextPage">下一頁&gt</button>
+                </div>
+            </div>
+            <div class="album-wrapper">
+                <div class="album-section" id="albumSection">
+                    <button class="nav-btn prev-btn" id="prevPhoto">&lt;</button>
+                    <button class="nav-btn next-btn" id="nextPhoto">&gt;</button>
+                    <div class="album-content">
+                        <h2 class="character-name"></h2>
+                        <div class="main-photo"></div>
+                        <div class="ch-intro">
+                            <p class="character-sname"></p>
+                            <p class="character-description"></p>
+                        </div>
+
+                        <div class="thumbnail-list"></div>
+
+                    </div>
+                </div>
+                <img src="./images/gallery/noise-gradient.jpg" alt="grey-bg" class="grey-bg">
             </div>
         </div>
-    
-        <div class="album-section" id="albumSection">
-            <button class="nav-btn prev-btn" id="prevPhoto">&lt;</button>
-            <button class="nav-btn next-btn" id="nextPhoto">&gt;</button>
-            <div class="album-content">
-                <h2 class="character-name"></h2>
-                <div class="main-photo"></div>
-                <p class="character-sname"></p>
-                <p class="character-description"></p>
-                <div class="thumbnail-list"></div>
-               
-            </div>
-        </div>
-    </div>
-</main>
+    </main>
     <script src="./js/ch-gallery.js"></script>
 </body>
+
 </html>

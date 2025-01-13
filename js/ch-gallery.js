@@ -60,8 +60,8 @@ const characters = [
                 url: "./images/gallery/softzilla-camp.png",
                 caption: ""
             },
-           
-           
+
+
         ]
     },
     {
@@ -75,11 +75,11 @@ const characters = [
                 url: "./images/gallery/softdragon.png",
                 caption: ""
             },
-        
+
         ]
     },
     {
-        id:4,
+        id: 4,
         name: "軟泥馬",
         description: "平時喜歡坐在柔軟的草地，像隻毛毛蟲靜靜享受溫暖的陽光。個性溫和，即使莫名被當成坐騎也毫無反應。",
         thumbnailUrl: "./images/gallery/softpaca-card.png",
@@ -89,13 +89,13 @@ const characters = [
                 url: "./images/gallery/softpaca.png",
                 caption: ""
             },
-        
+
         ]
     },
     {
-        id:5,
+        id: 5,
         name: "軟呱",
-        description: "平時喜歡坐在柔軟的草地，像隻毛毛蟲靜靜享受溫暖的陽光。個性溫和，即使莫名被當成坐騎也毫無反應。",
+        description: "軟雞的拌嘴對象，喜歡逢人就饑哩呱啦，喋喋不休的講個沒完，只有軟雞有辦法聽下去。",
         thumbnailUrl: "./images/gallery/softduck-card.png",
         photos: [
             {
@@ -103,7 +103,40 @@ const characters = [
                 url: "./images/gallery/softduck.png",
                 caption: ""
             },
-        
+
+        ]
+    },
+    {
+        id: 6,
+        name: "軟雞",
+        description: "軟呱的拌嘴對象，跟軟呱總是雞同鴨講，但他們總是在一起。在樂團是個鼓手，以「雞軟鼓」為藝名活躍。",
+        thumbnailUrl: "./images/gallery/softchicken-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softchicken.png",
+                caption: ""
+            },
+            {
+                id: 2,
+                url: "./images/gallery/softchicken_sit.png",
+                caption: ""
+            },
+
+        ]
+    },
+    {
+        id: 7,
+        name: "心太軟",
+        description: "不只有外表是柔軟的心型，心太軟胸口內其實也有一顆易碎的心。但只要牠還跳動著，心太軟就會努力站起來。",
+        thumbnailUrl: "./images/gallery/softheart-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softheart.png",
+                caption: ""
+            },
+          
         ]
     },
     // ... 其他角色資料
@@ -192,7 +225,8 @@ function updateMainPhoto() {
     const mainPhoto = albumSection.querySelector('.main-photo');
     mainPhoto.innerHTML = `
         <img src="${currentCharacter.photos[currentPhotoIndex].url}" 
-             alt="${currentCharacter.name}">
+             alt="${currentCharacter.name}" >
+           
         ${currentCharacter.photos[currentPhotoIndex].caption ?
             `<div class="photo-caption">${currentCharacter.photos[currentPhotoIndex].caption}</div>`
             : ''}
