@@ -139,6 +139,143 @@ const characters = [
           
         ]
     },
+    {
+        id: 8,
+        name: "軟兔",
+        description: "不只有外表是柔軟的心型，心太軟胸口內其實也有一顆易碎的心。但只要牠還跳動著，心太軟就會努力站起來。",
+        thumbnailUrl: "./images/gallery/softrabbit-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softrabbit.png",
+                caption: ""
+            },
+          
+        ]
+    },
+    {
+        id: 9,
+        name: "軟蛙",
+        description: "軟蛙是一隻旅行青蛙，常常啟程也常常半途倒下。「不想旅行了...」若在景點聽到這句嘆息，不防看看附近是否躺著軟蛙。",
+        thumbnailUrl: "./images/gallery/softfrog-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softfrog.png",
+                caption: ""
+            },
+            {
+                id: 2,
+                url: "./images/gallery/softfrog-hat.png",
+                caption: ""
+            },
+          
+        ]
+    },
+    {
+        id: 10,
+        name: "軟馬",
+        description: "「馬上就來!」雖然這樣喊著，但其實還是在原地軟爛，軟馬的步調就是這樣悠閒自在。",
+        thumbnailUrl: "./images/gallery/softhorse-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softhorse.png",
+                caption: ""
+            },
+         
+        ]
+    },
+    {
+        id: 11,
+        name: "多力多軟",
+        description: "被開封之後就被遺忘的多力多滋受潮後的化身，雖然知道再也不會被想起來了，但他還是躺在原地。",
+        thumbnailUrl: "./images/gallery/doritosoft-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/doritosoft.png",
+                caption: ""
+            },
+            {
+                id: 2,
+                url: "./images/gallery/doritosoft2.png",
+                caption: ""
+            },
+         
+        ]
+    },
+    {
+        id: 12,
+        name: "軟熊",
+        description: "胸口有個帥氣的V字，但很少人見過。只要軟熊不想起床，一年四季的賴床全部都算冬眠。",
+        thumbnailUrl: "./images/gallery/softbear-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softbear.png",
+                caption: ""
+            },
+         
+        ]
+    },
+    {
+        id: 13,
+        name: "基多軟",
+        description: "胸口有個帥氣的V字，但很少人見過。只要軟熊不想起床，一年四季的賴床全部都算冬眠。",
+        thumbnailUrl: "./images/gallery/Ghidorah-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/Ghidorah.png",
+                caption: ""
+            },
+         
+        ]
+    },
+    {
+        id: 14,
+        name: "軟糬人",
+        description: "被放太久的小米甜甜圈，變硬之後開始到處趴趴走。只要裹上不同口味的調味粉就會成為不同屬性的英雄。",
+        thumbnailUrl: "./images/gallery/sofman-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softman.png",
+                caption: ""
+            },
+         
+        ]
+    },
+    {
+        id: 15,
+        name: "軟陽陽",
+        description: "只要比別人都早起就會得意洋洋的軟陽陽，即使到了秋天也掛在空中跩跩的笑著。",
+        thumbnailUrl: "./images/gallery/softsun-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softsun.png",
+                caption: ""
+            },
+         
+        ]
+    },
+    {
+        id: 16,
+        name: "軟蝸",
+        description: "只要比別人都早起就會得意洋洋的軟陽陽，即使到了秋天也掛在空中跩跩的笑著。",
+        thumbnailUrl: "./images/gallery/softsnail-card.png",
+        photos: [
+            {
+                id: 1,
+                url: "./images/gallery/softsnail.png",
+                caption: ""
+            },
+         
+        ]
+    },
+    // 
     // ... 其他角色資料
 ];
 
@@ -184,7 +321,7 @@ function renderCards() {
         </div>
     `).join('');
 
-    // 添加點擊事件
+    // 點擊事件
     cardGrid.querySelectorAll('.character-card').forEach(card => {
         card.addEventListener('click', () => {
             // 移除所有卡片的選中狀態
