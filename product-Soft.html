@@ -33,14 +33,14 @@
             <nav class="navigation">
                 <!-- 主選單 -->
                 <ul class="menu">
-                    <li><a href="#About-Soft">
+                    <li><a href="#about-soft-intro">
                             <img src="./images/home/menu1.svg" alt="關於軟筋LOGO">
                             <div class="menu-title2">
                                 <p>關於軟筋</p>
                                 <span>About Soft</span>
                             </div>
                         </a></li>
-                    <li><a href="#learning-Soft ">
+                    <li><a href="./Learning-Soft.html ">
                             <img src="./images/home/menu4.svg" alt="理解軟筋LOGO">
                             <div class="menu-title2">
                                 <p>理解軟筋</p>
@@ -61,17 +61,58 @@
                                 <span>Get Soft</span>
                             </div>
                         </a></li>
-                    <li><a href="#Contact-Soft">
+                    <li><button id="open-contact">
                             <img src="./images/home/menu6.svg" alt="聯絡軟筋LOGO">
                             <div class="menu-title2">
                                 <p>聯絡軟筋</p>
                                 <span>Contact Soft</span>
                             </div>
-                        </a></li>
+                        </button></li>
                 </ul>
             </nav>
         </div>
     </header>
+    <!-- 彈窗區 -->
+    <div id="contact-popup" class="popup-container">
+        <div class="popup-content">
+            <button id="close-contact" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <h2>聯絡軟筋</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">姓名或暱稱 *</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">信箱 (選填)</label>
+                    <input type="email" id="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">聯絡主旨 *</label>
+                    <div class="select-wrapper">
+                        <select id="subject" required style="width: 100%;">
+                            <option class="op" value="">請選擇主旨</option>
+                            <option class="op" value="shopping">購物相關</option>
+                            <option class="op" value="cooperation">合作邀請</option>
+                            <option class="op" value="ip">角色IP</option>
+                            <option class="op" value="other">其他</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="message">內容 *</label>
+                    <textarea id="message" maxlength="1000" required></textarea>
+                    <div class="char-count"><span id="char-count">0</span>/1000</div>
+                </div>
+
+                <button type="submit" class="submit-btn">送出</button>
+                <p class="note">或是來信 soft-official@gmail.com</p>
+            </form>
+        </div>
+    </div>
     <main id="product-page">
         <div class="shop-menu">
             <div class="shop-logo">
@@ -79,32 +120,35 @@
             </div>
             <div class="links-group">
                 <ul>
-                    <li><button onclick="toggleCart()" class="view-cart-btn"><img src="./images/shop/mdi_cart.svg" />我的購物車 <span id="cartCount">0</span></button></li>
+                    <li><button onclick="toggleCart()" class="view-cart-btn"><img
+                                src="./images/shop/mdi_cart.svg" />我的購物車 <span id="cartCount">0</span></button></li>
                     <li><button onclick="toggleHistoryPopup()"><img src="./images/shop/list.svg" />訂單查詢</button></li>
-                    <li><button id="open-popup"><img src="./images/shop/notice.svg" />預購注意事項</button></li>
+                    <li><button id="open-notice"><img src="./images/shop/notice.svg" />預購注意事項</button></li>
                 </ul>
             </div>
-            <div class="ad-side"><a href="./product-Remain.html"><img src="./images/shop/AD-side.jpg" alt="餘量釋出連結圖片" /></a></div>
+            <div class="ad-side"><a href="./product-Remain.html"><img src="./images/shop/AD-side.jpg"
+                        alt="餘量釋出連結圖片" /></a>
+            </div>
         </div>
 
         <!-- 彈窗區域 -->
-         <!-- 注意事項 -->
-        <div id="popup" class="popup">
+        <!-- 注意事項 -->
+        <div id="notice-popup" class="popup">
             <div class="popup-content">
-              <span id="close-popup" class="close-btn"><i class="fa-solid fa-xmark"></i></span>
-              <h2>消費注意事項</h2>
-              <p>
-                預購下單7日內若有訂單異動可連絡本賣場，7日後則將不進行退款，但仍可進行款式更換。<br /><br />
-      
-                本賣場以提供展場取貨為主，請考量自身是否方便前往展場繳納尾款並取貨，若不克前往可聯絡賣場保留商品至下次展出。<br /><br />
-      
-                自願放棄或當期展覽最後一天失聯者將不另行退款，預購之商品將作為餘量釋出販售。<br /><br />
-      
-                本店鋪公仔商品皆為3D列印手工打磨噴色製作，商品表面難免有細微痕跡或溢色，完美主義者請思慮後再下單。<br /><br />
-      
-                商品製作費時，因此取貨時間及地點依店鋪公告為主，若單量太多將先關閉預購，敬請見諒。感謝支持與耐心等待。</p>
+                <span id="close-notice" class="close-btn"><i class="fa-solid fa-xmark"></i></span>
+                <h2>預購注意事項</h2>
+                <p>
+                    預購下單7日內若有訂單異動可連絡本賣場，7日後則將不進行退款，但仍可進行款式更換。<br /><br />
+
+                    本賣場以提供展場取貨為主，請考量自身是否方便前往展場繳納尾款並取貨，若不克前往可聯絡賣場保留商品至下次展出。<br /><br />
+
+                    自願放棄或當期展覽最後一天失聯者將不另行退款，預購之商品將作為餘量釋出販售。<br /><br />
+
+                    本店鋪公仔商品皆為3D列印手工打磨噴色製作，商品表面難免有細微痕跡或溢色，完美主義者請思慮後再下單。<br /><br />
+
+                    商品製作費時，因此取貨時間及地點依店鋪公告為主，若單量太多將先關閉預購，敬請見諒。感謝支持與耐心等待。</p>
             </div>
-          </div>
+        </div>
           <!-- 歷史紀錄 -->
           <div id="historyPopup" class="history-popup" style="display: none;">
             <div class="history-content">
@@ -218,6 +262,8 @@
     <script src="./js/shopping.js"></script>
     <script src="js/lightSlider.js"></script>
     <script src="./js/shopping.js"></script>
+    <script src="./js/contactsoft.js"></script>
+
     <script src="./js/script.js"></script>
     <script>
 

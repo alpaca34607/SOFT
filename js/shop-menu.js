@@ -1,25 +1,24 @@
-// 彈窗
-const openPopupBtn = document.getElementById('open-popup');
-const closePopupBtn = document.getElementById('close-popup');
-const popup = document.getElementById('popup');
+const openNoticeBtn = document.getElementById('open-notice');
+const closeNoticeBtn = document.getElementById('close-notice');
+const noticePopup = document.getElementById('notice-popup');
 
-// 開啟彈窗
-openPopupBtn.addEventListener('click', () => {
-    popup.style.display = 'flex'; // 顯示彈窗
-    document.body.style.overflow = 'hidden'; // 禁止滾動
+// 開啟注意事項彈窗
+openNoticeBtn.addEventListener('click', () => {
+    noticePopup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
 });
 
-// 關閉彈窗
-closePopupBtn.addEventListener('click', () => {
-    popup.style.display = 'none'; // 隱藏彈窗
-    document.body.style.overflow = ''; // 恢復滾動
+// 關閉注意事項彈窗
+closeNoticeBtn.addEventListener('click', () => {
+    noticePopup.style.display = 'none';
+    document.body.style.overflow = '';
 });
 
-// 點擊彈窗外部區域關閉彈窗
+// 點擊外部關閉注意事項彈窗
 window.addEventListener('click', (event) => {
-    if (event.target === popup) {
-        popup.style.display = 'none'; // 隱藏彈窗
-        document.body.style.overflow = ''; // 恢復滾動
+    if (event.target === noticePopup) {
+        noticePopup.style.display = 'none';
+        document.body.style.overflow = '';
     }
 });
 // 購物車相關功能

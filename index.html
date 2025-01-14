@@ -70,7 +70,7 @@
                   <span>Get Soft</span>
                 </div>
               </a></li>
-            <li><button id="open-popup">
+            <li><button id="open-contact">
                 <img src="./images/home/menu6.svg" alt="聯絡軟筋LOGO">
                 <div class="menu-title">
                   <p>聯絡軟筋</p>
@@ -82,9 +82,9 @@
       </div>
     </header>
     <!-- 彈窗區 -->
-    <div id="popup" class="popup-container">
+    <div id="contact-popup" class="popup-container">
       <div class="popup-content">
-        <button id="close-popup" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <button id="close-contact" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
         <h2>聯絡軟筋</h2>
         <form id="contact-form">
           <div class="form-group">
@@ -99,13 +99,16 @@
 
           <div class="form-group">
             <label for="subject">聯絡主旨 *</label>
-            <select id="subject" required>
-              <option value="">請選擇主旨</option>
-              <option value="shopping">購物相關</option>
-              <option value="cooperation">合作邀請</option>
-              <option value="ip">角色IP</option>
-              <option value="other">其他</option>
-            </select>
+            <div  class="select-wrapper">
+              <select id="subject" required style="width: 100%;">
+                <option class="op" value="">請選擇主旨</option>
+                <option class="op" value="shopping">購物相關</option>
+                <option class="op" value="cooperation">合作邀請</option>
+                <option class="op" value="ip">角色IP</option>
+                <option class="op" value="other">其他</option>
+              </select>
+            </div>
+            
           </div>
 
           <div class="form-group">
@@ -241,14 +244,14 @@
         <img src="./images/home/lying-soft.png" alt="躺在書上的軟筋" class="lying-soft">
         <div class="right-page">
           <div class="right-page-content">
-            <a href=""><img src="./images/home/learn-about-soft-button.svg" alt=""></a>
+            <a href="./Learning-Soft.html"><img src="./images/home/learn-about-soft-button.svg" alt=""></a>
             <img src="./images/home/right-page.png" alt="右頁" class="right-page-img">
           </div>
         </div>
         <img src="./images/home/right-page2.png" alt="右2頁" class="right-page2">
         <img src="./images/home/BOOK.png" alt="BOOK" class="book">
       </div>
-      <img src="./images/home/lying-softzilla.svg" alt="躺著的軟吉拉" class="lying-softzilla">
+      <img src="./images/home/lying-softzilla.png" alt="躺著的軟吉拉" class="lying-softzilla">
     </section>
     <section id="becoming-Soft-intro">
       <div class="becoming-left">
