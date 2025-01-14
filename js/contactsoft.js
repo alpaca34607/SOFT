@@ -6,6 +6,7 @@ const contactForm = document.getElementById('contact-form');
 const messageInput = document.getElementById('message');
 const charCount = document.getElementById('char-count');
 
+
 // 開啟彈窗
 openPopupBtn.addEventListener('click', () => {
     popup.style.display = 'flex';

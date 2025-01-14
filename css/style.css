@@ -334,6 +334,11 @@ a {
   animation: hide 0.35s both;
   box-sizing: border-box;
 }
+@media (max-width: 1024px) {
+  #topbar .navbar .navigation {
+    top: 120%;
+  }
+}
 #topbar .navbar .navigation .menu {
   font-size: 16px;
   display: flex;
@@ -343,6 +348,7 @@ a {
 }
 #topbar .navbar .navigation .menu li {
   position: relative;
+  display: flex;
   flex-direction: row;
   right: -180px;
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.45), rgba(153, 153, 153, 0.3));
@@ -351,7 +357,7 @@ a {
   backdrop-filter: brightness(100%) blur(3px);
   border-radius: 99px 0 0 99px;
   width: 300px;
-  padding: 6px 20px 0px 20px;
+  padding: 4px 20px 4px 20px;
   margin-top: 30px;
 }
 #topbar .navbar .navigation .menu li:hover {
@@ -361,7 +367,8 @@ a {
 #topbar .navbar .navigation .menu li:active img {
   transform: scale(1.2);
 }
-#topbar .navbar .navigation .menu li a, #topbar .navbar .navigation .menu li button {
+#topbar .navbar .navigation .menu li a,
+#topbar .navbar .navigation .menu li button {
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
@@ -370,19 +377,22 @@ a {
   border: none;
   background: none;
 }
-#topbar .navbar .navigation .menu li a img, #topbar .navbar .navigation .menu li button img {
+#topbar .navbar .navigation .menu li a img,
+#topbar .navbar .navigation .menu li button img {
   width: 40px;
   height: 40px;
   margin: 5px 80px 0 0;
 }
-#topbar .navbar .navigation .menu li a .menu-title, #topbar .navbar .navigation .menu li button .menu-title {
+#topbar .navbar .navigation .menu li a .menu-title,
+#topbar .navbar .navigation .menu li button .menu-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   overflow: hidden;
 }
-#topbar .navbar .navigation .menu li a .menu-title p, #topbar .navbar .navigation .menu li button .menu-title p {
+#topbar .navbar .navigation .menu li a .menu-title p,
+#topbar .navbar .navigation .menu li button .menu-title p {
   font-family: "Zen Maru Gothic", serif;
   font-weight: 500;
   font-size: 1rem;
@@ -392,7 +402,8 @@ a {
   margin: 0;
   padding: 0;
 }
-#topbar .navbar .navigation .menu li a .menu-title span, #topbar .navbar .navigation .menu li button .menu-title span {
+#topbar .navbar .navigation .menu li a .menu-title span,
+#topbar .navbar .navigation .menu li button .menu-title span {
   font-family: "Mansalva", serif;
   font-weight: 400;
   font-size: 14px;
@@ -403,14 +414,16 @@ a {
   overflow: hidden;
   color: #FFFFFF;
 }
-#topbar .navbar .navigation .menu li a .menu-title2, #topbar .navbar .navigation .menu li button .menu-title2 {
+#topbar .navbar .navigation .menu li a .menu-title2,
+#topbar .navbar .navigation .menu li button .menu-title2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   overflow: hidden;
 }
-#topbar .navbar .navigation .menu li a .menu-title2 p, #topbar .navbar .navigation .menu li button .menu-title2 p {
+#topbar .navbar .navigation .menu li a .menu-title2 p,
+#topbar .navbar .navigation .menu li button .menu-title2 p {
   font-family: "Zen Maru Gothic", serif;
   font-weight: 500;
   font-size: 1rem;
@@ -420,7 +433,8 @@ a {
   margin: 0;
   padding: 0;
 }
-#topbar .navbar .navigation .menu li a .menu-title2 span, #topbar .navbar .navigation .menu li button .menu-title2 span {
+#topbar .navbar .navigation .menu li a .menu-title2 span,
+#topbar .navbar .navigation .menu li button .menu-title2 span {
   font-family: "Mansalva", serif;
   font-weight: 400;
   font-size: 14px;
@@ -431,14 +445,84 @@ a {
   overflow: hidden;
   color: #FFFFFF;
 }
-#topbar .navbar .navigation .menu li a:hover p, #topbar .navbar .navigation .menu li button:hover p {
+#topbar .navbar .navigation .menu li a:hover p,
+#topbar .navbar .navigation .menu li button:hover p {
   color: #736262;
 }
-#topbar .navbar .navigation .menu li a:hover span, #topbar .navbar .navigation .menu li button:hover span {
+#topbar .navbar .navigation .menu li a:hover span,
+#topbar .navbar .navigation .menu li button:hover span {
   color: #736262;
 }
 #topbar .navbar .navigation .show .menu li {
   right: -2px;
+}
+@media (max-width: 767px) {
+  #topbar {
+    padding: 30px 30px;
+    align-items: center;
+  }
+  #topbar .logo {
+    width: 40%;
+  }
+  #topbar .ig-icon,
+  #topbar .shop-icon {
+    display: none;
+  }
+  #topbar .navbar .navigation .menu {
+    width: 80px;
+  }
+  #topbar .navbar .navigation .menu li {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    width: 50px;
+    height: 50px;
+    margin-top: 45px;
+    right: -180px;
+    background-image: none;
+    border-radius: 99px;
+    overflow: visible;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    border: 2px solid #FDDA75;
+  }
+  #topbar .navbar .navigation .menu li:active a p,
+  #topbar .navbar .navigation .menu li:active button p {
+    color: #FFFFFF;
+  }
+  #topbar .navbar .navigation .menu li a,
+  #topbar .navbar .navigation .menu li button {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: -35px;
+    z-index: 1;
+    padding-top: 10px;
+  }
+  #topbar .navbar .navigation .menu li a img,
+  #topbar .navbar .navigation .menu li button img {
+    width: 24px;
+    height: 24px;
+    margin: 10px 0;
+    padding: 0;
+  }
+  #topbar .navbar .navigation .menu li a .menu-title p,
+  #topbar .navbar .navigation .menu li a .menu-title2 p,
+  #topbar .navbar .navigation .menu li button .menu-title p,
+  #topbar .navbar .navigation .menu li button .menu-title2 p {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.05rem;
+  }
+  #topbar .navbar .navigation .menu li a .menu-title span,
+  #topbar .navbar .navigation .menu li a .menu-title2 span,
+  #topbar .navbar .navigation .menu li button .menu-title span,
+  #topbar .navbar .navigation .menu li button .menu-title2 span {
+    display: none;
+  }
 }
 
 /* 回到頂部按鈕 */
@@ -447,7 +531,7 @@ a {
   position: fixed;
   right: 10%;
   bottom: 5%;
-  z-index: 999;
+  z-index: 998;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -461,6 +545,11 @@ a {
 @media (max-width: 1439px) {
   #gotop {
     right: 5%;
+  }
+}
+@media (max-width: 767px) {
+  #gotop {
+    width: 0;
   }
 }
 /* 聯絡軟筋 */
@@ -477,8 +566,15 @@ a {
   z-index: 1000;
 }
 
+.contact-form {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
 .form-group {
   margin-bottom: 15px;
+  max-width: 100%;
 }
 
 label {
@@ -492,8 +588,11 @@ label {
   color: #FFFFFF;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
+  max-width: 600px;
   padding: 8px;
   border: none;
   border-radius: 4px;
@@ -504,9 +603,20 @@ input, select, textarea {
   letter-spacing: 0.05rem;
   color: #2A2A2A;
 }
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border: 1.5px solid #FDDA75;
+}
+
+.selcect-wrapper {
+  max-width: 100%;
+}
+
+select .op {
+  width: 100%;
+  max-width: 100%;
 }
 
 textarea {
@@ -620,7 +730,7 @@ textarea {
   position: fixed;
   right: 2%;
   bottom: -5%;
-  z-index: 999;
+  z-index: 998;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -963,7 +1073,7 @@ textarea {
 #home .blobs-box .blob-1 {
   height: 10rem;
   width: 10rem;
-  background: #774898;
+  background: #c574ff;
   top: calc(50% - 5rem);
   right: calc(50% - 5rem);
   animation: blob 10s ease-in-out infinite, float 175s ease-in-out infinite;
@@ -1030,7 +1140,7 @@ textarea {
 #home .blobs-box .blob-9 {
   height: 6rem;
   width: 6rem;
-  background: #de4383;
+  background: #55b3ff;
   top: 35%;
   right: 68%;
   animation: blob 5s ease-in-out infinite, float 120s ease-in-out infinite;
@@ -1274,8 +1384,19 @@ textarea {
     aspect-ratio: 16/9;
   }
   #home #about-soft-intro #keyart-5 {
-    background-position: 50% 0%;
-    background-size: 100%;
+    background-position: 55% 20%;
+    background-size: 1920px 1080px;
+  }
+}
+@media (max-width: 1280px) {
+  #home #about-soft-intro #keyart-5 {
+    background-position: 50% 3000%;
+  }
+}
+@media (max-width: 1024px) {
+  #home #about-soft-intro #keyart-5 {
+    background-position: 60% 30%;
+    background-size: 1500px;
   }
 }
 #home #learning-soft-intro {
@@ -1330,8 +1451,8 @@ textarea {
 }
 #home #learning-soft-intro .book-wrapper .right-page .right-page-content a {
   position: absolute;
-  bottom: 160px;
-  right: 210px;
+  bottom: 120px;
+  right: 160px;
   z-index: 2;
 }
 #home #learning-soft-intro .book-wrapper .right-page .right-page-content a img {
@@ -1519,6 +1640,19 @@ textarea {
   width: 320px;
   top: 10%;
   right: 10%;
+}
+@media (max-width: 1280px) {
+  @keyframes bookwrapper {
+    0% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(-150px) translateX(-160px) scale(0.8);
+    }
+    50% {
+      transform: rotateZ(-45deg) rotateX(15deg) translateY(-50px) translateX(-160px) scale(0.8);
+    }
+    100% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(-150px) translateX(-160px) scale(0.8);
+    }
+  }
 }
 #home #becoming-Soft-intro {
   display: flex;
@@ -1715,6 +1849,16 @@ textarea {
     margin-left: 0px;
     margin-top: 0px;
     background-color: rgba(255, 153, 0, 0.2);
+  }
+}
+@media (max-width: 1280px) {
+  #home #becoming-Soft-intro .test-intro-middle {
+    flex: 2;
+    align-items: center;
+    padding: 200px 20% 200px 0;
+  }
+  #home #becoming-Soft-intro .becoming-right {
+    flex: 0;
   }
 }
 
@@ -2648,6 +2792,101 @@ textarea {
     letter-spacing: 0rem;
   }
 }
+@media (max-width: 1023px) {
+  #shop-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #shop-list .shop-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    left: 0;
+    margin-top: 20%;
+  }
+  #shop-list .shop-menu .ad-side {
+    display: none;
+  }
+  #shop-list .shop-menu .shop-logo {
+    display: flex;
+    align-items: center;
+  }
+  #shop-list .shop-menu .shop-logo img {
+    width: 100px;
+  }
+  #shop-list .shop-menu .links-group {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 0;
+    border-bottom: none;
+  }
+  #shop-list .shop-menu .links-group ul {
+    display: flex;
+    flex-direction: row;
+  }
+  #shop-list .shop-menu .links-group ul li {
+    margin: 0 8px;
+  }
+  #shop-list .shop-menu .links-group ul li button {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+  #shop-list .shop-menu .links-group ul li button span {
+    display: none;
+  }
+  #shop-list .container {
+    margin: 40px 0;
+    padding: 0;
+    width: 100%;
+  }
+  #shop-list .container .controls {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    margin-bottom: 0;
+  }
+  #shop-list .container .controls .control-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  #shop-list .container .controls .control-group input {
+    width: 100%;
+  }
+  #shop-list .container .product-table table tbody {
+    justify-content: flex-end;
+    gap: 16px;
+  }
+  #shop-list .container .product-table table tbody tr {
+    width: 170px;
+    height: 238px;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  #shop-list .container .product-table table tbody tr .product-cell {
+    padding: 0 10px;
+  }
+  #shop-list .container .product-table table tbody tr .product-cell .status-avalible,
+  #shop-list .container .product-table table tbody tr .product-cell .status-soldout {
+    font-size: 10px;
+    margin: 5px 0;
+    border-radius: 0 6px;
+  }
+  #shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .product-title {
+    font-size: 12px;
+  }
+  #shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .price-cell {
+    font-size: 14px;
+    color: #00C7BE;
+  }
+}
 
 /* 商品子頁 */
 #product-page {
@@ -2966,8 +3205,11 @@ textarea {
     justify-content: center;
   }
   #product-page .shop-menu {
-    width: 153px;
+    min-width: 153px;
     left: 5%;
+  }
+  #product-page .shop-menu button {
+    font-size: 16px;
   }
   #product-page .product-container {
     display: flex;
@@ -2975,10 +3217,29 @@ textarea {
     margin-left: 10%;
   }
   #product-page .product-container .product-info .book-area {
-    width: 100%;
+    width: 440px;
   }
   #product-page .product-container .product-info .book-area .gallery .lSSlideWrapper {
     width: 100%;
+  }
+  #product-page .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper {
+    top: 32%;
+    width: 100%;
+    aspect-ratio: 17/9;
+    /* 保持固定比例 */
+  }
+  #product-page .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper-softzilla {
+    top: 11.8%;
+    width: 100%;
+    aspect-ratio: 17/9;
+    /* 保持固定比例 */
+  }
+  #product-page .product-container .ad-area .long-ad-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 @media (max-width: 1439px) {
@@ -3015,6 +3276,64 @@ textarea {
     left: 0;
     width: 100%;
     height: 100%;
+  }
+}
+@media (max-width: 767px) {
+  #product-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2% 0;
+    justify-content: center;
+    align-items: center;
+  }
+  #product-page .shop-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    left: 0;
+    margin-top: 20%;
+  }
+  #product-page .shop-menu .shop-logo {
+    display: flex;
+    align-items: center;
+  }
+  #product-page .shop-menu .shop-logo img {
+    width: 100px;
+  }
+  #product-page .shop-menu .links-group {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 0;
+    border-bottom: none;
+  }
+  #product-page .shop-menu .links-group ul {
+    display: flex;
+    flex-direction: row;
+  }
+  #product-page .shop-menu .links-group ul li {
+    margin: 0 8px;
+  }
+  #product-page .shop-menu .links-group ul li button {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+  #product-page .shop-menu .links-group ul li button span {
+    display: none;
+  }
+  #product-page .product-container {
+    width: 100%;
+    margin: 16px 0;
+    padding: 5%;
+  }
+  #product-page .product-container .product-info .book-area {
+    width: 100%;
+  }
+  #product-page .product-container .product-info .book-area .gallery .lSSlideWrapper {
+    width: 100%;
   }
 }
 
