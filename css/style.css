@@ -3027,7 +3027,7 @@ textarea {
   gap: 8px;
 }
 #product-page .product-container .product-info .book-area .color-option .form-group select {
-  width: 90px;
+  width: 100px;
   padding: 5px;
 }
 #product-page .product-container .product-info .book-area .color-option .form-group select:focus {
