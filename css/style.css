@@ -3480,6 +3480,8 @@ textarea {
 #checkout-page .form-area .read-rules .custom-checkbox {
   transform: scale(1.4);
   margin-right: 8px;
+  height: 24px;
+  width: 24px;
 }
 #checkout-page .form-area .read-rules .custom-checkbox:checked {
   background-color: #000000;
