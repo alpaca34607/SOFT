@@ -3889,8 +3889,9 @@ textarea {
             .custom-checkbox {
                 transform: scale(1.4);
                 margin-right: 8px;
-                height: 24px;
-                width:24px;
+                height: 16px;
+                width:16px;
+                border: none;
 
                 &:checked {
                     background-color: #000000;
