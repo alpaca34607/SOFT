@@ -2601,10 +2601,11 @@ textarea {
 #shop-list .container .controls .control-group {
   display: flex;
   align-items: center;
+  text-align: center;
   font-family: "Noto Sans TC", serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 0.875rem;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0rem;
 }
 #shop-list .container .controls .control-group .sort-button {
   margin-right: 20px;
@@ -2618,6 +2619,10 @@ textarea {
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0rem;
 }
 #shop-list .container .controls .control-group .sort-button:hover {
   border: 2px solid #FDDA75;
@@ -2638,6 +2643,7 @@ textarea {
 #shop-list .container .controls .control-group label {
   width: 3rem;
   color: #FDDA75;
+  margin: 0;
 }
 #shop-list .container .controls .control-group input[type=search] {
   padding: 6px 12px;
@@ -2645,6 +2651,12 @@ textarea {
   background: none;
   border-radius: 4px;
   color: #FDDA75;
+}
+#shop-list .container .controls .control-group input[type=search]::placeholder {
+  font-family: "Noto Sans TC", serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0rem;
 }
 #shop-list .container .controls .control-group input[type=search]:focus {
   outline: none;
