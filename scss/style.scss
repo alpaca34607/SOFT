@@ -1876,9 +1876,11 @@ textarea {
                 justify-content: center;
                 align-items: center;
 
-                h3 {
-                    @include font-style($font-medium-24);
-                    color: $primary-brown;
+                .softtest-text {
+                    width: 157px;
+                 img{
+                    width: 100%;
+                 }
                     margin: 0;
                 }
 

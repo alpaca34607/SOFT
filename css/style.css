@@ -1747,14 +1747,12 @@ textarea {
   justify-content: center;
   align-items: center;
 }
-#home #becoming-Soft-intro .test-intro-middle .test-intro-bottom h3 {
-  font-family: "Zen Maru Gothic", serif;
-  font-weight: 500;
-  font-size: 1.5rem;
-  letter-spacing: 0.18rem;
-  line-height: 1.5;
-  color: #736262;
+#home #becoming-Soft-intro .test-intro-middle .test-intro-bottom .softtest-text {
+  width: 157px;
   margin: 0;
+}
+#home #becoming-Soft-intro .test-intro-middle .test-intro-bottom .softtest-text img {
+  width: 100%;
 }
 #home #becoming-Soft-intro .test-intro-middle .test-intro-bottom .button_container {
   display: flex;
