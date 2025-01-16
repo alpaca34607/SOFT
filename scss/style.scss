@@ -2864,8 +2864,7 @@ textarea {
             .control-group {
                 display: flex;
                 align-items: center;
-                gap: 8px;
-
+                @include font-style($font-medium-14-TC);
                 .sort-button {
                     margin-right: 20px;
                     padding: 8px 16px;
@@ -2901,7 +2900,7 @@ textarea {
                 }
 
                 label {
-                    font-size: 1rem;
+                    width: 3rem;
                     color: $primary-yellow;
                 }
 

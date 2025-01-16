@@ -2601,7 +2601,10 @@ textarea {
 #shop-list .container .controls .control-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05rem;
 }
 #shop-list .container .controls .control-group .sort-button {
   margin-right: 20px;
@@ -2633,7 +2636,7 @@ textarea {
   color: #2A5070;
 }
 #shop-list .container .controls .control-group label {
-  font-size: 1rem;
+  width: 3rem;
   color: #FDDA75;
 }
 #shop-list .container .controls .control-group input[type=search] {
