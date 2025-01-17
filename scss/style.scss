@@ -2206,7 +2206,7 @@ textarea {
                     transition: transform 0.3s ease-out;
                 }
 
-                // 當 h3 有 active 類別時保持底線
+                // 當 h3 active時保持底線
                 &.active::after {
                     transform: scaleX(1);
                 }
