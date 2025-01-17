@@ -4,6 +4,7 @@ $Chinese: "Zen Maru Gothic", serif;
 $EN : "Mina", serif;
 $EN-title:"Mansalva", serif;
 $TC:"Noto Sans TC",serif;
+$NUM:"Jacques Francois Shadow",serif;
 
 
 //字重
@@ -185,6 +186,22 @@ $font-medium-48: (
 );
 
 
+
+$font-EN-title-medium-14: (
+  font-family:$EN-title,
+  font-optical-sizing: auto, 
+  font-size: 14px,
+  font-weight: 400,
+  font-style: normal,
+);
+$font-EN-title-regular-16: (
+  font-family:$EN-title,
+  font-optical-sizing: auto, 
+  font-size: 16px,
+  font-weight: 400,
+  font-style: normal,
+);
+
 $font-EN-title-medium-24: (
   font-family:$EN-title, 
   font-optical-sizing: auto,
@@ -193,20 +210,18 @@ $font-EN-title-medium-24: (
   font-style: normal,
  
 );
-$font-EN-title-medium-14: (
-  font-family:$EN-title,
-  font-optical-sizing: auto, 
-  font-size: 14px,
-  font-weight: 400,
-  font-style: normal,
-);
-
-
 $font-price-32: (
   font-family: "Trade Winds",
   font-weight: 400,
   font-style: normal,
   font-size:32px,
+);
+
+$font-Num-title-32: (
+  font-family: $NUM,
+  font-weight: 400,
+  font-size: 32px,
+  font-style: normal,
 );
 
 
