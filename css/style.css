@@ -3643,6 +3643,9 @@ textarea {
   #shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .price-cell {
     font-size: 14px;
     color: #00C7BE;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 @media (max-width: 768px) {

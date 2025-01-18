@@ -4135,11 +4135,15 @@ textarea {
 
                         .product-figure figcaption .product-title {
                             font-size: 12px;
+
                         }
 
                         .product-figure figcaption .price-cell {
                             font-size: 14px;
                             color: $primary-mint;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
                         }
                     }
                 }
