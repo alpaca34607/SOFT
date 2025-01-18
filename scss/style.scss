@@ -1,6 +1,6 @@
 @use 'reset';
-@use 'variables' as *;
-@use 'function' as *;
+@use 'variables'as *;
+@use 'function'as *;
 @use 'keyframes';
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois+Shadow&family=Noto+Sans+TC:wght@100..900&family=Playfair+Display:ital,wght@1,500&family=Trade+Winds&family=Zen+Maru+Gothic&family=Mansalva&display=swap');
 
@@ -535,7 +535,7 @@ textarea {
 }
 
 .submit-btn {
-    background-color: $primary-yellow ;
+    background-color: $primary-yellow;
     color: $light;
     ;
     padding: 10px 20px;
@@ -2081,19 +2081,83 @@ textarea {
 
         }
 
-        @media(max-width:1280px) {
-            .test-intro-middle {
-                flex: 2;
-                align-items: center;
-                padding: 200px 20% 200px 0;
-            }
 
-            .becoming-right {
-                flex: 0;
-            }
+    }
 
+
+    @media(max-width:1280px) {
+        overflow-x: hidden;
+
+        #becoming-Soft-intro .test-intro-middle {
+            flex: 2;
+            align-items: center;
+            padding: 200px 20% 200px 0;
         }
 
+        #becoming-Soft-intro .becoming-right {
+            flex: 0;
+        }
+
+    }
+
+    @media (max-width:768px) {
+
+        #home-banner {
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+
+            .whats-new {
+                position: absolute;
+                left: 5%;
+                top: 70%;
+                width: 30%;
+                margin: 0;
+                padding: 0;
+                z-index: 10;
+
+                .news-more-btn {
+                    width: 100px;
+                    height: 48px;
+
+                    span {
+                        font-size: 14px;
+                        letter-spacing: 0.1rem;
+                    }
+                }
+            }
+        }
+
+        #about-soft-intro {
+            height: 100vh;
+            background: url(../images/home/about-soft.jpg);
+            background-size: contain;
+            .keyart-container {
+                display: none;
+            }
+        }
+        #learning-soft-intro {
+            margin-top: 0;
+
+            @keyframes bookwrapper {
+                0% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px)  translateX(-20%) scale(1.05);
+                }
+
+                50% {
+                    transform: rotateZ(-45deg) rotateX(15deg) translateY(250px)  translateX(-20%) scale(1);
+                }
+
+                100% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px)  translateX(-20%) scale(1.05);
+                }
+            }
+            .book-wrapper .right-page .right-page-content a{
+                bottom:90px;
+                right: 120px;
+            }
+        }
     }
 
 
@@ -2211,7 +2275,7 @@ textarea {
                     transform: scaleX(1);
                 }
 
-             
+
             }
 
             &:hover {
@@ -2222,8 +2286,8 @@ textarea {
             }
 
             &.active {
-                padding-bottom:20px;
-              }
+                padding-bottom: 20px;
+            }
 
 
 

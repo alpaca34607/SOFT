@@ -1915,6 +1915,9 @@ textarea {
   }
 }
 @media (max-width: 1280px) {
+  #home {
+    overflow-x: hidden;
+  }
   #home #becoming-Soft-intro .test-intro-middle {
     flex: 2;
     align-items: center;
@@ -1922,6 +1925,57 @@ textarea {
   }
   #home #becoming-Soft-intro .becoming-right {
     flex: 0;
+  }
+}
+@media (max-width: 768px) {
+  #home #home-banner {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #home #home-banner .whats-new {
+    position: absolute;
+    left: 5%;
+    top: 70%;
+    width: 30%;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+  }
+  #home #home-banner .whats-new .news-more-btn {
+    width: 100px;
+    height: 48px;
+  }
+  #home #home-banner .whats-new .news-more-btn span {
+    font-size: 14px;
+    letter-spacing: 0.1rem;
+  }
+  #home #about-soft-intro {
+    height: 100vh;
+    background: url(../images/home/about-soft.jpg);
+    background-size: contain;
+  }
+  #home #about-soft-intro .keyart-container {
+    display: none;
+  }
+  #home #learning-soft-intro {
+    margin-top: 0;
+  }
+  @keyframes bookwrapper {
+    0% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
+    }
+    50% {
+      transform: rotateZ(-45deg) rotateX(15deg) translateY(250px) translateX(-20%) scale(1);
+    }
+    100% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
+    }
+  }
+  #home #learning-soft-intro .book-wrapper .right-page .right-page-content a {
+    bottom: 90px;
+    right: 120px;
   }
 }
 
