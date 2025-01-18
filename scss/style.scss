@@ -599,6 +599,12 @@ textarea {
         @include font-style($font-medium-16);
         color: $light;
     }
+
+    @media (max-width: 768px) {
+        width: 80%;
+        min-width: 300px;
+        
+    }
 }
 
 /* 關閉按鈕 */
@@ -2084,6 +2090,24 @@ textarea {
 
     }
 
+    @media (max-width:1440px) {
+        #learning-soft-intro {
+            @keyframes bookwrapper {
+                0% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px) translateX(-100px) scale(0.8);
+                }
+
+                50% {
+                    transform: rotateZ(-45deg) rotateX(15deg) translateY(-150px) translateX(-100px) scale(0.75);
+                }
+
+                100% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px) translateX(-100px) scale(0.8);
+                }
+            }
+        }
+
+    }
 
     @media(max-width:1280px) {
         overflow-x: hidden;
@@ -2101,6 +2125,9 @@ textarea {
     }
 
     @media (max-width:768px) {
+        #gotop {
+            width: 0;
+        }
 
         #home-banner {
             position: relative;
@@ -2130,37 +2157,191 @@ textarea {
         }
 
         #about-soft-intro {
+            width: 100%;
             height: 100vh;
             background: url(../images/home/about-soft.jpg);
-            background-size: contain;
+            background-size: cover;
+            background-repeat: no-repeat;
+
             .keyart-container {
                 display: none;
             }
         }
+
         #learning-soft-intro {
             margin-top: 0;
 
             @keyframes bookwrapper {
                 0% {
-                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px)  translateX(-20%) scale(1.05);
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
                 }
 
                 50% {
-                    transform: rotateZ(-45deg) rotateX(15deg) translateY(250px)  translateX(-20%) scale(1);
+                    transform: rotateZ(-45deg) rotateX(15deg) translateY(250px) translateX(-20%) scale(1);
                 }
 
                 100% {
-                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px)  translateX(-20%) scale(1.05);
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
                 }
             }
-            .book-wrapper .right-page .right-page-content a{
-                bottom:90px;
+
+            .book-wrapper .right-page .right-page-content a {
+                bottom: 90px;
                 right: 120px;
             }
+
+            .lying-softzilla {
+                width: 30%;
+                right: 5%;
+
+            }
         }
+
+        #becoming-Soft-intro {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            padding-top: 100px;
+
+            .becoming-left {
+                position: absolute;
+                top: 10%;
+                left: 5%;
+                z-index: 10;
+                padding: 0;
+                margin: 0;
+                mix-blend-mode: darken;
+            }
+
+            .test-intro-middle {
+                margin: 0;
+                padding: 60px 0 0 0;
+
+            }
+        }
+
     }
 
+    @media (max-width: 430px) {
+        #home-banner {
+            padding: 30px;
 
+            .whats-new {
+                width: 100%;
+                left: 0;
+                top: 60%;
+            }
+
+            .home-middle {
+                justify-content: flex-start;
+                width: 100%;
+
+                .carousel-wrapper {
+                    width: 100%;
+                    max-width: 375px;
+                    min-width: 320px;
+                    height: 400px;
+
+                    .circle-bg {
+                        top: 30%;
+                        width: 200px;
+                        height: 200px;
+
+                    }
+
+                }
+
+                .soft-text {
+                    margin-top: 0;
+                }
+
+                .scroll-icon {
+                    margin-top: 250px;
+                }
+
+            }
+        }
+
+        #about-soft-intro {
+            width: 100%;
+            background: url(../images/home/about-soft-s.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #becoming-Soft-intro {
+            height: 100vh;
+
+            .becoming-left {
+                z-index: 0;
+                mix-blend-mode: normal;
+            }
+
+            .test-intro-middle {
+                .masked-content {
+                    height: 100%;
+                    width: 100%;
+                    mask: none;
+                    background: none;
+                    padding: 30px;
+
+
+                    #test-gallery {
+                        width: 100%;
+                        height: 30vh;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    p {
+                        color: $primary-brown;
+                        @include font-style($font-medium-14);
+                    }
+
+
+                }
+
+                .test-intro-bottom .button_container {
+                    width: 180px;
+                    height: 90px;
+
+                    .test-button {
+                        width: 180px;
+                    }
+                }
+            }
+        }
+
+        #learning-soft-intro {
+            margin-top: 0;
+
+            @keyframes bookwrapper {
+                0% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(80%) translateX(-0%) scale(2.05);
+                }
+
+                50% {
+                    transform: rotateZ(-45deg) rotateX(15deg) translateY(80%) translateX(-0%) scale(2);
+                }
+
+                100% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(80%) translateX(-0%) scale(2.05);
+                }
+            }
+
+            .book-wrapper .right-page .right-page-content a {
+                display: none;
+            }
+
+            .lying-softzilla {
+
+                display: none;
+            }
+        }
+
+    }
 }
 
 /*最新消息*/
@@ -2723,7 +2904,7 @@ textarea {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    width: 30%;
+                    width: 380px;
                     height: 8rem;
 
                     h2 {
@@ -2734,6 +2915,7 @@ textarea {
                             -2px 2px 0 $secondary-1,
                             2px 2px 0 $secondary-1;
                     }
+
                 }
 
                 #options {
@@ -2788,6 +2970,7 @@ textarea {
                             filter: hue-rotate(-10deg);
                         }
                     }
+
                 }
 
 
@@ -2923,6 +3106,24 @@ textarea {
                 }
             }
         }
+    }
+
+    @media (max-width: 430px) {
+
+        #test .test-bg .question-container #options .option-button,
+        #test .test-bg .question-container .Q,
+        #test #result p {
+            width: 300px;
+        }
+
+        #test #result img {
+            height: auto;
+            width: 100%;
+        }
+        #test .test-bg {
+            background-position: bottom;
+        }
+
     }
 }
 
@@ -3076,13 +3277,151 @@ textarea {
 
     }
 
-    @media (max-width: 1200px) {
-        .container {
+    @media (max-width: 1240px) {
+        .gallery {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            max-width: 600px;
+            justify-content: flex-end;
+
+            .cardgrid-wrapper {
+
+                .card-grid {
+                    align-items: center;
+                    justify-content: center;
+
+                    .character-card {
+                        min-width: 80px;
+                        max-width: 100px;
+                    }
+
+                }
+
+
+
+            }
         }
+    }
+
+    @media (max-width: 1024px) {
+        .container {
+            padding-top: 10%;
+            flex-direction: column-reverse;
+            align-items: center;
+
+            .album-wrapper {
+                margin-bottom: 0;
+
+                .heading-right {
+                    img {
+                        width: 150px;
+                        height: 80px;
+                    }
+                }
+
+                .album-section {
+                    max-height: 350px;
+                    width: 254.55px;
+                    background-size: 100% 100%;
+                    padding: 10px;
+
+                    .album-content .character-name {
+                        height: 40px;
+                        @include font-style($font-black-18);
+                    }
+
+                    .main-photo {
+                        height: 145px;
+
+                    }
+
+                    .ch-intro {
+                        padding: 8px;
+                        margin-top: 8px;
+                        margin-left: 5px;
+                        gap: 3px;
+                        height: 102px;
+
+                        p {
+                            @include font-style($font-medium-12);
+                        }
+                    }
+
+                }
+
+                .album-content .thumbnail-list {
+                    gap: 6px;
+
+                    .thumbnail-item {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    .thumbnail-item.active {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+
+
+                .grey-bg {
+                    top: 110px;
+                    left: 0%;
+                    width: 254.55px;
+
+                }
+            }
+
+            .gallery {
+                margin-top: 0;
+
+                .heading-left {
+                    justify-content: center;
+
+                    .twins-soft {
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
+
+                .cardgrid-wrapper {
+                    margin: 0;
+
+                    .card-grid {
+                        gap: 10px;
+
+                        .character-card {
+                            min-width: 60px;
+                            max-width: 80px;
+                        }
+
+                    }
+                }
+            }
+
+
+
+        }
+
+    }
+
+    @media (max-width: 430px) {
+        .gallery .heading-left .LearnSoft-title {
+            width: 250px;
+            height: 30px;
+        }
+
+        .container .gallery .cardgrid-wrapper {
+            margin: 0;
+
+            .card-grid .character-card {
+                min-width: 50px;
+                max-width: 60px;
+
+            }
+        }
+
     }
 
 
@@ -3762,6 +4101,23 @@ textarea {
                             color: $primary-mint;
                         }
                     }
+                }
+            }
+        }
+
+    }
+
+    @media (max-width: 768px) {
+        .container .product-table table tbody {
+            justify-content: center;
+            align-items: center;
+
+            tr {
+                width: 160px;
+
+                .product-cell .product-figure .img-wrapper {
+                    width: 130px;
+
                 }
             }
         }

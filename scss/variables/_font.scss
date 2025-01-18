@@ -26,6 +26,13 @@ $font-regular-13: (
   font-size: 0.8125rem // 13px
 );
 
+$font-regular-14: (
+  font-family: $Chinese,
+  font-weight: 300,
+  font-size: 0.875rem, // 14px
+  letter-spacing: 0.05rem // 10%
+);
+
 $font-medium-14: (
   font-family: $Chinese,
   font-weight: 500,

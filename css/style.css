@@ -702,6 +702,12 @@ textarea {
   letter-spacing: 0.18rem;
   color: #FFFFFF;
 }
+@media (max-width: 768px) {
+  .popup-content {
+    width: 80%;
+    min-width: 300px;
+  }
+}
 
 /* 關閉按鈕 */
 .close-btn {
@@ -1914,6 +1920,19 @@ textarea {
     background-color: rgba(255, 153, 0, 0.2);
   }
 }
+@media (max-width: 1440px) {
+  @keyframes bookwrapper {
+    0% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px) translateX(-100px) scale(0.8);
+    }
+    50% {
+      transform: rotateZ(-45deg) rotateX(15deg) translateY(-150px) translateX(-100px) scale(0.75);
+    }
+    100% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px) translateX(-100px) scale(0.8);
+    }
+  }
+}
 @media (max-width: 1280px) {
   #home {
     overflow-x: hidden;
@@ -1928,6 +1947,9 @@ textarea {
   }
 }
 @media (max-width: 768px) {
+  #home #gotop {
+    width: 0;
+  }
   #home #home-banner {
     position: relative;
     align-items: center;
@@ -1952,9 +1974,11 @@ textarea {
     letter-spacing: 0.1rem;
   }
   #home #about-soft-intro {
+    width: 100%;
     height: 100vh;
     background: url(../images/home/about-soft.jpg);
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   #home #about-soft-intro .keyart-container {
     display: none;
@@ -1976,6 +2000,122 @@ textarea {
   #home #learning-soft-intro .book-wrapper .right-page .right-page-content a {
     bottom: 90px;
     right: 120px;
+  }
+  #home #learning-soft-intro .lying-softzilla {
+    width: 30%;
+    right: 5%;
+  }
+  #home #becoming-Soft-intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    padding-top: 100px;
+  }
+  #home #becoming-Soft-intro .becoming-left {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    mix-blend-mode: darken;
+  }
+  #home #becoming-Soft-intro .test-intro-middle {
+    margin: 0;
+    padding: 60px 0 0 0;
+  }
+}
+@media (max-width: 430px) {
+  #home #home-banner {
+    padding: 30px;
+  }
+  #home #home-banner .whats-new {
+    width: 100%;
+    left: 0;
+    top: 60%;
+  }
+  #home #home-banner .home-middle {
+    justify-content: flex-start;
+    width: 100%;
+  }
+  #home #home-banner .home-middle .carousel-wrapper {
+    width: 100%;
+    max-width: 375px;
+    min-width: 320px;
+    height: 400px;
+  }
+  #home #home-banner .home-middle .carousel-wrapper .circle-bg {
+    top: 30%;
+    width: 200px;
+    height: 200px;
+  }
+  #home #home-banner .home-middle .soft-text {
+    margin-top: 0;
+  }
+  #home #home-banner .home-middle .scroll-icon {
+    margin-top: 250px;
+  }
+  #home #about-soft-intro {
+    width: 100%;
+    background: url(../images/home/about-soft-s.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  #home #becoming-Soft-intro {
+    height: 100vh;
+  }
+  #home #becoming-Soft-intro .becoming-left {
+    z-index: 0;
+    mix-blend-mode: normal;
+  }
+  #home #becoming-Soft-intro .test-intro-middle .masked-content {
+    height: 100%;
+    width: 100%;
+    mask: none;
+    background: none;
+    padding: 30px;
+  }
+  #home #becoming-Soft-intro .test-intro-middle .masked-content #test-gallery {
+    width: 100%;
+    height: 30vh;
+    margin: 0;
+    padding: 0;
+  }
+  #home #becoming-Soft-intro .test-intro-middle .masked-content p {
+    color: #736262;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.05rem;
+  }
+  #home #becoming-Soft-intro .test-intro-middle .test-intro-bottom .button_container {
+    width: 180px;
+    height: 90px;
+  }
+  #home #becoming-Soft-intro .test-intro-middle .test-intro-bottom .button_container .test-button {
+    width: 180px;
+  }
+  #home #learning-soft-intro {
+    margin-top: 0;
+  }
+  @keyframes bookwrapper {
+    0% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(80%) translateX(0%) scale(2.05);
+    }
+    50% {
+      transform: rotateZ(-45deg) rotateX(15deg) translateY(80%) translateX(0%) scale(2);
+    }
+    100% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(80%) translateX(0%) scale(2.05);
+    }
+  }
+  #home #learning-soft-intro .book-wrapper .right-page .right-page-content a {
+    display: none;
+  }
+  #home #learning-soft-intro .lying-softzilla {
+    display: none;
   }
 }
 
@@ -2448,7 +2588,7 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 380px;
   height: 8rem;
 }
 .softtest #test .test-bg .question-container .Q h2 {
@@ -2621,6 +2761,20 @@ textarea {
   opacity: 0;
   cursor: not-allowed;
 }
+@media (max-width: 430px) {
+  .softtest #test .test-bg .question-container #options .option-button,
+  .softtest #test .test-bg .question-container .Q,
+  .softtest #test #result p {
+    width: 300px;
+  }
+  .softtest #test #result img {
+    height: auto;
+    width: 100%;
+  }
+  .softtest #test .test-bg {
+    background-position: bottom;
+  }
+}
 
 /* 軟筋圖鑑 */
 #learning-soft {
@@ -2754,12 +2908,113 @@ textarea {
   letter-spacing: 0.05rem;
   color: #FFFFFF;
 }
-@media (max-width: 1200px) {
-  #learning-soft .container {
+@media (max-width: 1240px) {
+  #learning-soft .gallery {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    max-width: 600px;
+    justify-content: flex-end;
+  }
+  #learning-soft .gallery .cardgrid-wrapper .card-grid {
     align-items: center;
+    justify-content: center;
+  }
+  #learning-soft .gallery .cardgrid-wrapper .card-grid .character-card {
+    min-width: 80px;
+    max-width: 100px;
+  }
+}
+@media (max-width: 1024px) {
+  #learning-soft .container {
+    padding-top: 10%;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  #learning-soft .container .album-wrapper {
+    margin-bottom: 0;
+  }
+  #learning-soft .container .album-wrapper .heading-right img {
+    width: 150px;
+    height: 80px;
+  }
+  #learning-soft .container .album-wrapper .album-section {
+    max-height: 350px;
+    width: 254.55px;
+    background-size: 100% 100%;
+    padding: 10px;
+  }
+  #learning-soft .container .album-wrapper .album-section .album-content .character-name {
+    height: 40px;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.5;
+  }
+  #learning-soft .container .album-wrapper .album-section .main-photo {
+    height: 145px;
+  }
+  #learning-soft .container .album-wrapper .album-section .ch-intro {
+    padding: 8px;
+    margin-top: 8px;
+    margin-left: 5px;
+    gap: 3px;
+    height: 102px;
+  }
+  #learning-soft .container .album-wrapper .album-section .ch-intro p {
+    font-family: "Noto Sans TC", serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem;
+  }
+  #learning-soft .container .album-wrapper .album-content .thumbnail-list {
+    gap: 6px;
+  }
+  #learning-soft .container .album-wrapper .album-content .thumbnail-list .thumbnail-item {
+    width: 20px;
+    height: 20px;
+  }
+  #learning-soft .container .album-wrapper .album-content .thumbnail-list .thumbnail-item.active {
+    width: 30px;
+    height: 30px;
+  }
+  #learning-soft .container .album-wrapper .grey-bg {
+    top: 110px;
+    left: 0%;
+    width: 254.55px;
+  }
+  #learning-soft .container .gallery {
+    margin-top: 0;
+  }
+  #learning-soft .container .gallery .heading-left {
+    justify-content: center;
+  }
+  #learning-soft .container .gallery .heading-left .twins-soft {
+    width: 100px;
+    height: 100px;
+  }
+  #learning-soft .container .gallery .cardgrid-wrapper {
+    margin: 0;
+  }
+  #learning-soft .container .gallery .cardgrid-wrapper .card-grid {
+    gap: 10px;
+  }
+  #learning-soft .container .gallery .cardgrid-wrapper .card-grid .character-card {
+    min-width: 60px;
+    max-width: 80px;
+  }
+}
+@media (max-width: 430px) {
+  #learning-soft .gallery .heading-left .LearnSoft-title {
+    width: 250px;
+    height: 30px;
+  }
+  #learning-soft .container .gallery .cardgrid-wrapper {
+    margin: 0;
+  }
+  #learning-soft .container .gallery .cardgrid-wrapper .card-grid .character-card {
+    min-width: 50px;
+    max-width: 60px;
   }
 }
 #learning-soft .album-wrapper {
@@ -3357,6 +3612,18 @@ textarea {
   #shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .price-cell {
     font-size: 14px;
     color: #00C7BE;
+  }
+}
+@media (max-width: 768px) {
+  #shop-list .container .product-table table tbody {
+    justify-content: center;
+    align-items: center;
+  }
+  #shop-list .container .product-table table tbody tr {
+    width: 160px;
+  }
+  #shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper {
+    width: 130px;
   }
 }
 
