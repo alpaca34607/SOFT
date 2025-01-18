@@ -603,7 +603,7 @@ textarea {
     @media (max-width: 768px) {
         width: 80%;
         min-width: 300px;
-        
+
     }
 }
 
@@ -2342,6 +2342,38 @@ textarea {
         }
 
     }
+
+    @media (max-width:375px) {
+        #home-banner .home-middle {
+
+            .carousel-wrapper {
+                width: 100%;
+                max-width: 375px;
+                min-width: 320px;
+                height: 350px;
+
+                .circle-bg {
+                    top: 30%;
+                    width: 200px;
+                    height: 200px;
+
+                }
+
+            }
+        }
+        #home-banner .home-middle .scroll-icon{
+            margin-top: 50%;
+        }
+        #about-soft-intro {
+            background: url(../images/home/about-soft-xs.jpg);
+        }
+        #becoming-Soft-intro{
+            padding-top: 60px;
+        }
+      
+            
+
+    }
 }
 
 /*最新消息*/
@@ -3109,7 +3141,9 @@ textarea {
     }
 
     @media (max-width: 430px) {
-
+        #test .test-bg .question-container #options{
+            width: 300px;
+        }
         #test .test-bg .question-container #options .option-button,
         #test .test-bg .question-container .Q,
         #test #result p {
@@ -3120,10 +3154,17 @@ textarea {
             height: auto;
             width: 100%;
         }
+
         #test .test-bg {
             background-position: bottom;
         }
+        #test .test-bg .question-container{
+            height: auto;
 
+        }
+        #test .test-bg .question-container #confirm-button {
+            margin-bottom: 60px;
+        }
     }
 }
 
