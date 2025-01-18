@@ -532,7 +532,7 @@ a {
     display: none;
   }
 }
-@media (max-width: 375px) {
+@media (max-width: 395px) {
   #topbar .navbar .navigation {
     top: 30%;
   }
@@ -2138,6 +2138,8 @@ textarea {
 }
 @media (max-width: 375px) {
   #home #home-banner .home-middle .carousel-wrapper {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 375px;
     min-width: 320px;
@@ -2145,11 +2147,12 @@ textarea {
   }
   #home #home-banner .home-middle .carousel-wrapper .circle-bg {
     top: 30%;
+    left: 20%;
     width: 200px;
     height: 200px;
   }
   #home #home-banner .home-middle .scroll-icon {
-    margin-top: 50%;
+    margin-top: 45%;
   }
   #home #about-soft-intro {
     background: url(../images/home/about-soft-xs.jpg);

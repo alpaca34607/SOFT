@@ -427,7 +427,7 @@ a {
         }
 
     }
-    @media (max-width:375px){
+    @media (max-width:395px){
         .navbar .navigation{
             top:30%;
             .menu{
@@ -2366,6 +2366,8 @@ textarea {
         #home-banner .home-middle {
 
             .carousel-wrapper {
+                display: flex;
+                flex-direction: column;
                 width: 100%;
                 max-width: 375px;
                 min-width: 320px;
@@ -2373,6 +2375,7 @@ textarea {
 
                 .circle-bg {
                     top: 30%;
+                    left: 20%;
                     width: 200px;
                     height: 200px;
 
@@ -2381,7 +2384,7 @@ textarea {
             }
         }
         #home-banner .home-middle .scroll-icon{
-            margin-top: 50%;
+            margin-top: 45%;
         }
         #about-soft-intro {
             background: url(../images/home/about-soft-xs.jpg);
