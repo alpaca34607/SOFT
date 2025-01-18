@@ -2898,6 +2898,18 @@ textarea {
   .softtest #test .test-bg .question-container #confirm-button {
     margin-bottom: 60px;
   }
+  .softtest #test #result .result-buttons .result-button:hover {
+    transform: scale(1);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .softtest #test #result .result-buttons .result-button:active {
+    transform: scale(1) translateY(2px);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 /* 軟筋圖鑑 */
