@@ -2122,7 +2122,7 @@ textarea {
     margin-top: 0;
   }
   #home #home-banner .home-middle .scroll-icon {
-    margin-top: 250px;
+    display: none;
   }
   #home #about-soft-intro {
     width: 100%;
