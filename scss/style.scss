@@ -426,9 +426,28 @@ a {
             }
         }
 
+    }
+    @media (max-width:375px){
+        .navbar .navigation{
+            top:30%;
+            .menu{
+                li{
+                    border: none;
+                    border-radius: none;
+                    margin-top: 10px;
+                    background-image: none;
+                    backdrop-filter: none;
 
+                    button .menu-title p, a .menu-title p {
+                        padding: 0;
+                    }
+                    &:hover{
+                        background-image: none;
+                    }
 
-
+                }
+            }
+        }
     }
 }
 
@@ -748,7 +767,7 @@ textarea {
 
         &:hover {
             .bar {
-                filter: brightness(0.5) hue-rotate(50deg);
+                filter: brightness(0) saturate(100%) invert(31%) sepia(14%) saturate(1609%) hue-rotate(166deg) brightness(89%) contrast(99%);
             }
         }
     }

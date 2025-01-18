@@ -532,6 +532,24 @@ a {
     display: none;
   }
 }
+@media (max-width: 375px) {
+  #topbar .navbar .navigation {
+    top: 30%;
+  }
+  #topbar .navbar .navigation .menu li {
+    border: none;
+    border-radius: none;
+    margin-top: 10px;
+    background-image: none;
+    backdrop-filter: none;
+  }
+  #topbar .navbar .navigation .menu li button .menu-title p, #topbar .navbar .navigation .menu li a .menu-title p {
+    padding: 0;
+  }
+  #topbar .navbar .navigation .menu li:hover {
+    background-image: none;
+  }
+}
 
 /* 回到頂部按鈕 */
 #gotop {
@@ -827,7 +845,7 @@ textarea {
   cursor: pointer;
 }
 #home .hamburger:hover .bar {
-  filter: brightness(0.5) hue-rotate(50deg);
+  filter: brightness(0) saturate(100%) invert(31%) sepia(14%) saturate(1609%) hue-rotate(166deg) brightness(89%) contrast(99%);
 }
 #home #home-banner {
   position: relative;
