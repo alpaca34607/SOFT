@@ -3495,12 +3495,15 @@ textarea {
                         height: 80px;
                     }
                 }
+               .album-shadow{
+                    filter: drop-shadow(5px 10px 0 #3290dd);
+                }
 
                 .album-section {
                     max-height: 350px;
-                    width: 254.55px;
+                    width: 264.55px;
                     background-size: 100% 100%;
-                    padding: 10px;
+                    padding: 10px 15px 0 15px;
 
                     .album-content .character-name {
                         height: 40px;
@@ -3544,7 +3547,7 @@ textarea {
 
                 .grey-bg {
                     top: 110px;
-                    left: 0%;
+                    left: 5px;
                     width: 254.55px;
 
                 }
@@ -3648,7 +3651,7 @@ textarea {
             left: auto;
             width: 100%;
             height: 550px;
-            padding: 20px;
+            padding: 20px 40px 0 20px;
             background: url(../images/gallery/bigcard.svg);
             background-repeat: no-repeat;
             z-index: 2;
