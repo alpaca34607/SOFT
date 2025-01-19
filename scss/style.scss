@@ -4302,6 +4302,9 @@ textarea {
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+        .container .product-table table tbody tr .product-cell{
+            max-width: 160px;
+        }
 
     }
 

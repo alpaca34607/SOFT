@@ -3768,6 +3768,9 @@ textarea {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  #shop-list .container .product-table table tbody tr .product-cell {
+    max-width: 160px;
+  }
 }
 
 /* 商品子頁 */
