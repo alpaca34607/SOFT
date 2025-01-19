@@ -563,7 +563,9 @@ a {
   #topbar .navbar .navigation .menu li button .menu-title2 p,
   #topbar .navbar .navigation .menu li a .menu-title2 p {
     text-shadow: none;
-    padding: 0;
+    padding: 0 5px;
+    background: #2A5070;
+    border-radius: 99px;
   }
   #topbar .navbar .navigation .menu li:hover {
     background-image: none;
@@ -2220,6 +2222,8 @@ textarea {
   }
   #home #about-soft-intro {
     background: url(../images/home/about-soft-xs.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   #home #becoming-Soft-intro {
     padding-top: 60px;
@@ -4615,7 +4619,7 @@ textarea {
 }
 
 /* 購物車 */
-/* 購物車彈窗樣式 */
+/* 購物車彈窗 */
 .cart-popup {
   position: fixed;
   top: 0;
@@ -4764,6 +4768,11 @@ textarea {
   font-size: 1rem;
   letter-spacing: 0.05rem;
 }
+@media (max-width: 767px) {
+  .cart-popup .cart-content {
+    width: 80%;
+  }
+}
 
 /* 顯示購物車 */
 .cart-popup.show {
@@ -4824,6 +4833,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 20px;
 }
 .history-popup .search-section button {
   border: none;
@@ -4972,6 +4982,11 @@ textarea {
   margin: 20px;
   background: none;
   border: none;
+}
+@media (max-width: 767px) {
+  .history-popup .history-content {
+    width: 80%;
+  }
 }
 
 .history-popup.show {

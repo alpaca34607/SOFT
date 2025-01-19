@@ -465,7 +465,9 @@ a {
                     button .menu-title2 p,
                     a .menu-title2 p {
                         text-shadow: none;
-                        padding: 0;
+                        padding: 0 5px;
+                        background: $bg-3;
+                        border-radius: 99px;
                     }
 
                     &:hover {
@@ -2464,6 +2466,8 @@ textarea {
 
         #about-soft-intro {
             background: url(../images/home/about-soft-xs.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
         #becoming-Soft-intro {
@@ -3279,21 +3283,23 @@ textarea {
         #test .test-bg .question-container #confirm-button {
             margin-bottom: 60px;
         }
+
         #test #result .result-buttons .result-button {
-          &:hover {
-            transform: scale(1);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            &:hover {
+                transform: scale(1);
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
 
             }
+
             &:active {
-              transform: scale(1) translateY(2px);
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
+                transform: scale(1) translateY(2px);
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
             }
-            
+
         }
     }
 }
@@ -4302,7 +4308,8 @@ textarea {
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        .container .product-table table tbody tr .product-cell{
+
+        .container .product-table table tbody tr .product-cell {
             max-width: 160px;
         }
 
@@ -5262,19 +5269,23 @@ textarea {
     @media(max-width: 767px) {
         .checkout-container {
             margin: 0px;
-             #checkoutForm .order-summary .detail-area .num-img-wrapper{
+
+            #checkoutForm .order-summary .detail-area .num-img-wrapper {
                 width: 60px;
                 height: 60px;
-             }
-             #checkoutForm .order-summary .detail-area .details h3{
+            }
+
+            #checkoutForm .order-summary .detail-area .details h3 {
                 font-size: 14px;
-             }
-             .total-area p{
+            }
+
+            .total-area p {
                 font-size: 24px;
-             }
-             .form-area .form-section label{
+            }
+
+            .form-area .form-section label {
                 font-size: 14px;
-             }
+            }
         }
 
     }
@@ -5283,7 +5294,7 @@ textarea {
 
 
 /* 購物車 */
-/* 購物車彈窗樣式 */
+/* 購物車彈窗 */
 .cart-popup {
     position: fixed;
     top: 0;
@@ -5423,6 +5434,13 @@ textarea {
 
     }
 
+    @media (max-width: 767px) {
+        .cart-content {
+            width: 80%;
+        }
+
+    }
+
 }
 
 
@@ -5495,6 +5513,7 @@ textarea {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
+        margin-bottom: 20px;
 
         button {
             border: none;
@@ -5549,7 +5568,6 @@ textarea {
         ::-webkit-scrollbar {
             border-radius: 99px;
         }
-
     }
 
     .history-header {
@@ -5639,6 +5657,14 @@ textarea {
         margin: 20px;
         background: none;
         border: none;
+    }
+
+    @media(max-width: 767px) {
+        .history-content {
+            width: 80%;
+        }
+
+
     }
 
 }
