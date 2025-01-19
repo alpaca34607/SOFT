@@ -3762,7 +3762,7 @@ textarea {
   #shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper {
     width: 130px;
   }
-  #shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .product-title .product-figure figcaption .product-title {
+  #shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .product-title {
     font-size: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
