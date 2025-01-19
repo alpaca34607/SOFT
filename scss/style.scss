@@ -2629,7 +2629,7 @@ textarea {
         .news-content {
             max-height: 0;
             overflow: hidden;
-            padding: 0 35px;
+            padding: 0 35 0 0px;
             transition: max-height 0.3s ease-out;
             border-left: $light 3px dashed;
 
@@ -2643,7 +2643,7 @@ textarea {
         }
 
         .news-content.active {
-            max-height: 500px;
+            max-height: 100%;
         }
 
         .news-content-inner {
@@ -2888,8 +2888,8 @@ textarea {
         }
 
         .slide-2022:nth-child(2) {
-            background-image: url(../images/gallery/soft-christmas.png);
-            background-size: 50%;
+            background-image: url(../images/whatsnew/sleeping-soft.png);
+            background-size: 100%;
             background-repeat: no-repeat;
             background-position: center;
         }

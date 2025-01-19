@@ -2352,7 +2352,7 @@ textarea {
 #whats-new .wrapper .news-content {
   max-height: 0;
   overflow: hidden;
-  padding: 0 35px;
+  padding: 0 35 0 0px;
   transition: max-height 0.3s ease-out;
   border-left: #FFFFFF 3px dashed;
 }
@@ -2365,7 +2365,7 @@ textarea {
   line-height: 2;
 }
 #whats-new .wrapper .news-content.active {
-  max-height: 500px;
+  max-height: 100%;
 }
 #whats-new .wrapper .news-content-inner {
   display: flex;
@@ -2562,8 +2562,8 @@ textarea {
   background-position: center;
 }
 #whats-new .news-carousel-wrapper .slide-2022:nth-child(2) {
-  background-image: url(../images/gallery/soft-christmas.png);
-  background-size: 50%;
+  background-image: url(../images/whatsnew/sleeping-soft.png);
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
 }
