@@ -512,7 +512,18 @@ a {
     }
 
 }
-
+/* footer */
+footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: $primary-brown;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: center;
+    @include font-style($font-medium-12);
+    
+}
 
 /* 聯絡軟筋 */
 .popup-container {
@@ -719,6 +730,7 @@ textarea {
     width: 100%;
     z-index: 0;
     cursor: none;
+    background-color: $bg-2;
 
     /* 回到頂部按鈕 */
     #gotop {

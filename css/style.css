@@ -599,6 +599,21 @@ a {
     width: 0;
   }
 }
+/* footer */
+footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #736262;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-align: center;
+  font-family: "Noto Sans TC", serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem;
+}
+
 /* 聯絡軟筋 */
 .popup-container {
   display: none;
@@ -807,6 +822,7 @@ textarea {
   width: 100%;
   z-index: 0;
   cursor: none;
+  background-color: #FFEDBA;
   /* 回到頂部按鈕 */
 }
 #home #gotop {
