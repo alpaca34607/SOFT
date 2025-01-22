@@ -821,7 +821,6 @@ textarea {
   cursor: pointer;
 }
 #home .shapes {
-  /* 這裡設置background的話會影響到背景 */
   position: absolute;
   top: 0;
   left: 0;
@@ -838,6 +837,11 @@ textarea {
   will-change: transform;
   position: absolute;
   border-radius: 50%;
+}
+@media (max-width: 767px) {
+  #home .shape {
+    display: none;
+  }
 }
 #home .shape.shape-1 {
   background: #005ffe;
@@ -878,6 +882,11 @@ textarea {
   user-select: none;
   pointer-events: none;
   z-index: 10000;
+}
+@media (max-width: 768px) {
+  #home .cursor {
+    display: none;
+  }
 }
 #home ::-moz-selection {
   color: #fff;

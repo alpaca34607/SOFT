@@ -736,7 +736,6 @@ textarea {
 
 
     .shapes {
-        /* 這裡設置background的話會影響到背景 */
         position: absolute;
         top: 0;
         left: 0;
@@ -754,6 +753,9 @@ textarea {
         will-change: transform;
         position: absolute;
         border-radius: 50%;
+        @media (max-width: 767px) {
+            display: none;
+        }
 
 
     }
@@ -800,6 +802,10 @@ textarea {
         user-select: none;
         pointer-events: none;
         z-index: 10000;
+        @media (max-width: 768px) {
+            display: none;
+        }
+
     }
 
 
