@@ -823,6 +823,7 @@ textarea {
   z-index: 0;
   cursor: none;
   background-color: #FFEDBA;
+  min-height: 100vh;
   /* 回到頂部按鈕 */
 }
 #home #gotop {
