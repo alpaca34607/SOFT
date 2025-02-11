@@ -931,6 +931,7 @@ textarea {
   width: 100%;
   height: 100vh;
   background: #84D0FF;
+  overflow: hidden;
   z-index: 1;
 }
 #home #home-banner .home-middle {
@@ -2042,6 +2043,56 @@ textarea {
     flex: 0;
   }
 }
+@media (max-width: 1024px) {
+  #home #home-banner .whats-new {
+    justify-content: flex-end;
+    padding-bottom: 20%;
+  }
+  #home #about-soft-intro {
+    width: 100%;
+    height: 100vh;
+    background: url(../images/home/about-soft.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  #home #about-soft-intro .keyart-container {
+    display: none;
+  }
+  #home #learning-soft-intro {
+    margin-top: 0;
+  }
+  @keyframes bookwrapper {
+    0% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
+    }
+    50% {
+      transform: rotateZ(-45deg) rotateX(15deg) translateY(250px) translateX(-20%) scale(1);
+    }
+    100% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
+    }
+  }
+  #home #becoming-Soft-intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    padding-top: 100px;
+  }
+  #home #becoming-Soft-intro .becoming-left {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+    mix-blend-mode: darken;
+  }
+  #home #becoming-Soft-intro .test-intro-middle {
+    margin: 0;
+    padding: 60px 0 0 0;
+  }
+}
 @media (max-width: 768px) {
   #home #gotop {
     width: 0;
@@ -2079,47 +2130,13 @@ textarea {
   #home #about-soft-intro .keyart-container {
     display: none;
   }
-  #home #learning-soft-intro {
-    margin-top: 0;
-  }
-  @keyframes bookwrapper {
-    0% {
-      transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
-    }
-    50% {
-      transform: rotateZ(-45deg) rotateX(15deg) translateY(250px) translateX(-20%) scale(1);
-    }
-    100% {
-      transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
-    }
-  }
-  #home #learning-soft-intro .book-wrapper .right-page .right-page-content a {
+  #home .book-wrapper .right-page .right-page-content a {
     bottom: 90px;
     right: 120px;
   }
-  #home #learning-soft-intro .lying-softzilla {
+  #home .lying-softzilla {
     width: 30%;
     right: 5%;
-  }
-  #home #becoming-Soft-intro {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    justify-content: center;
-    padding-top: 100px;
-  }
-  #home #becoming-Soft-intro .becoming-left {
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    z-index: 10;
-    padding: 0;
-    margin: 0;
-    mix-blend-mode: darken;
-  }
-  #home #becoming-Soft-intro .test-intro-middle {
-    margin: 0;
-    padding: 60px 0 0 0;
   }
 }
 @media (max-width: 430px) {
@@ -2255,12 +2272,53 @@ textarea {
     padding-top: 60px;
   }
 }
-@media (max-height: 667px) {
+@media (max-width: 375px) {
   #home #home-banner .home-middle .carousel-wrapper {
     height: 260px;
   }
+}
+@media (max-height: 600px) {
+  #home #home-banner .home-middle {
+    justify-content: flex-start;
+  }
+  #home #home-banner .whats-new {
+    padding: 0;
+    padding-bottom: 5%;
+  }
+  #home #home-banner .home-middle .carousel-wrapper {
+    min-width: 500px;
+    height: 400px;
+  }
   #home #home-banner .home-middle .scroll-icon {
     display: none;
+  }
+  #home #home-banner .home-middle .carousel-wrapper .circle-bg {
+    top: 20%;
+    height: 300px;
+    width: 300px;
+  }
+  #home #about-soft-intro {
+    background: url(../images/home/about-soft-xxs.jpg);
+  }
+  @keyframes bookwrapper {
+    0% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px) translateX(-100px) scale(0.8);
+    }
+    50% {
+      transform: rotateZ(-45deg) rotateX(15deg) translateY(-150px) translateX(-100px) scale(0.75);
+    }
+    100% {
+      transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px) translateX(-100px) scale(0.8);
+    }
+  }
+  #home #becoming-Soft-intro {
+    align-items: center;
+  }
+  #home #becoming-Soft-intro .test-intro-middle .masked-content {
+    display: none;
+  }
+  #home #gotop {
+    visibility: hidden;
   }
 }
 

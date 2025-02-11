@@ -512,6 +512,7 @@ a {
     }
 
 }
+
 /* footer */
 footer {
     display: flex;
@@ -522,7 +523,7 @@ footer {
     font-size: 14px;
     text-align: center;
     @include font-style($font-medium-12);
-    
+
 }
 
 /* 聯絡軟筋 */
@@ -731,7 +732,7 @@ textarea {
     z-index: 0;
     cursor: none;
     background-color: $bg-2;
-    min-height: 100vh; 
+    min-height: 100vh;
 
     /* 回到頂部按鈕 */
     #gotop {
@@ -766,6 +767,7 @@ textarea {
         will-change: transform;
         position: absolute;
         border-radius: 50%;
+
         @media (max-width: 767px) {
             display: none;
         }
@@ -815,6 +817,7 @@ textarea {
         user-select: none;
         pointer-events: none;
         z-index: 10000;
+
         @media (max-width: 768px) {
             display: none;
         }
@@ -858,6 +861,7 @@ textarea {
         width: 100%;
         height: 100vh;
         background: $bg-1;
+        overflow: hidden;
         z-index: 1;
 
         .home-middle {
@@ -2223,6 +2227,72 @@ textarea {
 
     }
 
+    @media (max-width:1024px) {
+        #home-banner .whats-new {
+            justify-content: flex-end;
+            padding-bottom: 20%;
+        }
+
+        #about-soft-intro {
+            width: 100%;
+            height: 100vh;
+            background: url(../images/home/about-soft.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            .keyart-container {
+                display: none;
+            }
+        }
+
+        #learning-soft-intro {
+            margin-top: 0;
+
+            @keyframes bookwrapper {
+                0% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
+                }
+
+                50% {
+                    transform: rotateZ(-45deg) rotateX(15deg) translateY(250px) translateX(-20%) scale(1);
+                }
+
+                100% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
+                }
+            }
+
+        }
+
+
+
+        #becoming-Soft-intro {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            padding-top: 100px;
+
+            .becoming-left {
+                position: absolute;
+                top: 10%;
+                left: 5%;
+                z-index: 10;
+                padding: 0;
+                margin: 0;
+                mix-blend-mode: darken;
+            }
+
+            .test-intro-middle {
+                margin: 0;
+                padding: 60px 0 0 0;
+
+            }
+        }
+
+
+    }
+
     @media (max-width:768px) {
         #gotop {
             width: 0;
@@ -2267,59 +2337,18 @@ textarea {
             }
         }
 
-        #learning-soft-intro {
-            margin-top: 0;
 
-            @keyframes bookwrapper {
-                0% {
-                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
-                }
 
-                50% {
-                    transform: rotateZ(-45deg) rotateX(15deg) translateY(250px) translateX(-20%) scale(1);
-                }
-
-                100% {
-                    transform: rotateZ(-40deg) rotateX(0deg) translateY(200px) translateX(-20%) scale(1.05);
-                }
-            }
-
-            .book-wrapper .right-page .right-page-content a {
-                bottom: 90px;
-                right: 120px;
-            }
-
-            .lying-softzilla {
-                width: 30%;
-                right: 5%;
-
-            }
+        .book-wrapper .right-page .right-page-content a {
+            bottom: 90px;
+            right: 120px;
         }
 
-        #becoming-Soft-intro {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            justify-content: center;
-            padding-top: 100px;
+        .lying-softzilla {
+            width: 30%;
+            right: 5%;
 
-            .becoming-left {
-                position: absolute;
-                top: 10%;
-                left: 5%;
-                z-index: 10;
-                padding: 0;
-                margin: 0;
-                mix-blend-mode: darken;
-            }
-
-            .test-intro-middle {
-                margin: 0;
-                padding: 60px 0 0 0;
-
-            }
         }
-
     }
 
     @media (max-width: 430px) {
@@ -2497,15 +2526,69 @@ textarea {
 
     }
 
-    @media (max-height:667px) {
+    @media (max-width:375px) {
         #home-banner .home-middle .carousel-wrapper {
             height: 260px;
+        }
+
+    }
+
+    @media (max-height:600px) {
+        #home-banner .home-middle {
+            justify-content: flex-start;
+        }
+
+        #home-banner .whats-new {
+            padding: 0;
+            padding-bottom: 5%;
+        }
+
+        #home-banner .home-middle .carousel-wrapper {
+            min-width: 500px;
+            height: 400px;
         }
 
         #home-banner .home-middle .scroll-icon {
             display: none;
         }
 
+        #home-banner .home-middle .carousel-wrapper .circle-bg {
+            top: 20%;
+            height: 300px;
+            width: 300px;
+        }
+
+        #about-soft-intro {
+            background: url(../images/home/about-soft-xxs.jpg);
+        }
+
+        #learning-soft-intro {
+            @keyframes bookwrapper {
+                0% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px) translateX(-100px) scale(0.8);
+                }
+
+                50% {
+                    transform: rotateZ(-45deg) rotateX(15deg) translateY(-150px) translateX(-100px) scale(0.75);
+                }
+
+                100% {
+                    transform: rotateZ(-40deg) rotateX(0deg) translateY(-250px) translateX(-100px) scale(0.8);
+                }
+            }
+        }
+        #becoming-Soft-intro {
+            align-items: center;
+            .test-intro-middle .masked-content{
+                display: none;
+            }
+
+        }
+        
+
+        #gotop {
+            visibility: hidden;
+        }
 
     }
 }
@@ -3514,7 +3597,8 @@ textarea {
                         height: 80px;
                     }
                 }
-               .album-shadow{
+
+                .album-shadow {
                     filter: drop-shadow(5px 10px 0 #3290dd);
                 }
 
