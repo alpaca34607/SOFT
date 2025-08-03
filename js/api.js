@@ -8,7 +8,7 @@ class API {
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             return 'http://localhost:3000';
         } else {
-            // 生產環境：使用相對路徑或環境變數
+            // 生產環境：使用相對路徑
             return window.location.origin;
         }
     }
@@ -16,8 +16,11 @@ class API {
     static async request(endpoint, options = {}) {
         const url = `${this.baseURL}${endpoint}`;
         
+        // 如果 body 是 FormData，不設置 Content-Type（讓瀏覽器自動處理）
+        const isFormData = options.body instanceof FormData;
+        
         const defaultOptions = {
-            headers: {
+            headers: isFormData ? {} : {
                 'Content-Type': 'application/json',
             },
         };
@@ -35,7 +38,14 @@ class API {
             const response = await fetch(url, finalOptions);
             
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorText = await response.text();
+                let errorData;
+                try {
+                    errorData = JSON.parse(errorText);
+                } catch {
+                    errorData = { error: `HTTP ${response.status}: ${response.statusText}` };
+                }
+                throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
             }
             
             return await response.json();
@@ -77,8 +87,9 @@ class API {
     }
 
     static async updateOrderStatus(orderId, status) {
+        console.log('發送更新訂單狀態請求:', { orderId, status });
         return this.request(`/api/orders/${orderId}/status`, {
-            method: 'PUT',
+            method: 'PATCH',
             body: JSON.stringify({ status }),
         });
     }
@@ -93,16 +104,42 @@ class API {
     }
 
     static async createProduct(productData) {
+        const formData = new FormData();
+        
+        // 添加基本資料
+        Object.keys(productData).forEach(key => {
+            if (key === 'image' && productData[key] instanceof File) {
+                formData.append('image', productData[key]);
+            } else if (key === 'main_colors' || key === 'sub_colors') {
+                formData.append(key, JSON.stringify(productData[key]));
+            } else {
+                formData.append(key, productData[key]);
+            }
+        });
+
         return this.request('/api/products', {
             method: 'POST',
-            body: JSON.stringify(productData),
+            body: formData
         });
     }
 
     static async updateProduct(productId, productData) {
+        const formData = new FormData();
+        
+        // 添加基本資料
+        Object.keys(productData).forEach(key => {
+            if (key === 'image' && productData[key] instanceof File) {
+                formData.append('image', productData[key]);
+            } else if (key === 'main_colors' || key === 'sub_colors') {
+                formData.append(key, JSON.stringify(productData[key]));
+            } else {
+                formData.append(key, productData[key]);
+            }
+        });
+
         return this.request(`/api/products/${productId}`, {
             method: 'PUT',
-            body: JSON.stringify(productData),
+            body: formData
         });
     }
 
@@ -110,6 +147,22 @@ class API {
         return this.request(`/api/products/${productId}`, {
             method: 'DELETE',
         });
+    }
+
+    static async updateProductStock(productId, stockData) {
+        return this.request(`/api/products/${productId}/stock`, {
+            method: 'PATCH',
+            body: JSON.stringify(stockData),
+        });
+    }
+
+    // 這些方法已移除，因為前台現在會動態載入後台資料
+    static async generateProductConfig() {
+        return { success: true, message: '前台現在會自動從後台載入商品配置' };
+    }
+
+    static async updateProductConfigFile() {
+        return { success: true, message: '前台現在會自動從後台載入商品配置' };
     }
 
     // 客戶相關 API
