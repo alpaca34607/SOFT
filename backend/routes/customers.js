@@ -3,6 +3,8 @@ const { query, get, run } = require('../database');
 
 const router = express.Router();
 
+// JSON body parser 將在需要的路由中單獨添加
+
 // 取得所有客戶
 router.get('/', async (req, res) => {
     try {
@@ -62,7 +64,7 @@ router.get('/search/phone/:phone', async (req, res) => {
 });
 
 // 新增客戶
-router.post('/', async (req, res) => {
+router.post('/', express.json(), express.urlencoded({ extended: true }), async (req, res) => {
     try {
         const { name, phone, email } = req.body;
         
@@ -91,7 +93,7 @@ router.post('/', async (req, res) => {
 });
 
 // 更新客戶資料
-router.put('/:id', async (req, res) => {
+router.put('/:id', express.json(), express.urlencoded({ extended: true }), async (req, res) => {
     try {
         const { id } = req.params;
         const { name, phone, email } = req.body;

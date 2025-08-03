@@ -4,8 +4,16 @@ const { query, get, run } = require('../database');
 
 const router = express.Router();
 
+// JSON body parser 將在需要的路由中單獨添加
+
+// 調試中間件
+router.use((req, res, next) => {
+    console.log(`📋 訂單路由請求: ${req.method} ${req.path}`);
+    next();
+});
+
 // 建立新訂單
-router.post('/', async (req, res) => {
+router.post('/', express.json(), express.urlencoded({ extended: true }), async (req, res) => {
     try {
         const {
             customerInfo,
@@ -176,13 +184,27 @@ router.get('/:id', async (req, res) => {
 });
 
 // 更新訂單狀態
-router.patch('/:id/status', async (req, res) => {
+router.patch('/:id/status', express.json(), async (req, res) => {
     try {
         const { id } = req.params;
         const { status } = req.body;
 
+        console.log('收到更新訂單狀態請求:', { id, status, body: req.body, headers: req.headers });
+
         if (!status) {
             return res.status(400).json({ error: '缺少狀態參數' });
+        }
+
+        // 驗證狀態值是否有效
+        const validStatuses = ['pending', 'confirmed', 'paid', 'shipped', 'completed', 'cancelled'];
+        if (!validStatuses.includes(status)) {
+            return res.status(400).json({ error: '無效的狀態值' });
+        }
+
+        // 檢查訂單是否存在
+        const existingOrder = await get('SELECT id FROM orders WHERE id = ?', [id]);
+        if (!existingOrder) {
+            return res.status(404).json({ error: '訂單不存在' });
         }
 
         const result = await run(
@@ -190,11 +212,26 @@ router.patch('/:id/status', async (req, res) => {
             [status, id]
         );
 
+        console.log('更新結果:', result);
+
         if (result.changes === 0) {
-            return res.status(404).json({ error: '訂單不存在' });
+            return res.status(404).json({ error: '訂單不存在或更新失敗' });
         }
 
-        res.json({ success: true, message: '訂單狀態更新成功' });
+        // 取得更新後的訂單資訊
+        const updatedOrder = await get(
+            `SELECT o.*, c.name as customer_name, c.phone, c.email 
+             FROM orders o 
+             JOIN customers c ON o.customer_id = c.id 
+             WHERE o.id = ?`,
+            [id]
+        );
+
+        res.json({ 
+            success: true, 
+            message: '訂單狀態更新成功',
+            order: updatedOrder
+        });
 
     } catch (error) {
         console.error('更新訂單狀態失敗:', error);
