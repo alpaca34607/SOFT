@@ -72,13 +72,11 @@ function updateDashboardStats(orders, customers) {
     const totalOrders = orders.length;
     const pendingOrders = orders.filter(order => order.status === 'pending').length;
     const totalRevenue = orders.reduce((sum, order) => sum + order.total_amount, 0);
-    const totalDepositRevenue = orders.reduce((sum, order) => sum + order.deposit_amount, 0);
     const totalCustomers = customers.length;
     
     document.getElementById('totalOrders').textContent = totalOrders;
     document.getElementById('pendingOrders').textContent = pendingOrders;
     document.getElementById('totalRevenue').textContent = totalRevenue.toLocaleString();
-    document.getElementById('totalDepositRevenue').textContent = totalDepositRevenue.toLocaleString();
     document.getElementById('totalCustomers').textContent = totalCustomers;
 }
 
@@ -179,16 +177,10 @@ function displayOrders(orders) {
 // 更新訂單狀態
 async function updateOrderStatus(orderId, status) {
     try {
-        console.log('開始更新訂單狀態:', { orderId, status });
-        const result = await API.updateOrderStatus(orderId, status);
-        console.log('訂單狀態更新成功:', result);
-        // 重新載入訂單列表以顯示更新後的狀態
-        await loadOrders();
+        await API.updateOrderStatus(orderId, status);
+        console.log('訂單狀態更新成功');
     } catch (error) {
-        console.error('更新訂單狀態失敗:', error);
         handleAPIError(error, '更新訂單狀態失敗');
-        // 重新載入訂單列表以恢復原始狀態
-        await loadOrders();
     }
 }
 
@@ -223,347 +215,18 @@ function displayProducts(products) {
                     <strong>${product.name}</strong><br>
                     <small>商品ID: ${product.product_id}</small>
                 </div>
-                <div>
-                    <button onclick="editProduct('${product.product_id}')" class="btn-edit">編輯</button>
-                    <button onclick="deleteProduct('${product.product_id}')" class="btn-delete">刪除</button>
-                </div>
+                <span class="order-status status-${product.status}">${getProductStatusText(product.status)}</span>
             </div>
             <div class="order-details">
                 <p>價格: NT$ ${product.price.toLocaleString()}</p>
                 <p>訂金: NT$ ${product.deposit.toLocaleString()}</p>
                 <p>最大數量: ${product.max_quantity}</p>
-                <p>狀態: ${getProductStatusText(product.status)}</p>
-                ${product.description ? `<p>描述: ${product.description}</p>` : ''}
-                ${product.image_path ? `<p>圖片: <img src="${product.image_path}" alt="${product.name}" style="max-width: 100px; max-height: 100px;"></p>` : ''}
-                <p>主色選項: ${Array.isArray(product.main_colors) ? product.main_colors.join(', ') : (product.main_colors || '無')}</p>
-                <p>副色選項: ${Array.isArray(product.sub_colors) ? product.sub_colors.join(', ') : (product.sub_colors || '無')}</p>
                 <p>建立時間: ${new Date(product.created_at).toLocaleString()}</p>
             </div>
         </div>
     `).join('');
     
-    container.innerHTML = `
-        <div style="margin-bottom: 20px;">
-            <button onclick="showAddProductForm()" class="btn-add">新增商品</button>
-            <button onclick="syncProductConfig()" class="btn-sync">同步前端配置</button>
-        </div>
-        ${productsHTML}
-    `;
-}
-
-// 顯示新增商品表單
-function showAddProductForm() {
-    const container = document.getElementById('productsList');
-    
-    // 從前台的 shopping.js 中獲取顏色選項
-    const getFrontendColors = () => {
-        // 嘗試從前台的 shopping.js 中讀取顏色配置
-        const frontendColors = [
-            'black', 'white', 'gray', 'gold', 'silver', 'bronze', 
-            'red', 'orange', 'yellow', 'blue', 'green', 'brown', 'none'
-        ];
-        
-        const colorNames = {
-            'black': '黑色',
-            'white': '白色',
-            'gray': '灰色',
-            'gold': '金色',
-            'silver': '銀色',
-            'bronze': '銅色',
-            'red': '紅色',
-            'orange': '橙色',
-            'yellow': '黃色',
-            'blue': '藍色',
-            'green': '綠色',
-            'brown': '棕色',
-            'none': '無顏色選項'
-        };
-        
-        return { colors: frontendColors, names: colorNames };
-    };
-    
-    const { colors: availableColors, names: colorNames } = getFrontendColors();
-    
-    // 生成顏色選項的HTML
-    const generateColorCheckboxes = (prefix, defaultColors = []) => {
-        return availableColors.map(color => `
-            <label class="color-checkbox">
-                <input type="checkbox" name="${prefix}Colors" value="${color}" 
-                       ${defaultColors.includes(color) ? 'checked' : ''}>
-                <span class="color-label">${colorNames[color]}</span>
-            </label>
-        `).join('');
-    };
-    
-    container.innerHTML = `
-        <div class="product-form">
-            <h3>新增商品</h3>
-            <form id="addProductForm">
-                <div class="form-group">
-                    <label>商品ID:</label>
-                    <input type="text" id="productId" required>
-                </div>
-                <div class="form-group">
-                    <label>商品名稱:</label>
-                    <input type="text" id="productName" required>
-                </div>
-                <div class="form-group">
-                    <label>價格:</label>
-                    <input type="number" id="productPrice" required>
-                </div>
-                <div class="form-group">
-                    <label>訂金:</label>
-                    <input type="number" id="productDeposit" required>
-                </div>
-                <div class="form-group">
-                    <label>最大數量:</label>
-                    <input type="number" id="productMaxQuantity" value="3">
-                </div>
-                <div class="form-group">
-                    <label>狀態:</label>
-                    <select id="productStatus">
-                        <option value="available">可購買</option>
-                        <option value="sold_out">已售完</option>
-                        <option value="discontinued">已停售</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>描述:</label>
-                    <textarea id="productDescription"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>主色選項:</label>
-                    <div class="color-options">
-                        ${generateColorCheckboxes('main', ['black', 'white'])}
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>副色選項:</label>
-                    <div class="color-options">
-                        ${generateColorCheckboxes('sub', ['red', 'blue', 'green', 'brown'])}
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>商品圖片:</label>
-                    <input type="file" id="productImage" accept="image/*">
-                </div>
-                <div class="form-actions">
-                    <button type="submit">新增商品</button>
-                    <button type="button" onclick="loadProducts()">取消</button>
-                </div>
-            </form>
-        </div>
-    `;
-
-    // 綁定表單提交事件
-    document.getElementById('addProductForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        await addProduct();
-    });
-}
-
-// 新增商品
-async function addProduct() {
-    try {
-        // 獲取選中的顏色
-        const getSelectedColors = (prefix) => {
-            const checkboxes = document.querySelectorAll(`input[name="${prefix}Colors"]:checked`);
-            return Array.from(checkboxes).map(cb => cb.value);
-        };
-        
-        const formData = {
-            product_id: document.getElementById('productId').value,
-            name: document.getElementById('productName').value,
-            price: parseInt(document.getElementById('productPrice').value),
-            deposit: parseInt(document.getElementById('productDeposit').value),
-            max_quantity: parseInt(document.getElementById('productMaxQuantity').value),
-            status: document.getElementById('productStatus').value,
-            description: document.getElementById('productDescription').value,
-            main_colors: getSelectedColors('main'),
-            sub_colors: getSelectedColors('sub')
-        };
-
-        const imageFile = document.getElementById('productImage').files[0];
-        if (imageFile) {
-            formData.image = imageFile;
-        }
-
-        await API.createProduct(formData);
-        alert('商品新增成功！');
-        loadProducts();
-    } catch (error) {
-        handleAPIError(error, '新增商品失敗');
-    }
-}
-
-// 編輯商品
-async function editProduct(productId) {
-    try {
-        const response = await API.getProductById(productId);
-        const product = response.product;
-        
-        // 從前台的 shopping.js 中獲取顏色選項
-        const getFrontendColors = () => {
-            const frontendColors = [
-                'black', 'white', 'gray', 'gold', 'silver', 'bronze', 
-                'red', 'orange', 'yellow', 'blue', 'green', 'brown', 'none'
-            ];
-            
-            const colorNames = {
-                'black': '黑色',
-                'white': '白色',
-                'gray': '灰色',
-                'gold': '金色',
-                'silver': '銀色',
-                'bronze': '銅色',
-                'red': '紅色',
-                'orange': '橙色',
-                'yellow': '黃色',
-                'blue': '藍色',
-                'green': '綠色',
-                'brown': '棕色',
-                'none': '無顏色選項'
-            };
-            
-            return { colors: frontendColors, names: colorNames };
-        };
-        
-        const { colors: availableColors, names: colorNames } = getFrontendColors();
-        
-        // 生成顏色選項的HTML，並預選現有的顏色
-        const generateColorCheckboxes = (prefix, existingColors = []) => {
-            return availableColors.map(color => `
-                <label class="color-checkbox">
-                    <input type="checkbox" name="${prefix}Colors" value="${color}" 
-                           ${existingColors.includes(color) ? 'checked' : ''}>
-                    <span class="color-label">${colorNames[color]}</span>
-                </label>
-            `).join('');
-        };
-        
-        const container = document.getElementById('productsList');
-        container.innerHTML = `
-            <div class="product-form">
-                <h3>編輯商品</h3>
-                <form id="editProductForm">
-                    <div class="form-group">
-                        <label>商品ID:</label>
-                        <input type="text" id="editProductId" value="${product.product_id}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>商品名稱:</label>
-                        <input type="text" id="editProductName" value="${product.name}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>價格:</label>
-                        <input type="number" id="editProductPrice" value="${product.price}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>訂金:</label>
-                        <input type="number" id="editProductDeposit" value="${product.deposit}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>最大數量:</label>
-                        <input type="number" id="editProductMaxQuantity" value="${product.max_quantity}">
-                    </div>
-                    <div class="form-group">
-                        <label>狀態:</label>
-                        <select id="editProductStatus">
-                            <option value="available" ${product.status === 'available' ? 'selected' : ''}>可購買</option>
-                            <option value="sold_out" ${product.status === 'sold_out' ? 'selected' : ''}>已售完</option>
-                            <option value="discontinued" ${product.status === 'discontinued' ? 'selected' : ''}>已停售</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>描述:</label>
-                        <textarea id="editProductDescription">${product.description || ''}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>主色選項:</label>
-                        <div class="color-options">
-                            ${generateColorCheckboxes('main', Array.isArray(product.main_colors) ? product.main_colors : [])}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>副色選項:</label>
-                        <div class="color-options">
-                            ${generateColorCheckboxes('sub', Array.isArray(product.sub_colors) ? product.sub_colors : [])}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>商品圖片:</label>
-                        <input type="file" id="editProductImage" accept="image/*">
-                        ${product.image_path ? `<p>目前圖片: <img src="${product.image_path}" alt="${product.name}" style="max-width: 100px; max-height: 100px;"></p>` : ''}
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit">更新商品</button>
-                        <button type="button" onclick="loadProducts()">取消</button>
-                    </div>
-                </form>
-            </div>
-        `;
-
-        // 綁定表單提交事件
-        document.getElementById('editProductForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await updateProduct(productId);
-        });
-    } catch (error) {
-        handleAPIError(error, '載入商品資料失敗');
-    }
-}
-
-// 更新商品
-async function updateProduct(productId) {
-    try {
-        // 獲取選中的顏色
-        const getSelectedColors = (prefix) => {
-            const checkboxes = document.querySelectorAll(`input[name="${prefix}Colors"]:checked`);
-            return Array.from(checkboxes).map(cb => cb.value);
-        };
-        
-        const formData = {
-            name: document.getElementById('editProductName').value,
-            price: parseInt(document.getElementById('editProductPrice').value),
-            deposit: parseInt(document.getElementById('editProductDeposit').value),
-            max_quantity: parseInt(document.getElementById('editProductMaxQuantity').value),
-            status: document.getElementById('editProductStatus').value,
-            description: document.getElementById('editProductDescription').value,
-            main_colors: getSelectedColors('main'),
-            sub_colors: getSelectedColors('sub')
-        };
-
-        const imageFile = document.getElementById('editProductImage').files[0];
-        if (imageFile) {
-            formData.image = imageFile;
-        }
-
-        await API.updateProduct(productId, formData);
-        alert('商品更新成功！');
-        loadProducts();
-    } catch (error) {
-        handleAPIError(error, '更新商品失敗');
-    }
-}
-
-// 刪除商品
-async function deleteProduct(productId) {
-    if (!confirm('確定要刪除這個商品嗎？此操作無法復原。')) {
-        return;
-    }
-
-    try {
-        await API.deleteProduct(productId);
-        alert('商品刪除成功！');
-        loadProducts();
-    } catch (error) {
-        handleAPIError(error, '刪除商品失敗');
-    }
-}
-
-// 同步前端商品配置 (已移除，改為前台動態載入)
-async function syncProductConfig() {
-    alert('前端現在會自動從後台載入商品配置，無需手動同步！\n\n前台會自動獲取最新的商品資料和顏色選項。');
+    container.innerHTML = productsHTML;
 }
 
 // 載入客戶列表
@@ -651,26 +314,5 @@ function getPaymentMethodText(method) {
 
 function showError(message) {
     console.error(message);
-    // 在頁面上顯示錯誤訊息
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error';
-    errorDiv.textContent = message;
-    errorDiv.style.position = 'fixed';
-    errorDiv.style.top = '20px';
-    errorDiv.style.right = '20px';
-    errorDiv.style.zIndex = '1000';
-    errorDiv.style.padding = '10px 20px';
-    errorDiv.style.backgroundColor = '#f8d7da';
-    errorDiv.style.color = '#721c24';
-    errorDiv.style.border = '1px solid #f5c6cb';
-    errorDiv.style.borderRadius = '5px';
-    
-    document.body.appendChild(errorDiv);
-    
-    // 3秒後自動移除
-    setTimeout(() => {
-        if (errorDiv.parentNode) {
-            errorDiv.parentNode.removeChild(errorDiv);
-        }
-    }, 3000);
+    // 可以在頁面上顯示錯誤訊息
 } 

@@ -9,10 +9,8 @@ const dbPath = path.join(__dirname, 'database.sqlite');
 const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('❌ 資料庫連接失敗:', err.message);
-        console.error('資料庫路徑:', dbPath);
     } else {
         console.log('✅ 成功連接到 SQLite 資料庫');
-        console.log('資料庫路徑:', dbPath);
     }
 });
 

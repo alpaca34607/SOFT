@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const path = require('path');
 const { setupDatabase } = require('./database');
 
@@ -7,14 +8,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // 中間件
-app.use(cors({
-    origin: true, // 允許所有來源
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-// 移除全域 body parser，讓各路由自己處理
-// 這樣可以避免與 multer 的 multipart/form-data 衝突
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // 靜態檔案服務 (開發和生產環境都啟用)
 app.use(express.static(path.join(__dirname, '../')));
@@ -30,32 +26,9 @@ app.get('/api/health', (req, res) => {
 });
 
 // API 路由
-const ordersRouter = require('./routes/orders');
-const productsRouter = require('./routes/products');
-const customersRouter = require('./routes/customers');
-
-app.use('/api/orders', ordersRouter);
-app.use('/api/products', productsRouter);
-app.use('/api/customers', customersRouter);
-
-// 調試：記錄所有 API 路由
-console.log('📋 已註冊的 API 路由:');
-console.log('  - GET    /api/health');
-console.log('  - POST   /api/orders');
-console.log('  - GET    /api/orders');
-console.log('  - GET    /api/orders/:id');
-console.log('  - PATCH  /api/orders/:id/status');
-console.log('  - GET    /api/orders/search/phone/:phone');
-console.log('  - GET    /api/products');
-console.log('  - GET    /api/products/:id');
-console.log('  - POST   /api/products');
-console.log('  - PUT    /api/products/:id');
-console.log('  - DELETE /api/products/:id');
-console.log('  - PATCH  /api/products/:id/stock');
-console.log('  - GET    /api/customers');
-console.log('  - POST   /api/customers');
-console.log('  - PUT    /api/customers/:id');
-console.log('  - DELETE /api/customers/:id');
+app.use('/api/orders', require('./routes/orders'));
+app.use('/api/products', require('./routes/products'));
+app.use('/api/customers', require('./routes/customers'));
 
 // 生產環境：所有非 API 路由都返回前端頁面
 if (process.env.NODE_ENV === 'production') {
@@ -90,27 +63,6 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname, '../', htmlFile));
     });
 }
-
-// 錯誤處理中間件
-app.use((err, req, res, next) => {
-    console.error('❌ 伺服器錯誤:', err);
-    console.error('請求路徑:', req.path);
-    console.error('請求方法:', req.method);
-    res.status(500).json({ 
-        error: '內部伺服器錯誤', 
-        message: process.env.NODE_ENV === 'development' ? err.message : '請稍後再試'
-    });
-});
-
-// 404 處理
-app.use((req, res) => {
-    console.log('404 錯誤 - 路徑:', req.path, '方法:', req.method);
-    if (req.path.startsWith('/api/')) {
-        res.status(404).json({ error: 'API endpoint not found' });
-    } else {
-        res.status(404).sendFile(path.join(__dirname, '../', 'index.html'));
-    }
-});
 
 // 啟動伺服器
 async function startServer() {
