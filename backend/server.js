@@ -46,6 +46,8 @@ console.log('  - GET    /api/health');
 console.log('  - POST   /api/orders');
 console.log('  - GET    /api/orders');
 console.log('  - GET    /api/orders/:id');
+console.log('  - DELETE /api/orders/:id');
+console.log('  - DELETE /api/orders/batch/all');
 console.log('  - PATCH  /api/orders/:id/status');
 console.log('  - GET    /api/orders/search/phone/:phone');
 console.log('  - GET    /api/products');

@@ -1,5 +1,19 @@
 // 管理後台功能
 
+// 格式化時間為台北時間
+function formatDateTime(dateString) {
+    if (!dateString) return '-';
+    return new Date(dateString).toLocaleString('zh-TW', {
+        timeZone: 'Asia/Taipei',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+}
+
 // 頁面載入時初始化
 document.addEventListener('DOMContentLoaded', () => {
     initializeNavigation();
@@ -97,7 +111,7 @@ function updateRecentOrders(orders) {
                 <div>
                     <strong>訂單編號: ${order.order_number}</strong><br>
                     <small>客戶: ${order.customer_name} (${order.phone})</small><br>
-                    <small>建立時間: ${new Date(order.created_at).toLocaleString()}</small>
+                    <small>建立時間: ${formatDateTime(order.created_at)}</small>
                 </div>
                 <span class="order-status status-${order.status}">${getStatusText(order.status)}</span>
             </div>
@@ -150,7 +164,7 @@ function displayOrders(orders) {
                 <div>
                     <strong>訂單編號: ${order.order_number}</strong><br>
                     <small>客戶: ${order.customer_name} (${order.phone})</small><br>
-                    <small>建立時間: ${new Date(order.created_at).toLocaleString()}</small>
+                    <small>建立時間: ${formatDateTime(order.created_at)}</small>
                 </div>
                 <div>
                     <select class="status-select" onchange="updateOrderStatus(${order.id}, this.value)">
@@ -161,6 +175,7 @@ function displayOrders(orders) {
                         <option value="completed" ${order.status === 'completed' ? 'selected' : ''}>已完成</option>
                         <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>已取消</option>
                     </select>
+
                 </div>
             </div>
             <div class="order-details">
@@ -170,10 +185,16 @@ function displayOrders(orders) {
                 <p>付款方式: ${getPaymentMethodText(order.payment_method)}</p>
                 ${order.note ? `<p>備註: ${order.note}</p>` : ''}
             </div>
+             <button onclick="deleteOrder(${order.id}, '${order.order_number}')" class="btn-delete" style="">🗑️ 刪除</button>
         </div>
     `).join('');
     
-    container.innerHTML = ordersHTML;
+    container.innerHTML = `
+        <div style="margin-bottom: 20px;">
+            <button onclick="deleteAllOrders()" class="btn-delete">⚠️ 清空所有訂單</button>
+        </div>
+        ${ordersHTML}
+    `;
 }
 
 // 更新訂單狀態
@@ -237,7 +258,7 @@ function displayProducts(products) {
                 ${product.image_path ? `<p>圖片: <img src="${product.image_path}" alt="${product.name}" style="max-width: 100px; max-height: 100px;"></p>` : ''}
                 <p>主色選項: ${Array.isArray(product.main_colors) ? product.main_colors.join(', ') : (product.main_colors || '無')}</p>
                 <p>副色選項: ${Array.isArray(product.sub_colors) ? product.sub_colors.join(', ') : (product.sub_colors || '無')}</p>
-                <p>建立時間: ${new Date(product.created_at).toLocaleString()}</p>
+                <p>建立時間: ${formatDateTime(product.created_at)}</p>
             </div>
         </div>
     `).join('');
@@ -603,7 +624,7 @@ function displayCustomers(customers) {
                 </div>
             </div>
             <div class="order-details">
-                <p>註冊時間: ${new Date(customer.created_at).toLocaleString()}</p>
+                <p>註冊時間: ${formatDateTime(customer.created_at)}</p>
             </div>
         </div>
     `).join('');
@@ -671,6 +692,119 @@ function showError(message) {
     setTimeout(() => {
         if (errorDiv.parentNode) {
             errorDiv.parentNode.removeChild(errorDiv);
+        }
+    }, 3000);
+}
+
+// 刪除單一訂單
+async function deleteOrder(orderId, orderNumber) {
+    const confirmed = confirm(`確定要刪除訂單 ${orderNumber} 嗎？\n\n此操作無法復原！`);
+    
+    if (!confirmed) {
+        return;
+    }
+    
+    try {
+        console.log(`開始刪除訂單: ${orderId} (${orderNumber})`);
+        
+        const response = await fetch(`/api/orders/${orderId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `HTTP ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('刪除成功:', result);
+        
+        // 顯示成功訊息
+        showSuccessToast(`訂單 ${orderNumber} 已成功刪除`);
+        
+        // 重新載入訂單列表
+        loadOrders();
+        
+    } catch (error) {
+        console.error('刪除訂單失敗:', error);
+        alert(`刪除訂單失敗: ${error.message}`);
+    }
+}
+
+// 批量刪除所有訂單 (危險操作)
+async function deleteAllOrders() {
+    const confirmed = confirm('⚠️ 警告：這將刪除所有訂單及相關資料！\n\n此操作無法復原，請再次確認是否要繼續？');
+    
+    if (!confirmed) {
+        return;
+    }
+    
+    const doubleConfirmed = confirm('最後確認：真的要清空所有訂單嗎？\n\n這包括：\n- 所有訂單記錄\n- 所有訂單明細\n\n此操作無法復原！');
+    
+    if (!doubleConfirmed) {
+        return;
+    }
+    
+    try {
+        console.log('開始批量刪除所有訂單...');
+        
+        const response = await fetch('/api/orders/batch/all', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                confirm: 'DELETE_ALL_ORDERS'
+            })
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `HTTP ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('批量刪除成功:', result);
+        
+        // 顯示成功訊息
+        showSuccessToast(`已清空所有訂單 (${result.deletedOrders} 筆訂單，${result.deletedItems} 筆明細)`);
+        
+        // 重新載入訂單列表
+        loadOrders();
+        
+    } catch (error) {
+        console.error('批量刪除訂單失敗:', error);
+        alert(`批量刪除失敗: ${error.message}`);
+    }
+}
+
+// 顯示成功訊息
+function showSuccessToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'success-toast';
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #28a745;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 5px;
+        z-index: 10000;
+        font-size: 14px;
+        max-width: 300px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    `;
+    toast.textContent = message;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
         }
     }, 3000);
 } 

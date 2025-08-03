@@ -35,8 +35,11 @@ async function query(sql, params = []) {
     } else {
         // SQLite 原始查詢
         return new Promise((resolve, reject) => {
-            const db = dbModule.getDatabase();
-            if (sql.toLowerCase().includes('insert')) {
+            const db = dbModule.db;
+            const sqlLower = sql.toLowerCase().trim();
+            
+            // 需要使用 db.run 的操作：INSERT, UPDATE, DELETE
+            if (sqlLower.startsWith('insert') || sqlLower.startsWith('update') || sqlLower.startsWith('delete')) {
                 db.run(sql, params, function(err) {
                     if (err) reject(err);
                     else resolve({ 
@@ -46,6 +49,7 @@ async function query(sql, params = []) {
                     });
                 });
             } else {
+                // 查詢操作使用 db.all
                 db.all(sql, params, (err, rows) => {
                     if (err) reject(err);
                     else resolve({ 
