@@ -2,8 +2,10 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
 
-// 資料庫檔案路徑
-const dbPath = path.join(__dirname, 'database.sqlite');
+// 資料庫檔案路徑 (Vercel 環境使用 /tmp 目錄)
+const dbPath = process.env.NODE_ENV === 'production' 
+    ? '/tmp/database.sqlite' 
+    : path.join(__dirname, 'database.sqlite');
 
 // 建立資料庫連接
 const db = new sqlite3.Database(dbPath, (err) => {

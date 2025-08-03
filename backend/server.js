@@ -112,28 +112,44 @@ app.use((req, res) => {
     }
 });
 
-// 啟動伺服器
-async function startServer() {
+// 初始化資料庫 (用於 Vercel serverless 環境)
+async function initializeDatabase() {
     try {
         await setupDatabase();
         console.log('✅ 成功連接到 SQLite 資料庫');
         console.log('🔄 初始化資料庫...');
         console.log('✅ 資料庫表格初始化完成');
-        
-        app.listen(PORT, () => {
-            console.log(`🚀 伺服器運行在 http://localhost:${PORT}`);
-            console.log(`📊 API 文檔: http://localhost:${PORT}/api/health`);
-            console.log(`🌍 環境: ${process.env.NODE_ENV || 'development'}`);
-            console.log(`🏠 網站首頁: http://localhost:${PORT}/index.html`);
-            console.log(`🛒 商店頁面: http://localhost:${PORT}/Get-Soft.html`);
-            console.log(`📋 管理後台: http://localhost:${PORT}/admin.html`);
-        });
     } catch (error) {
-        console.error('❌ 伺服器啟動失敗:', error);
-        process.exit(1);
+        console.error('❌ 資料庫初始化失敗:', error);
+        throw error;
     }
 }
 
-startServer();
+// 根據環境決定啟動方式
+if (process.env.NODE_ENV !== 'production' && require.main === module) {
+    // 開發環境：啟動伺服器
+    async function startServer() {
+        try {
+            await initializeDatabase();
+            
+            app.listen(PORT, () => {
+                console.log(`🚀 伺服器運行在 http://localhost:${PORT}`);
+                console.log(`📊 API 文檔: http://localhost:${PORT}/api/health`);
+                console.log(`🌍 環境: ${process.env.NODE_ENV || 'development'}`);
+                console.log(`🏠 網站首頁: http://localhost:${PORT}/index.html`);
+                console.log(`🛒 商店頁面: http://localhost:${PORT}/Get-Soft.html`);
+                console.log(`📋 管理後台: http://localhost:${PORT}/admin.html`);
+            });
+        } catch (error) {
+            console.error('❌ 伺服器啟動失敗:', error);
+            process.exit(1);
+        }
+    }
+    
+    startServer();
+} else {
+    // 生產環境 (Vercel)：初始化資料庫但不啟動伺服器
+    initializeDatabase().catch(console.error);
+}
 
 module.exports = app; 
