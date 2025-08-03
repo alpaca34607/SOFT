@@ -32,112 +32,163 @@ if (typeof window.openNoticeBtn === 'undefined') {
         }
     });
 }
-      // 商品配置資料
-      const PRODUCTS_CONFIG = {
-        'product-SoftzillaOD': {
-            name: '監修中 | 戶外風軟吉拉',
-            price: 2500,
-            deposit:300,
-            maxQuantity: 3,
-            mainColors: ['black', 'white'],
-            subColors: ['brown', 'green']
-        },
-        'product-Softzilla': {
-            name: '2023出品|軟吉拉公仔',
-            price: 1500,
-            deposit:300,
-            maxQuantity: 3,
-            mainColors: ['black', 'white'],
-            subColors: ['gold', 'silver', 'red', 'orange', 'yellow', 'blue', 'green']
-        },
-        'product-Soft': {
-            name: '2019出品 | 軟筋臥佛公仔',
-            price: 1200,
-            deposit:250,
-            maxQuantity: 0,
-            mainColors: ['white'],
-            subColors: ['red', 'green', 'blue']
-        },
-        'product-Softtwice': {
-            name: '2018出品 | 小貓仔黏土偶',
-            price: 300,
-            deposit:0,
-            maxQuantity: 0,
-            mainColors: ['white'],
-            subColors: ['none']
-        },
-        'product-Remain': {
-            name: '餘量釋出|軟吉拉公仔',
-            price: 1000,
-            deposit:150,
-            maxQuantity: 3,
-            mainColors: ['black', 'white'],
-            subColors: [ 'red', 'blue', 'green']
-        }
-    };
 
-    // 顏色名稱對照表
-    const COLOR_NAMES = {
-        'black': '黑色',
-        'white': '白色',
-        'gray': '灰色',
-        'gold': '金色',
-        'silver': '銀色',
-        'bronze': '銅色',
-        'red': '紅色',
-        'orange': '橙色',
-        'yellow': '黃色',
-        'blue': '藍色',
-        'green': '綠色',
-        'brown':'棕色',
-        'none':'無顏色選項',
-    };
+// 動態載入的商品配置資料
+let PRODUCTS_CONFIG = {};
 
-   // 根據 HTML 頁面上的 data-product-id 自動設定商品 ID
+// 顏色名稱對照表
+const COLOR_NAMES = {
+    'black': '黑色',
+    'white': '白色',
+    'gray': '灰色',
+    'gold': '金色',
+    'silver': '銀色',
+    'bronze': '銅色',
+    'red': '紅色',
+    'orange': '橙色',
+    'yellow': '黃色',
+    'blue': '藍色',
+    'green': '綠色',
+    'brown':'棕色',
+    'none':'無顏色選項',
+};
+
+// 根據 HTML 頁面上的 data-product-id 自動設定商品 ID
 const CURRENT_PRODUCT_ID = document.body.dataset.productId; // 在 <body> 中設置 data-product-id
+
+// 從後台載入商品配置
+async function loadProductsConfig() {
+    try {
+        const response = await fetch('/api/products');
+        const data = await response.json();
+        
+        // 將後台資料轉換為前台格式
+        PRODUCTS_CONFIG = {};
+        data.products.forEach(product => {
+            PRODUCTS_CONFIG[product.product_id] = {
+                name: product.name,
+                price: product.price,
+                deposit: product.deposit,
+                maxQuantity: product.max_quantity,
+                mainColors: product.main_colors || [],
+                subColors: product.sub_colors || []
+            };
+        });
+        
+        console.log('已載入商品配置:', PRODUCTS_CONFIG);
+        
+        // 如果當前頁面有商品ID，則初始化商品選項
+        if (CURRENT_PRODUCT_ID && PRODUCTS_CONFIG[CURRENT_PRODUCT_ID]) {
+            updateColorOptions(PRODUCTS_CONFIG[CURRENT_PRODUCT_ID]);
+        }
+        
+    } catch (error) {
+        console.error('載入商品配置失敗:', error);
+        // 如果載入失敗，使用預設配置
+        PRODUCTS_CONFIG = {
+            'product-SoftzillaOD': {
+                name: '監修中 | 戶外風軟吉拉',
+                price: 2500,
+                deposit: 300,
+                maxQuantity: 3,
+                mainColors: ['black', 'white'],
+                subColors: ['brown', 'green']
+            },
+            'product-Softzilla': {
+                name: '2023出品|軟吉拉公仔',
+                price: 1500,
+                deposit: 300,
+                maxQuantity: 3,
+                mainColors: ['black', 'white'],
+                subColors: ['gold', 'silver', 'red', 'orange', 'yellow', 'blue', 'green']
+            },
+            'product-Soft': {
+                name: '2019出品 | 軟筋臥佛公仔',
+                price: 1200,
+                deposit: 250,
+                maxQuantity: 0,
+                mainColors: ['white'],
+                subColors: ['red', 'green', 'blue']
+            },
+            'product-Softtwice': {
+                name: '2018出品 | 小貓仔黏土偶',
+                price: 300,
+                deposit: 0,
+                maxQuantity: 0,
+                mainColors: ['white'],
+                subColors: ['none']
+            },
+            'product-Remain': {
+                name: '餘量釋出|軟吉拉公仔',
+                price: 1000,
+                deposit: 150,
+                maxQuantity: 3,
+                mainColors: ['black', 'white'],
+                subColors: ['red', 'blue', 'green']
+            }
+        };
+        
+        if (CURRENT_PRODUCT_ID && PRODUCTS_CONFIG[CURRENT_PRODUCT_ID]) {
+            updateColorOptions(PRODUCTS_CONFIG[CURRENT_PRODUCT_ID]);
+        }
+    }
+}
 
 // 更新顏色選項
 function updateColorOptions(productConfig) {
     const mainColorSelect = document.getElementById('mainColor');
-    mainColorSelect.innerHTML = '<option value="">選擇主色</option>';
-    productConfig.mainColors.forEach(color => {
-        const option = document.createElement('option');
-        option.value = color;
-        option.textContent = COLOR_NAMES[color];
-        mainColorSelect.appendChild(option);
-    });
+    if (mainColorSelect) {
+        mainColorSelect.innerHTML = '<option value="">選擇主色</option>';
+        productConfig.mainColors.forEach(color => {
+            const option = document.createElement('option');
+            option.value = color;
+            option.textContent = COLOR_NAMES[color];
+            mainColorSelect.appendChild(option);
+        });
+    }
 
     const subColorSelect = document.getElementById('subColor');
-    subColorSelect.innerHTML = '<option value="">選擇副色</option>';
-    productConfig.subColors.forEach(color => {
-        const option = document.createElement('option');
-        option.value = color;
-        option.textContent = COLOR_NAMES[color];
-        subColorSelect.appendChild(option);
-    });
+    if (subColorSelect) {
+        subColorSelect.innerHTML = '<option value="">選擇副色</option>';
+        productConfig.subColors.forEach(color => {
+            const option = document.createElement('option');
+            option.value = color;
+            option.textContent = COLOR_NAMES[color];
+            subColorSelect.appendChild(option);
+        });
+    }
 
     // 數量
     const quantitySelect = document.getElementById('quantity');
-    quantitySelect.innerHTML = '';
-    for (let i = 1; i <= productConfig.maxQuantity; i++) {
-        const option = document.createElement('option');
-        option.value = i;
-        option.textContent = i;
-        quantitySelect.appendChild(option);
+    if (quantitySelect) {
+        quantitySelect.innerHTML = '';
+        for (let i = 1; i <= productConfig.maxQuantity; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            quantitySelect.appendChild(option);
+        }
     }
 }
 
 // 初始化頁面
-window.addEventListener('load', () => {
+async function initializePage() {
+    await loadProductsConfig(); // 等待商品配置載入完成
+
     const productConfig = PRODUCTS_CONFIG[CURRENT_PRODUCT_ID];
     if (!productConfig) {
         alert('找不到指定商品！');
         return;
     }
 
-    document.getElementById('productName').textContent = productConfig.name;
-    document.getElementById('unitPrice').textContent = productConfig.price;
-    document.getElementById('unitDeposit').textContent = productConfig.deposit;
+    // 更新頁面元素
+    const productNameElement = document.getElementById('productName');
+    const unitPriceElement = document.getElementById('unitPrice');
+    const unitDepositElement = document.getElementById('unitDeposit');
+    
+    if (productNameElement) productNameElement.textContent = productConfig.name;
+    if (unitPriceElement) unitPriceElement.textContent = productConfig.price;
+    if (unitDepositElement) unitDepositElement.textContent = productConfig.deposit;
 
     updateColorOptions(productConfig);
     
@@ -148,16 +199,26 @@ window.addEventListener('load', () => {
     if (savedSelection) {
         const selection = JSON.parse(savedSelection);
         if (selection.productId === CURRENT_PRODUCT_ID) {
-            document.getElementById('mainColor').value = selection.mainColor;
-            document.getElementById('subColor').value = selection.subColor;
-            document.getElementById('quantity').value = selection.quantity;
-            document.getElementById('totalPrice').textContent = selection.totalPrice;
-            document.getElementById('totalDeposit').textContent = selection.totalDeposit;
+            const mainColorElement = document.getElementById('mainColor');
+            const subColorElement = document.getElementById('subColor');
+            const quantityElement = document.getElementById('quantity');
+            const totalPriceElement = document.getElementById('totalPrice');
+            const totalDepositElement = document.getElementById('totalDeposit');
+            
+            if (mainColorElement) mainColorElement.value = selection.mainColor;
+            if (subColorElement) subColorElement.value = selection.subColor;
+            if (quantityElement) quantityElement.value = selection.quantity;
+            if (totalPriceElement) totalPriceElement.textContent = selection.totalPrice;
+            if (totalDepositElement) totalDepositElement.textContent = selection.totalDeposit;
+            
             // 再次更新按鈕狀態，以防 localStorage 中的選擇影響按鈕
             updateCheckoutButton();
         }
     }
-});
+}
+
+// 頁面載入時初始化
+window.addEventListener('load', initializePage);
 
 // 按下結帳按鈕時檢查選擇
 function updateCheckoutButton() {
