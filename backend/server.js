@@ -127,12 +127,37 @@ async function initializeDatabase() {
     }
 }
 
+// 資料庫初始化狀態
+let databaseInitialized = false;
+
+// 確保資料庫已初始化的中間件
+async function ensureDatabaseInitialized(req, res, next) {
+    if (!databaseInitialized) {
+        try {
+            await initializeDatabase();
+            databaseInitialized = true;
+            console.log('✅ 資料庫初始化完成 (serverless)');
+        } catch (error) {
+            console.error('❌ 資料庫初始化失敗:', error);
+            return res.status(500).json({ 
+                error: '伺服器初始化失敗', 
+                message: error.message 
+            });
+        }
+    }
+    next();
+}
+
+// 在所有 API 路由前添加資料庫初始化中間件
+app.use('/api', ensureDatabaseInitialized);
+
 // 根據環境決定啟動方式
 if (process.env.NODE_ENV !== 'production' && require.main === module) {
     // 開發環境：啟動伺服器
     async function startServer() {
         try {
             await initializeDatabase();
+            databaseInitialized = true;
             
             app.listen(PORT, () => {
                 console.log(`🚀 伺服器運行在 http://localhost:${PORT}`);
@@ -149,9 +174,6 @@ if (process.env.NODE_ENV !== 'production' && require.main === module) {
     }
     
     startServer();
-} else {
-    // 生產環境 (Vercel)：初始化資料庫但不啟動伺服器
-    initializeDatabase().catch(console.error);
 }
 
 module.exports = app; 

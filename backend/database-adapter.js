@@ -2,15 +2,27 @@
 
 const usePostgres = process.env.DATABASE_URL || process.env.NODE_ENV === 'production';
 
+console.log('🔍 資料庫配置檢查:');
+console.log('  - DATABASE_URL:', process.env.DATABASE_URL ? '已設置' : '未設置');
+console.log('  - NODE_ENV:', process.env.NODE_ENV);
+console.log('  - 使用 PostgreSQL:', usePostgres);
+
 let dbModule;
 if (usePostgres) {
+    console.log('📦 載入 PostgreSQL 模組...');
     dbModule = require('./database-postgres');
 } else {
+    console.log('📦 載入 SQLite 模組...');
     dbModule = require('./database');
 }
 
 // SQLite 風格的查詢適配器
 async function query(sql, params = []) {
+    // 確保資料庫已初始化
+    if (!dbModule) {
+        throw new Error('資料庫連接未初始化');
+    }
+    
     if (usePostgres) {
         // PostgreSQL 使用 $1, $2, $3... 格式
         const pgSql = convertSQLiteToPostgreSQL(sql);
