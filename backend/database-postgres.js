@@ -31,10 +31,21 @@ function initializeDatabase() {
     }
 }
 
+// 立即初始化資料庫連接
+initializeDatabase();
+
 // 執行 SQL 查詢
 async function query(text, params = []) {
     if (!pool) {
-        throw new Error('資料庫連接未初始化');
+        console.log('🔄 資料庫連接池尚未初始化，嘗試重新初始化...');
+        initializeDatabase();
+        
+        if (!pool) {
+            console.error('❌ 資料庫環境變數檢查:');
+            console.error('  - DATABASE_URL:', DATABASE_URL ? '已設置' : '未設置');
+            console.error('  - NODE_ENV:', process.env.NODE_ENV);
+            throw new Error('資料庫連接未初始化 - 請檢查 DATABASE_URL 環境變數');
+        }
     }
     
     const client = await pool.connect();
@@ -44,6 +55,18 @@ async function query(text, params = []) {
     } finally {
         client.release();
     }
+}
+
+// 執行單一結果查詢（相當於 SQLite 的 get）
+async function get(text, params = []) {
+    const result = await query(text, params);
+    return result.rows[0];
+}
+
+// 執行無回傳結果的查詢（相當於 SQLite 的 run）
+async function run(text, params = []) {
+    const result = await query(text, params);
+    return result;
 }
 
 // 初始化資料庫表格
@@ -187,6 +210,8 @@ async function closeDatabase() {
 
 module.exports = {
     query,
+    get,
+    run,
     setupDatabase,
     closeDatabase,
     pool: () => pool,
