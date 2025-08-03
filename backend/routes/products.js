@@ -40,7 +40,8 @@ const upload = multer({
 // 取得所有商品
 router.get('/', async (req, res) => {
     try {
-        const products = await query('SELECT * FROM products ORDER BY created_at DESC');
+        const productResult = await query('SELECT * FROM products ORDER BY created_at DESC');
+        const products = productResult.rows || [];
         
         // 解析 JSON 欄位
         products.forEach(product => {

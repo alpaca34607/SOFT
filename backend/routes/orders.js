@@ -135,14 +135,16 @@ router.get('/', async (req, res) => {
         sql += ' ORDER BY o.created_at DESC LIMIT ? OFFSET ?';
         params.push(parseInt(limit), parseInt(offset));
 
-        const orders = await query(sql, params);
+        const orderResult = await query(sql, params);
+        const orders = orderResult.rows || [];
 
         // 取得每個訂單的明細
         for (const order of orders) {
-            order.items = await query(
+            const itemsResult = await query(
                 'SELECT * FROM order_items WHERE order_id = ?',
                 [order.id]
             );
+            order.items = itemsResult.rows || [];
         }
 
         res.json({ orders });
@@ -244,7 +246,7 @@ router.get('/search/phone/:phone', async (req, res) => {
     try {
         const { phone } = req.params;
 
-        const orders = await query(
+        const orderResult = await query(
             `SELECT o.*, c.name as customer_name, c.phone, c.email 
              FROM orders o 
              JOIN customers c ON o.customer_id = c.id 
@@ -252,13 +254,16 @@ router.get('/search/phone/:phone', async (req, res) => {
              ORDER BY o.created_at DESC`,
             [phone]
         );
+        
+        const orders = orderResult.rows || [];
 
         // 取得每個訂單的明細
         for (const order of orders) {
-            order.items = await query(
+            const itemsResult = await query(
                 'SELECT * FROM order_items WHERE order_id = ?',
                 [order.id]
             );
+            order.items = itemsResult.rows || [];
         }
 
         res.json({ orders });
