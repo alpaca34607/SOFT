@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const { setupDatabase } = require('./database');
+
+// 使用資料庫適配器
+const { setupDatabase } = require('./database-adapter');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
