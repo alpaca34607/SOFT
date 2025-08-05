@@ -117,8 +117,13 @@ class API {
 
     // 添加基本資料
     Object.keys(productData).forEach((key) => {
-      if (key === "image" && productData[key] instanceof File) {
-        formData.append("image", productData[key]);
+      if (
+        (key === "thumbnail" ||
+          key === "lightslider_images" ||
+          key === "sketchfab_background") &&
+        productData[key] instanceof File
+      ) {
+        formData.append(key, productData[key]);
       } else if (key === "main_colors" || key === "sub_colors") {
         formData.append(key, JSON.stringify(productData[key]));
       } else {
@@ -137,8 +142,13 @@ class API {
 
     // 添加基本資料
     Object.keys(productData).forEach((key) => {
-      if (key === "image" && productData[key] instanceof File) {
-        formData.append("image", productData[key]);
+      if (
+        (key === "thumbnail" ||
+          key === "lightslider_images" ||
+          key === "sketchfab_background") &&
+        productData[key] instanceof File
+      ) {
+        formData.append(key, productData[key]);
       } else if (key === "main_colors" || key === "sub_colors") {
         formData.append(key, JSON.stringify(productData[key]));
       } else {

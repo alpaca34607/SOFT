@@ -297,14 +297,57 @@ function displayProducts(products) {
                 <p>訂金: NT$ ${product.deposit.toLocaleString()}</p>
                 <p>最大數量: ${product.max_quantity}</p>
                 <p>狀態: ${getProductStatusText(product.status)}</p>
+                <p>預購按鈕狀態: ${getPreorderButtonStatusText(
+                  product.preorder_button_status
+                )}</p>
+                <p>開放狀態: ${getCellOpenStatusText(
+                  product.cell_open_status
+                )}</p>
+                <p>餘量狀態: ${getCellRemainingStatusText(
+                  product.cell_remaining_status
+                )}</p>
                 ${
-                  product.description
-                    ? `<p>描述: ${product.description}</p>`
+                  product.specifications
+                    ? `<p>規格: ${product.specifications}</p>`
                     : ""
                 }
                 ${
-                  product.image_path
-                    ? `<p>圖片: <img src="${product.image_path}" alt="${product.name}" style="max-width: 100px; max-height: 100px;"></p>`
+                  product.pickup_info
+                    ? `<p>取貨資訊: ${product.pickup_info}</p>`
+                    : ""
+                }
+                ${
+                  product.thumbnail_path
+                    ? `<p>縮圖: <img src="${product.thumbnail_path}" alt="${product.name}" style="max-width: 100px; max-height: 100px;"></p>`
+                    : ""
+                }
+                ${
+                  product.lightslider_images &&
+                  product.lightslider_images.length > 0
+                    ? `<p>LightSlider圖片: ${product.lightslider_images.length} 張</p>`
+                    : ""
+                }
+                ${
+                  product.sketchfab_embed_link
+                    ? `<p>Sketchfab連結: ${product.sketchfab_embed_link}</p>`
+                    : ""
+                }
+                ${
+                  product.product_introduction
+                    ? `<p>商品介紹: ${product.product_introduction.substring(
+                        0,
+                        100
+                      )}${
+                        product.product_introduction.length > 100 ? "..." : ""
+                      }</p>`
+                    : ""
+                }
+                ${
+                  product.preorder_notes
+                    ? `<p>預購注意事項: ${product.preorder_notes.substring(
+                        0,
+                        100
+                      )}${product.preorder_notes.length > 100 ? "..." : ""}</p>`
                     : ""
                 }
                 <p>主色選項: ${
@@ -425,8 +468,34 @@ function showAddProductForm() {
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>描述:</label>
-                    <textarea id="productDescription"></textarea>
+                    <label>規格:</label>
+                    <textarea id="productSpecifications" placeholder="例如: 寬5cm*高8cm / 模型光固化樹脂"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>預購取貨時間與地點:</label>
+                    <textarea id="productPickupInfo" placeholder="例如: 2023/10月中 / Taipei Toy Festival台北國際玩具創作大展"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>預購按鈕顯示狀態:</label>
+                    <select id="productPreorderButtonStatus">
+                        <option value="select_style">請選擇款式/前往預購</option>
+                        <option value="sold_out">已售完</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>顯示在product cell的開放狀態:</label>
+                    <select id="productCellOpenStatus">
+                        <option value="preparing">準備中</option>
+                        <option value="open_for_preorder">開放預購中</option>
+                        <option value="stopped_selling">已停止販售</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>顯示在product cell的餘量狀態:</label>
+                    <select id="productCellRemainingStatus">
+                        <option value="still_available">尚有餘量</option>
+                        <option value="sold_out">已售完</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>主色選項:</label>
@@ -446,8 +515,28 @@ function showAddProductForm() {
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>商品圖片:</label>
-                    <input type="file" id="productImage" accept="image/*">
+                    <label>上傳商品縮圖(thumb):</label>
+                    <input type="file" id="productThumbnail" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label>上傳LightSlider圖片:</label>
+                    <input type="file" id="productLightSliderImages" accept="image/*" multiple>
+                </div>
+                <div class="form-group">
+                    <label>sketchfab嵌入連結:</label>
+                    <input type="url" id="productSketchfabEmbedLink" placeholder="例如: https://sketchfab.com/models/...">
+                </div>
+                <div class="form-group">
+                    <label>sketchfab背景:</label>
+                    <input type="file" id="productSketchfabBackground" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label>商品介紹:</label>
+                    <textarea id="productIntroduction" placeholder="商品詳細介紹內容"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>預購注意事項:</label>
+                    <textarea id="productPreorderNotes" placeholder="預購相關注意事項"></textarea>
                 </div>
                 <div class="form-actions">
                     <button type="submit">新增商品</button>
@@ -486,14 +575,43 @@ async function addProduct() {
         document.getElementById("productMaxQuantity").value
       ),
       status: document.getElementById("productStatus").value,
-      description: document.getElementById("productDescription").value,
+      specifications: document.getElementById("productSpecifications").value,
+      pickup_info: document.getElementById("productPickupInfo").value,
+      preorder_button_status: document.getElementById(
+        "productPreorderButtonStatus"
+      ).value,
+      cell_open_status: document.getElementById("productCellOpenStatus").value,
+      cell_remaining_status: document.getElementById(
+        "productCellRemainingStatus"
+      ).value,
+      sketchfab_embed_link: document.getElementById("productSketchfabEmbedLink")
+        .value,
+      product_introduction: document.getElementById("productIntroduction")
+        .value,
+      preorder_notes: document.getElementById("productPreorderNotes").value,
       main_colors: getSelectedColors("main"),
       sub_colors: getSelectedColors("sub"),
     };
 
-    const imageFile = document.getElementById("productImage").files[0];
-    if (imageFile) {
-      formData.image = imageFile;
+    const thumbnailFile = document.getElementById("productThumbnail").files[0];
+    if (thumbnailFile) {
+      formData.thumbnail = thumbnailFile;
+    }
+
+    const lightsliderFiles = document.getElementById(
+      "productLightSliderImages"
+    ).files;
+    if (lightsliderFiles.length > 0) {
+      Array.from(lightsliderFiles).forEach((file, index) => {
+        formData[`lightslider_images`] = file;
+      });
+    }
+
+    const sketchfabBackgroundFile = document.getElementById(
+      "productSketchfabBackground"
+    ).files[0];
+    if (sketchfabBackgroundFile) {
+      formData.sketchfab_background = sketchfabBackgroundFile;
     }
 
     await API.createProduct(formData);
@@ -616,10 +734,67 @@ async function editProduct(productId) {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>描述:</label>
-                        <textarea id="editProductDescription">${
-                          product.description || ""
+                        <label>規格:</label>
+                        <textarea id="editProductSpecifications">${
+                          product.specifications || ""
                         }</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>預購取貨時間與地點:</label>
+                        <textarea id="editProductPickupInfo">${
+                          product.pickup_info || ""
+                        }</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>預購按鈕顯示狀態:</label>
+                        <select id="editProductPreorderButtonStatus">
+                            <option value="select_style" ${
+                              product.preorder_button_status === "select_style"
+                                ? "selected"
+                                : ""
+                            }>請選擇款式/前往預購</option>
+                            <option value="sold_out" ${
+                              product.preorder_button_status === "sold_out"
+                                ? "selected"
+                                : ""
+                            }>已售完</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>顯示在product cell的開放狀態:</label>
+                        <select id="editProductCellOpenStatus">
+                            <option value="preparing" ${
+                              product.cell_open_status === "preparing"
+                                ? "selected"
+                                : ""
+                            }>準備中</option>
+                            <option value="open_for_preorder" ${
+                              product.cell_open_status === "open_for_preorder"
+                                ? "selected"
+                                : ""
+                            }>開放預購中</option>
+                            <option value="stopped_selling" ${
+                              product.cell_open_status === "stopped_selling"
+                                ? "selected"
+                                : ""
+                            }>已停止販售</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>顯示在product cell的餘量狀態:</label>
+                        <select id="editProductCellRemainingStatus">
+                            <option value="still_available" ${
+                              product.cell_remaining_status ===
+                              "still_available"
+                                ? "selected"
+                                : ""
+                            }>尚有餘量</option>
+                            <option value="sold_out" ${
+                              product.cell_remaining_status === "sold_out"
+                                ? "selected"
+                                : ""
+                            }>已售完</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>主色選項:</label>
@@ -644,13 +819,77 @@ async function editProduct(productId) {
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>商品圖片:</label>
-                        <input type="file" id="editProductImage" accept="image/*">
+                        <label>上傳商品縮圖(thumb):</label>
+                        <input type="file" id="editProductThumbnail" accept="image/*">
                         ${
-                          product.image_path
-                            ? `<p>目前圖片: <img src="${product.image_path}" alt="${product.name}" style="max-width: 100px; max-height: 100px;"></p>`
+                          product.thumbnail_path
+                            ? `<div class="current-image">
+                                <p>目前縮圖:</p>
+                                <img src="${product.thumbnail_path}" alt="${product.name}" style="max-width: 150px; max-height: 150px; border: 1px solid #ccc; margin: 5px;">
+                                <button type="button" onclick="deleteImage('thumbnail', '${product.product_id}')" style="background: #ff4444; color: white; border: none; padding: 5px 10px; margin-left: 10px; cursor: pointer;">刪除</button>
+                               </div>`
+                            : "<p>目前無縮圖</p>"
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label>上傳LightSlider圖片:</label>
+                        <input type="file" id="editProductLightSliderImages" accept="image/*" multiple>
+                        ${
+                          product.lightslider_images &&
+                          product.lightslider_images.length > 0
+                            ? `<div class="current-images">
+                                <p>目前LightSlider圖片 (${
+                                  product.lightslider_images.length
+                                } 張):</p>
+                                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0;">
+                                  ${product.lightslider_images
+                                    .map(
+                                      (img, index) => `
+                                    <div style="position: relative; display: inline-block;">
+                                      <img src="${img}" alt="LightSlider圖片${
+                                        index + 1
+                                      }" style="max-width: 100px; max-height: 100px; border: 1px solid #ccc;">
+                                      <button type="button" onclick="deleteImage('lightslider', '${
+                                        product.product_id
+                                      }', ${index})" style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer;">×</button>
+                                    </div>
+                                  `
+                                    )
+                                    .join("")}
+                                </div>
+                                <button type="button" onclick="deleteAllImages('lightslider', '${
+                                  product.product_id
+                                }')" style="background: #ff8800; color: white; border: none; padding: 5px 10px; cursor: pointer;">刪除所有LightSlider圖片</button>
+                               </div>`
+                            : "<p>目前無LightSlider圖片</p>"
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label>sketchfab嵌入連結:</label>
+                        <input type="url" id="editProductSketchfabEmbedLink" value="${
+                          product.sketchfab_embed_link || ""
+                        }">
+                    </div>
+                    <div class="form-group">
+                        <label>sketchfab背景:</label>
+                        <input type="file" id="editProductSketchfabBackground" accept="image/*">
+                        ${
+                          product.sketchfab_background
+                            ? `<p>目前背景: <img src="${product.sketchfab_background}" alt="sketchfab背景" style="max-width: 100px; max-height: 100px;"></p>`
                             : ""
                         }
+                    </div>
+                    <div class="form-group">
+                        <label>商品介紹:</label>
+                        <textarea id="editProductIntroduction">${
+                          product.product_introduction || ""
+                        }</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>預購注意事項:</label>
+                        <textarea id="editProductPreorderNotes">${
+                          product.preorder_notes || ""
+                        }</textarea>
                     </div>
                     <div class="form-actions">
                         <button type="submit">更新商品</button>
@@ -691,14 +930,47 @@ async function updateProduct(productId) {
         document.getElementById("editProductMaxQuantity").value
       ),
       status: document.getElementById("editProductStatus").value,
-      description: document.getElementById("editProductDescription").value,
+      specifications: document.getElementById("editProductSpecifications")
+        .value,
+      pickup_info: document.getElementById("editProductPickupInfo").value,
+      preorder_button_status: document.getElementById(
+        "editProductPreorderButtonStatus"
+      ).value,
+      cell_open_status: document.getElementById("editProductCellOpenStatus")
+        .value,
+      cell_remaining_status: document.getElementById(
+        "editProductCellRemainingStatus"
+      ).value,
+      sketchfab_embed_link: document.getElementById(
+        "editProductSketchfabEmbedLink"
+      ).value,
+      product_introduction: document.getElementById("editProductIntroduction")
+        .value,
+      preorder_notes: document.getElementById("editProductPreorderNotes").value,
       main_colors: getSelectedColors("main"),
       sub_colors: getSelectedColors("sub"),
     };
 
-    const imageFile = document.getElementById("editProductImage").files[0];
-    if (imageFile) {
-      formData.image = imageFile;
+    const thumbnailFile = document.getElementById("editProductThumbnail")
+      .files[0];
+    if (thumbnailFile) {
+      formData.thumbnail = thumbnailFile;
+    }
+
+    const lightsliderFiles = document.getElementById(
+      "editProductLightSliderImages"
+    ).files;
+    if (lightsliderFiles.length > 0) {
+      Array.from(lightsliderFiles).forEach((file, index) => {
+        formData[`lightslider_images`] = file;
+      });
+    }
+
+    const sketchfabBackgroundFile = document.getElementById(
+      "editProductSketchfabBackground"
+    ).files[0];
+    if (sketchfabBackgroundFile) {
+      formData.sketchfab_background = sketchfabBackgroundFile;
     }
 
     await API.updateProduct(productId, formData);
@@ -820,6 +1092,31 @@ function getProductStatusText(status) {
     available: "可購買",
     sold_out: "已售完",
     discontinued: "已停售",
+  };
+  return statusMap[status] || status;
+}
+
+function getPreorderButtonStatusText(status) {
+  const statusMap = {
+    select_style: "請選擇款式/前往預購",
+    sold_out: "已售完",
+  };
+  return statusMap[status] || status;
+}
+
+function getCellOpenStatusText(status) {
+  const statusMap = {
+    preparing: "準備中",
+    open_for_preorder: "開放預購中",
+    stopped_selling: "已停止販售",
+  };
+  return statusMap[status] || status;
+}
+
+function getCellRemainingStatusText(status) {
+  const statusMap = {
+    still_available: "尚有餘量",
+    sold_out: "已售完",
   };
   return statusMap[status] || status;
 }
@@ -983,4 +1280,80 @@ function showSuccessToast(message) {
       toast.parentNode.removeChild(toast);
     }
   }, 3000);
+}
+
+// 刪除單張圖片
+async function deleteImage(imageType, productId, imageIndex = null) {
+  try {
+    if (
+      !confirm(
+        `確定要刪除這張${
+          imageType === "thumbnail" ? "縮圖" : "LightSlider圖片"
+        }嗎？`
+      )
+    ) {
+      return;
+    }
+
+    const response = await fetch(`/api/products/${productId}/images`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        imageType: imageType,
+        imageIndex: imageIndex,
+      }),
+    });
+
+    if (response.ok) {
+      showSuccessToast("圖片刪除成功！");
+      // 重新載入商品編輯表單
+      await editProduct(productId);
+    } else {
+      const error = await response.json();
+      throw new Error(error.message || "刪除圖片失敗");
+    }
+  } catch (error) {
+    console.error("刪除圖片失敗:", error);
+    alert("刪除圖片失敗: " + error.message);
+  }
+}
+
+// 刪除所有LightSlider圖片
+async function deleteAllImages(imageType, productId) {
+  try {
+    if (
+      !confirm(
+        `確定要刪除所有${
+          imageType === "thumbnail" ? "縮圖" : "LightSlider圖片"
+        }嗎？`
+      )
+    ) {
+      return;
+    }
+
+    const response = await fetch(`/api/products/${productId}/images`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        imageType: imageType,
+        deleteAll: true,
+      }),
+    });
+
+    if (response.ok) {
+      showSuccessToast("所有圖片刪除成功！");
+      // 重新載入商品編輯表單
+      await editProduct(productId);
+    } else {
+      const error = await response.json();
+      throw new Error(error.message || "刪除圖片失敗");
+    }
+  } catch (error) {
+    console.error("刪除圖片失敗:", error);
+    alert("刪除圖片失敗: " + error.message);
+  }
 }
