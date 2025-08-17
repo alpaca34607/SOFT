@@ -3591,11 +3591,11 @@ textarea {
   margin-top: 20px;
 }
 #shop-list .container .product-table table tbody {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: space-evenly;
   width: 100%;
-  gap: 33px;
+  gap: 33px 20px;
 }
 #shop-list .container .product-table table tbody tr {
   position: relative;
@@ -3697,8 +3697,8 @@ textarea {
   color: #FFFFFF;
 }
 #shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper img {
-  width: 100%;
-  height: auto;
+  max-width: 180px;
+  max-height: 180px;
   object-fit: cover;
   vertical-align: top;
   transition: all 0.3s ease;
@@ -3734,10 +3734,11 @@ textarea {
     width: auto;
   }
   #shop-list .container .product-table table tbody {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: flex-end;
     width: auto;
-    gap: 25px;
+    gap: 25px 20px;
   }
   #shop-list .container .product-table table tbody tr .product-cell .product-figure figcaption .product-title {
     font-family: "Zen Maru Gothic", serif;
@@ -3815,15 +3816,6 @@ textarea {
   #shop-list .container .controls .control-group input {
     width: 100%;
   }
-  #shop-list .container .product-table table tbody {
-    justify-content: flex-end;
-    gap: 16px;
-  }
-  #shop-list .container .product-table table tbody tr {
-    width: 170px;
-    height: 238px;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-  }
   #shop-list .container .product-table table tbody tr .product-cell {
     padding: 0 10px;
   }
@@ -3844,11 +3836,14 @@ textarea {
 }
 @media (max-width: 768px) {
   #shop-list .container .product-table table tbody {
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     align-items: center;
+    gap: 16px;
   }
   #shop-list .container .product-table table tbody tr {
     width: 160px;
+    height: 238px;
   }
   #shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper {
     width: 130px;
@@ -3861,6 +3856,21 @@ textarea {
   }
   #shop-list .container .product-table table tbody tr .product-cell {
     max-width: 160px;
+  }
+}
+@media (max-width: 480px) {
+  #shop-list .container .product-table table tbody {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  #shop-list .container .product-table table tbody tr {
+    width: 160px;
+    height: 238px;
+  }
+  #shop-list .container .product-table table tbody tr .product-cell .product-figure .img-wrapper {
+    width: 130px;
   }
 }
 
@@ -4133,12 +4143,12 @@ textarea {
   height: max-content;
   padding-top: 7%;
   z-index: 0;
-  border-radius: 5px;
   overflow: hidden;
 }
 #product-page .product-container .ad-area .long-ad-wrap img {
   display: block;
   width: 100%;
+  border-radius: 5px;
 }
 #product-page .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper {
   position: absolute;

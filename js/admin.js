@@ -523,20 +523,20 @@ function showAddProductForm() {
                     <input type="file" id="productLightSliderImages" accept="image/*" multiple>
                 </div>
                 <div class="form-group">
-                    <label>sketchfab嵌入連結:</label>
-                    <input type="url" id="productSketchfabEmbedLink" placeholder="例如: https://sketchfab.com/models/...">
+                    <label>Sketchfab 嵌入程式碼:</label>
+                    <textarea id="productSketchfabEmbedLink" placeholder="貼上 Sketchfab 的 embed 代碼，或貼上 /embed 連結"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>sketchfab背景:</label>
+                    <label>Sketchfab 背景圖片:</label>
                     <input type="file" id="productSketchfabBackground" accept="image/*">
                 </div>
                 <div class="form-group">
-                    <label>商品介紹:</label>
-                    <textarea id="productIntroduction" placeholder="商品詳細介紹內容"></textarea>
+                    <label>商品介紹圖片:</label>
+                    <input type="file" id="productIntroduction" accept="image/*">
                 </div>
                 <div class="form-group">
-                    <label>預購注意事項:</label>
-                    <textarea id="productPreorderNotes" placeholder="預購相關注意事項"></textarea>
+                    <label>預購注意事項圖片:</label>
+                    <input type="file" id="productPreorderNotes" accept="image/*">
                 </div>
                 <div class="form-actions">
                     <button type="submit">新增商品</button>
@@ -584,11 +584,7 @@ async function addProduct() {
       cell_remaining_status: document.getElementById(
         "productCellRemainingStatus"
       ).value,
-      sketchfab_embed_link: document.getElementById("productSketchfabEmbedLink")
-        .value,
-      product_introduction: document.getElementById("productIntroduction")
-        .value,
-      preorder_notes: document.getElementById("productPreorderNotes").value,
+      sketchfab_embed_link: document.getElementById("productSketchfabEmbedLink").value,
       main_colors: getSelectedColors("main"),
       sub_colors: getSelectedColors("sub"),
     };
@@ -602,9 +598,7 @@ async function addProduct() {
       "productLightSliderImages"
     ).files;
     if (lightsliderFiles.length > 0) {
-      Array.from(lightsliderFiles).forEach((file, index) => {
-        formData[`lightslider_images`] = file;
-      });
+      formData.lightslider_images = Array.from(lightsliderFiles);
     }
 
     const sketchfabBackgroundFile = document.getElementById(
@@ -612,6 +606,16 @@ async function addProduct() {
     ).files[0];
     if (sketchfabBackgroundFile) {
       formData.sketchfab_background = sketchfabBackgroundFile;
+    }
+
+    const introductionImg = document.getElementById("productIntroduction").files?.[0];
+    if (introductionImg) {
+      formData.product_introduction = introductionImg;
+    }
+
+    const preorderNotesImg = document.getElementById("productPreorderNotes").files?.[0];
+    if (preorderNotesImg) {
+      formData.preorder_notes = preorderNotesImg;
     }
 
     await API.createProduct(formData);
@@ -826,7 +830,7 @@ async function editProduct(productId) {
                             ? `<div class="current-image">
                                 <p>目前縮圖:</p>
                                 <img src="${product.thumbnail_path}" alt="${product.name}" style="max-width: 150px; max-height: 150px; border: 1px solid #ccc; margin: 5px;">
-                                <button type="button" onclick="deleteImage('thumbnail', '${product.product_id}')" style="background: #ff4444; color: white; border: none; padding: 5px 10px; margin-left: 10px; cursor: pointer;">刪除</button>
+                                <button type="button" onclick="deleteImage('thumbnail', '${product.product_id}')" style="background: #ff4444; color: white; border: none; padding: 5px 10px; margin-top: 10px; cursor: pointer;">刪除</button>
                                </div>`
                             : "<p>目前無縮圖</p>"
                         }
@@ -848,7 +852,7 @@ async function editProduct(productId) {
                                     <div style="position: relative; display: inline-block;">
                                       <img src="${img}" alt="LightSlider圖片${
                                         index + 1
-                                      }" style="max-width: 100px; max-height: 100px; border: 1px solid #ccc;">
+                                      }" style="max-width: 150px; max-height: 150px; border: 1px solid #ccc; margin: 5px;">
                                       <button type="button" onclick="deleteImage('lightslider', '${
                                         product.product_id
                                       }', ${index})" style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer;">×</button>
@@ -865,31 +869,37 @@ async function editProduct(productId) {
                         }
                     </div>
                     <div class="form-group">
-                        <label>sketchfab嵌入連結:</label>
-                        <input type="url" id="editProductSketchfabEmbedLink" value="${
+                        <label>Sketchfab 嵌入程式碼:</label>
+                        <textarea id="editProductSketchfabEmbedLink">${
                           product.sketchfab_embed_link || ""
-                        }">
+                        }</textarea>
                     </div>
                     <div class="form-group">
-                        <label>sketchfab背景:</label>
+                        <label>Sketchfab 背景圖片:</label>
                         <input type="file" id="editProductSketchfabBackground" accept="image/*">
                         ${
                           product.sketchfab_background
-                            ? `<p>目前背景: <img src="${product.sketchfab_background}" alt="sketchfab背景" style="max-width: 100px; max-height: 100px;"></p>`
-                            : ""
+                            ? `<div class="current-image"><p>目前背景:</p><img src="${product.sketchfab_background}" alt="sketchfab背景" style="max-width: 150px; max-height: 150px; border: 1px solid #ccc; margin: 5px;"><button type="button" onclick="deleteImage('sketchfab_background', '${product.product_id}')" style="background: #ff4444; color: white; border: none; padding: 5px 10px; margin-top: 10px; cursor: pointer;">刪除</button></div>`
+                            : "<p>目前無背景</p>"
                         }
                     </div>
                     <div class="form-group">
-                        <label>商品介紹:</label>
-                        <textarea id="editProductIntroduction">${
-                          product.product_introduction || ""
-                        }</textarea>
+                        <label>商品介紹圖片:</label>
+                        <input type="file" id="editProductIntroduction" accept="image/*">
+                        ${
+                          product.product_introduction
+                            ? `<div class=\"current-image\"><p>目前介紹圖:</p><img src="${product.product_introduction}" alt="商品介紹" style="max-width: 150px; max-height: 150px; border: 1px solid #ccc; margin: 5px;"><button type=\"button\" onclick=\"deleteImage('product_introduction', '${product.product_id}')\" style=\"background: #ff4444; color: white; border: none; padding: 5px 10px; margin-top: 10px; cursor: pointer;\">刪除</button></div>`
+                            : "<p>目前無介紹圖</p>"
+                        }
                     </div>
                     <div class="form-group">
-                        <label>預購注意事項:</label>
-                        <textarea id="editProductPreorderNotes">${
-                          product.preorder_notes || ""
-                        }</textarea>
+                        <label>預購注意事項圖片:</label>
+                        <input type="file" id="editProductPreorderNotes" accept="image/*">
+                        ${
+                          product.preorder_notes
+                            ? `<div class=\"current-image\"><p>目前注意事項圖:</p><img src="${product.preorder_notes}" alt="預購注意事項" style="max-width: 150px; max-height: 150px; border: 1px solid #ccc; margin: 5px;"><button type=\"button\" onclick=\"deleteImage('preorder_notes', '${product.product_id}')\" style=\"background: #ff4444; color: white; border: none; padding: 5px 10px; margin-top: 10px; cursor: pointer;\">刪除</button></div>`
+                            : "<p>目前無注意事項圖</p>"
+                        }
                     </div>
                     <div class="form-actions">
                         <button type="submit">更新商品</button>
@@ -941,12 +951,7 @@ async function updateProduct(productId) {
       cell_remaining_status: document.getElementById(
         "editProductCellRemainingStatus"
       ).value,
-      sketchfab_embed_link: document.getElementById(
-        "editProductSketchfabEmbedLink"
-      ).value,
-      product_introduction: document.getElementById("editProductIntroduction")
-        .value,
-      preorder_notes: document.getElementById("editProductPreorderNotes").value,
+      sketchfab_embed_link: document.getElementById("editProductSketchfabEmbedLink").value,
       main_colors: getSelectedColors("main"),
       sub_colors: getSelectedColors("sub"),
     };
@@ -961,9 +966,7 @@ async function updateProduct(productId) {
       "editProductLightSliderImages"
     ).files;
     if (lightsliderFiles.length > 0) {
-      Array.from(lightsliderFiles).forEach((file, index) => {
-        formData[`lightslider_images`] = file;
-      });
+      formData.lightslider_images = Array.from(lightsliderFiles);
     }
 
     const sketchfabBackgroundFile = document.getElementById(
@@ -971,6 +974,16 @@ async function updateProduct(productId) {
     ).files[0];
     if (sketchfabBackgroundFile) {
       formData.sketchfab_background = sketchfabBackgroundFile;
+    }
+
+    const editIntroImg = document.getElementById("editProductIntroduction").files?.[0];
+    if (editIntroImg) {
+      formData.product_introduction = editIntroImg;
+    }
+
+    const editNotesImg = document.getElementById("editProductPreorderNotes").files?.[0];
+    if (editNotesImg) {
+      formData.preorder_notes = editNotesImg;
     }
 
     await API.updateProduct(productId, formData);

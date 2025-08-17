@@ -117,10 +117,21 @@ class API {
 
     // 添加基本資料
     Object.keys(productData).forEach((key) => {
+      // 多圖上傳處理
+      if (key === "lightslider_images" && Array.isArray(productData[key])) {
+        productData[key].forEach((file) => {
+          if (file instanceof File) {
+            formData.append("lightslider_images", file);
+          }
+        });
+        return;
+      }
       if (
         (key === "thumbnail" ||
           key === "lightslider_images" ||
-          key === "sketchfab_background") &&
+          key === "sketchfab_background" ||
+          key === "product_introduction" ||
+          key === "preorder_notes") &&
         productData[key] instanceof File
       ) {
         formData.append(key, productData[key]);
@@ -142,10 +153,21 @@ class API {
 
     // 添加基本資料
     Object.keys(productData).forEach((key) => {
+      // 多圖上傳處理
+      if (key === "lightslider_images" && Array.isArray(productData[key])) {
+        productData[key].forEach((file) => {
+          if (file instanceof File) {
+            formData.append("lightslider_images", file);
+          }
+        });
+        return;
+      }
       if (
         (key === "thumbnail" ||
           key === "lightslider_images" ||
-          key === "sketchfab_background") &&
+          key === "sketchfab_background" ||
+          key === "product_introduction" ||
+          key === "preorder_notes") &&
         productData[key] instanceof File
       ) {
         formData.append(key, productData[key]);

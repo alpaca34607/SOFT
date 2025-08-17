@@ -4095,11 +4095,11 @@ textarea {
                 margin-top: 20px;
 
                 tbody {
-                    display: flex;
-                    flex-wrap: wrap;
+                    display: grid;
+                    grid-template-columns: repeat(4,1fr);
                     justify-content: space-evenly;
                     width: 100%;
-                    gap: 33px;
+                    gap: 33px 20px;
 
                     tr {
                         position: relative;
@@ -4114,6 +4114,7 @@ textarea {
                         margin-bottom: 40px;
                         filter: drop-shadow(8px 4px 0 #619ABD);
                         transition: all 0.3s ease;
+                    
 
                         &:hover {
                             transform: scale(1.1);
@@ -4208,8 +4209,8 @@ textarea {
                                     }
 
                                     img {
-                                        width: 100%;
-                                        height: auto;
+                                        max-width: 180px;
+                                        max-height: 180px;
                                         object-fit: cover;
                                         vertical-align: top;
                                         transition: all 0.3s ease;
@@ -4256,10 +4257,11 @@ textarea {
 
 
             table tbody {
-                display: flex;
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
                 justify-content: flex-end;
                 width: auto;
-                gap: 25px;
+                gap: 25px 20px;
             }
 
         }
@@ -4271,8 +4273,6 @@ textarea {
             letter-spacing: 0rem; // 15%
         }
     }
-
-
     @media(max-width:1023px) {
         display: flex;
         flex-direction: column;
@@ -4356,14 +4356,9 @@ textarea {
             }
 
             .product-table table tbody {
-                justify-content: flex-end;
-
-                gap: 16px;
 
                 tr {
-                    width: 170px;
-                    height: 238px;
-                    filter: drop-shadow(0 0 0 #ffffff00);
+                   
 
                     .product-cell {
                         padding: 0 10px;
@@ -4392,14 +4387,16 @@ textarea {
         }
 
     }
-
     @media (max-width: 768px) {
         .container .product-table table tbody {
+            grid-template-columns: repeat(3,1fr);
             justify-content: center;
             align-items: center;
+            gap: 16px;
 
             tr {
                 width: 160px;
+                height: 238px;
 
                 .product-cell .product-figure .img-wrapper {
                     width: 130px;
@@ -4407,6 +4404,7 @@ textarea {
                 }
             }
         }
+       
 
         .container .product-table table tbody tr .product-cell .product-figure figcaption .product-title {
             font-size: 12px;
@@ -4420,8 +4418,25 @@ textarea {
         }
 
     }
+    @media (max-width: 480px) {
+        .container .product-table table tbody {
+            grid-template-columns: repeat(2,1fr);
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
 
+            tr {
+                width: 160px;
+                height: 238px;
 
+                .product-cell .product-figure .img-wrapper {
+                    width: 130px;
+
+                }
+            }
+        }
+
+    }
 }
 
 

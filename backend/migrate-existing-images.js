@@ -7,43 +7,43 @@ async function migrateExistingImages() {
     // 從HTML檔案中提取的圖片路徑
     const productImages = {
       "product-Remain": {
-        thumbnail_path: "./images/shop/product-Softzilla-bluewhite-front.jpg",
+        thumbnail_path: "/images/shop/product-Softzilla-bluewhite-front.jpg",
         lightslider_images: JSON.stringify([
-          "./images/shop/product-Softzilla-bluewhite-front.jpg",
-          "./images/shop/product-Softzilla-bluewhite-back.jpg",
-          "./images/shop/product-Softzilla-blueblack-front.jpg",
-          "./images/shop/product-Softzilla-blueblack-back.jpg",
-          "./images/shop/product-Softzilla-redblack.jpg",
-          "./images/shop/product-Softzilla-greenblack.jpg",
+          "/images/shop/product-Softzilla-bluewhite-front.jpg",
+          "/images/shop/product-Softzilla-bluewhite-back.jpg",
+          "/images/shop/product-Softzilla-blueblack-front.jpg",
+          "/images/shop/product-Softzilla-blueblack-back.jpg",
+          "/images/shop/product-Softzilla-redblack.jpg",
+          "/images/shop/product-Softzilla-greenblack.jpg",
         ]),
         sketchfab_embed_link:
           "https://sketchfab.com/models/b70dd5e325d04d17929dd6ff7bd222b0/embed",
-        sketchfab_background: "./images/shop/Softzilla-longAD.jpg",
+        sketchfab_background: "/images/shop/Softzilla-longAD.jpg",
       },
       "product-Soft": {
-        thumbnail_path: "./images/shop/product-Soft-front.jpg",
+        thumbnail_path: "/images/shop/product-Soft-front.jpg",
         lightslider_images: JSON.stringify([
-          "./images/shop/product-Soft-front.jpg",
-          "./images/shop/product-Soft-back.jpg",
+          "/images/shop/product-Soft-front.jpg",
+          "/images/shop/product-Soft-back.jpg",
         ]),
         sketchfab_embed_link:
           "https://sketchfab.com/models/7b4108446c8949cf839a21f37ff261fa/embed",
-        sketchfab_background: "./images/shop/Softzilla-longAD-2.jpg",
+        sketchfab_background: "/images/shop/Softzilla-longAD-2.jpg",
       },
       "product-SoftzillaOD": {
-        thumbnail_path: "./images/shop/product-SoftzillaOD-front.jpg",
+        thumbnail_path: "/images/shop/product-SoftzillaOD-front.jpg",
         lightslider_images: JSON.stringify([
-          "./images/shop/product-SoftzillaOD-front.jpg",
-          "./images/shop/product-SoftzillaOD-back.jpg",
+          "/images/shop/product-SoftzillaOD-front.jpg",
+          "/images/shop/product-SoftzillaOD-back.jpg",
         ]),
         sketchfab_embed_link:
           "https://sketchfab.com/models/534a5772046a4ad594d8aba768421f3d/embed",
-        sketchfab_background: "./images/shop/Sketchfab_background.jpg",
+        sketchfab_background: "/images/shop/Sketchfab_background.jpg",
       },
       "product-Softtwice": {
-        thumbnail_path: "./images/shop/product-soft-twice.JPG",
+        thumbnail_path: "/images/shop/product-soft-twice.JPG",
         lightslider_images: JSON.stringify([
-          "./images/shop/product-soft-twice.JPG",
+          "/images/shop/product-soft-twice.JPG",
         ]),
         sketchfab_embed_link: null,
         sketchfab_background: null,

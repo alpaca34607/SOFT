@@ -140,13 +140,11 @@ class DynamicProductLoader {
 
   // 更新 LightSlider 圖片
   updateLightSliderImages() {
+    // 重新建立 lightSlider 容器，避免已初始化的結構影響
+    const galleryContainer = document.querySelector(".gallery");
+    if (!galleryContainer) return;
+    galleryContainer.innerHTML = '<ul id="lightSlider"></ul>';
     const lightSliderElement = document.getElementById("lightSlider");
-    if (!lightSliderElement) {
-      return;
-    }
-
-    // 清空現有內容
-    lightSliderElement.innerHTML = "";
 
     // 檢查是否有圖片資料
     if (
@@ -155,7 +153,7 @@ class DynamicProductLoader {
       this.productData.lightslider_images.length === 0
     ) {
       // 使用預設圖片
-      const fallbackImage = "./images/yellow-noisy-gradients.jpg";
+      const fallbackImage = "/images/shop/yellow-noisy-gradients.jpg";
       const li = document.createElement("li");
       li.setAttribute("data-thumb", fallbackImage);
 
@@ -189,19 +187,24 @@ class DynamicProductLoader {
       });
     }
 
-    // 重新初始化 LightSlider
-    if (window.lightSlider) {
-      try {
-        $("#lightSlider").lightSlider({
-          gallery: true,
-          item: 1,
-          loop: true,
-          slideMargin: 0,
-          thumbItem: 9,
-        });
-      } catch (error) {
-        console.error("重新初始化 LightSlider 失敗:", error);
+    // 初始化 LightSlider（確保在圖片載入後執行）
+    try {
+      const slider = $("#lightSlider").lightSlider({
+        gallery: true,
+        item: 1,
+        loop: true,
+        slideMargin: 0,
+        thumbItem: 4,
+        thumbWidth: 115,
+        thumbHeight: 115,
+        galleryMargin: 10,
+      });
+      // 強制定位到第一張
+      if (slider && typeof slider.goToSlide === "function") {
+        slider.goToSlide(0);
       }
+    } catch (error) {
+      console.error("初始化 LightSlider 失敗:", error);
     }
   }
 
