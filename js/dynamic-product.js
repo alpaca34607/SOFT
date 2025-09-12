@@ -34,6 +34,13 @@ class DynamicProductLoader {
 
   // 獲取商品 ID
   getProductId() {
+    // 從 URL 查詢參數獲取 (優先)
+    const urlParams = new URLSearchParams(window.location.search);
+    const productIdFromUrl = urlParams.get("id");
+    if (productIdFromUrl) {
+      return productIdFromUrl;
+    }
+
     // 從 body 的 data-product-id 屬性獲取
     const productId = document.body.getAttribute("data-product-id");
     if (productId) {
@@ -85,6 +92,9 @@ class DynamicProductLoader {
 
     // 更新商品介紹和注意事項
     this.updateProductDetails();
+
+    // 更新顏色選項
+    this.updateColorOptions();
 
     // 更新按鈕狀態
     this.updateButtonStatus();
@@ -179,7 +189,7 @@ class DynamicProductLoader {
         // 圖片載入失敗時使用預設圖片
         img.onerror = () => {
           console.warn(`圖片載入失敗: ${imagePath}，使用預設圖片`);
-          img.src = "./images/yellow-noisy-gradients.jpg";
+          img.src = "/images/shop/yellow-noisy-gradients.jpg";
         };
 
         li.appendChild(img);
@@ -211,7 +221,7 @@ class DynamicProductLoader {
   // 更新 Sketchfab 嵌入
   updateSketchfabEmbed() {
     const sketchfabWrapper = document.querySelector(
-      ".sketchfab-embed-wrapper-softzilla iframe, .sketchfab-embed-wrapper iframe"
+      ".sketchfab-embed-wrapper iframe"
     );
 
     if (sketchfabWrapper) {
@@ -220,7 +230,7 @@ class DynamicProductLoader {
       } else {
         // 如果沒有 Sketchfab 連結，隱藏整個嵌入區域
         const wrapperContainer = sketchfabWrapper.closest(
-          ".sketchfab-embed-wrapper, .sketchfab-embed-wrapper-softzilla"
+          ".sketchfab-embed-wrapper"
         );
         if (wrapperContainer) {
           wrapperContainer.style.display = "none";
@@ -232,14 +242,13 @@ class DynamicProductLoader {
   // 更新商品介紹和注意事項
   updateProductDetails() {
     // 更新商品介紹圖片
-    if (this.productData.product_introduction) {
-      const introImage = document.querySelector(
-        '.long-ad-wrap img[alt="商品介紹"]'
-      );
-      if (introImage) {
-        // 這裡可以根據需要更新圖片或內容
-        // 目前保持原有的圖片結構
-      }
+    const introImage = document.getElementById("product-intro-img");
+    if (introImage && this.productData.product_introduction) {
+      introImage.src = this.productData.product_introduction;
+      introImage.style.display = "block";
+    } else if (introImage) {
+      // 如果沒有商品介紹圖片，隱藏該元素
+      introImage.style.display = "none";
     }
 
     // 更新預購注意事項
@@ -254,6 +263,76 @@ class DynamicProductLoader {
           );
         }
       }
+    }
+  }
+
+  // 更新顏色選項
+  updateColorOptions() {
+    const mainColorSelect = document.getElementById("mainColor");
+    const subColorSelect = document.getElementById("subColor");
+    const quantitySelect = document.getElementById("quantity");
+
+    // 更新主色選項
+    if (mainColorSelect && this.productData.main_colors) {
+      mainColorSelect.innerHTML = '<option value="">請選擇主色</option>';
+      this.productData.main_colors.forEach((color) => {
+        const option = document.createElement("option");
+        option.value = color;
+        option.textContent = color;
+        mainColorSelect.appendChild(option);
+      });
+    }
+
+    // 更新副色選項
+    if (subColorSelect && this.productData.sub_colors) {
+      subColorSelect.innerHTML = '<option value="">請選擇副色</option>';
+      this.productData.sub_colors.forEach((color) => {
+        const option = document.createElement("option");
+        option.value = color;
+        option.textContent = color;
+        subColorSelect.appendChild(option);
+      });
+    }
+
+    // 更新數量選項
+    if (quantitySelect && this.productData.max_quantity) {
+      quantitySelect.innerHTML = '<option value="">請選擇數量</option>';
+      const maxQty = Math.min(this.productData.max_quantity, 10); // 最多10個
+      for (let i = 1; i <= maxQty; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        quantitySelect.appendChild(option);
+      }
+    }
+
+    // 綁定事件監聽器
+    if (mainColorSelect) {
+      mainColorSelect.addEventListener("change", () => this.updateSelection());
+    }
+    if (subColorSelect) {
+      subColorSelect.addEventListener("change", () => this.updateSelection());
+    }
+    if (quantitySelect) {
+      quantitySelect.addEventListener("change", () => this.updateSelection());
+    }
+  }
+
+  // 更新選擇
+  updateSelection() {
+    const mainColor = document.getElementById("mainColor").value;
+    const subColor = document.getElementById("subColor").value;
+    const quantity = parseInt(document.getElementById("quantity").value) || 0;
+
+    if (mainColor && subColor && quantity) {
+      const totalPrice = this.productData.price * quantity;
+      const totalDeposit = this.productData.deposit * quantity;
+
+      document.getElementById("totalPrice").textContent = totalPrice;
+      document.getElementById("totalDeposit").textContent = totalDeposit;
+    } else {
+      document.getElementById("totalPrice").textContent = "0";
+      document.getElementById("totalDeposit").textContent = "0";
     }
   }
 

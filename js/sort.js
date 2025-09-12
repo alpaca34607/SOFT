@@ -1,39 +1,39 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  const tbody = document.querySelector('tbody');
-  const sortBtn = document.getElementById('sortBtn');
-  const sortIcon = sortBtn.querySelector('.sort-icon');
-  const searchInput = document.getElementById('search');
+document.addEventListener("DOMContentLoaded", async () => {
+  const tbody = document.querySelector("tbody");
+  const sortBtn = document.getElementById("sortBtn");
+  const sortIcon = sortBtn.querySelector(".sort-icon");
+  const searchInput = document.getElementById("search");
   let isAscending = true;
   let productData = [];
 
   function mapStatusClass(cellOpenStatus) {
-    if (cellOpenStatus === 'stopped_selling') return 'status-soldout';
-    return 'status-avalible';
+    if (cellOpenStatus === "stopped_selling") return "status-soldout";
+    return "status-avalible";
   }
 
   function mapStatusText(cellOpenStatus) {
     switch (cellOpenStatus) {
-      case 'open_for_preorder':
-        return '開放預購中';
-      case 'stopped_selling':
-        return '已停止販售';
-      case 'preparing':
+      case "open_for_preorder":
+        return "開放預購中";
+      case "stopped_selling":
+        return "已停止販售";
+      case "preparing":
       default:
-        return '準備中';
+        return "準備中";
     }
   }
 
   function mapMarkerText(cellRemainingStatus) {
-    return cellRemainingStatus === 'sold_out' ? '已售完' : '尚有餘量';
+    return cellRemainingStatus === "sold_out" ? "已售完" : "尚有餘量";
   }
 
   function mapMarkerColor(cellRemainingStatus) {
-    return cellRemainingStatus === 'sold_out' ? 'markerGrey' : 'markerLight';
+    return cellRemainingStatus === "sold_out" ? "markerGrey" : "markerLight";
   }
 
   function updateSortButton() {
-    sortIcon.classList.toggle('descending', !isAscending);
-    sortBtn.classList.toggle('active');
+    sortIcon.classList.toggle("descending", !isAscending);
+    sortBtn.classList.toggle("active");
   }
 
   function renderProducts(products) {
@@ -60,21 +60,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   </tr>
         `
       )
-      .join('');
+      .join("");
   }
 
   function filterAndSortProducts() {
     let filtered = [...productData];
 
     // 搜尋過濾（依商品名稱）
-    const keyword = (searchInput.value || '').trim();
+    const keyword = (searchInput.value || "").trim();
     if (keyword) {
       filtered = filtered.filter((p) => p.title.includes(keyword));
     }
 
     // 排序（依建立時間）
     filtered.sort((a, b) => {
-      return isAscending ? a.createdAt - b.createdAt : b.createdAt - a.createdAt;
+      return isAscending
+        ? a.createdAt - b.createdAt
+        : b.createdAt - a.createdAt;
     });
 
     renderProducts(filtered);
@@ -83,12 +85,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 從後端載入商品
   try {
     const resp = await API.getProducts();
-    const fallbackThumb = './images/shop/product-Softzilla-thumb.jpg';
+    const fallbackThumb = "./images/shop/product-Softzilla-thumb.jpg";
     productData = (resp.products || []).map((p) => ({
       // 以 created_at 排序（轉為毫秒）
       createdAt: p.created_at ? new Date(p.created_at).getTime() : 0,
       title: p.name,
-      link: `./${p.product_id}.html`,
+      link: `./product.html?id=${p.product_id}`,
       price: p.price,
       imgUrl: p.thumbnail_path || fallbackThumb,
       status: mapStatusClass(p.cell_open_status),
@@ -97,17 +99,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       markerColor: mapMarkerColor(p.cell_remaining_status),
     }));
   } catch (err) {
-    console.error('載入商品列表失敗，回退至空清單:', err);
+    console.error("載入商品列表失敗，回退至空清單:", err);
     productData = [];
   }
 
   // 綁定事件
-  sortBtn.addEventListener('click', () => {
+  sortBtn.addEventListener("click", () => {
     isAscending = !isAscending;
     updateSortButton();
     filterAndSortProducts();
   });
-  searchInput.addEventListener('input', filterAndSortProducts);
+  searchInput.addEventListener("input", filterAndSortProducts);
 
   // 初始渲染
   updateSortButton();
