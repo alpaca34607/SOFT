@@ -251,17 +251,13 @@ class DynamicProductLoader {
       introImage.style.display = "none";
     }
 
-    // 更新預購注意事項
+    // 更新預購注意事項圖片（只更新long-ad-wrap區域的圖片）
     if (this.productData.preorder_notes) {
-      const noticePopup = document.getElementById("notice-popup");
-      if (noticePopup) {
-        const noticeContent = noticePopup.querySelector(".popup-content p");
-        if (noticeContent) {
-          noticeContent.innerHTML = this.productData.preorder_notes.replace(
-            /\n/g,
-            "<br>"
-          );
-        }
+      const noticeImage = document.querySelector(
+        '.long-ad-wrap img[alt="預購注意事項"]'
+      );
+      if (noticeImage) {
+        noticeImage.src = this.productData.preorder_notes;
       }
     }
   }
