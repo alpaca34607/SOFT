@@ -4759,10 +4759,10 @@ textarea {
                     position: absolute;
                     display: flex;
                     align-items: center;
-                    top: 550px;
-                    left: 50%;
+                    margin-top: 32%;
+                    top: 0;
+                    left: 0;
                     width: 100%;
-                    transform: translate(-50%, -50%);
                     z-index: 1;
                     overflow: hidden;
                     aspect-ratio: 17/9;
@@ -4777,17 +4777,9 @@ textarea {
                 }
 
                 .sketchfab-embed-wrapper-softzilla {
-                    position: absolute;
-                    display: flex;
-                    align-items: center;
-                    top: 550px;
-                    left: 50%;
-                    width: 100%;
-                    transform: translate(-50%, -50%);
                     z-index: 1;
                     overflow: hidden;
                     aspect-ratio: 17/9;
-                    /* 保持固定比例 */
 
                     iframe {
                         width: 100%;
@@ -4833,14 +4825,14 @@ textarea {
         }
 
         .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper {
-            top: 32%;
+            top: 0%;
             width: 100%;
             aspect-ratio: 17/9;
             /* 保持固定比例 */
         }
 
         .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper-softzilla {
-            top: 11.8%;
+            top: 0%;
             width: 100%;
             aspect-ratio: 17/9;
             /* 保持固定比例 */
@@ -4878,14 +4870,14 @@ textarea {
         }
 
         .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper {
-            top: 32%;
+            top: 0;
             width: 100%;
             aspect-ratio: 17/9;
             /* 保持固定比例 */
         }
 
         .product-container .ad-area .long-ad-wrap .sketchfab-embed-wrapper-softzilla {
-            top: 11.8%;
+            top: 0%;
             width: 100%;
             aspect-ratio: 17/9;
             /* 保持固定比例 */
