@@ -6,6 +6,15 @@ echo "🚀 啟動軟筋生物預購系統..."
 export NODE_ENV=${NODE_ENV:-staging}
 export PORT=${PORT:-3000}
 
+# 確保必要的環境變數
+if [ -z "$NODE_ENV" ]; then
+  export NODE_ENV=staging
+fi
+
+if [ -z "$PORT" ]; then
+  export PORT=3000
+fi
+
 echo "📋 環境配置:"
 echo "  - NODE_ENV: $NODE_ENV"
 echo "  - PORT: $PORT"
@@ -27,12 +36,6 @@ if [ -d "images/shop" ]; then
   ls -la images/shop/ | head -5
 else
   echo "  - images/shop 目錄不存在"
-fi
-
-# 如果是測試環境，執行圖片遷移
-if [ "$NODE_ENV" = "staging" ]; then
-  echo "🔄 執行測試環境圖片遷移..."
-  node backend/migrate-staging-images.js
 fi
 
 # 啟動應用程式
