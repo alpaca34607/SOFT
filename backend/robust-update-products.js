@@ -2,19 +2,31 @@ const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
 const fs = require("fs");
 
-// 資料庫路徑
-const dbPath =
-  process.env.NODE_ENV === "production"
-    ? "/tmp/database.sqlite"
-    : path.join(__dirname, "database.sqlite");
+// 資料庫路徑 (Vercel 環境使用 /tmp 目錄，Railway 使用持久化目錄)
+const dbPath = (() => {
+  if (process.env.NODE_ENV === "production") {
+    return "/tmp/database.sqlite"; // Vercel
+  } else if (process.env.RAILWAY_ENVIRONMENT) {
+    return path.join(__dirname, "database.sqlite"); // Railway
+  } else {
+    return path.join(__dirname, "database.sqlite"); // 本地開發
+  }
+})();
 
 console.log("🔍 資料庫路徑:", dbPath);
 console.log("🔍 環境變數 NODE_ENV:", process.env.NODE_ENV);
+console.log("🔍 Railway 環境:", process.env.RAILWAY_ENVIRONMENT || "未設定");
+
+// 確保資料庫目錄存在
+const dbDir = path.dirname(dbPath);
+if (!fs.existsSync(dbDir)) {
+  console.log("📁 建立資料庫目錄:", dbDir);
+  fs.mkdirSync(dbDir, { recursive: true });
+}
 
 // 檢查資料庫檔案是否存在
 if (!fs.existsSync(dbPath)) {
-  console.error("❌ 資料庫檔案不存在:", dbPath);
-  process.exit(1);
+  console.log("📄 資料庫檔案不存在，將在初始化時創建:", dbPath);
 }
 
 // 建立資料庫連接
