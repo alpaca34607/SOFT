@@ -40,11 +40,11 @@ fi
 
 # 等待資料庫初始化
 echo "⏳ 等待資料庫初始化..."
-sleep 2
+sleep 5
 
 # 更新商品資料
 echo "🔄 更新商品資料..."
-node backend/simple-update-products.js
+node backend/robust-update-products.js
 
 # 檢查更新結果
 echo "✅ 商品資料更新完成"
