@@ -38,9 +38,9 @@ else
   echo "  - images/shop 目錄不存在"
 fi
 
-# 初始化商品資料
-echo "🔄 初始化商品資料..."
-node backend/init-products.js
+# 更新商品資料
+echo "🔄 更新商品資料..."
+node backend/update-products.js
 
 # 啟動應用程式
 echo "🏃 啟動後端服務..."
