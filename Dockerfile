@@ -16,6 +16,9 @@ COPY . .
 # 建立必要的目錄
 RUN mkdir -p images/products logs
 
+# 設定啟動腳本權限
+RUN chmod +x start.sh
+
 # 設定環境變數
 ENV NODE_ENV=staging
 ENV PORT=3000
@@ -23,5 +26,9 @@ ENV PORT=3000
 # 暴露端口
 EXPOSE 3000
 
+# 健康檢查
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
+
 # 啟動應用程式
-CMD ["node", "backend/server.js"]
+CMD ["./start.sh"]
