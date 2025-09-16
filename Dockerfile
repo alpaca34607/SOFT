@@ -19,6 +19,10 @@ RUN mkdir -p images/products logs
 # 確保圖片目錄存在且有正確權限
 RUN chmod -R 755 images/
 
+# 檢查圖片檔案是否正確複製
+RUN ls -la images/products/ || echo "images/products 目錄為空"
+RUN ls -la images/shop/ || echo "images/shop 目錄為空"
+
 # 設定啟動腳本權限
 RUN chmod +x start.sh
 
