@@ -16,6 +16,9 @@ COPY . .
 # 建立必要的目錄
 RUN mkdir -p images/products logs
 
+# 確保圖片目錄存在且有正確權限
+RUN chmod -R 755 images/
+
 # 設定啟動腳本權限
 RUN chmod +x start.sh
 

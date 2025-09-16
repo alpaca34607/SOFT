@@ -10,8 +10,14 @@ class API {
       window.location.hostname === "127.0.0.1"
     ) {
       return "http://localhost:3000";
+    } else if (window.location.hostname.includes("railway.app")) {
+      // Railway 部署環境
+      return window.location.origin;
+    } else if (window.location.hostname.includes("vercel.app")) {
+      // Vercel 部署環境
+      return window.location.origin;
     } else {
-      // 生產環境：使用相對路徑
+      // 其他生產環境：使用相對路徑
       return window.location.origin;
     }
   }
