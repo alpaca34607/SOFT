@@ -260,6 +260,17 @@ class DynamicProductLoader {
         noticeImage.src = this.productData.preorder_notes;
       }
     }
+
+    // 更新 Sketchfab 背景圖片
+    if (this.productData.sketchfab_background) {
+      const sketchfabBackgroundImage = document.querySelector(
+        '.long-ad-wrap img[alt="sketchfab背景"]'
+      );
+      if (sketchfabBackgroundImage) {
+        sketchfabBackgroundImage.src = this.productData.sketchfab_background;
+        sketchfabBackgroundImage.style.display = "block";
+      }
+    }
   }
 
   // 更新顏色選項
