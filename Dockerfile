@@ -33,6 +33,7 @@ COPY backend/ ./backend/
 COPY *.json ./
 COPY *.yaml ./
 COPY *.md ./
+COPY *.sql ./
 COPY start.sh ./
 
 # 建立必要的目錄

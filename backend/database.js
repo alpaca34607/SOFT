@@ -22,6 +22,22 @@ const db = new sqlite3.Database(dbPath, (err) => {
 function initDatabase() {
     return new Promise((resolve, reject) => {
         const schemaPath = path.join(__dirname, '../database_schema.sql');
+        console.log('🔍 尋找資料庫 schema 檔案:', schemaPath);
+        
+        // 檢查檔案是否存在
+        if (!fs.existsSync(schemaPath)) {
+            console.error('❌ 資料庫 schema 檔案不存在:', schemaPath);
+            console.log('📁 當前目錄內容:');
+            try {
+                const files = fs.readdirSync(path.join(__dirname, '..'));
+                files.forEach(file => console.log('  -', file));
+            } catch (e) {
+                console.log('  無法讀取目錄');
+            }
+            reject(new Error(`資料庫 schema 檔案不存在: ${schemaPath}`));
+            return;
+        }
+        
         const schema = fs.readFileSync(schemaPath, 'utf8');
         
         db.exec(schema, (err) => {
